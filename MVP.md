@@ -8,21 +8,26 @@
 - Contact owner
 - CRUD tools
 - CRUD categories
-- CRUD users
+<!-- - CRUD users (not for MVP) --> 
 
+## Buttons: login as user, login as administrator
 
 ### PAGES
 
 # Main
 Navigation bar
 Search bar
-See all tools
+See all tools (how to organize?)
 See all categories
+CRUD tools
 
 # See one tool
 Navigation bar
+Search bar
 Picture, name, category, user name, user postal code (option: map with circle like FB Marketplace or craiglist)
 
+# See categories
+Show all tools in category
 
 
 ### ERD

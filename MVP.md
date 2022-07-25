@@ -1,6 +1,6 @@
 ### USER STORIES
 
-# As a user
+# As a new user
 
 - R tools
 - Search tools

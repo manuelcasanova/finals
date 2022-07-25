@@ -25,3 +25,13 @@ app.get("/tools", async (req, res) => {
     console.error(err.message);
   }
 })
+
+//list categories /categories
+//list users /users K
+//add a tool /tools with post K
+//delete a tool /tools/delete/:id
+//edit the tool /tools/edit/:id
+//add a category /coegries with post
+//delete a category /categories/delete/:id
+//edit a cat. /categories/edit/:id
+

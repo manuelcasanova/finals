@@ -18,7 +18,20 @@ app.get("/tools", async (req, res) => {
       // `SELECT movie_id, movie_title, movie_year, movie_genre_id, movie_imdb, genre_title
       // FROM movies JOIN genres ON genres.genre_id = movies.movie_genre_id
       // ORDER BY movie_id DESC`
-      `SELECT * FROM tools`
+      `SELECT 
+      tool_id, 
+      tool_name, 
+      tool_category_id, 
+      tool_owner_id, 
+      tool_picture, 
+      tool_available, 
+      category_name, 
+      user_name 
+      FROM tools 
+      JOIN categories 
+      ON categories.category_id = tools.tool_category_id 
+      JOIN users 
+      ON users.user_id = tools.tool_owner_id`
     );
     res.json(getAllTools.rows);
   } catch (err) {

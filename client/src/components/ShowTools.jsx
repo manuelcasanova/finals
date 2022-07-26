@@ -26,10 +26,10 @@ export default function ShowTools({ tools, setTools }) {
         </thead>
         <tbody>
           {tools.map(tool =>
-            <tr key={tool.movie_id}>
+            <tr key={tool.tool_id}>
               <td>{tool.tool_name}</td>
-              <td>Category</td>
-              <td>Owner</td>
+              <td>{tool.category_name}</td>
+              <td>{tool.user_name}</td>
               <td>{tool.tool_picture}</td>
               <td>{tool.tool_available}</td>
               <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>

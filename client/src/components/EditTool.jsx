@@ -20,7 +20,7 @@ export default function EditTool (props) {
  
            <div className="modal-body">
  
-             <label className="add_tool_title" htmlFor="title">Title</label>
+             <label className="add_tool_title" htmlFor="title">Name</label>
              <input
              className="form-control"
              type="text"
@@ -28,28 +28,38 @@ export default function EditTool (props) {
              />
             <p></p>
  
-             <label className="add_tool_title" htmlFor="title">Year</label>
+             <label className="add_tool_title" htmlFor="title">Description</label>
              <input
              className="form-control"
              type="text"
              name="title"
              />
              <p></p>
+
+             <label className="add_tool_title" htmlFor="title">Picture</label>
+             <input className="form-control"
+             type="text"
+             name="title"
+             />
+             <p></p>
  
              <div className="level_input">
-               <label className="add_tool_title" htmlFor="title">Genre</label>
+               <label className="add_tool_title" htmlFor="title">Category</label>
+               <select className="form-control"
+               >
+ 
+               </select>
+             </div>
+
+             <div className="level_input">
+               <label className="add_tool_title" htmlFor="title">Availibility</label>
                <select className="form-control"
                >
  
                </select>
              </div>
  
-             <label className="add_tool_title" htmlFor="title">Imdb</label>
-             <input className="form-control"
-             type="text"
-             name="title"
-             />
-             <p></p>
+
  
            </div>
  

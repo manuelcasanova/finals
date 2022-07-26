@@ -51,6 +51,7 @@ function App() {
 
       <div className="pagination">Pagination</div>
       <div className="footer">Footer</div>
+
     </div>
   );
 }

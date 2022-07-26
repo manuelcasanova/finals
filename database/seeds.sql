@@ -9,4 +9,5 @@ VALUES
 
 INSERT INTO tools (tool_name, tool_category_id, tool_owner_id)
 VALUES
-('Hammer', 1, 1);
+('Hammer', 1, 1),
+('Screwdriver', 1, 1);

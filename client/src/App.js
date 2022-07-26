@@ -7,10 +7,11 @@ import Filter from './components/Filter';
 import ShowTools from './components/ShowTools';
 import Pagination from './components/Pagination';
 import Footer from './components/Footer';
-
+import Categories from './components/Categories';
 
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Searchbar />
       <Filter />
       <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
+      <Categories />
       <Pagination />
       <Footer />
     </div>

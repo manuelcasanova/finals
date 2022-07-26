@@ -173,7 +173,32 @@ th, td, tr {
   text-align: center;
 }
 
+/* Display Categories.jsx */
 
+.show-categories {
+  background-color: lightsalmon;
+  margin: 2px;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  
+}
+
+.button-add {
+  background-color: green;
+}
+
+.categories-table {
+  background-color: lightsalmon;
+  margin: 20px;
+}
+
+th, td, tr {
+  padding: 1em;
+  background-color: lightsalmon; 
+  text-align: center;
+}
 
 /* Pagination */
 

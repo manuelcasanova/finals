@@ -59,14 +59,27 @@ app.delete("/tools/delete/:id", async (req, res) => {
 //add a tool
 app.post("/tools", async (req, res) => {   
   try {     
-    const { tool_name, tool_picture, tool_available } = req.body;     
+    const { tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available } = req.body;     
     console.log("req body", req.body)    
     const newTool = await pool.query(
-      "INSERT INTO tools (tool_name, tool_picture, tool_available) VALUES($1, $2, $3) RETURNING *", [tool_name, tool_picture, tool_available])     
+      "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5) RETURNING *", [tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available])     
       res.json(newTool.rows[0])   
   } catch (err) {
     console.error(err.message)   
   }})
+
+  //edit a tool
+  // app.put("/tools/edit/:id", async (req, res) => {   
+  //   try {     
+  //     const { id } = req.params;     
+  //     const { tool_name, tool_picture, tool_available } = req.body       
+  //     const editTool = await pool.query(
+  //       'UPDATE tools SET tool_name = $1, tool_picture = $2, tool_available = $3 WHERE tool_id = $4', [tool_name, tool_picture, tool_available])       
+  //       res.json("Movie was updated")     
+  //     } catch (err) {       
+  //       console.error(err.message)     
+  //     }
+  //   })
 
 
 

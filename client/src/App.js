@@ -16,7 +16,7 @@ function App() {
       Navbar
       Search
       Filter
-      <ShowTools tools={tools}/>
+      <ShowTools tools={tools} setTools={setTools}/>
       Pagination
       Footer
       

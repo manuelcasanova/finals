@@ -1,8 +1,8 @@
 import axios from "axios"
 
-export default function ShowTools ({tools, setTools}) {
+export default function ShowTools({ tools, setTools }) {
 
-//  const { tools } = props;
+  //  const { tools } = props;
   function deleteTool(id) {
     return axios.delete(`http://localhost:8001/tools/delete/${id}`)
       .then(res => {
@@ -11,36 +11,32 @@ export default function ShowTools ({tools, setTools}) {
   };
 
   return (
-    <div>
-     {/* { tools.map( tool => 
-     <div>
-     {tool.tool_name}
-     Delete
-     </div>
-      )} */}
-      <table>   
-      <thead>    
-        <tr>      
-          <th>Name</th>      
-          <th>Category</th>      
-          <th>Owner</th>      
-          <th>Picture</th>      
-          <th>Availiable?</th>      
-          <th>Delete</th>   
-          <th>Edit</th>   
-          </tr>  
-      </thead>  
-      <tbody>  
-        {tools.map(tool =>    
-        <tr key={tool.movie_id}>     
-        <td>{tool.tool_name}</td>     
-        <td>{tool.tool_picture}</td>     
-        <td>{tool.tool_available}</td>      
-        <td>Edit button</td>     
-        <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>    
-        </tr>)}  
+    <div className="show-tools">
+      <table className="tools-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Owner</th>
+            <th>Picture</th>
+            <th>Available?</th>
+            <th>Delete</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tools.map(tool =>
+            <tr key={tool.movie_id}>
+              <td>{tool.tool_name}</td>
+              <td>Category</td>
+              <td>Owner</td>
+              <td>{tool.tool_picture}</td>
+              <td>{tool.tool_available}</td>
+              <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>
+              <td>Edit button</td>
+            </tr>)}
         </tbody>
-        </table>
+      </table>
     </div>
   )
 }

@@ -1,20 +1,26 @@
 import './App.css';
 import ShowTools from './components/ShowTools';
-import { useState, useEffect } from 'react';import axios from 'axios';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 function App() {
 
   const [ tools, setTools ] = useState([]);
-  useEffect(() => {axios.get(`http://localhost:8001/tools`)
-  .then(function (res) {setTools([...res.data])})}, [])
-  console.log(tools)
+
+  useEffect(() => {
+    axios.get(`http://localhost:8001/tools`)
+  .then(function (res) {
+    setTools([...res.data])
+  })
+}, [])
+  console.log("tools", tools)
 
   return (
     <div className="app">
       <div className="authentication">
         <div className="authentication-left">
-          <div className="logo">Logo</div>
+          <div className="logo">Tool swap</div>
         </div>
         <div className="authentication-right">
           <div className="login-as-user">Login as user</div>
@@ -37,7 +43,7 @@ function App() {
       <div className="searchbar">
         <div className="searchbar-text">What are you looking for?</div>
         <div className="searchbar-cateogries-dropdown">Categories dropdown</div>
-        <div className="searchbar-groups-dropdwon">Groups dropdown</div>
+        <div className="searchbar-groups-dropdown">Groups dropdown</div>
         <div className="searchbar-search-button">Search button</div>
       </div>
 
@@ -47,7 +53,7 @@ function App() {
         <div className="filter-sort-by">Sort by</div>
       </div>
 
-      <ShowTools tools={tools}/>
+      <ShowTools tools={tools} setTools={setTools}/>
 
       <div className="pagination">Pagination</div>
       <div className="footer">Footer</div>

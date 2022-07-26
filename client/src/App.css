@@ -1,95 +1,182 @@
-.app {
 
+/* Main App Container */
+
+.app {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
 }
 
-.authentication {
+/* Authentication bar */
 
+.authentication {
+  background-color: brown;
+  display: flex;
+  justify-content: flex-end;
+  margin: 2px;
 }
 
 .authentication-left {
-
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
 }
 
 .logo {
-
+  background-color: yellow;
 }
 
 .authentication-right {
-
+  background-color: lightcyan;
+  display: flex;
+  margin-left: auto;
 }
 
 .login-as-user {
-
+  background-color: lightgreen;
+  padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .login-as-admin {
-
+  background-color: burlywood;
+  display: flex;
+  align-items: center;
+  padding: 20px;
 }
 
-.navbar {
+/* Navigation bar (Inventory, Groups, About us, My account, Administrator */
 
+.navbar {
+  background-color: brown;
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
 }
 
 .navbar-left {
-
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-button {
-
+  background-color: lightcyan;
+  padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .navbar-right {
-
+  background-color: burlywood;
+  display: flex;
+  margin-left: auto;
 }
 
 .navbar-dropdown {
-  
+  background-color: lightgreen;
+  padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
-.searchbar {
+/* Search bar*/
 
+.searchbar {
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+  height: 5vh;
+  margin-left: 15vw;
+  margin-right: 15vw;
 }
 
 .searchbar-text {
-
+  background-color: lightgreen;
+  display: flex;
+  align-items: center;
 }
 
-.searchbar-categories-dropdown {
-
+.searchbar-cateogries-dropdown {
+  background-color: burlywood;
+  display: flex;
+  align-items: center;
 }
 
 .searchbar-groups-dropdown {
-
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
 }
 
 .searchbar-search-button {
-
+  background-color: grey;
+  display: flex;
+  align-items: center;
 }
+
+/* Filter bar */
 
 .filter {
-
+  background-color: brown;
+  display: flex;
+  margin: 2px;
+  justify-content: flex-end;
+  
 }
 
-.filter-per-pege {
+.filter-per-page {
+  background-color: burlywood;
+  padding-left: 20px;
 
 }
 
 .filter-view {
-
-
+  background-color: lightblue;
+  padding-left: 20px;
 }
 
 .filter-sort-by {
-
-
+background-color: burlywood;
+padding-left: 20px;
 }
+
+/* Display ShowTools.jsx */
+
+.show-tools {
+  background-color: lightcoral;
+  margin: 2px;
+ 
+  
+}
+
+.tools-table {
+  margin: auto;
+}
+
+th, td, tr {
+  padding: 1em
+}
+
+/* Pagination */
 
 .pagination {
-
+  background-color: lightgreen;
+  margin: 2px;
+  height: 10vh;
 }
 
-.footer {
+/* Footer */
 
+.footer {
+  background-color: brown;
+  color: white;
+  margin: 2px;
+  height: 10vh;
 }
 
  

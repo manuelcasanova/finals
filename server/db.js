@@ -10,13 +10,6 @@ const pool = new Pool(
   port: 5432}
 )
 
-// const pool = new Pool({
-//   user: 'vagrant',
-//   host: 'localhost',
-//   database: 'tool_library',
-//   password: '123',
-//   port: 5432
-// })
 
 
 module.exports = pool;

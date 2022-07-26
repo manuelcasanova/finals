@@ -1,4 +1,189 @@
+
+/* Main App Container */
+
 .app {
+  background-color: black;
   display: flex;
   flex-direction: column;
 }
+
+/* Authentication bar */
+
+.authentication {
+  background-color: lightsalmon;
+  display: flex;
+  justify-content: flex-end;
+  margin: 2px;
+  font-size: 3em;
+}
+
+.authentication-left {
+  background-color: burlywood;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+}
+
+.logo {
+  background-color: lightcoral;
+}
+
+.authentication-right {
+  display: flex;
+  margin-left: auto;
+}
+
+.login-as-user {
+  background-color: burlywood;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.login-as-admin {
+  background-color: burlywood;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Navigation bar (Inventory, Groups, About us, My account, Administrator */
+
+.navbar {
+  background-color: lightsalmon;
+  display: flex;
+  justify-content: space-between;
+  margin: 2px;
+  font-size: 2em;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-button {
+  background-color: burlywood;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  margin-left: auto;
+}
+
+.navbar-dropdown {
+  background-color: burlywood;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* Search bar*/
+
+.searchbar {
+  background-color: lightsalmon;
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+  height: 5vh;
+  margin-left: 15vw;
+  margin-right: 15vw;
+  margin-bottom: 50px;
+  font-size: 1.5em;
+}
+
+.searchbar-text {
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
+}
+
+.searchbar-cateogries-dropdown {
+  background-color: burlywood;
+  display: flex;
+  align-items: center;
+}
+
+.searchbar-groups-dropdown {
+  background-color: lightblue;
+  display: flex;
+  align-items: center;
+}
+
+.searchbar-search-button {
+  background-color: burlywood;
+  display: flex;
+  align-items: center;
+}
+
+/* Filter bar */
+
+.filter {
+  background-color: lightsalmon;
+  display: flex;
+  margin: 2px;
+  justify-content: flex-end;
+  font-size: 1.8em;
+}
+
+.filter-per-page {
+  background-color: burlywood;
+  padding-left: 20px;
+
+}
+
+.filter-view {
+  background-color: lightblue;
+  padding-left: 20px;
+}
+
+.filter-sort-by {
+background-color: burlywood;
+padding-left: 20px;
+}
+
+/* Display ShowTools.jsx */
+
+.show-tools {
+  background-color: lightsalmon;
+  margin: 2px;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.tools-table {
+  background-color: lightsalmon;
+  margin: 20px;
+}
+
+th, td, tr {
+  padding: 1em;
+  background-color: lightsalmon; 
+  text-align: center;
+}
+
+
+
+/* Pagination */
+
+.pagination {
+  background-color: lightsalmon;
+  margin: 2px;
+  height: 10vh;
+}
+
+/* Footer */
+
+.footer {
+  background-color: lightsalmon;
+  margin: 2px;
+  height: 10vh;
+}
+
+ 

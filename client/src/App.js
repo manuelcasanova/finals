@@ -1,25 +1,38 @@
 import './App.css';
+
+import Authentication from './components/Authentication';
+import Navbar from './components/Navbar';
+import Searchbar from './components/Searchbar';
+import Filter from './components/Filter';
 import ShowTools from './components/ShowTools';
-import { useState, useEffect } from 'react';import axios from 'axios';
+import Pagination from './components/Pagination';
+import Footer from './components/Footer';
+
+
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 function App() {
 
-  const [ tools, setTools ] = useState([]);
-  useEffect(() => {axios.get(`http://localhost:8001/tools`)
-  .then(function (res) {setTools([...res.data])})}, [])
-  console.log(tools)
+  const [tools, setTools] = useState([]);
+
+  useEffect(() => {
+    axios.get(`http://localhost:8001/tools`)
+      .then(function (res) {
+        setTools([...res.data])
+      })
+  }, [])
 
   return (
     <div className="app">
-      Authentication strip
-      Navbar
-      Search
-      Filter
-      <ShowTools tools={tools} setTools={setTools}/>
-      Pagination
-      Footer
-      
+      <Authentication />
+      <Navbar />
+      <Searchbar />
+      <Filter />
+      <ShowTools tools={tools} setTools={setTools} />
+      <Pagination />
+      <Footer />
     </div>
   );
 }

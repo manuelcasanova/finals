@@ -29,4 +29,5 @@ VALUES
 ('Table Top BBQ', 4, 1),
 ('Pipe Wrench', 5, 3),
 ('Drain Auger', 5, 6)
-('Pipe cutter', 5, 4);
+('Pipe cutter', 5, 4),
+('Multibit Screwdriver', 1, 4);

@@ -1,5 +1,6 @@
 import axios from "axios"
 import AddTool from "./AddTool"
+import EditTool from "./EditTool"
 
 export default function ShowTools({ tools, setTools, categories }) {
 
@@ -35,7 +36,7 @@ export default function ShowTools({ tools, setTools, categories }) {
               <td>{tool.tool_picture}</td>
               <td>{tool.tool_available}</td>
               <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>
-              <td>Edit button</td>
+              <td>< EditTool tool={tool} /></td>
             </tr>)}
         </tbody>
       </table>

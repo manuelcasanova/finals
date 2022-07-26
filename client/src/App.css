@@ -14,10 +14,11 @@
   display: flex;
   justify-content: flex-end;
   margin: 2px;
+  font-size: 3em;
 }
 
 .authentication-left {
-  background-color: aquamarine;
+  background-color: lightblue;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,24 +26,23 @@
 }
 
 .logo {
-  background-color: yellow;
+  background-color: lightcoral;
 }
 
 .authentication-right {
-  background-color: lightcyan;
   display: flex;
   margin-left: auto;
 }
 
 .login-as-user {
-  background-color: lightgreen;
+  background-color: lightblue;
   padding: 20px;
   display: flex;
   align-items: center;
 }
 
 .login-as-admin {
-  background-color: burlywood;
+  background-color: lightcoral;
   display: flex;
   align-items: center;
   padding: 20px;
@@ -55,6 +55,7 @@
   display: flex;
   justify-content: space-between;
   margin: 2px;
+  font-size: 2em;
 }
 
 .navbar-left {
@@ -93,6 +94,8 @@
   height: 5vh;
   margin-left: 15vw;
   margin-right: 15vw;
+  margin-bottom: 50px;
+  font-size: 1.5em;
 }
 
 .searchbar-text {
@@ -126,7 +129,7 @@
   display: flex;
   margin: 2px;
   justify-content: flex-end;
-  
+  font-size: 1.5em;
 }
 
 .filter-per-page {
@@ -148,18 +151,25 @@ padding-left: 20px;
 /* Display ShowTools.jsx */
 
 .show-tools {
-  background-color: lightcoral;
+  background-color: brown;
   margin: 2px;
- 
+  font-size: 1.5em;
+  display: flex;
+  justify-content: center;
   
 }
 
 .tools-table {
-  margin: auto;
+  background-color: lightblue;
+ 
+  
+  margin: 20px;
 }
 
 th, td, tr {
-  padding: 1em
+  padding: 1em;
+  background-color: lightcyan;
+  
 }
 
 /* Pagination */

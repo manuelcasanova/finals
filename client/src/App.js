@@ -14,7 +14,6 @@ function App() {
     setTools([...res.data])
   })
 }, [])
-  console.log("tools", tools)
 
   return (
     <div className="app">

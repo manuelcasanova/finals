@@ -16,11 +16,19 @@ import axios from 'axios';
 function App() {
 
   const [tools, setTools] = useState([]);
+  const [categories, setCategories ] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
       .then(function (res) {
         setTools([...res.data])
+      })
+  }, [])
+
+  useEffect(() => {
+    axios.get(`http://localhost:8001/categories`)
+      .then(function (res) {
+        setCategories([...res.data])
       })
   }, [])
 
@@ -30,7 +38,7 @@ function App() {
       <Navbar />
       <Searchbar />
       <Filter />
-      <ShowTools tools={tools} setTools={setTools} />
+      <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
       <Pagination />
       <Footer />
     </div>

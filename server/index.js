@@ -44,20 +44,7 @@ app.get("/users", async (req, res) => {
   try {
     console.log(req);
     const getAllusers = await pool.query(
-      `SELECT 
-      tool_id, 
-      tool_name, 
-      tool_category_id, 
-      tool_owner_id, 
-      tool_picture, 
-      tool_available, 
-      category_name, 
-      user_name 
-      FROM tools 
-      JOIN categories 
-      ON categories.category_id = tools.tool_category_id 
-      JOIN users 
-      ON users.user_id = tools.tool_owner_id`
+      `SELECT * FROM users`
     );
     res.json(getAllusers.rows);
   } catch (err) {

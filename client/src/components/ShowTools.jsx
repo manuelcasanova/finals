@@ -1,6 +1,7 @@
 import axios from "axios"
+import AddTool from "./AddTool"
 
-export default function ShowTools({ tools, setTools }) {
+export default function ShowTools({ tools, setTools, categories }) {
 
   //  const { tools } = props;
   function deleteTool(id) {
@@ -12,7 +13,7 @@ export default function ShowTools({ tools, setTools }) {
 
   return (
     <div className="show-tools">
-      <button>Add a tool</button>
+      < AddTool tools={tools} categories={categories} setTools={setTools}/>
       <table className="tools-table">
         <thead>
           <tr>

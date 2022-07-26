@@ -56,6 +56,17 @@ app.delete("/tools/delete/:id", async (req, res) => {
   }
 })
 
+//add a tool
+app.post("/tools", async (req, res) => {   
+  try {     
+    const { tool_name, tool_picture, tool_available } = req.body;     
+    console.log("req body", req.body)    
+    const newTool = await pool.query(
+      "INSERT INTO tools (tool_name, tool_picture, tool_available) VALUES($1, $2, $3) RETURNING *", [tool_name, tool_picture, tool_available])     
+      res.json(newTool.rows[0])   
+  } catch (err) {
+    console.error(err.message)   
+  }})
 
 
 
@@ -64,10 +75,13 @@ app.delete("/tools/delete/:id", async (req, res) => {
 
 
 
-//list users /users K done
-//add a tool /tools with post K
-//delete a tool /tools/delete/:id
+
+
 //edit the tool /tools/edit/:id
+//delete a tool /tools/delete/:id
+//add a tool /tools with post K done
+//list users /users K done
+
 
 //list categories /categories
 //add a category /coegries with post

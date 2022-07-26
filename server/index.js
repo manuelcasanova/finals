@@ -69,17 +69,17 @@ app.post("/tools", async (req, res) => {
   }})
 
   //edit a tool
-  // app.put("/tools/edit/:id", async (req, res) => {   
-  //   try {     
-  //     const { id } = req.params;     
-  //     const { tool_name, tool_picture, tool_available } = req.body       
-  //     const editTool = await pool.query(
-  //       'UPDATE tools SET tool_name = $1, tool_picture = $2, tool_available = $3 WHERE tool_id = $4', [tool_name, tool_picture, tool_available])       
-  //       res.json("Movie was updated")     
-  //     } catch (err) {       
-  //       console.error(err.message)     
-  //     }
-  //   })
+  app.put("/tools/edit/:id", async (req, res) => {   
+    try {     
+      const { id } = req.params;     
+      const { tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available } = req.body       
+      const editTool = await pool.query(
+        'UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_owner_id = $4, tool_available = $5 WHERE tool_id = $6', [tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available, id])       
+        res.json("Tool has been updated")     
+      } catch (err) {       
+        console.error(err.message)     
+      }
+    })
 
 
 

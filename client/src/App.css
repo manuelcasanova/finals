@@ -155,11 +155,11 @@ padding-left: 20px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
 }
 
 .button-add {
-  background-color: green;
+  justify-content: center;
+  align-self: center;
 }
 
 .tools-table {

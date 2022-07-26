@@ -217,3 +217,62 @@ th, td, tr {
 }
 
  
+/* One item view */
+
+.one-item-container {
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.one-item-information-container {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.one-item-picture {
+  background-color: pink;
+  height: 30vh;
+}
+
+.one-item-name {
+  background-color: yellow;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  font-size: xx-large;
+  flex-wrap: wrap;
+}
+
+.one-item-status {
+  background-color: green;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.one-item-owner-name {
+  background-color: blue;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.one-item-owner-email {
+  background-color: purple;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+

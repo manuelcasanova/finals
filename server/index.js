@@ -56,6 +56,30 @@ app.delete("/tools/delete/:id", async (req, res) => {
   }
 })
 
+//add a tool
+app.post("/tools", async (req, res) => {   
+  try {     
+    const { tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available } = req.body;     
+    console.log("req body", req.body)    
+    const newTool = await pool.query(
+      "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5) RETURNING *", [tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available])     
+      res.json(newTool.rows[0])   
+  } catch (err) {
+    console.error(err.message)   
+  }})
+
+  //edit a tool
+  app.put("/tools/edit/:id", async (req, res) => {   
+    try {     
+      const { id } = req.params;     
+      const { tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available } = req.body       
+      const editTool = await pool.query(
+        'UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_owner_id = $4, tool_available = $5 WHERE tool_id = $6', [tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available, id])       
+        res.json("Tool has been updated")     
+      } catch (err) {       
+        console.error(err.message)     
+      }
+    })
 
 
 
@@ -64,10 +88,13 @@ app.delete("/tools/delete/:id", async (req, res) => {
 
 
 
-//list users /users K done
-//add a tool /tools with post K
-//delete a tool /tools/delete/:id
+
+
 //edit the tool /tools/edit/:id
+//delete a tool /tools/delete/:id
+//add a tool /tools with post K done
+//list users /users K done
+
 
 //list categories /categories
 //add a category /coegries with post

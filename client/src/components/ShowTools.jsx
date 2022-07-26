@@ -12,6 +12,7 @@ export default function ShowTools({ tools, setTools }) {
 
   return (
     <div className="show-tools">
+      <button>Add a tool</button>
       <table className="tools-table">
         <thead>
           <tr>

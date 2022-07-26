@@ -14,6 +14,7 @@ import ShowTools from './components/ShowTools';
 import Pagination from './components/Pagination';
 import Footer from './components/Footer';
 import Categories from './components/Categories';
+import OneToolView from './components/OneToolView';
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
   return (
     <Router>
       <div className="app">
-{/* All components outside <Routes></Routes> render in all routes.
+        {/* All components outside <Routes></Routes> render in all routes.
 Components inside <Routes></Routes>   render only in those routes.
 */}
 
@@ -53,10 +54,9 @@ Components inside <Routes></Routes>   render only in those routes.
           </>
           } />
 
-          <Route path="/admin/categories" element={<>
-            <Categories />
-          </>
-          } />
+            {/* This will be /inventory/:id and I believe we have to use  React Router useParams*/}
+          <Route path="/inventory" element={<OneToolView/>}/> 
+          <Route path="/admin/categories" element={<Categories />} />
 
         </Routes>
 

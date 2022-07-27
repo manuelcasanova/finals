@@ -58,7 +58,7 @@ Components inside <Routes></Routes>   render only in those routes.
           <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
 
           <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
-          <Route path="/admin/categories" element={<Categories />} />
+          <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories}/>}  />
 
         </Routes>
 

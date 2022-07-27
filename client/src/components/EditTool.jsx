@@ -16,7 +16,7 @@ export default function EditTool (props) {
   const editTool = async (e) => {
     e.preventDefault();
     try {
-      const body = { tool_name, tool_picture, tool_category_id, tool_available};
+      const body = { tool_name, tool_description, tool_picture, tool_category_id, tool_available};
       const response = await fetch(`http://localhost:8001/tools/edit/${tool.tool_id}`, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
@@ -71,14 +71,15 @@ export default function EditTool (props) {
              />
             <p></p>
  
-             {/* <label className="add_tool_title" htmlFor="title">Description</label>
+             <label className="add_tool_title" htmlFor="title">Description</label>
              <input
              className="form-control"
              type="text"
              name="title"
-             onChange={e => setToolDescription(e)}
+             value={tool_description}
+             onChange={e => setToolDescription(e.target.value)}
              />
-             <p></p> */}
+             <p></p>
 
              <label className="add_tool_title" htmlFor="title">Picture</label>
              <input className="form-control"

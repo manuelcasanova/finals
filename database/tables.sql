@@ -21,6 +21,7 @@ CREATE TABLE users (
 CREATE TABLE tools (
   tool_id SERIAL PRIMARY KEY NOT NULL,
   tool_name VARCHAR(255) NOT NULL,
+  tool_description VARCHAR(255),
   tool_category_id INTEGER REFERENCES categories(category_id) ON DELETE CASCADE,
   tool_owner_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
   tool_picture VARCHAR(255),

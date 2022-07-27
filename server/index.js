@@ -92,7 +92,7 @@ app.post("/tools", async (req, res) => {
     } = req.body;
     console.log("req body", req.body);
     const newTool = await pool.query(
-      "INSERT INTO tools (tool_name,  tool_description, tool_picture, tool_category_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, '2', $5) RETURNING *",
+      "INSERT INTO tools (tool_name,  tool_description, tool_picture, tool_category_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, '1', $5) RETURNING *",
       [tool_name, tool_description, tool_picture, tool_category_id, tool_available]
     );
     res.json(newTool.rows[0]);

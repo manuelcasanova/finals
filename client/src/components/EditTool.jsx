@@ -1,9 +1,10 @@
+import axios from 'axios';
 import { useState } from 'react';
 
 
 
 export default function EditTool (props) {
-  const { tool, tools, categories } = props;
+  const { tool, tools, categories, setTools } = props;
 
   const [tool_name, setToolName] = useState(tool.tool_name);
   const [tool_description, setToolDescription] = useState(tool.tool_description);
@@ -21,6 +22,10 @@ export default function EditTool (props) {
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)
       })
+      axios.get(`http://localhost:8001/tools`)
+        .then(function (res) {
+          setTools([...res.data])
+        })
     } catch (err) {
       console.error(err.message)
     }

@@ -9,7 +9,7 @@ export default function EditTool (props) {
   const [tool_name, setToolName] = useState(tool.tool_name);
   const [tool_description, setToolDescription] = useState(tool.tool_description);
   const [tool_picture, setToolPicture] = useState(tool.tool_picture);
-  const [tool_category_id, setToolCategory] = useState(1);
+  const [tool_category_id, setToolCategory] = useState(tool.tool_category_id);
   const [tool_owner_id, setToolOwnerId] = useState(1);
   const [tool_available, setTooAvailibilty] = useState(true);
 

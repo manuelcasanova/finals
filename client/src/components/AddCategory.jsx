@@ -19,7 +19,7 @@ function addCategory(category) {
   return axios.post(`http://localhost:8001/categories`, category)
   .then((response) => {
     const newCategory = response.data;
-    setCategories(newCategory, ...categories)
+    setCategories([newCategory, ...categories])
   })
 }
 

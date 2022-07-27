@@ -168,11 +168,11 @@ app.delete("/categories/delete/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
     console.log("deleted category id:", id);
-    const deleteCategory   = await pool.query(
+    const deleteCategory = await pool.query(
       "DELETE FROM categories WHERE category_id = $1 RETURNING *",
       [id]
     );
-    res.json("The category has been deleted");
+    res.json("The tool has been deleted");
   } catch (err) {
     console.error(err.message);
   }

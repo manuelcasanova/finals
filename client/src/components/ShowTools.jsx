@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function ShowTools({ tools, setTools, categories }) {
 
+  console.log("tools", tools)
   const navigate = useNavigate();
 
   //  const { tools } = props;
@@ -40,7 +41,7 @@ export default function ShowTools({ tools, setTools, categories }) {
                 }}
               >{tool.tool_name}</td>
               <td>{tool.category_name}</td>
-              <td>{tool.user_name}</td>
+              <td>{tool.tool_owner_id}</td>
               <td>{tool.tool_picture}</td>
               <td>{tool.tool_description}</td>
               <td>{tool.tool_available}</td>

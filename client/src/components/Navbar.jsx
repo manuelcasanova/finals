@@ -24,7 +24,7 @@ export default function Navbar() {
           <a className="dropbtn">My account</a>
           <div className="navbar-dropdown-content">
           <a onClick={() => {navigate(`/user/items`)}}>My items</a>
-            <a href="#">Profile</a>
+          <a onClick={() => {navigate(`/profile`)}}>Profile</a>
           </div>
         </div>
 

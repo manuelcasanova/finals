@@ -12,7 +12,9 @@ export default function Navbar() {
         <a onClick={() => {navigate(`/`)}}>Inventory</a>
         </div>
         
-        <div className="navbar-button">Groups</div>
+        <div className="navbar-button">
+        <a onClick={() => {navigate(`/groups`)}}>Groups</a>
+        </div>
         <div className="navbar-button">About us</div>
       </div>
       <div className="navbar-right">

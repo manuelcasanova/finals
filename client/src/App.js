@@ -17,6 +17,7 @@ import Categories from './components/Categories';
 import OneToolView from './components/OneToolView';
 import ShowAllTools from './components/ShowAllTools';
 import Groups from './components/Groups';
+import AboutUs from './components/AboutUs';
 
 function App() {
 
@@ -61,6 +62,7 @@ Components inside <Routes></Routes>   render only in those routes.
           <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
           <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories}/>}  />
           <Route path="/groups" element={<Groups />} />
+          <Route path="/aboutus" element={<AboutUs />} />
 
         </Routes>
 

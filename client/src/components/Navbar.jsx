@@ -15,7 +15,9 @@ export default function Navbar() {
         <div className="navbar-button">
         <a onClick={() => {navigate(`/groups`)}}>Groups</a>
         </div>
-        <div className="navbar-button">About us</div>
+        <div className="navbar-button">
+        <a onClick={() => {navigate(`/aboutus`)}}>About us</a>
+        </div>
       </div>
       <div className="navbar-right">
         <div className="navbar-dropdown">

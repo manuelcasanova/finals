@@ -2,7 +2,7 @@
 
 # As a user
 
-- R tools
+- Read tools
 - Search tools
 - Open one tool and see details
 

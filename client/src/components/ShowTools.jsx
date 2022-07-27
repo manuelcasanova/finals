@@ -36,7 +36,7 @@ export default function ShowTools({ tools, setTools, categories }) {
               <td>{tool.tool_picture}</td>
               <td>{tool.tool_available}</td>
               <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>
-              <td>< EditTool tool={tool} /></td>
+              <td>< EditTool tool={tool} tools={tools} categories={categories} /></td>
             </tr>)}
         </tbody>
       </table>

@@ -20,6 +20,7 @@ import Groups from './components/Groups';
 import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
+import AdminCRUDTools from './components/AdminCRUDTools';
 
 function App() {
 
@@ -62,12 +63,14 @@ Components inside <Routes></Routes>   render only in those routes.
           <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
 
           <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
-          <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories}/>}  />
+
           <Route path="/groups" element={<Groups />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/admin/users" element={<ShowUsers />} />
 
+          <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories}/>}  />
+          <Route path="/admin/users" element={<ShowUsers />} />
+          <Route path="/admin/tools" element={<AdminCRUDTools />} />
 
         </Routes>
 

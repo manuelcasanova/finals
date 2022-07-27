@@ -25,6 +25,7 @@ export default function ShowTools({ tools, setTools, categories }) {
             <th>Category</th>
             <th>Owner</th>
             <th>Picture</th>
+            <th>Description</th>
             <th>Available?</th>
             <th>Delete</th>
             <th>Edit</th>
@@ -41,6 +42,7 @@ export default function ShowTools({ tools, setTools, categories }) {
               <td>{tool.category_name}</td>
               <td>{tool.user_name}</td>
               <td>{tool.tool_picture}</td>
+              <td>{tool.tool_description}</td>
               <td>{tool.tool_available}</td>
               <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>
               <td>< EditTool tool={tool} tools={tools} categories={categories} setTools={setTools}/></td>

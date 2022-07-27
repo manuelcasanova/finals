@@ -12,14 +12,14 @@ export default function AddTool(props) {
   const [tool_owner_id, setToolOwnerId] = useState(1);
   const [tool_available, setTooAvailibilty] = useState(true);
 
-// useEffect (() => {
-//   const foundCategory = categories.find((category) => {
-//     return category.category_id === tool_category_id
-//   })
-//   if (!foundCategory && categories.length) {
-//     setToolCategory(categories[0].category_id)
-//   }
-// }, [categories])
+useEffect (() => {
+  const foundCategory = categories.find((category) => {
+    return category.category_id === tool_category_id
+  })
+  if (!foundCategory && categories.length) {
+    setToolCategory(categories[0].category_id)
+  }
+}, [categories, tool_owner_id])
 
   function onSubmitForm(e) {
     e.preventDefault();

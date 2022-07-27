@@ -33,7 +33,7 @@ app.get("/tools", async (req, res) => {
       JOIN categories 
       ON categories.category_id = tools.tool_category_id 
       JOIN users 
-      ON users.user_id = tools.tool_owner_id`
+      ON users.user_id = tools.tool_owner_id ORDER BY tool_name`
     );
     res.json(getAllTools.rows);
   } catch (err) {

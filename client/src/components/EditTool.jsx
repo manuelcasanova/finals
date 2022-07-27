@@ -26,6 +26,15 @@ export default function EditTool (props) {
         .then(function (res) {
           setTools([...res.data])
         })
+      // const editedTool = {... body, tool_id: tool.tool_id};
+      // const updatedTools = tools.map( tool => {
+      //   if (tool.tool_id !== editedTool.tool_id) {
+      //     return tool
+      //   } else {
+      //     return {...tool, ...editedTool}
+      //   }
+      // })
+      //   setTools(updatedTools)
     } catch (err) {
       console.error(err.message)
     }

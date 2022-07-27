@@ -33,7 +33,7 @@ export default function Navbar() {
           <div className="navbar-dropdown-content">
             {/* <a href="/admin/categories">Manage categories</a> */}
             <a onClick={() => {navigate(`/admin/categories`)}}>Manage categories</a>
-            <a href="#">Manage users</a>
+            <a onClick={() => {navigate(`/admin/users`)}}>Manage users</a>
             <a href="#">Manage tools</a>
           </div>
         </div>

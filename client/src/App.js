@@ -19,6 +19,7 @@ import ShowAllTools from './components/ShowAllTools';
 import Groups from './components/Groups';
 import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
+import ShowUsers from './components/ShowUsers';
 
 function App() {
 
@@ -65,6 +66,8 @@ Components inside <Routes></Routes>   render only in those routes.
           <Route path="/groups" element={<Groups />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin/users" element={<ShowUsers />} />
+
 
         </Routes>
 

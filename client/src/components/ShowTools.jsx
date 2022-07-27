@@ -16,7 +16,7 @@ export default function ShowTools({ tools, setTools, categories }) {
 
   return (
     <div className="show-tools">
-      < AddTool tools={tools} categories={categories} setTools={setTools}/>
+      < AddTool tools={tools} categories={categories} setTools={setTools} />
       <table className="tools-table">
         <thead>
           <tr>
@@ -31,12 +31,12 @@ export default function ShowTools({ tools, setTools, categories }) {
         </thead>
         <tbody>
           {tools.map(tool =>
-            <tr key={tool.tool_id}
-            onClick={() => {
-              navigate(`/inventory`)
-            }}
-            >
-              <td>{tool.tool_name}</td>
+            <tr key={tool.tool_id}>
+              <td
+                onClick={() => {
+                  navigate(`/inventory/${tool.tool_id}`)
+                }}
+              >{tool.tool_name}</td>
               <td>{tool.category_name}</td>
               <td>{tool.user_name}</td>
               <td>{tool.tool_picture}</td>

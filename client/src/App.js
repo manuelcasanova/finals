@@ -55,7 +55,8 @@ Components inside <Routes></Routes>   render only in those routes.
           } />
 
             {/* This will be /inventory/:id and I believe we have to use  React Router useParams*/}
-          <Route path="/inventory" element={<OneToolView/>}/> 
+          <Route path="/inventory/:toolIdParam" element={<OneToolView
+          tools={tools}/>}/> 
           <Route path="/admin/categories" element={<Categories />} />
 
         </Routes>

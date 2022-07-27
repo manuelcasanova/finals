@@ -220,7 +220,7 @@ th, td, tr {
 /* One item view */
 
 .one-item-container {
-  background-color: red;
+  background-color: lightblue;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -238,12 +238,12 @@ th, td, tr {
 }
 
 .one-item-picture {
-  background-color: pink;
+  background-color: lightsalmon;
   height: 30vh;
 }
 
 .one-item-name {
-  background-color: yellow;
+  background-color: lightcoral;
   height: 20vh;
   display: flex;
   align-items: center;
@@ -252,7 +252,7 @@ th, td, tr {
 }
 
 .one-item-status {
-  background-color: green;
+  background-color: lightgreen;
   height: 10vh;
   display: flex;
   align-items: center;
@@ -260,7 +260,7 @@ th, td, tr {
 }
 
 .one-item-owner-name {
-  background-color: blue;
+  background-color: lightcoral;
   height: 10vh;
   display: flex;
   align-items: center;
@@ -269,7 +269,7 @@ th, td, tr {
 }
 
 .one-item-owner-email {
-  background-color: purple;
+  background-color: lightgreen;
   height: 10vh;
   display: flex;
   align-items: center;

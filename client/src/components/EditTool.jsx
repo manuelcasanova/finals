@@ -74,7 +74,7 @@ export default function EditTool (props) {
              {/* <label className="add_tool_title" htmlFor="title">Description</label>
              <input
              className="form-control"
-             type="text"
+             type="text"   
              name="title"
              onChange={e => setToolDescription(e)}
              />

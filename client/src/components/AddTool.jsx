@@ -92,6 +92,14 @@ export default function AddTool(props) {
               />
               <p></p>
 
+               {/* <label className="add_tool_title" htmlFor="title">Owner</label>
+              <input className="form-control"
+                type="text"
+                name="title"
+                value={tool_owner_id} 
+                {/* // onChange={e => setToolName(e.target.value)} 
+  <p></p> */}
+
               <label className="add_tool_title" htmlFor="title">Picture</label>
               <input className="form-control" type="text" name="title"
                 value={tool_picture}

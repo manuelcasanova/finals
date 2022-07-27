@@ -1,8 +1,11 @@
 import axios from "axios"
 import AddTool from "./AddTool"
 import EditTool from "./EditTool"
+import { useNavigate } from "react-router-dom"
 
 export default function ShowTools({ tools, setTools, categories }) {
+
+  const navigate = useNavigate();
 
   //  const { tools } = props;
   function deleteTool(id) {
@@ -14,7 +17,7 @@ export default function ShowTools({ tools, setTools, categories }) {
 
   return (
     <div className="show-tools">
-      < AddTool tools={tools} categories={categories} setTools={setTools}/>
+      < AddTool tools={tools} categories={categories} setTools={setTools} />
       <table className="tools-table">
         <thead>
           <tr>
@@ -30,7 +33,11 @@ export default function ShowTools({ tools, setTools, categories }) {
         <tbody>
           {tools.map(tool =>
             <tr key={tool.tool_id}>
-              <td>{tool.tool_name}</td>
+              <td
+                onClick={() => {
+                  navigate(`/inventory/${tool.tool_id}`)
+                }}
+              >{tool.tool_name}</td>
               <td>{tool.category_name}</td>
               <td>{tool.user_name}</td>
               <td>{tool.tool_picture}</td>

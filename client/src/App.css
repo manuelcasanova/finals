@@ -29,6 +29,22 @@
   background-color: lightcoral;
 }
 
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
 .authentication-right {
   display: flex;
   margin-left: auto;
@@ -48,39 +64,7 @@
   padding: 20px;
 }
 
-/* Navigation bar (Inventory, Groups, About us, My account, Administrator */
-
-.navbar {
-  background-color: lightsalmon;
-  display: flex;
-  justify-content: space-between;
-  margin: 2px;
-  font-size: 2em;
-}
-
-.navbar-left {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-button {
-  background-color: burlywood;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-right {
-  display: flex;
-  margin-left: auto;
-}
-
-.navbar-dropdown {
-  background-color: burlywood;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-}
+/* Navigation bar (Inventory, Groups, About us, My account, Administrator now on components/styling/navbar.css */
 
 /* Search bar*/
 
@@ -217,3 +201,62 @@ th, td, tr {
 }
 
  
+/* One item view */
+
+.one-item-container {
+  background-color: lightblue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.one-item-information-container {
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.one-item-picture {
+  background-color: lightsalmon;
+  height: 30vh;
+}
+
+.one-item-name {
+  background-color: lightcoral;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  font-size: xx-large;
+  flex-wrap: wrap;
+}
+
+.one-item-status {
+  background-color: lightgreen;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.one-item-owner-name {
+  background-color: lightcoral;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.one-item-owner-email {
+  background-color: lightgreen;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+

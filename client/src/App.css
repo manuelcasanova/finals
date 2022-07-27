@@ -48,39 +48,7 @@
   padding: 20px;
 }
 
-/* Navigation bar (Inventory, Groups, About us, My account, Administrator */
-
-.navbar {
-  background-color: lightsalmon;
-  display: flex;
-  justify-content: space-between;
-  margin: 2px;
-  font-size: 2em;
-}
-
-.navbar-left {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-button {
-  background-color: burlywood;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.navbar-right {
-  display: flex;
-  margin-left: auto;
-}
-
-.navbar-dropdown {
-  background-color: burlywood;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-}
+/* Navigation bar (Inventory, Groups, About us, My account, Administrator now on components/styling/navbar.css */
 
 /* Search bar*/
 

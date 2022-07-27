@@ -8,7 +8,10 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <div className="navbar-button">Inventory</div>
+        <div className="navbar-button">
+        <a onClick={() => {navigate(`/`)}}>Inventory</a>
+        </div>
+        
         <div className="navbar-button">Groups</div>
         <div className="navbar-button">About us</div>
       </div>

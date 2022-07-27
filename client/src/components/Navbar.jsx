@@ -1,6 +1,10 @@
 import './styling/navbar.css'
+import { useNavigate } from "react-router-dom"
 
 export default function Navbar() {
+
+  const navigate = useNavigate();
+
   return (
     <div className="navbar">
       <div className="navbar-left">
@@ -20,7 +24,8 @@ export default function Navbar() {
         <div className="navbar-dropdown">
           <a className="dropbtn">Administrator</a>
           <div className="navbar-dropdown-content">
-            <a href="#">Manage categories</a>
+            {/* <a href="/admin/categories">Manage categories</a> */}
+            <a onClick={() => {navigate(`/admin/categories`)}}>Manage categories</a>
             <a href="#">Manage users</a>
             <a href="#">Manage tools</a>
           </div>
@@ -29,3 +34,4 @@ export default function Navbar() {
     </div>
   )
 }
+

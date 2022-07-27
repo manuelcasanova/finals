@@ -16,7 +16,7 @@ export default function Navbar() {
         <div className="navbar-dropdown">
           <a className="dropbtn">My account</a>
           <div className="navbar-dropdown-content">
-            <a href="#">My items</a>
+          <a onClick={() => {navigate(`/user/items`)}}>My items</a>
             <a href="#">Profile</a>
           </div>
         </div>

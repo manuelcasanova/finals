@@ -15,6 +15,7 @@ import Pagination from './components/Pagination';
 import Footer from './components/Footer';
 import Categories from './components/Categories';
 import OneToolView from './components/OneToolView';
+import ShowAllTools from './components/ShowAllTools';
 
 function App() {
 
@@ -50,13 +51,13 @@ Components inside <Routes></Routes>   render only in those routes.
 
           <Route path="/" element={<>
             <Filter />
-            <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
+            <ShowAllTools tools={tools} />
           </>
           } />
 
-            {/* This will be /inventory/:id and I believe we have to use  React Router useParams*/}
-          <Route path="/inventory/:toolIdParam" element={<OneToolView
-          tools={tools}/>}/> 
+          <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
+
+          <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
           <Route path="/admin/categories" element={<Categories />} />
 
         </Routes>

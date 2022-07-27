@@ -149,14 +149,35 @@ app.put("/tools/edit/:id", async (req, res) => {
 });
 
 // add a category
-
-app.post("/categories", async (res, req) => {
-  // try {
-  //   const category {
-  //     category_name
-  //   } = req.body;
-  // }
+app.post("/categories", async (req, res) => {
+  try {
+    const {
+      category_name
+    } = req.body;
+    console.log("Category Name: ", category_name)
+    const newCategory = await pool.query("INSERT INTO categories (category_name) VALUES ($1) RETURNING *", 
+    [category_name]);
+    res.json(newCategory.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
 });
+
+//delete a category
+app.delete("/categories/delete/:id", async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    console.log("deleted category id:", id);
+    const deleteCategory   = await pool.query(
+      "DELETE FROM categories WHERE category_id = $1 RETURNING *",
+      [id]
+    );
+    res.json("The category has been deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 //edit the tool /tools/edit/:id
 //delete a tool /tools/delete/:id

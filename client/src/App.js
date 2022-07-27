@@ -40,7 +40,7 @@ function App() {
       <Searchbar />
       <Filter />
       <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
-      <Categories />
+      <Categories categories={categories} setCategories={setCategories} />
       <Pagination />
       <Footer />
     </div>

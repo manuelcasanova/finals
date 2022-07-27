@@ -1,44 +1,47 @@
-import axios from "axios";
-import AddCategory from "./AddCategory";
+import axios from "axios"
 
-export default function Categories(props) {
-  const { categories, setCategories } = props;
+export default function Categories({categories, setCategories}) {
 
-  function deleteCategory(id) {
-    return axios
-      .delete(`http//:localhost:8001/categories/delete/${id}`)
-      .then((res) => {
-        setCategories(
-          categories.filter((category) => category.category_id !== id)
-        );
-      });
-  }
+function deleteCategory(id) {
+  return axios.delete(`http://localhost:8001/tools/delete/${id}`)
+  .then(res => {
+    setCategories(categories.filter(category => category.category_id !== id))
+  })
+}
+
+
+
 
   return (
-    //Add Category component
-    <div className="show-categories">
-      < AddCategory categories={categories} setCategories={setCategories} />
+    <div className="show-categories">categories
+
       <table className="categories-table">
+
         <thead>
           <tr>
             <th>ID</th>
-            <th>Category</th>
+            <th>Name</th>
+            <th>Edit</th>
             <th>Delete</th>
+
           </tr>
         </thead>
-        {categories.map((category) => (
-          <tr key={category.category_id}>
-            <td>{category.category_id}</td>
-            <td>{category.category_name}</td>
-            <td>
-              <button onClick={() => deleteCategory(category.category_id)}>
-                Delete
-              </button>
-            </td>
-          </tr>
-        ))}
-        <tbody></tbody>
+        <tbody>
+          {categories.map(category =>
+            <tr key={category.category_id}>
+              <td>{category.category_id}</td>
+              <td>{category.category_name}</td>
+              <td>Edit button</td>
+              <td> <button onClick={()=> deleteCategory(category.category_id)}>Delete </button> </td>
+
+            </tr>)}
+        </tbody>
+
       </table>
+
+
+
     </div>
-  );
+
+  )
 }

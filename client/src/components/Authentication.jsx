@@ -1,8 +1,10 @@
+
+
 export default function Authentication () {
   return (
     <div className="authentication">
     <div className="authentication-left">
-      <div className="logo">Tool swap</div>
+     <a href="/"><div className="logo">Tool swap</div></a> 
     </div>
     <div className="authentication-right">
       <div className="login-as-user">Login as user</div>
@@ -11,3 +13,4 @@ export default function Authentication () {
   </div>
   )
 }
+

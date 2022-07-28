@@ -49,6 +49,7 @@ category_name
 # tools
 tool_id
 tool_name
+tool_description
 tool_category_id FK
 tool_user_id FK
 tool_picture

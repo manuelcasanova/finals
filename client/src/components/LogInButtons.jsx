@@ -11,9 +11,7 @@ const LogInButtons = () => {
       <div>{`Logged In: ${user.loggedIn}`}</div>
       <div>
 
-{/* if user logged in hide, else show */}
-
-        <button className="button-login"
+        <button className={user.loggedIn ? "button-login-hide" : "button-login"}
           onClick={() => {
             if (user.loggedIn) return;
             setUser({ loggedIn: true });
@@ -26,9 +24,9 @@ const LogInButtons = () => {
           Log In As User
         </button>
 
-{/* if user logged out hide, else show */}
+        {/* if user logged out hide, else show */}
 
-        <button className="button-login"
+        <button className={user.loggedIn ? "button-logout" : "button-logout-hide"}
           onClick={() => {
             if (!user.loggedIn) return;
             setUser({ loggedIn: false });

@@ -11,9 +11,7 @@ const LogInAdminButtons = () => {
       <div>{`Logged In: ${admin.loggedIn}`}</div>
       <div>
 
-{/* if user logged in hide, else show */}
-
-      <button className="button-login"
+        <button className={admin.loggedIn ? "button-login-hide" : "button-login"}
           onClick={() => {
             if (admin.loggedIn) return;
             setAdmin({ loggedIn: true });
@@ -26,9 +24,8 @@ const LogInAdminButtons = () => {
           Log In As Admin
         </button>
 
-{/* if user logged out hide, else show */}
 
-        <button className="button-login"
+        <button className={admin.loggedIn ? "button-logout" : "button-logout-hide"}
           onClick={() => {
             if (!admin.loggedIn) return;
             setAdmin({ loggedIn: false });

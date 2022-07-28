@@ -51,9 +51,13 @@ a:active {
   font-size: 0.7em;
 }
 
-.button-login {
+.button-login, .button-logout {
   background-color: lightblue;
   font-size: x-large;
+}
+
+.button-login-hide, .button-logout-hide {
+  display: none;
 }
 
 .login-as-user {

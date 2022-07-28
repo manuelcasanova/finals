@@ -19,12 +19,13 @@ import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
+import ProtectedRoutes from './ProtectedRoutes';
 
 export const UserContext = createContext()
 
 function App() {
 
-const [user, setUser] = useState({loggedIn: false});
+  const [user, setUser] = useState({ loggedIn: false });
 
   const [tools, setTools] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -44,45 +45,51 @@ const [user, setUser] = useState({loggedIn: false});
   }, [])
 
   return (
-    <UserContext.Provider value={{user, setUser}}>
-    <Router>
-      <div className="app">
-        {/* All components outside <Routes></Routes> render in all routes.
+    <UserContext.Provider value={{ user, setUser }}>
+      <Router>
+        <div className="app">
+          {/* All components outside <Routes></Routes> render in all routes.
 Components inside <Routes></Routes>   render only in those routes.
 */}
 
-        <Authentication />
-        <Navbar />
-        <Searchbar />
+          <Authentication />
+          <Navbar />
+          <Searchbar />
 
-        <Routes>
+          <Routes>
 
-          <Route path="/" element={<>
-            <Filter />
-            <ShowAllTools tools={tools} />
-          </>
-          } />
+            <Route path="/" element={<>
+              <Filter />
+              <ShowAllTools tools={tools} />
+            </>
+            } />
 
-          <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
+            <Route element={<ProtectedRoutes />}>
 
-          <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
+              <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
 
-          <Route path="/groups" element={<Groups />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/profile" element={<Profile />} />
-
-          <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories}/>}  />
-          <Route path="/admin/users" element={<ShowUsers />} />
-          <Route path="/admin/tools" element={<AdminCRUDTools />} />
-
-        </Routes>
+            </Route>
 
 
+            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
 
-        <Pagination />
-        <Footer />
-      </div>
-    </Router>
+            <Route path="/groups" element={<Groups />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            <Route path="/profile" element={<Profile />} />
+
+
+            <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories} />} />
+            <Route path="/admin/users" element={<ShowUsers />} />
+            <Route path="/admin/tools" element={<AdminCRUDTools />} />
+
+          </Routes>
+
+
+
+          <Pagination />
+          <Footer />
+        </div>
+      </Router>
     </UserContext.Provider>
   );
 }

@@ -54,13 +54,9 @@ export default function Searchbar(props) {
           placeholder="What are you looking for?"
           onChange={e => setInput(e.target.value)}
         ></input>
-        <div className="searchbar-categories-dropdown">
-          <label className="NO CLASS NAME YET"
-          htmlFor="title">
-            Category
-          </label>
+       
           <select
-            className="searchbar-groups-dropdown"
+            className="searchbar-categories-dropdown"
             value={category}
             onChange={(e) => setToolCategory(e.target.value)}
           >
@@ -71,7 +67,7 @@ export default function Searchbar(props) {
               </option>
             ))}
           </select>
-        </div>
+      
 
         <button className="searchbar-search-button" onClick={onSearch}>
           Search

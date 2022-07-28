@@ -46,7 +46,7 @@ const LogInButtons = ({buttonText, userId, user, setUser, admin, setAdmin}) => {
           }}
         >
           {/* {buttonText} */}
-          Log in as user
+          Log In as User
         </button>
 
         <button className={user.loggedIn ? "button-logout" : "button-logout-hide"}

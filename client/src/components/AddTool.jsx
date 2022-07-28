@@ -58,10 +58,10 @@ export default function AddTool(props) {
 
   return (
 
-    <div>
+    <div className="add-tool-button-div">
       {/* <!-- Button trigger modal --> */}
       <button type="button"
-        className="button_add" data-toggle="modal" data-target={`#newtoolmodal${tools.tool_id}`}>Add tool
+        className="button-add" data-toggle="modal" data-target={`#newtoolmodal${tools.tool_id}`}>Add Item
       </button>
 
       {/* <!-- Modal --> */}

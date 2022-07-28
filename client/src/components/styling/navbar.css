@@ -19,7 +19,7 @@
 }
 
 .navbar-button {
-  background-color:var(--color2);
+  background-color:var(--color3);
   padding: 20px;
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@
 }
 
 .navbar-dropdown {
-  background-color:var(--color2);
+  background-color:var(--color3);
   cursor: pointer;
   /* padding: 20px; */
   /* display: flex; 
@@ -59,7 +59,7 @@
 }
 
 .navbar-dropdown:hover .dropbtn {
-  background-color: brown;
+  background-color: var(--color3);
 }
 
 
@@ -80,7 +80,9 @@
   text-align: left;
 }
 
-.navbar-dropdown-content a:hover {background-color: lightcoral;}
+.navbar-dropdown-content a:hover {
+  background-color: var(--color3);
+}
 
 .navbar-dropdown:hover .navbar-dropdown-content {
   display: block;

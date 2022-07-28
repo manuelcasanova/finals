@@ -14,7 +14,7 @@ export default function ShowAllTools({ tools }) {
             <th>Picture</th>
             <th>Name</th>
             <th>Category</th>
-            <th>Available?</th>
+            <th>Availability</th>
 
           </tr>
         </thead>

@@ -10,12 +10,13 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  margin: 5px;
 }
 
 /* Authentication bar */
 
 .authentication {
-  background-color:var(--color3);
+  background-color:var(--color0);
   display: flex;
   justify-content: flex-end;
   margin: 2px;
@@ -23,7 +24,7 @@
 }
 
 .authentication-left {
-  background-color:var(--color2);
+  background-color:var(--color0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +32,9 @@
 }
 
 .logo {
-  background-color: lightcoral;
+  background-color:var(--color0);
+  color: var(--color3);
+  font-weight: 800;
 }
 
 a:link {
@@ -65,7 +68,7 @@ a:active {
 }
 
 .button-login, .button-logout {
-  background-color:var(--color1);
+  background-color:var(--color3);
   border-color: var(--color4);
   font-size: x-large;
 }
@@ -75,14 +78,14 @@ a:active {
 }
 
 .login-as-user {
-  background-color:var(--color2);
+  background-color:var(--color0);
   padding: 20px;
   display: flex;
   align-items: center;
 }
 
 .login-as-admin {
-  background-color:var(--color2);
+  background-color:var(--color0);
   display: flex;
   align-items: center;
   padding: 20px;
@@ -138,58 +141,80 @@ a:active {
   margin: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 /* Filter bar */
 
 .filter {
-  background-color:var(--color3);
+  /* background-color:var(--color3); */
   display: flex;
   margin: 2px;
   justify-content: flex-end;
   font-size: 1.8em;
+  
 }
 
 .filter-per-page {
-  background-color:var(--color2);
-  padding-left: 20px;
+  /* background-color:var(--color3); */
+  padding-left: 10px;
+  padding-right: 10px;
 
 }
 
 .filter-view {
-  background-color:var(--color1);
-  padding-left: 20px;
+  /* background-color:var(--color3); */
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .filter-sort-by {
-background-color:var(--color2);
-padding-left: 20px;
+/* background-color:var(--color3); */
+padding-left: 10px;
+padding-right: 10px;
 }
 
 /* Display ShowTools.jsx */
 
+.add-tool-button-div {
+  display: flex;
+  justify-content: center;
+  background-color:var(--color1);
+  margin: 2px;
+  border-radius: 30px;
+}
+
 .show-tools {
-  background-color:var(--color3);
+  background-color:var(--color1);
   margin: 2px;
   font-size: 1.5em;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  border-radius: 30px;
 }
 
 .button-add {
   justify-content: center;
   align-self: center;
+  background-color:var(--color3);
+  border-radius: 10px;
+  height: 100px;
+  width: 100px;
+  margin-top: 20px;
+  
 }
 
 .tools-table {
-  background-color:var(--color3);
+  background-color:var(--color1);
   margin: 20px;
+  border-radius: 30px;
 }
 
 th, td, tr {
   padding: 1em;
-  background-color:var(--color3); 
+  background-color:var(--color1); 
   text-align: center;
 }
 
@@ -221,10 +246,6 @@ img:hover {
   
 }
 
-.button-add {
-  background-color: green;
-}
-
 .categories-table {
   background-color:var(--color3);
   margin: 20px;
@@ -232,16 +253,20 @@ img:hover {
 
 th, td, tr {
   padding: 1em;
-  background-color:var(--color3); 
+  background-color:var(--color1); 
   text-align: center;
 }
 
 /* Pagination */
 
 .pagination {
-  background-color:var(--color3);
+  background-color:var(--color1);
   margin: 2px;
   height: 10vh;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Footer */
@@ -250,6 +275,10 @@ th, td, tr {
   background-color:var(--color3);
   margin: 2px;
   height: 10vh;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
  

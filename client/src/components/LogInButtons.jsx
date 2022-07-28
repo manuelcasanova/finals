@@ -22,7 +22,7 @@ const LogInButtons = () => {
             }
           }}
         >
-          Log In
+          Log In As User
         </Button>
         <Button
           onClick={() => {

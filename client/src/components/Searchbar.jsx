@@ -4,7 +4,7 @@ import axios from "axios";
 export default function Searchbar(props) {
   const { setTools, categories } = props;
 
-  const [input, setInput] = useState("......");
+  const [input, setInput] = useState("Tool name");
   const [category, setToolCategory] = useState(1);
 
   const onSearch = function (event) {
@@ -41,7 +41,7 @@ export default function Searchbar(props) {
         <input
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={e => setInput(e.target.value)}
         ></input>
         <div className="level_input">
           <label className="add_tool_title" htmlFor="title">

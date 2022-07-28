@@ -2,6 +2,7 @@
   --color1:#cfe0e8;
   --color2:#b7d7e8;
   --color3: #87bdd8;
+  --color4: #577d90;
   --color0: #daebe8;
 }
 /* Main App Container */
@@ -11,30 +12,35 @@
   display: flex;
   flex-direction: column;
   margin: 5px;
+  
 }
 
 /* Authentication bar */
 
 .authentication {
-  background-color:var(--color0);
+  background-color:var(--color2);
   display: flex;
   justify-content: flex-end;
   margin: 2px;
   font-size: 3em;
+  border-radius: 20px;
 }
 
 .authentication-left {
-  background-color:var(--color0);
+ 
   display: flex;
   justify-content: center;
   align-items: center;
   width: 60vw;
+  
+  
 }
 
 .logo {
-  background-color:var(--color0);
+  
   color: var(--color3);
   font-weight: 800;
+  
 }
 
 a:link {
@@ -69,8 +75,15 @@ a:active {
 
 .button-login, .button-logout {
   background-color:var(--color3);
-  border-color: var(--color4);
+  border-style: none;
   font-size: x-large;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.button-login:hover, .button-logout:hover {
+  background-color:var(--color4);
 }
 
 .button-login-hide, .button-logout-hide {
@@ -78,17 +91,18 @@ a:active {
 }
 
 .login-as-user {
-  background-color:var(--color0);
+  
   padding: 20px;
   display: flex;
   align-items: center;
 }
 
 .login-as-admin {
-  background-color:var(--color0);
+  
   display: flex;
   align-items: center;
   padding: 20px;
+  
 }
 
 /* Navigation bar (Inventory, Groups, About us, My account, Administrator now on components/styling/navbar.css */
@@ -143,6 +157,10 @@ a:active {
   padding-right: 10px;
   cursor: pointer;
   border-radius: 10px;
+}
+
+.searchbar-search-button:hover {
+  background-color:var(--color4);
 }
 
 /* Filter bar */
@@ -203,7 +221,10 @@ padding-right: 10px;
   height: 100px;
   width: 100px;
   margin-top: 20px;
-  
+}
+
+.button-add:hover {
+  background-color:var(--color4);
 }
 
 .tools-table {

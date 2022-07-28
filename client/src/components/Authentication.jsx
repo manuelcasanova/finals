@@ -15,6 +15,7 @@
 // }
 
 import LogInButtons from "./LogInButtons";
+import LogInAdminButtons from "./LogInAdminButtons";
 
 export default function Authentication () {
   return (
@@ -24,7 +25,7 @@ export default function Authentication () {
     </div>
     <div className="authentication-right">
       <div className="login-as-user"><LogInButtons /></div>
-      <div className="login-as-admin">Login as admin</div>
+      <div className="login-as-admin"><LogInAdminButtons /></div>
     </div>
   </div>
   )

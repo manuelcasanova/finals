@@ -1,5 +1,12 @@
+:root {
+  --color1:#cfe0e8;
+  --color2:#b7d7e8;
+  --color3: #87bdd8;
+  --color0: #daebe8;
+}
+
 .navbar {
-  background-color: lightsalmon;
+  background-color:var(--color3);
   display: flex;
   justify-content: space-between;
   margin: 2px;
@@ -12,7 +19,7 @@
 }
 
 .navbar-button {
-  background-color: burlywood;
+  background-color:var(--color2);
   padding: 20px;
   display: flex;
   align-items: center;
@@ -25,7 +32,7 @@
 }
 
 .navbar-dropdown {
-  background-color: burlywood;
+  background-color:var(--color2);
   cursor: pointer;
   /* padding: 20px; */
   /* display: flex; 

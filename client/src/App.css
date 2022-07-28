@@ -51,6 +51,14 @@ a:active {
   font-size: 0.7em;
 }
 
+.log-user-buttons {
+  display: none;
+}
+
+.log-admin-buttons {
+  display: none;
+}
+
 .button-login, .button-logout {
   background-color: lightblue;
   font-size: x-large;

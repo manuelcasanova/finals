@@ -3,8 +3,8 @@ import { useLocation, useNavigate } from "react-router";
 import { UserContext } from "../App";
 import useCookie from "./useCookie";
 
-const LogInButtons = ({buttonText, userId}) => {
-  const { user, setUser } = useContext(UserContext);
+const LogInButtons = ({buttonText, userId, user, setUser, admin, setAdmin}) => {
+  // const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -30,7 +30,7 @@ const LogInButtons = ({buttonText, userId}) => {
   return (
     <div>
       {/* <div>{`Logged In: ${user.loggedIn}`}</div> */}
-      <div>
+      <div className={admin.loggedIn ? "log-user-buttons" : ""}>
 
         <button className={user.loggedIn ? "button-login-hide" : "button-login"}
           onClick={() => {

@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { UserContext } from "../App";
 
-const LogInAdminButtons = () => {
-  const { admin, setAdmin } = useContext(UserContext);
+const LogInAdminButtons = ({user, setUser, admin, setAdmin}) => {
+  // const { admin, setAdmin } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
   return (
     <div>
       {/* <div>{`Logged In: ${admin.loggedIn}`}</div> */}
-      <div>
+      <div className={user.loggedIn ? "log-admin-buttons" : ""}>
 
         <button className={admin.loggedIn ? "button-login-hide" : "button-login"}
           onClick={() => {

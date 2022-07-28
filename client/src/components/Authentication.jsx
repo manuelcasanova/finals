@@ -24,8 +24,10 @@ export default function Authentication () {
      <a href="/"><div className="logo">Tool swap</div></a> 
     </div>
     <div className="authentication-right">
-      <div className="login-as-user"><LogInButtons /></div>
-      <div className="login-as-admin"><LogInAdminButtons /></div>
+      {/* <div className="login-as-user"><LogInButtons buttonText={"Log in as user"} userId={1}/></div>
+      <div className="login-as-admin"><LogInButtons buttonText={"Log in as admin"} userId={2}/></div> */}
+      <div className="login-as-user"><LogInButtons/></div>
+      <div className="login-as-admin"><LogInAdminButtons/></div>
     </div>
   </div>
   )

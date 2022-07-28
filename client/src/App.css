@@ -82,6 +82,7 @@ a:active {
   background-color: lightsalmon;
   display: flex;
   justify-content: center;
+  flex-direction: row;
   margin: 2px;
   height: 5vh;
   margin-left: 15vw;
@@ -94,9 +95,10 @@ a:active {
   background-color: lightblue;
   display: flex;
   align-items: center;
+  width: 500px;
 }
 
-.searchbar-cateogries-dropdown {
+.searchbar-categories-dropdown {
   background-color: burlywood;
   display: flex;
   align-items: center;

@@ -4,7 +4,7 @@ import axios from "axios";
 export default function Searchbar(props) {
   const { setTools, categories } = props;
 
-  const [input, setInput] = useState("Tool name");
+  const [input, setInput] = useState("");
   const [category, setToolCategory] = useState(1);
 
   const onSearch = function (event) {
@@ -36,19 +36,20 @@ export default function Searchbar(props) {
     //     <div className="searchbar-search-button">Search</div>
     //   {/* </form> */}
     // </div>
-    <Fragment>
-      <form>
-        <input
+    <div className="searchbar">
+        <input className="searchbar-text"
           type="text"
           value={input}
+          placeholder="What are you looking for?"
           onChange={e => setInput(e.target.value)}
         ></input>
-        <div className="level_input">
-          <label className="add_tool_title" htmlFor="title">
+        <div className="searchbar-categories-dropdown">
+          <label className="NO CLASS NAME YET"
+          htmlFor="title">
             Category
           </label>
           <select
-            className="form-control"
+            className="searchbar-groups-dropdown"
             value={category}
             onChange={(e) => setToolCategory(e.target.value)}
           >
@@ -60,10 +61,9 @@ export default function Searchbar(props) {
           </select>
         </div>
 
-        <button className="btn btn-success" onClick={onSearch}>
+        <button className="searchbar-search-button" onClick={onSearch}>
           Search
         </button>
-      </form>
-    </Fragment>
+    </div>
   );
 }

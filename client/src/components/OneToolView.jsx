@@ -27,7 +27,7 @@ if (tools[position]) {
     <div className="one-item-container">
 
         <div className="one-item-container">
-          <div className="one-item-picture">Picture</div>
+          <div className="one-item-picture"><img src={tools[position].tool_picture}/></div>
           <div className="one-item-information-container">
             <div className="one-item-name">{tools[position].tool_name}</div>
             <div className="one-item-status">Available</div>

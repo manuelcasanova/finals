@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import axios from 'axios';
 
 import './App.css';
-
-
 
 import Authentication from './components/Authentication';
 import Navbar from './components/Navbar';
@@ -22,7 +20,11 @@ import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
 
+export const UserContext = createContext()
+
 function App() {
+
+const [user, setUser] = useState({loggedIn: false});
 
   const [tools, setTools] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -42,6 +44,7 @@ function App() {
   }, [])
 
   return (
+    <UserContext.Provider value={{user, setUser}}>
     <Router>
       <div className="app">
         {/* All components outside <Routes></Routes> render in all routes.
@@ -80,7 +83,7 @@ Components inside <Routes></Routes>   render only in those routes.
         <Footer />
       </div>
     </Router>
-
+    </UserContext.Provider>
   );
 }
 

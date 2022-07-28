@@ -8,7 +8,7 @@ const LogInAdminButtons = () => {
   const location = useLocation();
   return (
     <div>
-      <div>{`Logged In: ${admin.loggedIn}`}</div>
+      {/* <div>{`Logged In: ${admin.loggedIn}`}</div> */}
       <div>
 
         <button className={admin.loggedIn ? "button-login-hide" : "button-login"}

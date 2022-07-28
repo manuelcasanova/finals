@@ -29,7 +29,7 @@ const LogInButtons = ({buttonText, userId}) => {
 
   return (
     <div>
-      <div>{`Logged In: ${user.loggedIn}`}</div>
+      {/* <div>{`Logged In: ${user.loggedIn}`}</div> */}
       <div>
 
         <button className={user.loggedIn ? "button-login-hide" : "button-login"}

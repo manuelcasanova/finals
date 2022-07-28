@@ -48,6 +48,12 @@ a:active {
 .authentication-right {
   display: flex;
   margin-left: auto;
+  font-size: 0.7em;
+}
+
+.button-login {
+  background-color: lightblue;
+  font-size: x-large;
 }
 
 .login-as-user {
@@ -162,14 +168,15 @@ th, td, tr {
 }
 
 img {
-  width: 100%;
+  width: 250px;
   max-height: 200px;
   transition: transform .2s;
 }
 
 img:hover {
-  transform: scale(4);
+  transform: scale(3);
   cursor: pointer;
+
 }
 
 /* Display Categories.jsx */

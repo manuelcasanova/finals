@@ -9,17 +9,17 @@ export default function AddTool(props) {
   const [tool_description, setToolDescription] = useState("");
   const [tool_picture, setToolPicture] = useState("");
   const [tool_category_id, setToolCategory] = useState(1);
-  const [tool_owner_id, setToolOwnerId] = useState(1);
+  const [tool_owner_id, setToolOwnerId] = useState('1');
   const [tool_available, setTooAvailibilty] = useState(true);
 
-useEffect (() => {
-  const foundCategory = categories.find((category) => {
-    return category.category_id === tool_category_id
-  })
-  if (!foundCategory && categories.length) {
-    setToolCategory(categories[0].category_id)
-  }
-}, [categories, tool_owner_id])
+  useEffect(() => {
+    const foundCategory = categories.find((category) => {
+      return category.category_id === tool_category_id
+    })
+    if (!foundCategory && categories.length) {
+      setToolCategory(categories[0].category_id)
+    }
+  }, [categories, tool_owner_id])
 
   function onSubmitForm(e) {
     e.preventDefault();
@@ -92,13 +92,14 @@ useEffect (() => {
               />
               <p></p>
 
-               {/* <label className="add_tool_title" htmlFor="title">Owner</label>
+              {/* <label className="add_tool_title" htmlFor="title">Owner</label>
               <input className="form-control"
                 type="text"
                 name="title"
-                value={tool_owner_id} 
-                {/* // onChange={e => setToolName(e.target.value)} 
-  <p></p> */}
+                value={tool_owner_id}
+                onChange={e => setToolOwnerId(e.target.value)}
+              />
+              <p></p> */}
 
               <label className="add_tool_title" htmlFor="title">Picture</label>
               <input className="form-control" type="text" name="title"

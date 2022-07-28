@@ -1,10 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import axios from 'axios';
 
 import './App.css';
-
-
 
 import Authentication from './components/Authentication';
 import Navbar from './components/Navbar';
@@ -20,8 +18,17 @@ import Groups from './components/Groups';
 import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
+import AdminCRUDTools from './components/AdminCRUDTools';
+
+import ProtectedRoutes from './ProtectedRoutes';
+import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
+
+export const UserContext = createContext()
 
 function App() {
+
+  const [user, setUser] = useState({ loggedIn: false });
+  const [admin, setAdmin] = useState({ loggedIn: false });
 
   const [tools, setTools] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -41,9 +48,10 @@ function App() {
   }, [])
 
   return (
-    <Router>
-      <div className="app">
-        {/* All components outside <Routes></Routes> render in all routes.
+    <UserContext.Provider value={{ user, setUser, admin, setAdmin }}>
+      <Router>
+        <div className="app">
+          {/* All components outside <Routes></Routes> render in all routes.
 Components inside <Routes></Routes>   render only in those routes.
 */}
 
@@ -51,33 +59,44 @@ Components inside <Routes></Routes>   render only in those routes.
         <Navbar />
         <Searchbar setTools={setTools} categories={categories}/>
 
-        <Routes>
 
-          <Route path="/" element={<>
-            <Filter />
-            <ShowAllTools tools={tools} />
-          </>
-          } />
+          <Routes>
 
-          <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
+            <Route path="/" element={<>
+              <Filter />
+              <ShowAllTools tools={tools} />
+            </>
+            } />
 
-          <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
-          <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories}/>}  />
-          <Route path="/groups" element={<Groups />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/admin/users" element={<ShowUsers />} />
+            <Route element={<ProtectedRoutes />}>
 
+              <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
+              <Route path="/profile" element={<Profile />} />
 
-        </Routes>
+            </Route>
 
 
+            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
 
-        <Pagination />
-        <Footer />
-      </div>
-    </Router>
+            <Route path="/groups" element={<Groups />} />
+            <Route path="/aboutus" element={<AboutUs />} />
+            
 
+
+            <Route element={<ProtectedRoutesAdmin />}>
+              <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories} />} />
+              <Route path="/admin/users" element={<ShowUsers />} />
+              <Route path="/admin/tools" element={<AdminCRUDTools />} />
+            </Route>
+          </Routes>
+
+
+
+          <Pagination />
+          <Footer />
+        </div>
+      </Router>
+    </UserContext.Provider>
   );
 }
 

@@ -56,7 +56,7 @@ Components inside <Routes></Routes>   render only in those routes.
 */}
 
         <Authentication />
-        <Navbar />
+        <Navbar user={user} admin={admin}/>
         <Searchbar setTools={setTools} categories={categories}/>
 
 

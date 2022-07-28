@@ -35,12 +35,20 @@
 /* Dropdown menu */
 
 
-.dropbtn {
+.dropbtn-user, .dropbtn-admin {
   display: inline-block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+.dropbtn-user-hide {
+  display: none;
+}
+
+.dropbtn-admin-hide {
+  display: none;
 }
 
 .navbar-dropdown:hover .dropbtn {

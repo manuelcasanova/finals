@@ -157,6 +157,21 @@ th, td, tr {
   text-align: center;
 }
 
+.td-tool-name {
+  cursor: pointer;
+}
+
+img {
+  width: 250px;
+  max-height: 200px;
+  transition: transform .2s;
+}
+
+img:hover {
+  transform: scale(4);
+  cursor: pointer;
+}
+
 /* Display Categories.jsx */
 
 .show-categories {

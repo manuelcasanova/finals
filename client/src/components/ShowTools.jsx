@@ -36,13 +36,18 @@ export default function ShowTools({ tools, setTools, categories }) {
           {tools.map(tool =>
             <tr key={tool.tool_id}>
               <td
+                className="td-tool-name"
                 onClick={() => {
                   navigate(`/inventory/${tool.tool_id}`)
                 }}
               >{tool.tool_name}</td>
               <td>{tool.category_name}</td>
               <td>{tool.tool_owner_id}</td>
-              <td>{tool.tool_picture}</td>
+              <td
+               onClick={() => {
+                navigate(`/inventory/${tool.tool_id}`)
+              }}
+              ><img src={tool.tool_picture}/></td>
               <td>{tool.tool_description}</td>
               <td>{tool.tool_available}</td>
               <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>

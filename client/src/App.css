@@ -157,6 +157,9 @@ th, td, tr {
   text-align: center;
 }
 
+img {
+  width: 100%
+}
 /* Display Categories.jsx */
 
 .show-categories {

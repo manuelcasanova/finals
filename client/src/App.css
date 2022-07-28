@@ -48,6 +48,12 @@ a:active {
 .authentication-right {
   display: flex;
   margin-left: auto;
+  font-size: 0.7em;
+}
+
+.button-login {
+  background-color: lightblue;
+  font-size: x-large;
 }
 
 .login-as-user {

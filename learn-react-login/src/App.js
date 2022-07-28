@@ -1,4 +1,3 @@
-import { VStack } from "@chakra-ui/layout";
 import { createContext, useState } from "react";
 import LogInButtons from "./components/LogInButtons";
 import PageLinks from "./components/PageLinks";
@@ -10,11 +9,11 @@ function App() {
   const [user, setUser] = useState({ loggedIn: false });
   return (
     <UserContext.Provider value={{ user, setUser }}>
-      <VStack h="70vh" justify="space-evenly">
+      <div>
         <LogInButtons />
         <PageLinks />
         <Views />
-      </VStack>
+      </div>
     </UserContext.Provider>
   );
 }

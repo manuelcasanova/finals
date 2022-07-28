@@ -1,5 +1,3 @@
-import { Button, ButtonGroup } from "@chakra-ui/button";
-import { Box, Text } from "@chakra-ui/layout";
 import { useContext } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { UserContext } from "../App";
@@ -9,10 +7,10 @@ const LogInAdminButtons = () => {
   const navigate = useNavigate();
   const location = useLocation();
   return (
-    <Box>
-      <Text textAlign="center">{`Logged In: ${admin.loggedIn}`}</Text>
-      <ButtonGroup>
-        <Button
+    <div>
+      <div>{`Logged In: ${admin.loggedIn}`}</div>
+      <div>
+      <button className="button-login"
           onClick={() => {
             if (admin.loggedIn) return;
             setAdmin({ loggedIn: true });
@@ -23,17 +21,17 @@ const LogInAdminButtons = () => {
           }}
         >
           Log In As Admin
-        </Button>
-        <Button
+        </button>
+        <button className="button-login"
           onClick={() => {
             if (!admin.loggedIn) return;
             setAdmin({ loggedIn: false });
           }}
         >
           Log Out
-        </Button>
-      </ButtonGroup>
-    </Box>
+        </button>
+      </div>
+    </div>
   );
 };
 

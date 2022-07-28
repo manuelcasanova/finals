@@ -16,9 +16,11 @@ const LogInAdminButtons = () => {
             if (admin.loggedIn) return;
             setAdmin({ loggedIn: true });
 
-            if (location.state?.from) {
-              navigate(location.state.from);
-            }
+
+            //If commented in, if we try to go to a protected page when logged out, and then we log in, it goes automatically there.
+            // if (location.state?.from) {
+            //   navigate(location.state.from);
+            // }
           }}
         >
           Log In As Admin

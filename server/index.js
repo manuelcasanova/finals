@@ -198,14 +198,31 @@ app.get("/search", async (req, res) => {
   try {
     const { searchInput, searchCategory } = req.query;
     console.log("req", req)
-       const tools = await pool.query(
-      "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2", [`%${searchInput.toLowerCase()}%`, searchCategory ]
-    )
+    // const tools = await pool.query(
+    //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2", [`%${searchInput.toLowerCase()}%`, searchCategory ]
+    // )
   
     // const tools = await pool.query(
     //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 OR LOWER(tool_description) LIKE $1", [`%${searchInput.toLowerCase()}%`]
     // )
+    console.log(req.query);
 
+    const tools = await pool.query(
+      `SELECT 
+      tool_id, 
+      tool_name,
+      tool_description, 
+      tool_category_id, 
+      tool_owner_id, 
+      tool_picture, 
+      tool_available, 
+      category_name, 
+      user_name 
+      FROM tools 
+      JOIN categories 
+      ON categories.category_id = tool_category_id 
+      JOIN users 
+    ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2 ORDER BY tool_name`, [`%${searchInput.toLowerCase()}%`, searchCategory ]);
 
 
     // const formattedInput = searchInput.replace(" ", "|");

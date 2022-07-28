@@ -19,7 +19,7 @@ export default function ShowAllTools({ tools }) {
           </tr>
         </thead>
         <tbody>
-          {tools.map(tool =>
+          { tools.length > 0 && tools.map(tool =>
             <tr key={tool.tool_id}>
               <td
                 onClick={() => {
@@ -35,6 +35,7 @@ export default function ShowAllTools({ tools }) {
               <td>{tool.tool_available}</td>
 
             </tr>)}
+            {tools.length == 0 && (<div>No tools found</div>)}
         </tbody>
       </table>
     </div>

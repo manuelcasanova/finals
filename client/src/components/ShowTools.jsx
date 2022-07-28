@@ -14,7 +14,6 @@ export default function ShowTools({ tools, setTools, categories }) {
         setTools(tools.filter(tool => tool.tool_id !== id))
       })
   };
-
   return (
     <div className="show-tools">
       < AddTool tools={tools} categories={categories} setTools={setTools} />
@@ -32,7 +31,7 @@ export default function ShowTools({ tools, setTools, categories }) {
           </tr>
         </thead>
         <tbody>
-          {tools.map(tool =>
+          {tools.length > 0 && tools.map(tool =>
             <tr key={tool.tool_id}>
               <td
                 onClick={() => {
@@ -47,6 +46,8 @@ export default function ShowTools({ tools, setTools, categories }) {
               <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>
               <td>< EditTool tool={tool} tools={tools} categories={categories} setTools={setTools}/></td>
             </tr>)}
+
+            {tools.length == 0 && (<div>No tools found</div>)}
         </tbody>
       </table>
     </div>

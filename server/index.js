@@ -192,3 +192,33 @@ app.delete("/categories/delete/:id", async (req, res) => {
 //add a category /coegries with post
 //delete a category /categories/delete/:id
 //edit a cat. /categories/edit/:id
+
+//query parameter route url/?name=henry = req.query
+app.get("/search", async (req, res) => {
+  try {
+    const { searchInput, searchCategory } = req.query;
+    console.log("req", req)
+       const tools = await pool.query(
+      "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2", [`%${searchInput.toLowerCase()}%`, searchCategory ]
+    )
+  
+    // const tools = await pool.query(
+    //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 OR LOWER(tool_description) LIKE $1", [`%${searchInput.toLowerCase()}%`]
+    // )
+
+
+
+    // const formattedInput = searchInput.replace(" ", "|");
+    // console.log(formattedInput)
+    // const tools = await pool.query(
+    //   "SELECT * from tools WHERE to_tsvector(tool_description) @@ to_tsquery($1) OR to_tsvector(tool_name) @@ to_tsquery($1)", [formattedInput]
+    // )
+
+    res.json(tools.rows)
+  } catch (err) {
+    // console.error(err.message)
+  }
+})
+
+
+

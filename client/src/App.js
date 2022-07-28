@@ -49,7 +49,7 @@ Components inside <Routes></Routes>   render only in those routes.
 
         <Authentication />
         <Navbar />
-        <Searchbar />
+        <Searchbar setTools={setTools} categories={categories}/>
 
         <Routes>
 

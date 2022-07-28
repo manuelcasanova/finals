@@ -5,10 +5,20 @@ export default function Searchbar(props) {
   const { setTools, categories } = props;
 
   const [input, setInput] = useState("");
-  const [category, setToolCategory] = useState(1);
+  const [category, setToolCategory] = useState("All categories");
 
   const onSearch = function (event) {
     event.preventDefault();
+    if (category === "All categories") {
+      axios
+      .get(
+        `http://localhost:8001/search_all/?searchInput=${input}`
+      )
+      .then(function (res) {
+        setTools([...res.data]);
+      });
+      resetForm()
+    } else {
     axios
       .get(
         `http://localhost:8001/search/?searchInput=${input}&searchCategory=${category}`
@@ -17,11 +27,12 @@ export default function Searchbar(props) {
         setTools([...res.data]);
       });
       resetForm()
+    }
   };
 
   function resetForm() {
     setInput("");
-    setToolCategory(1)
+    setToolCategory("All categories")
   };
 
   return (
@@ -53,6 +64,7 @@ export default function Searchbar(props) {
             value={category}
             onChange={(e) => setToolCategory(e.target.value)}
           >
+            <option>All categories</option>
             {categories.map((category) => (
               <option key={category.category_id} value={category.category_id}>
                 {category.category_name}

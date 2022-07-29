@@ -42,7 +42,7 @@ export default function EditTool (props) {
 
 
   return (
-    <div>
+    <div className="add-tool-button-div">
       {/* <!-- Button trigger modal --> */}
      <button type="button"
        className="button-edit" data-toggle="modal" data-target={`#edittoolmodal${tool.tool_id}`}>Edit
@@ -53,7 +53,7 @@ export default function EditTool (props) {
        <div className="modal-dialog" role="document">
          <div className="modal-content">
            <div className="modal-header">
-             <h5 className="modal-title" id="exampleModalLabel">Edit tool</h5>
+             <h5 className="modal-title" id="exampleModalLabel">Edit item</h5>
              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
@@ -63,7 +63,7 @@ export default function EditTool (props) {
  
              <label className="add_tool_title" htmlFor="title">Name</label>
              <input
-             className="form-control"
+             className="form-control-add"
              type="text"
              name="title"
              value={tool_name}
@@ -73,7 +73,7 @@ export default function EditTool (props) {
  
              <label className="add_tool_title" htmlFor="title">Description</label>
              <input
-             className="form-control"
+             className="form-control-add"
              type="text"
              name="title"
              value={tool_description}
@@ -82,7 +82,7 @@ export default function EditTool (props) {
              <p></p>
 
              <label className="add_tool_title" htmlFor="title">Picture</label>
-             <input className="form-control"
+             <input className="form-control-add"
              type="text"
              name="title"
              value={tool_picture}
@@ -92,7 +92,7 @@ export default function EditTool (props) {
  
              {/* <div className="level_input">
                <label className="add_tool_title" htmlFor="title">Category</label>
-               <select className="form-control"
+               <select className="form-control-add"
                >
  
                </select>
@@ -100,7 +100,7 @@ export default function EditTool (props) {
 
             <div className="level_input">
                 <label className="add_tool_title" htmlFor="title">Category</label>
-                <select className="form-control"
+                <select className="form-control-add"
                   value={tool_category_id}
                   onChange={e => setToolCategory(e.target.value)}
                   >
@@ -116,7 +116,7 @@ export default function EditTool (props) {
 
              <div className="level_input">
                <label className="add_tool_title" htmlFor="title">Availibility</label>
-               <select className="form-control"
+               <select className="form-control-add"
                       value={tool_available}
                       onChange={e => setTooAvailibilty(e.target.value)} >
                </select>
@@ -124,9 +124,9 @@ export default function EditTool (props) {
            </div>
  
            <div className="modal-footer">
-            <button type="button" className="button_close" data-dismiss="modal">Close</button>
+            {/* <button type="button" className="button_close" data-dismiss="modal">Close</button> */}
              <button
-               className="button_submit"
+               className="button-submit"
                type="Submit"
                data-dismiss="modal"
                onClick={e => editTool(e)}

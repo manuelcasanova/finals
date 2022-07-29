@@ -1,7 +1,7 @@
 import './styling/navbar.css'
 import { useNavigate } from "react-router-dom"
 
-export default function Navbar() {
+export default function Navbar({user, admin}) {
 
   const navigate = useNavigate();
 
@@ -21,7 +21,9 @@ export default function Navbar() {
       </div>
       <div className="navbar-right">
         <div className="navbar-dropdown">
-          <a className="dropbtn">My account</a>
+          {/* <a className="dropbtn-user"> */}
+          <a className={!user.loggedIn ? "dropbtn-user-hide" : "dropbtn-user"}>
+            My account</a>
           <div className="navbar-dropdown-content">
           <a onClick={() => {navigate(`/user/items`)}}>My items</a>
           <a onClick={() => {navigate(`/profile`)}}>Profile</a>
@@ -29,7 +31,9 @@ export default function Navbar() {
         </div>
 
         <div className="navbar-dropdown">
-          <a className="dropbtn">Administrator</a>
+          {/* <a className="dropbtn-admin"> */}
+          <a className={!admin.loggedIn ? "dropbtn-admin-hide" : "dropbtn-admin"}>
+            Administrator</a>
           <div className="navbar-dropdown-content">
             {/* <a href="/admin/categories">Manage categories</a> */}
             <a onClick={() => {navigate(`/admin/categories`)}}>Manage categories</a>

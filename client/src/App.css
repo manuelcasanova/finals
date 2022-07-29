@@ -1,32 +1,46 @@
-
+:root {
+  --color1:#cfe0e8;
+  --color2:#b7d7e8;
+  --color3: #87bdd8;
+  --color4: #577d90;
+  --color0: #daebe8;
+}
 /* Main App Container */
 
 .app {
-  background-color: black;
+  background-color: white;
   display: flex;
   flex-direction: column;
+  margin: 5px;
+  
 }
 
 /* Authentication bar */
 
 .authentication {
-  background-color: lightsalmon;
+  background-color:var(--color2);
   display: flex;
   justify-content: flex-end;
   margin: 2px;
   font-size: 3em;
+  border-radius: 20px;
 }
 
 .authentication-left {
-  background-color: burlywood;
+ 
   display: flex;
   justify-content: center;
   align-items: center;
   width: 60vw;
+  
+  
 }
 
 .logo {
-  background-color: lightcoral;
+  
+  color: var(--color3);
+  font-weight: 800;
+  
 }
 
 a:link {
@@ -51,23 +65,44 @@ a:active {
   font-size: 0.7em;
 }
 
-.button-login {
-  background-color: lightblue;
+.log-user-buttons {
+  display: none;
+}
+
+.log-admin-buttons {
+  display: none;
+}
+
+.button-login, .button-logout {
+  background-color:var(--color3);
+  border-style: none;
   font-size: x-large;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.button-login:hover, .button-logout:hover {
+  background-color:var(--color4);
+}
+
+.button-login-hide, .button-logout-hide {
+  display: none;
 }
 
 .login-as-user {
-  background-color: burlywood;
+  
   padding: 20px;
   display: flex;
   align-items: center;
 }
 
 .login-as-admin {
-  background-color: burlywood;
+  
   display: flex;
   align-items: center;
   padding: 20px;
+  
 }
 
 /* Navigation bar (Inventory, Groups, About us, My account, Administrator now on components/styling/navbar.css */
@@ -75,9 +110,10 @@ a:active {
 /* Search bar*/
 
 .searchbar {
-  background-color: lightsalmon;
+  /* background-color:var(--color3); */
   display: flex;
   justify-content: center;
+  flex-direction: row;
   margin: 2px;
   height: 5vh;
   margin-left: 15vw;
@@ -87,79 +123,119 @@ a:active {
 }
 
 .searchbar-text {
-  background-color: lightblue;
+  background-color:var(--color1);
   display: flex;
   align-items: center;
+  width: 500px;
+  margin: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.searchbar-cateogries-dropdown {
-  background-color: burlywood;
+.searchbar-categories-dropdown {
+  background-color:var(--color2);
   display: flex;
   align-items: center;
+  margin: 5px;
+  padding-left: 10px;
 }
 
 .searchbar-groups-dropdown {
-  background-color: lightblue;
+  background-color:var(--color2);
   display: flex;
   align-items: center;
+  margin: 5px;
+  padding-left: 10px;
 }
 
 .searchbar-search-button {
-  background-color: burlywood;
+  background-color:var(--color2);
   display: flex;
   align-items: center;
+  margin: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.searchbar-search-button:hover {
+  background-color:var(--color4);
 }
 
 /* Filter bar */
 
 .filter {
-  background-color: lightsalmon;
+  /* background-color:var(--color3); */
   display: flex;
   margin: 2px;
   justify-content: flex-end;
   font-size: 1.8em;
+  
 }
 
 .filter-per-page {
-  background-color: burlywood;
-  padding-left: 20px;
+  /* background-color:var(--color3); */
+  padding-left: 10px;
+  padding-right: 10px;
 
 }
 
 .filter-view {
-  background-color: lightblue;
-  padding-left: 20px;
+  /* background-color:var(--color3); */
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .filter-sort-by {
-background-color: burlywood;
-padding-left: 20px;
+/* background-color:var(--color3); */
+padding-left: 10px;
+padding-right: 10px;
 }
 
 /* Display ShowTools.jsx */
 
+.add-tool-button-div {
+  display: flex;
+  justify-content: center;
+  background-color:var(--color1);
+  margin: 2px;
+  border-radius: 30px;
+}
+
 .show-tools {
-  background-color: lightsalmon;
+  background-color:var(--color1);
   margin: 2px;
   font-size: 1.5em;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  border-radius: 30px;
 }
 
 .button-add {
   justify-content: center;
   align-self: center;
+  background-color:var(--color3);
+  border-radius: 10px;
+  height: 100px;
+  width: 100px;
+  margin-top: 20px;
+}
+
+.button-add:hover {
+  background-color:var(--color4);
 }
 
 .tools-table {
-  background-color: lightsalmon;
+  background-color:var(--color1);
   margin: 20px;
+  border-radius: 30px;
 }
 
 th, td, tr {
   padding: 1em;
-  background-color: lightsalmon; 
+  background-color:var(--color1); 
   text-align: center;
 }
 
@@ -182,7 +258,7 @@ img:hover {
 /* Display Categories.jsx */
 
 .show-categories {
-  background-color: lightsalmon;
+  background-color:var(--color3);
   margin: 2px;
   font-size: 1.5em;
   display: flex;
@@ -191,42 +267,46 @@ img:hover {
   
 }
 
-.button-add {
-  background-color: green;
-}
-
 .categories-table {
-  background-color: lightsalmon;
+  background-color:var(--color3);
   margin: 20px;
 }
 
 th, td, tr {
   padding: 1em;
-  background-color: lightsalmon; 
+  background-color:var(--color1); 
   text-align: center;
 }
 
 /* Pagination */
 
 .pagination {
-  background-color: lightsalmon;
+  background-color:var(--color1);
   margin: 2px;
   height: 10vh;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Footer */
 
 .footer {
-  background-color: lightsalmon;
+  background-color:var(--color3);
   margin: 2px;
   height: 10vh;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
  
 /* One item view */
 
 .one-item-container {
-  background-color: lightblue;
+  background-color:var(--color1);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -244,7 +324,7 @@ th, td, tr {
 }
 
 .one-item-picture {
-  background-color: lightsalmon;
+  background-color:var(--color3);
   height: 30vh;
 }
 

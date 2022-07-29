@@ -1,37 +1,58 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { UserContext } from "../App";
+import useCookie from "./useCookie";
 
-const LogInButtons = () => {
-  const { user, setUser } = useContext(UserContext);
+const LogInButtons = ({buttonText, userId, user, setUser, admin, setAdmin}) => {
+  // const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [cookie, updateCookie, deleteCookie] = useCookie("user", undefined);
+
+  useEffect(() => {
+    if (cookie !== undefined) {
+      setUser({loggedIn: true})
+    }
+  }, []);
+
+  const logInSetCookie = function() {
+    setUser({ loggedIn: true });
+    updateCookie(userId, 1)
+  }
+
+  const logoutRemoveCookie = function () {
+    setUser({ loggedIn: false });
+    // Delete cookie here
+    // deleteCookie();
+  }
+
   return (
     <div>
-      <div>{`Logged In: ${user.loggedIn}`}</div>
-      <div>
+      {/* <div>{`Logged In: ${user.loggedIn}`}</div> */}
+      <div className={admin.loggedIn ? "log-user-buttons" : ""}>
 
-{/* if user logged in hide, else show */}
-
-        <button className="button-login"
+        <button className={user.loggedIn ? "button-login-hide" : "button-login"}
           onClick={() => {
             if (user.loggedIn) return;
-            setUser({ loggedIn: true });
+            // setUser({ loggedIn: true });
+            logInSetCookie()
 
-            if (location.state?.from) {
-              navigate(location.state.from);
-            }
+            //If commented in, if we try to go to a protected page when logged out, and then we log in, it goes automatically there. 
+
+            // if (location.state?.from) {
+            //   navigate(location.state.from);
+            // }
           }}
         >
-          Log In As User
+          {/* {buttonText} */}
+          Log In as User
         </button>
 
-{/* if user logged out hide, else show */}
-
-        <button className="button-login"
+        <button className={user.loggedIn ? "button-logout" : "button-logout-hide"}
           onClick={() => {
             if (!user.loggedIn) return;
-            setUser({ loggedIn: false });
+            logoutRemoveCookie();
           }}
         >
           Log Out

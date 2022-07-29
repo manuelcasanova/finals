@@ -342,6 +342,26 @@ tr {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 3em;
+}
+
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: var(--color4);
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: var(--color3);
+  border-radius: 5px;
 }
 
 /* Footer */

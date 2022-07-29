@@ -27,7 +27,7 @@ export default function Authentication () {
   return (
     <div className="authentication">
     <div className="authentication-left">
-     <a href="/"><div className="logo">Tool swap</div></a> 
+     <a href="/"><div className="logo">Tool Swap</div></a> 
     </div>
     <div className="authentication-right">
       {/* <div className="login-as-user"><LogInButtons buttonText={"Log in as user"} userId={1}/></div>

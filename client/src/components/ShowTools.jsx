@@ -16,7 +16,9 @@ export default function ShowTools({ tools, setTools, categories }) {
       })
   };
   return (
+    
     <div className="show-tools">
+      <div className="show-title">My items</div>
       < AddTool tools={tools} categories={categories} setTools={setTools} />
       <table className="tools-table">
         <thead>

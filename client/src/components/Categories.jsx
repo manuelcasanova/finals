@@ -21,6 +21,7 @@ function deleteCategory(id) {
 
   return (
     <div className="show-categories">
+       <div className="show-title">Categories</div>
 <AddCategory categories={categories} setCategories={setCategories}/>
       <table className="categories-table">
 

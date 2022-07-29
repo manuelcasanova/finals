@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
+import AdminCRUDTools from "./AdminCRUDTools";
+import LogInAdminButtons from "./LogInAdminButtons";
 
-export default function OneToolView({ tools }) {
+export default function OneToolView({ tools, user, admin }) {
 
   let { toolIdParam } = useParams();
 
@@ -50,10 +52,18 @@ export default function OneToolView({ tools }) {
               <td className="one-item-status">Status</td>
             </tr>
             <th className="one-item-owner-name">Owner</th>
-            <td className="one-item-owner-name">{tools[position].user_name}</td>
+            {/* <td className="one-item-owner-name"> */}
+            <td className={user.loggedIn || admin.loggedIn ? "one-item-owner-name" : "hide"}>
+              {tools[position].user_name}</td>
+              <td className={!user.loggedIn && !admin.loggedIn ? "one-item-owner-email" : "hide"}>
+                Log in to see owner name</td>
             <tr>
               <th className="one-item-owner-email">Contact</th>
-              <td className="one-item-owner-email">Owner email</td>
+              {/* <td className="one-item-owner-email"> */}
+              <td className={user.loggedIn || admin.loggedIn ? "one-item-owner-email" : "hide"}>
+                Owner email</td>
+              <td className={!user.loggedIn && !admin.loggedIn ? "one-item-owner-email" : "hide"}>
+                Log in to see owner email</td>
             </tr>
           </table>
 

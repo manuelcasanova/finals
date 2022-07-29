@@ -76,7 +76,7 @@ Components inside <Routes></Routes>   render only in those routes.
             </Route>
 
 
-            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
+            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} user={user} admin={admin}/>} />
 
             <Route path="/groups" element={<Groups />} />
             <Route path="/aboutus" element={<AboutUs />} />

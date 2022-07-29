@@ -283,5 +283,23 @@ app.get("/search_all", async (req, res) => {
   }
 })
 
+//items per user
+app.get("/user_items", async (req, res) => {
+  try {
+ 
+    const toolsPerUser = await pool.query(
+      `select tool_name, tool_available, tool_picture, category_name, user_id
+      from tools 
+      join categories on categories.category_id = tools.tool_category_id 
+      join users on users.user_id = tools.tool_owner_id 
+      where users.user_id = 1;`
+      );
+    res.json(toolsPerUser.rows)
+ 
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
 
 

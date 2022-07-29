@@ -1,5 +1,6 @@
 import axios from "axios"
 import AddCategory from "./AddCategory"
+import EditCategory from "./EditCategory"
 
 export default function Categories({categories, setCategories}) {
 
@@ -9,6 +10,13 @@ function deleteCategory(id) {
     setCategories(categories.filter(category => category.category_id !== id))
   })
 }
+
+// function updateCategory(id) {
+//   return axios.put(`http://localhost:8001/categories/edit/${id}`)
+//   .then(res => {
+//     setCategories
+//   })
+// }
 
 
   return (
@@ -30,7 +38,7 @@ function deleteCategory(id) {
             <tr key={category.category_id}>
               <td>{category.category_id}</td>
               <td>{category.category_name}</td>
-              <td>Edit button</td>
+              <td><EditCategory category={category} categories={categories} setCategories={setCategories} /></td>
               <td> <button onClick={()=> deleteCategory(category.category_id)}>Delete </button> </td>
 
             </tr>)}

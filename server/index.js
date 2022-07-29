@@ -142,11 +142,32 @@ app.put("/tools/edit/:id", async (req, res) => {
         id,
       ]
     );
-    res.json("Tool has been updated");
+    res.json("Tool has been updated"); // res.send is more accurate or res.end
   } catch (err) {
     console.error(err.message);
   }
 });
+
+
+app.put('/categories/edit/:id', async (req, res) => {
+  try{
+    console.log("Put in Server")
+    const {id} = req.params
+    console.log("Content of ID: ", id)
+    const {
+      category_name
+    } = req.body;
+    const editCategory = await pool.query(
+      "UPDATE categories SET category_name = $1 WHERE category_id = $2 RETURNING *",
+      [category_name, Number(id)]
+    )
+    console.log("Edit Category: ", editCategory)
+    // have to end with a response method .send, .end, .json ...
+    res.end()
+  } catch (err) {
+    console.error(err.message);
+  }
+})
 
 // add a category
 app.post("/categories", async (req, res) => {

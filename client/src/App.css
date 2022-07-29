@@ -219,7 +219,7 @@ padding-right: 10px;
   background-color:var(--color3);
   border-radius: 10px;
   height: 100px;
-  width: 100px;
+  width: 120px;
   margin-top: 20px;
 }
 
@@ -257,14 +257,22 @@ img:hover {
 
 /* Display Categories.jsx */
 
+.add-tool-button-div {
+  display: flex;
+  justify-content: center;
+  background-color:var(--color1);
+  margin: 2px;
+  border-radius: 30px;
+}
+
 .show-categories {
-  background-color:var(--color3);
+  background-color:var(--color1);
   margin: 2px;
   font-size: 1.5em;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  
+  border-radius: 30px;
 }
 
 .categories-table {

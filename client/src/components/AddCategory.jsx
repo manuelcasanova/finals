@@ -29,10 +29,10 @@ function resetForm() {
 
   return (
 
-    <div>
+    <div className="add-tool-button-div">
       {/* <!-- Button trigger modal --> */}
       <button type="button"
-        className="button_add" data-toggle="modal" data-target={`#newcategorymodal${categories.category_id}`}>Add category
+        className="button-add" data-toggle="modal" data-target={`#newcategorymodal${categories.category_id}`}>Add category
       </button>
 
       {/* <!-- Modal --> */}

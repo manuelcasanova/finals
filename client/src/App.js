@@ -55,9 +55,9 @@ function App() {
 Components inside <Routes></Routes>   render only in those routes.
 */}
 
-        <Authentication />
-        <Navbar user={user} admin={admin}/>
-        <Searchbar setTools={setTools} categories={categories}/>
+          <Authentication />
+          <Navbar user={user} admin={admin} />
+          <Searchbar setTools={setTools} categories={categories} />
 
 
           <Routes>
@@ -65,34 +65,64 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route path="/" element={<>
               <Filter />
               <ShowAllTools tools={tools} />
+              <Pagination />
             </>
             } />
 
             <Route element={<ProtectedRoutes />}>
 
-              <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
+              <Route path="/user/items" element=
+                {
+                  <>
+                    <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
+                    <Pagination />
+                  </>
+
+
+                } />
               <Route path="/profile" element={<Profile />} />
 
             </Route>
 
 
-            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} user={user} admin={admin}/>} />
+            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} user={user} admin={admin} />} />
 
-            <Route path="/groups" element={<Groups />} />
+            <Route path="/groups" element={
+              <>
+                <Groups />
+                <Pagination />
+              </>
+
+            } />
             <Route path="/aboutus" element={<AboutUs />} />
-            
+
 
 
             <Route element={<ProtectedRoutesAdmin />}>
-              <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories} />} />
-              <Route path="/admin/users" element={<ShowUsers />} />
-              <Route path="/admin/tools" element={<AdminCRUDTools />} />
+              <Route path="/admin/categories" element={
+                <>
+              <Categories categories={categories} setCategories={setCategories} />
+              <Pagination />
+              </>
+              } />
+              <Route path="/admin/users" element={
+                <>
+              <ShowUsers />
+              <Pagination />
+              </>
+              } />
+              <Route path="/admin/tools" element={
+                <>
+              <AdminCRUDTools />
+              <Pagination />
+              </>
+              } />
             </Route>
           </Routes>
 
 
 
-          <Pagination />
+
           <Footer />
         </div>
       </Router>

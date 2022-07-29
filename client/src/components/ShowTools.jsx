@@ -27,8 +27,8 @@ export default function ShowTools({ tools, setTools, categories }) {
             <th>Picture</th>
             <th>Description</th>
             <th>Availability</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th></th>
+            <th></th>
             
           </tr>
         </thead>
@@ -44,6 +44,7 @@ export default function ShowTools({ tools, setTools, categories }) {
               <td>{tool.category_name}</td>
               <td>{tool.tool_owner_id}</td>
               <td
+              className="td-image"
                onClick={() => {
                 navigate(`/inventory/${tool.tool_id}`)
               }}

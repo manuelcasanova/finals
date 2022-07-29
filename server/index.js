@@ -23,6 +23,7 @@ app.get("/tools", async (req, res) => {
       `SELECT 
       tool_id, 
       tool_name, 
+      tool_description,
       tool_category_id, 
       tool_owner_id, 
       tool_picture, 

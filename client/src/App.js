@@ -64,7 +64,7 @@ Components inside <Routes></Routes>   render only in those routes.
 
             <Route path="/" element={<>
               <Filter />
-              <ShowAllTools tools={tools} />
+              <ShowAllTools tools={tools} setTools={setTools}/>
               <Pagination />
             </>
             } />

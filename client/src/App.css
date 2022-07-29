@@ -216,7 +216,7 @@ a:active {
 .show-tools {
   background-color: var(--color1);
   margin: 2px;
-  font-size: 1.5em;
+  font-size: 2.5em;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -277,7 +277,7 @@ img:hover {
   background-color: #ef5350;
   border-radius: 10px;
   padding: 5px;
-  width: 100px;
+  width: 150px;
 }
 
 .button-delete:hover {
@@ -308,7 +308,7 @@ img:hover {
 .show-categories {
   background-color: var(--color1);
   margin: 2px;
-  font-size: 1.5em;
+  font-size: 2.5em;
   display: flex;
   justify-content: center;
   flex-direction: column;

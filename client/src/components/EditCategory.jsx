@@ -49,9 +49,6 @@ export default function EditCategory(props) {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Edit Category
-              </h5>
               <button
                 type="button"
                 className="close"
@@ -60,6 +57,10 @@ export default function EditCategory(props) {
               >
                 <span aria-hidden="true">&times;</span>
               </button>
+              <h5 className="modal-title" id="exampleModalLabel">
+                Edit Category
+              </h5>
+
             </div>
 
             <div className="modal-body">
@@ -67,7 +68,7 @@ export default function EditCategory(props) {
                 Name
               </label>
               <input
-                className="form-control"
+                className="form-control-add"
                 type="text"
                 name="title"
                 value={category_name}
@@ -77,15 +78,15 @@ export default function EditCategory(props) {
             </div>
 
             <div className="modal-footer">
-              <button
+              {/* <button
                 type="button"
                 className="button_close"
                 data-dismiss="modal"
               >
                 Close
-              </button>
+              </button> */}
               <button
-                className="button_submit"
+                className="button-submit"
                 type="Submit"
                 data-dismiss="modal"
                 onClick={(e) => editCategory(e)}

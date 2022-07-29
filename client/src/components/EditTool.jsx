@@ -45,7 +45,7 @@ export default function EditTool (props) {
     <div>
       {/* <!-- Button trigger modal --> */}
      <button type="button"
-       className="button_edit" data-toggle="modal" data-target={`#edittoolmodal${tool.tool_id}`}>Edit
+       className="button-edit" data-toggle="modal" data-target={`#edittoolmodal${tool.tool_id}`}>Edit
      </button>
 
       {/* <!-- Modal --> */}

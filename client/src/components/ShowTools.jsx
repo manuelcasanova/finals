@@ -26,9 +26,10 @@ export default function ShowTools({ tools, setTools, categories }) {
             <th>Owner</th>
             <th>Picture</th>
             <th>Description</th>
-            <th>Available?</th>
-            <th>Delete</th>
+            <th>Availability</th>
             <th>Edit</th>
+            <th>Delete</th>
+            
           </tr>
         </thead>
         <tbody>
@@ -49,8 +50,9 @@ export default function ShowTools({ tools, setTools, categories }) {
               ><img src={tool.tool_picture}/></td>
               <td>{tool.tool_description}</td>
               <td>{tool.tool_available}</td>
-              <td><button onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>
               <td>< EditTool tool={tool} tools={tools} categories={categories} setTools={setTools}/></td>
+              <td><button className="button-delete" onClick={() => deleteTool(tool.tool_id)}>Delete</button></td>
+              
             </tr>)}
 
             {tools.length == 0 && (<div>No tools found</div>)}

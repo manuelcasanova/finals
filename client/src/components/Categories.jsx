@@ -39,7 +39,7 @@ function deleteCategory(id) {
               <td>{category.category_id}</td>
               <td>{category.category_name}</td>
               <td><EditCategory category={category} categories={categories} setCategories={setCategories} /></td>
-              <td> <button onClick={()=> deleteCategory(category.category_id)}>Delete </button> </td>
+              <td> <button className="button-delete"  onClick={()=> deleteCategory(category.category_id)}>Delete </button> </td>
 
             </tr>)}
         </tbody>

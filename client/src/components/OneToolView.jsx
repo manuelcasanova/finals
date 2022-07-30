@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from 'react'
 import AdminCRUDTools from "./AdminCRUDTools";
 import LogInAdminButtons from "./LogInAdminButtons";
+import BookTool from "./BookTool";
 
 export default function OneToolView({ tools, user, admin }) {
 
@@ -28,7 +29,11 @@ export default function OneToolView({ tools, user, admin }) {
 
 
       <div className="one-item-container">
-        <div className="one-item-picture"><img src={tools[position].tool_picture} /></div>
+        <div className="one-item-picture-and-book-button">
+          <div className="one-item-picture"><img src={tools[position].tool_picture} /></div>
+          <BookTool user={user}/>
+        </div>
+
         <div className="one-item-information-container">
 
 
@@ -55,8 +60,8 @@ export default function OneToolView({ tools, user, admin }) {
             {/* <td className="one-item-owner-name"> */}
             <td className={user.loggedIn || admin.loggedIn ? "one-item-owner-name" : "hide"}>
               {tools[position].user_name}</td>
-              <td className={!user.loggedIn && !admin.loggedIn ? "one-item-owner-email" : "hide"}>
-                Log in to see owner name</td>
+            <td className={!user.loggedIn && !admin.loggedIn ? "one-item-owner-email" : "hide"}>
+              Log in to see owner name</td>
             <tr>
               <th className="one-item-owner-email">Contact</th>
               {/* <td className="one-item-owner-email"> */}
@@ -66,9 +71,6 @@ export default function OneToolView({ tools, user, admin }) {
                 Log in to see owner email</td>
             </tr>
           </table>
-
-
-
         </div>
       </div>
     )

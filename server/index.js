@@ -64,6 +64,18 @@ app.get("/categories", async (req, res) => {
   }
 });
 
+//list groups
+app.get("/groups", async (req, res) => {
+  try {
+    console.log(req);
+    const getAllGroups = await pool.query(`SELECT * FROM groups`);
+    res.json(getAllGroups.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
 //delete a tool
 app.delete("/tools/delete/:id", async (req, res) => {
   try {

@@ -33,6 +33,7 @@ function App() {
 
   const [tools, setTools] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [groups, setGroups] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
@@ -45,6 +46,13 @@ function App() {
     axios.get(`http://localhost:8001/categories`)
       .then(function (res) {
         setCategories([...res.data])
+      })
+  }, [])
+
+  useEffect(() => {
+    axios.get(`http://localhost:8001/groups`)
+      .then(function (res) {
+        setGroups([...res.data])
       })
   }, [])
 
@@ -98,7 +106,7 @@ Components inside <Routes></Routes>   render only in those routes.
 
             <Route path="/groups" element={
               <>
-                <Groups />
+                <Groups groups={groups} setGroups={setGroups}/>
                 <Pagination />
               </>
 

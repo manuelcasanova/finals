@@ -2,7 +2,7 @@ import { useState, Fragment } from "react";
 import axios from "axios";
 
 export default function SearchbarCategories(props) {
-  const { setTools } = props;
+  const { setTools, setCategories } = props;
 
   const [input, setInput] = useState("");
 
@@ -14,7 +14,7 @@ export default function SearchbarCategories(props) {
         `http://localhost:8001/admin/categories/search/?searchInput=${input}`
       )
       .then(function (res) {
-        setTools([...res.data]);
+        setCategories([...res.data]);
       });
       resetForm()
   };

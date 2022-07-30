@@ -110,7 +110,7 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route element={<ProtectedRoutesAdmin />}>
               <Route path="/admin/categories" element={
                 <>
-                  <SearchbarCategories setTools={setTools} setCategories={setCategories}/>
+                  <SearchbarCategories setCategories={setCategories}/>
                   <Categories categories={categories} setCategories={setCategories} />
                   <Pagination />
                 </>

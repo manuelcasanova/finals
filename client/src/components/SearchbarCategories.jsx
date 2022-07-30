@@ -2,7 +2,7 @@ import { useState, Fragment } from "react";
 import axios from "axios";
 
 export default function SearchbarCategories(props) {
-  const { setTools, setCategories } = props;
+  const { setCategories } = props;
 
   const [input, setInput] = useState("");
 

@@ -20,6 +20,7 @@ import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
 import SearchbarCategories from './components/SearchbarCategories';
+import SearchbarGroups from './components/SearchbarGroups';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -106,7 +107,8 @@ Components inside <Routes></Routes>   render only in those routes.
 
             <Route path="/groups" element={
               <>
-                <Groups groups={groups} setGroups={setGroups}/>
+                <SearchbarGroups setGroups={setGroups} />
+                <Groups groups={groups} setGroups={setGroups} />
                 <Pagination />
               </>
 
@@ -118,7 +120,7 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route element={<ProtectedRoutesAdmin />}>
               <Route path="/admin/categories" element={
                 <>
-                  <SearchbarCategories setCategories={setCategories}/>
+                  <SearchbarCategories setCategories={setCategories} />
                   <Categories categories={categories} setCategories={setCategories} />
                   <Pagination />
                 </>

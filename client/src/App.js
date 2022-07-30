@@ -19,6 +19,7 @@ import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
+import SearchbarCategories from './components/SearchbarCategories';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -57,14 +58,15 @@ Components inside <Routes></Routes>   render only in those routes.
 
           <Authentication />
           <Navbar user={user} admin={admin} />
-          <Searchbar setTools={setTools} categories={categories} />
+
 
 
           <Routes>
 
             <Route path="/" element={<>
+              <Searchbar setTools={setTools} categories={categories} />
               <Filter />
-              <ShowAllTools tools={tools} setTools={setTools}/>
+              <ShowAllTools tools={tools} setTools={setTools} />
               <Pagination />
             </>
             } />
@@ -74,6 +76,7 @@ Components inside <Routes></Routes>   render only in those routes.
               <Route path="/user/items" element=
                 {
                   <>
+                    <Searchbar setTools={setTools} categories={categories} />
                     <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
                     <Pagination />
                   </>
@@ -85,7 +88,13 @@ Components inside <Routes></Routes>   render only in those routes.
             </Route>
 
 
-            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} user={user} admin={admin} />} />
+            <Route path="/inventory/:toolIdParam" element={
+              <>
+                <Searchbar setTools={setTools} categories={categories} />
+                <OneToolView tools={tools} user={user} admin={admin} />
+              </>
+
+            } />
 
             <Route path="/groups" element={
               <>
@@ -101,21 +110,22 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route element={<ProtectedRoutesAdmin />}>
               <Route path="/admin/categories" element={
                 <>
-              <Categories categories={categories} setCategories={setCategories} />
-              <Pagination />
-              </>
+                  <SearchbarCategories setTools={setTools}/>
+                  <Categories categories={categories} setCategories={setCategories} />
+                  <Pagination />
+                </>
               } />
               <Route path="/admin/users" element={
                 <>
-              <ShowUsers />
-              <Pagination />
-              </>
+                  <ShowUsers />
+                  <Pagination />
+                </>
               } />
               <Route path="/admin/tools" element={
                 <>
-              <AdminCRUDTools />
-              <Pagination />
-              </>
+                  <AdminCRUDTools />
+                  <Pagination />
+                </>
               } />
             </Route>
           </Routes>

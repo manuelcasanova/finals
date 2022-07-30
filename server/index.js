@@ -301,4 +301,22 @@ app.get("/user_items", async (req, res) => {
 })
 
 
+//Search categories at SearchCategories component (Searchbar at http://localhost:3000/admin/categories)
+app.get("/admin/categories/search", async (req, res) => {
+  try {
+    const { searchInput } = req.query;
 
+    console.log("req.query", req.query);
+     
+    const categories = await pool.query(
+      `SELECT category_name 
+      FROM categories 
+      WHERE LOWER(category_name) 
+      LIKE $1 
+      ORDER BY category_name`, [`%${searchInput.toLowerCase()}%`]);
+
+    res.json(categories.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})

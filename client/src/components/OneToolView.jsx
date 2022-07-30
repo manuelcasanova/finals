@@ -66,7 +66,7 @@ export default function OneToolView({ tools, user, admin }) {
               <th className="one-item-owner-email">Contact</th>
               {/* <td className="one-item-owner-email"> */}
               <td className={user.loggedIn || admin.loggedIn ? "one-item-owner-email" : "hide"}>
-                Owner email</td>
+              {tools[position].user_email}</td>
               <td className={!user.loggedIn && !admin.loggedIn ? "one-item-owner-email" : "hide"}>
                 Log in to see owner email</td>
             </tr>

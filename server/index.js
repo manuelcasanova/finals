@@ -29,7 +29,8 @@ app.get("/tools", async (req, res) => {
       tool_picture, 
       tool_available, 
       category_name, 
-      user_name 
+      user_name,
+      user_email 
       FROM tools 
       JOIN categories 
       ON categories.category_id = tools.tool_category_id 
@@ -250,7 +251,7 @@ app.get("/search", async (req, res) => {
       tool_picture, 
       tool_available, 
       category_name, 
-      user_name 
+      user_name,
       FROM tools 
       JOIN categories 
       ON categories.category_id = tool_category_id 

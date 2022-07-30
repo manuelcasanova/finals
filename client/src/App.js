@@ -13,6 +13,7 @@ import Pagination from './components/Pagination';
 import Footer from './components/Footer';
 import Categories from './components/Categories';
 import OneToolView from './components/OneToolView';
+import OneGroupView from './components/OneGroupView';
 import ShowAllTools from './components/ShowAllTools';
 import Groups from './components/Groups';
 import AboutUs from './components/AboutUs';
@@ -102,8 +103,17 @@ Components inside <Routes></Routes>   render only in those routes.
                 <Searchbar setTools={setTools} categories={categories} />
                 <OneToolView tools={tools} user={user} admin={admin} />
               </>
-
             } />
+
+            <Route path="/groups/:groupIdParam" element={
+              <>
+                <SearchbarGroups setGroups={setGroups} />
+                <OneGroupView groups={groups} user={user} admin={admin} />
+              </>
+            } />
+
+
+
 
             <Route path="/groups" element={
               <>

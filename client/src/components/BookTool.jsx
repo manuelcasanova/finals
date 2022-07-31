@@ -1,4 +1,4 @@
-export default function BookTool({ user, tools, toolIdParam }) {
+export default function BookTool({ user, admin, tools, toolIdParam }) {
 
   console.log(tools, toolIdParam)
 
@@ -10,7 +10,7 @@ export default function BookTool({ user, tools, toolIdParam }) {
 
 
     <a href={`mailto:${email}`}>
-      <div className={user.loggedIn ? "one-item-book" : "hide"}>
+      <div className={user.loggedIn || admin.loggedIn ? "one-item-book" : "hide"}>
         <button className="button-book">Book</button>
       </div>
     </a>

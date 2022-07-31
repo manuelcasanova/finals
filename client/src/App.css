@@ -417,9 +417,13 @@ tr {
   background-color: var(--color3);
   font-size: xx-large;
   border-radius: 10px;
-  height: 100px;
+  height: 200px;
   width: 250px;
   margin-top: 20px;
+}
+
+a {
+  color: black;
 }
 
 .button-book:hover {

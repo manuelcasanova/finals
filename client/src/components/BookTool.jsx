@@ -1,7 +1,21 @@
-export default function BookTool ({user}) {
+export default function BookTool({ user, tools, toolIdParam }) {
+
+  console.log(tools, toolIdParam)
+
+  const email = tools[toolIdParam].user_email;
+
+  console.log(email)
+
   return (
-    <div className={user.loggedIn ? "one-item-book" : "hide"}>
-      <button className="button-book">Book item</button>
-    </div>
+
+
+    <a href={`mailto:${email}`}>
+      <div className={user.loggedIn ? "one-item-book" : "hide"}>
+        <button className="button-book">Book</button>
+      </div>
+    </a>
+
+
+
   )
 }

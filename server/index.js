@@ -23,12 +23,14 @@ app.get("/tools", async (req, res) => {
       `SELECT 
       tool_id, 
       tool_name, 
+      tool_description,
       tool_category_id, 
       tool_owner_id, 
       tool_picture, 
       tool_available, 
       category_name, 
-      user_name 
+      user_name,
+      user_email 
       FROM tools 
       JOIN categories 
       ON categories.category_id = tools.tool_category_id 
@@ -62,6 +64,18 @@ app.get("/categories", async (req, res) => {
     console.error(err.message);
   }
 });
+
+//list groups
+app.get("/groups", async (req, res) => {
+  try {
+    console.log(req);
+    const getAllGroups = await pool.query(`SELECT * FROM groups`);
+    res.json(getAllGroups.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 //delete a tool
 app.delete("/tools/delete/:id", async (req, res) => {
@@ -121,25 +135,27 @@ app.post("/tools", async (req, res) => {
 });
 
 //edit a tool
-app.put("/tools/edit/:id", async (req, res) => {
+app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id, tool_owner_id } = req.params;
+    console.log("owner", tool_owner_id)
+    console.log("id", id)
     const {
       tool_name,
       tool_picture,
       tool_category_id,
-      // tool_owner_id,
       tool_available,
     } = req.body;
     const editTool = await pool.query(
-      "UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_available = $4 WHERE tool_id = $5",
+      `UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_available = $4 
+      WHERE tool_id = $5 AND tool_owner_id= $6`,
       [
         tool_name,
         tool_picture,
         tool_category_id,
-        // tool_owner_id,
         tool_available,
         id,
+        tool_owner_id
       ]
     );
     res.json("Tool has been updated"); // res.send is more accurate or res.end
@@ -147,6 +163,7 @@ app.put("/tools/edit/:id", async (req, res) => {
     console.error(err.message);
   }
 });
+
 
 
 app.put('/categories/edit/:id', async (req, res) => {
@@ -234,7 +251,7 @@ app.get("/search", async (req, res) => {
       tool_picture, 
       tool_available, 
       category_name, 
-      user_name 
+      user_name,
       FROM tools 
       JOIN categories 
       ON categories.category_id = tool_category_id 
@@ -275,12 +292,64 @@ app.get("/search_all", async (req, res) => {
       ON categories.category_id = tool_category_id 
       JOIN users 
     ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 ORDER BY tool_name`, [`%${searchInput.toLowerCase()}%`]);
-
     res.json(tools.rows)
   } catch (err) {
     console.error(err.message)
   }
 })
 
+//items per user
+app.get("/user_items", async (req, res) => {
+  try {
+    const toolsPerUser = await pool.query(
+      `select tool_name, tool_id, tool_available, tool_picture, category_name, user_id
+      from tools 
+      join categories on categories.category_id = tools.tool_category_id 
+      join users on users.user_id = tools.tool_owner_id 
+      where users.user_id = $1;`, [1]);
+    res.json(toolsPerUser.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})
 
 
+//Search categories at SearchbarCategories component (Searchbar at http://localhost:3000/admin/categories)
+app.get("/admin/categories/search", async (req, res) => {
+  try {
+    const { searchInput } = req.query;
+
+    console.log("req.query", req.query);
+     
+    const categories = await pool.query(
+      `SELECT category_name 
+      FROM categories 
+      WHERE LOWER(category_name) 
+      LIKE $1 
+      ORDER BY category_name`, [`%${searchInput.toLowerCase()}%`]);
+
+    res.json(categories.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+//Search groups at SearchbarGroups component (Searchbar at http://localhost:3000/groups)
+app.get("/groups/search", async (req, res) => {
+  try {
+    const { searchInput } = req.query;
+
+    console.log("req.query", req.query);
+     
+    const groups = await pool.query(
+      `SELECT group_name, group_description, group_icon 
+      FROM groups 
+      WHERE LOWER(group_name) 
+      LIKE $1 
+      ORDER BY group_name`, [`%${searchInput.toLowerCase()}%`]);
+
+    res.json(groups.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})

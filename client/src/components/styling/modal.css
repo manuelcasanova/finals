@@ -1,0 +1,91 @@
+/* This css overrides bootstraps modal */
+
+:root {
+  --color1:#cfe0e8;
+  --color2:#b7d7e8;
+  --color3: #87bdd8;
+  --color0: #daebe8;
+  --color4: #577d90;
+}
+
+.modal-dialog {
+  max-width: 1000px;
+ background-color: transparent;
+}
+
+.modal-content {
+  border-radius: 30px 30px 30px 30px;
+}
+
+.close {
+  font-size: 2em;
+}
+
+.modal-header {
+  
+  display: flex;
+  flex-direction: row-reverse;
+  background-color:var(--color3);
+  padding: 16px;
+  border-radius: 30px 30px 0px 0px;
+}
+
+.modal-title {
+  font-size: 2em;
+}
+
+.modal-body {
+  background-color:var(--color2);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0px 0px 30px 30px;
+}
+
+.add_tool_title {
+font-size: 1.5em;
+}
+
+.form-control-add {
+height: 100px;
+font-size: 1em;
+background-color:var(--color0);
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.level_input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.modal-footer {
+ 
+  background-color:var(--color2);
+  padding: 30px;
+  
+}
+
+.button-close {
+  background-color:var(--color3); 
+  border-radius: 10px;
+  padding: 5px;
+  
+  height: 80px;
+}
+
+.button-close:hover {
+  background-color:var(--color4);
+}
+
+.button-submit {
+  background-color:var(--color3); 
+  border-radius: 10px;
+  height: 80px;
+  font-size: 1.2em;
+  border: none;
+}
+
+.button-submit:hover {
+  background-color:var(--color4);
+}

@@ -1,5 +1,5 @@
 export default function Footer () {
   return (
-    <div className="footer">Footer</div>
+    <div className="footer">©2022 Tool Swap</div>
   )
 }

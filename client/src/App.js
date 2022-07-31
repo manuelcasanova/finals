@@ -13,12 +13,15 @@ import Pagination from './components/Pagination';
 import Footer from './components/Footer';
 import Categories from './components/Categories';
 import OneToolView from './components/OneToolView';
+import OneGroupView from './components/OneGroupView';
 import ShowAllTools from './components/ShowAllTools';
 import Groups from './components/Groups';
 import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
+import SearchbarCategories from './components/SearchbarCategories';
+import SearchbarGroups from './components/SearchbarGroups';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -32,6 +35,7 @@ function App() {
 
   const [tools, setTools] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [groups, setGroups] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
@@ -47,6 +51,13 @@ function App() {
       })
   }, [])
 
+  useEffect(() => {
+    axios.get(`http://localhost:8001/groups`)
+      .then(function (res) {
+        setGroups([...res.data])
+      })
+  }, [])
+
   return (
     <UserContext.Provider value={{ user, setUser, admin, setAdmin }}>
       <Router>
@@ -55,44 +66,93 @@ function App() {
 Components inside <Routes></Routes>   render only in those routes.
 */}
 
-        <Authentication />
-        <Navbar user={user} admin={admin}/>
-        <Searchbar setTools={setTools} categories={categories}/>
+          <Authentication />
+          <Navbar user={user} admin={admin} />
+
 
 
           <Routes>
 
             <Route path="/" element={<>
+              <Searchbar setTools={setTools} categories={categories} />
               <Filter />
-              <ShowAllTools tools={tools} />
+              <ShowAllTools tools={tools} setTools={setTools} />
+              <Pagination />
             </>
             } />
 
             <Route element={<ProtectedRoutes />}>
 
-              <Route path="/user/items" element={<ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />} />
+              <Route path="/user/items" element=
+                {
+                  <>
+                    <Searchbar setTools={setTools} categories={categories} />
+                    <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
+                    <Pagination />
+                  </>
+
+
+                } />
               <Route path="/profile" element={<Profile />} />
 
             </Route>
 
 
-            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} />} />
+            <Route path="/inventory/:toolIdParam" element={
+              <>
+                <Searchbar setTools={setTools} categories={categories} />
+                <OneToolView tools={tools} user={user} admin={admin} />
+              </>
+            } />
 
-            <Route path="/groups" element={<Groups />} />
+            <Route path="/groups/:groupIdParam" element={
+              <>
+                <SearchbarGroups setGroups={setGroups} />
+                <OneGroupView groups={groups} user={user} admin={admin} />
+              </>
+            } />
+
+
+
+
+            <Route path="/groups" element={
+              <>
+                <SearchbarGroups setGroups={setGroups} />
+                <Groups groups={groups} setGroups={setGroups} />
+                <Pagination />
+              </>
+
+            } />
             <Route path="/aboutus" element={<AboutUs />} />
-            
+
 
 
             <Route element={<ProtectedRoutesAdmin />}>
-              <Route path="/admin/categories" element={<Categories categories={categories} setCategories={setCategories} />} />
-              <Route path="/admin/users" element={<ShowUsers />} />
-              <Route path="/admin/tools" element={<AdminCRUDTools />} />
+              <Route path="/admin/categories" element={
+                <>
+                  <SearchbarCategories setCategories={setCategories} />
+                  <Categories categories={categories} setCategories={setCategories} />
+                  <Pagination />
+                </>
+              } />
+              <Route path="/admin/users" element={
+                <>
+                  <ShowUsers />
+                  <Pagination />
+                </>
+              } />
+              <Route path="/admin/tools" element={
+                <>
+                  <AdminCRUDTools />
+                  <Pagination />
+                </>
+              } />
             </Route>
           </Routes>
 
 
 
-          <Pagination />
+
           <Footer />
         </div>
       </Router>

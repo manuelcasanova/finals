@@ -29,10 +29,10 @@ function resetForm() {
 
   return (
 
-    <div>
+    <div className="add-tool-button-div">
       {/* <!-- Button trigger modal --> */}
       <button type="button"
-        className="button_add" data-toggle="modal" data-target={`#newcategorymodal${categories.category_id}`}>Add category
+        className="button-add" data-toggle="modal" data-target={`#newcategorymodal${categories.category_id}`}>Add category
       </button>
 
       {/* <!-- Modal --> */}
@@ -40,28 +40,29 @@ function resetForm() {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Add a new category</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
+              <h5 className="modal-title" id="exampleModalLabel">Add a new category</h5>
+              
             </div>
 
             <div className="modal-body">
 
               <label className="add_tool_title" htmlFor="title">Name</label>
-              <input className="form-control"
+              <input className="form-control-add"
                 type="text"
                 name="title"
                 value={category_name}
                 onChange={e => setCategoryName(e.target.value)} />
-              <p></p>
+             
 
   
 
               <div className="modal-footer">
-                <button type="button" className="button_close" data-dismiss="modal">Close</button>
+                {/* <button type="button" className="button_close" data-dismiss="modal">Close</button> */}
                 <button
-                  className="button_submit"
+                  className="button-submit"
                   type="Submit"
                   data-dismiss="modal"
                   onClick={onSubmitForm}

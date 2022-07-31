@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-
+import './styling/modal.css'
 
 export default function AddTool(props) {
   const { tools, categories, setTools } = props;
@@ -8,7 +8,7 @@ export default function AddTool(props) {
   const [tool_name, setToolName] = useState("");
   const [tool_description, setToolDescription] = useState("");
   const [tool_picture, setToolPicture] = useState("");
-  const [tool_category_id, setToolCategory] = useState(1);
+  const [tool_category_id, setToolCategory] = useState("");
   const [tool_owner_id, setToolOwnerId] = useState('1');
   const [tool_available, setTooAvailibilty] = useState(true);
 
@@ -69,48 +69,49 @@ export default function AddTool(props) {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">Add a new tool</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
+              <h5 className="modal-title" id="exampleModalLabel">Add a new item</h5>
+              
             </div>
 
             <div className="modal-body">
 
               <label className="add_tool_title" htmlFor="title">Name</label>
-              <input className="form-control"
+              <input className="form-control-add"
                 type="text"
                 name="title"
                 value={tool_name}
                 onChange={e => setToolName(e.target.value)} />
-              <p></p>
+              
 
               <label className="add_tool_title" htmlFor="title">Description</label>
-              <input className="form-control" type="text" name="title"
+              <input className="form-control-add" type="text" name="title"
                 value={tool_description}
                 onChange={e => setToolDescription(e.target.value)}
               />
-              <p></p>
+              
 
               {/* <label className="add_tool_title" htmlFor="title">Owner</label>
-              <input className="form-control"
+              <input className="form-control-add"
                 type="text"
                 name="title"
                 value={tool_owner_id}
                 onChange={e => setToolOwnerId(e.target.value)}
               />
-              <p></p> */}
+               */}
 
               <label className="add_tool_title" htmlFor="title">Picture</label>
-              <input className="form-control" type="text" name="title"
+              <input className="form-control-add" type="text" name="title"
                 value={tool_picture}
                 onChange={e => setToolPicture(e.target.value)}
               />
-              <p></p>
+              
 
               <div className="level_input">
                 <label className="add_tool_title" htmlFor="title">Category</label>
-                <select className="form-control"
+                <select className="form-control-add"
                   value={tool_category_id}
                   onChange={e => setToolCategory(e.target.value)}>
 
@@ -126,7 +127,7 @@ export default function AddTool(props) {
 
               <div className="level_input">
                 <label className="add_tool_title" htmlFor="title">Availibilty</label>
-                <select className="form-control"
+                <select className="form-control-add"
                   value={tool_available}
                   onChange={e => setTooAvailibilty(e.target.value)}
                 >
@@ -134,13 +135,13 @@ export default function AddTool(props) {
               </div>
 
               <div className="modal-footer">
-                <button type="button" className="button_close" data-dismiss="modal">Close</button>
+                {/* <button type="button" className="button-close" data-dismiss="modal">Close</button> */}
                 <button
-                  className="button_submit"
+                  className="button-submit"
                   type="Submit"
                   data-dismiss="modal"
                   onClick={onSubmitForm}
-                >Add a tool</button>
+                >Add item</button>
               </div>
 
 

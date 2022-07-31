@@ -16,30 +16,31 @@ function deleteCategory(id) {
 //   .then(res => {
 //     setCategories
 //   })
-// }
+// }  
 
 
   return (
-    <div className="show-categories">categories
+    <div className="show-categories">
+       <div className="show-title">Categories</div>
 <AddCategory categories={categories} setCategories={setCategories}/>
       <table className="categories-table">
 
         <thead>
           <tr>
-            <th>ID</th>
+            {/* <th>ID</th> */}
             <th>Name</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th></th>
+            <th></th>
 
           </tr>
         </thead>
         <tbody>
           {categories.map(category =>
             <tr key={category.category_id}>
-              <td>{category.category_id}</td>
+              {/* <td>{category.category_id}</td> */}
               <td>{category.category_name}</td>
               <td><EditCategory category={category} categories={categories} setCategories={setCategories} /></td>
-              <td> <button onClick={()=> deleteCategory(category.category_id)}>Delete </button> </td>
+              <td> <button className="button-delete"  onClick={()=> deleteCategory(category.category_id)}>Delete </button> </td>
 
             </tr>)}
         </tbody>

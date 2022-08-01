@@ -21,6 +21,7 @@ export default function ShowTools({ tools, setTools, categories }) {
         setTools(tools.filter((tool) => tool.tool_id !== id));
       });
   }
+
   return (
     <div className="show-tools">
       <div className="show-title">My items</div>
@@ -64,11 +65,10 @@ export default function ShowTools({ tools, setTools, categories }) {
                 {/* <td>{tool.tool_owner_id}</td> */}
 
                 {/* <td>{tool.tool_description}</td> */}
-                {/* <td>{tool.tool_available}</td> */}
                 <td>
-                  <input type="checkbox"></input>
-                  <label>Availiable</label>
-                  {/* <label>Availiable<input></input></label> */}
+                  { tool.tool_available ?
+                  <label>Available</label> : <label>Unvailable</label>
+                  }
                 </td>
                 <td>
                   <EditTool

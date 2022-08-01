@@ -58,7 +58,7 @@ app.get("/users", async (req, res) => {
 app.get("/categories", async (req, res) => {
   try {
     console.log(req);
-    const getAllCategories = await pool.query(`SELECT * FROM categories`);
+    const getAllCategories = await pool.query(`SELECT * FROM categories ORDER BY category_id`);
     res.json(getAllCategories.rows);
   } catch (err) {
     console.error(err.message);
@@ -168,9 +168,9 @@ app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
 
 app.put('/categories/edit/:id', async (req, res) => {
   try{
-    console.log("Put in Server")
+    // console.log("Put in Server")
     const {id} = req.params
-    console.log("Content of ID: ", id)
+    // console.log("Content of ID: ", id)
     const {
       category_name
     } = req.body;
@@ -178,7 +178,7 @@ app.put('/categories/edit/:id', async (req, res) => {
       "UPDATE categories SET category_name = $1 WHERE category_id = $2 RETURNING *",
       [category_name, Number(id)]
     )
-    console.log("Edit Category: ", editCategory)
+    // console.log("Edit Category: ", editCategory)
     // have to end with a response method .send, .end, .json ...
     res.end()
   } catch (err) {

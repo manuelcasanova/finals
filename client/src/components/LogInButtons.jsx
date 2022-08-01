@@ -10,15 +10,15 @@ const LogInButtons = ({buttonText, userId, user, setUser, admin, setAdmin}) => {
 
   const [cookie, updateCookie, deleteCookie] = useCookie("user", undefined);
 
-  useEffect(() => {
-    if (cookie !== undefined) {
-      setUser({loggedIn: true})
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (cookie !== undefined) {
+  //     setUser({loggedIn: true})
+  //   }
+  // }, []);
 
   const logInSetCookie = function() {
     setUser({ loggedIn: true });
-    updateCookie(userId, 1)
+    // updateCookie(userId, 1)
   }
 
   const logoutRemoveCookie = function () {

@@ -214,7 +214,7 @@ app.delete("/categories/delete/:id", async (req, res) => {
 //delete a category /categories/delete/:id
 //edit a cat. /categories/edit/:id
 
-//query parameter route url/?name=henry = req.query
+//search bar per category
 app.get("/search", async (req, res) => {
   try {
     const { searchInput, searchCategory } = req.query;
@@ -299,6 +299,28 @@ app.get("/user_items", async (req, res) => {
     console.error(err.message)
   }
 })
+
+//search bar for user_items
+app.get("/search_user_items", async (req, res) => {
+  try {
+    const {searchInput, searchCategory} = req.query;
+    const userTools = await pool.query(
+      `select
+      tool_id,
+      tool_name,
+      tool_description,
+      tool_category_id,
+      tool_owner_id,
+      tool_picture
+      from tools
+      where tool_owner_id = 1;`);
+      res.json(userTools.rows)
+    } catch (err) {
+      console.error(err.message)
+    }
+});
+
+
 
 
 

@@ -16,7 +16,7 @@ function deleteCategory(id) {
 //   .then(res => {
 //     setCategories
 //   })
-// }
+// }  
 
 
   return (

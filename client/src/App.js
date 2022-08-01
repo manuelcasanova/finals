@@ -13,6 +13,7 @@ import Pagination from './components/Pagination';
 import Footer from './components/Footer';
 import Categories from './components/Categories';
 import OneToolView from './components/OneToolView';
+import OneGroupView from './components/OneGroupView';
 import ShowAllTools from './components/ShowAllTools';
 import Groups from './components/Groups';
 import AboutUs from './components/AboutUs';
@@ -20,6 +21,8 @@ import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
 import UserItemsSearch from './components/UserItemsSearch';
+import SearchbarCategories from './components/SearchbarCategories';
+import SearchbarGroups from './components/SearchbarGroups';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -33,6 +36,7 @@ function App() {
 
   const [tools, setTools] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [groups, setGroups] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
@@ -45,6 +49,13 @@ function App() {
     axios.get(`http://localhost:8001/categories`)
       .then(function (res) {
         setCategories([...res.data])
+      })
+  }, [])
+
+  useEffect(() => {
+    axios.get(`http://localhost:8001/groups`)
+      .then(function (res) {
+        setGroups([...res.data])
       })
   }, [])
 
@@ -64,8 +75,9 @@ Components inside <Routes></Routes>   render only in those routes.
           <Routes>
 
             <Route path="/" element={<>
+              <Searchbar setTools={setTools} categories={categories} />
               <Filter />
-              <ShowAllTools tools={tools} setTools={setTools}/>
+              <ShowAllTools tools={tools} setTools={setTools} />
               <Pagination />
             </>
             } />
@@ -87,11 +99,27 @@ Components inside <Routes></Routes>   render only in those routes.
             </Route>
 
 
-            <Route path="/inventory/:toolIdParam" element={<OneToolView tools={tools} user={user} admin={admin} />} />
+            <Route path="/inventory/:toolIdParam" element={
+              <>
+                <Searchbar setTools={setTools} categories={categories} />
+                <OneToolView tools={tools} user={user} admin={admin} />
+              </>
+            } />
+
+            <Route path="/groups/:groupIdParam" element={
+              <>
+                <SearchbarGroups setGroups={setGroups} />
+                <OneGroupView groups={groups} user={user} admin={admin} />
+              </>
+            } />
+
+
+
 
             <Route path="/groups" element={
               <>
-                <Groups />
+                <SearchbarGroups setGroups={setGroups} />
+                <Groups groups={groups} setGroups={setGroups} />
                 <Pagination />
               </>
 
@@ -103,21 +131,22 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route element={<ProtectedRoutesAdmin />}>
               <Route path="/admin/categories" element={
                 <>
-              <Categories categories={categories} setCategories={setCategories} />
-              <Pagination />
-              </>
+                  <SearchbarCategories setCategories={setCategories} />
+                  <Categories categories={categories} setCategories={setCategories} />
+                  <Pagination />
+                </>
               } />
               <Route path="/admin/users" element={
                 <>
-              <ShowUsers />
-              <Pagination />
-              </>
+                  <ShowUsers />
+                  <Pagination />
+                </>
               } />
               <Route path="/admin/tools" element={
                 <>
-              <AdminCRUDTools />
-              <Pagination />
-              </>
+                  <AdminCRUDTools />
+                  <Pagination />
+                </>
               } />
             </Route>
           </Routes>

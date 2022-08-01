@@ -8,7 +8,7 @@ export default function AddTool(props) {
   const [tool_name, setToolName] = useState("");
   const [tool_description, setToolDescription] = useState("");
   const [tool_picture, setToolPicture] = useState("");
-  const [tool_category_id, setToolCategory] = useState(1);
+  const [tool_category_id, setToolCategory] = useState("");
   const [tool_owner_id, setToolOwnerId] = useState('1');
   const [tool_available, setTooAvailibilty] = useState(true);
 

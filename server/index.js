@@ -29,7 +29,8 @@ app.get("/tools", async (req, res) => {
       tool_picture, 
       tool_available, 
       category_name, 
-      user_name 
+      user_name,
+      user_email 
       FROM tools 
       JOIN categories 
       ON categories.category_id = tools.tool_category_id 
@@ -57,12 +58,24 @@ app.get("/users", async (req, res) => {
 app.get("/categories", async (req, res) => {
   try {
     console.log(req);
-    const getAllCategories = await pool.query(`SELECT * FROM categories`);
+    const getAllCategories = await pool.query(`SELECT * FROM categories ORDER BY category_id`);
     res.json(getAllCategories.rows);
   } catch (err) {
     console.error(err.message);
   }
 });
+
+//list groups
+app.get("/groups", async (req, res) => {
+  try {
+    console.log(req);
+    const getAllGroups = await pool.query(`SELECT * FROM groups`);
+    res.json(getAllGroups.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 
 //delete a tool
 app.delete("/tools/delete/:id", async (req, res) => {
@@ -155,9 +168,9 @@ app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
 
 app.put('/categories/edit/:id', async (req, res) => {
   try{
-    console.log("Put in Server")
+    // console.log("Put in Server")
     const {id} = req.params
-    console.log("Content of ID: ", id)
+    // console.log("Content of ID: ", id)
     const {
       category_name
     } = req.body;
@@ -165,7 +178,7 @@ app.put('/categories/edit/:id', async (req, res) => {
       "UPDATE categories SET category_name = $1 WHERE category_id = $2 RETURNING *",
       [category_name, Number(id)]
     )
-    console.log("Edit Category: ", editCategory)
+    // console.log("Edit Category: ", editCategory)
     // have to end with a response method .send, .end, .json ...
     res.end()
   } catch (err) {
@@ -238,7 +251,7 @@ app.get("/search", async (req, res) => {
       tool_picture, 
       tool_available, 
       category_name, 
-      user_name 
+      user_name,
       FROM tools 
       JOIN categories 
       ON categories.category_id = tool_category_id 
@@ -336,4 +349,42 @@ app.get("/search_user_items", async (req, res) => {
   }
 })
 
+//Search categories at SearchbarCategories component (Searchbar at http://localhost:3000/admin/categories)
+app.get("/admin/categories/search", async (req, res) => {
+  try {
+    const { searchInput } = req.query;
 
+    console.log("req.query", req.query);
+     
+    const categories = await pool.query(
+      `SELECT category_name 
+      FROM categories 
+      WHERE LOWER(category_name) 
+      LIKE $1 
+      ORDER BY category_name`, [`%${searchInput.toLowerCase()}%`]);
+
+    res.json(categories.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+//Search groups at SearchbarGroups component (Searchbar at http://localhost:3000/groups)
+app.get("/groups/search", async (req, res) => {
+  try {
+    const { searchInput } = req.query;
+
+    console.log("req.query", req.query);
+     
+    const groups = await pool.query(
+      `SELECT group_name, group_description, group_icon 
+      FROM groups 
+      WHERE LOWER(group_name) 
+      LIKE $1 
+      ORDER BY group_name`, [`%${searchInput.toLowerCase()}%`]);
+
+    res.json(groups.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})

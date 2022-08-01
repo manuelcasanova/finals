@@ -22,6 +22,7 @@ import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
 import SearchbarCategories from './components/SearchbarCategories';
 import SearchbarGroups from './components/SearchbarGroups';
+import UserItemsSearchBar from './components/ItemsSearchBar';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -86,7 +87,8 @@ Components inside <Routes></Routes>   render only in those routes.
               <Route path="/user/items" element=
                 {
                   <>
-                    <Searchbar setTools={setTools} categories={categories} />
+                    {/* <Searchbar setTools={setTools} categories={categories} /> */}
+                    <UserItemsSearchBar setTools={setTools} categories={categories} setUser={setUser}/>
                     <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
                     <Pagination />
                   </>

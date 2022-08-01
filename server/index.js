@@ -308,7 +308,7 @@ app.get("/user_items", async (req, res) => {
       from tools 
       join categories on categories.category_id = tools.tool_category_id 
       join users on users.user_id = tools.tool_owner_id 
-      where users.user_id = $1;`, [1]);
+      where users.user_id = $1 ORDER BY tool_id;`, [1]);
     res.json(toolsPerUser.rows)
   } catch (err) {
     console.error(err.message)

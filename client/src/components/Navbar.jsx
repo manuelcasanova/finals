@@ -1,15 +1,30 @@
 import './styling/navbar.css'
 import { useNavigate } from "react-router-dom"
+import axios from 'axios';
 
-export default function Navbar({user, admin}) {
+export default function Navbar({user, admin, setTools}) {
 
   const navigate = useNavigate();
+
+  function handleMyItems() {
+      axios.get(`http://localhost:8001/user_items`).then(function (res) {
+        setTools([...res.data]);
+      });
+      navigate(`/user/items`)
+  }
+
+  function allItems() {
+    axios.get(`http://localhost:8001/tools`).then(function (res) {
+        setTools([...res.data]);
+      });
+      navigate(`/`)
+  }
 
   return (
     <div className="navbar">
       <div className="navbar-left">
         <div className="navbar-button">
-        <a onClick={() => {navigate(`/`)}}>Inventory</a>
+        <a onClick={allItems}>Inventory</a>
         </div>
         
         <div className="navbar-button">
@@ -25,7 +40,7 @@ export default function Navbar({user, admin}) {
           <a className={!user.loggedIn ? "dropbtn-user-hide" : "dropbtn-user"}>
             My account</a>
           <div className="navbar-dropdown-content">
-          <a onClick={() => {navigate(`/user/items`)}}>My items</a>
+          <a onClick={handleMyItems}>My items</a>
           <a onClick={() => {navigate(`/profile`)}}>Profile</a>
           </div>
         </div>

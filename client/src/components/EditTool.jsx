@@ -148,7 +148,10 @@ export default function EditTool(props) {
                   className="form-control-add"
                   value={tool_available}
                   onChange={(e) => setTooAvailibilty(e.target.value)}
-                ></select>
+                >
+                  <option value={true}>Available</option>
+                  <option value={false}>Unavailable</option>
+                </select>
               </div>
 
               <div className="modal-footer">

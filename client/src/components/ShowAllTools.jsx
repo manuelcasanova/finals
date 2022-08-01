@@ -39,7 +39,9 @@ export default function ShowAllTools({ tools, setTools }) {
                 }}
               >{tool.tool_name}</td>
               <td>{tool.category_name}</td>
-              <td>{tool.tool_available}</td>
+              <td>{ tool.tool_available ?
+                  <label>Available</label> : <label>Unavailable</label>
+                  }</td>
 
             </tr>)}
             {tools.length == 0 && (<div>No tools found</div>)}

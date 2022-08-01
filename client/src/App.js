@@ -19,6 +19,7 @@ import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
+import UserItemsSearch from './components/UserItemsSearch';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -56,7 +57,7 @@ Components inside <Routes></Routes>   render only in those routes.
 */}
 
           <Authentication />
-          <Navbar user={user} admin={admin} />
+          <Navbar user={user} admin={admin} setTools={setTools} />
           <Searchbar setTools={setTools} categories={categories} />
 
 
@@ -74,6 +75,7 @@ Components inside <Routes></Routes>   render only in those routes.
               <Route path="/user/items" element=
                 {
                   <>
+                    <UserItemsSearch setTools={setTools} categories={categories} />
                     <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
                     <Pagination />
                   </>

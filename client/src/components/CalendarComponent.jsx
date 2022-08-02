@@ -24,7 +24,7 @@ function getReservations() {
   return (
     <div className="calendar">
 
-  <Calendar onChange={onChange} date={date} />
+  <Calendar onChange={onChange} date={date} selectRange/>
           {console.log(date)}
           {/* {date.toString()} */}
 

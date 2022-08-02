@@ -391,9 +391,7 @@ app.get("/groups/search", async (req, res) => {
 
 
 
-
-
-///refactor: search for a tool and cat. name and group` in one route
+///refactor: search for a tool and cat. name and group in one route
 app.get("/searchh", async (req, res) => {
   try {
     const { searchInput, searchCategory, searchGroup } = req.query;

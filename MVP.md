@@ -67,6 +67,13 @@ reservation_end_date DATE NOT NULL
 reservation_tool_id FK (tools.tool_id)
 reservation_user_id FK (users.user_id)  --> This refers to the borrower.
 
+Notes: A tool is always available unless it is reserved (no need for availability table)
 
+- Use date range
 
+- Book reservations no restrictions
+
+- Add limitations (if there s a reserv, for example)
+
+- use effect display calendar with booked days blocked
 

@@ -228,75 +228,75 @@ app.delete("/categories/delete/:id", async (req, res) => {
 //edit a cat. /categories/edit/:id
 
 //query parameter route url/?name=henry = req.query
-app.get("/search", async (req, res) => {
-  try {
-    const { searchInput, searchCategory } = req.query;
-    console.log("req", req)
-    // const tools = await pool.query(
-    //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2", [`%${searchInput.toLowerCase()}%`, searchCategory ]
-    // )
+// app.get("/search", async (req, res) => {
+//   try {
+//     const { searchInput, searchCategory } = req.query;
+//     console.log("req", req)
+//     // const tools = await pool.query(
+//     //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2", [`%${searchInput.toLowerCase()}%`, searchCategory ]
+//     // )
   
-    // const tools = await pool.query(
-    //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 || LOWER(tool_description) LIKE $1", [`%${searchInput.toLowerCase()}%`]
-    // )
-    console.log(req.query);
+//     // const tools = await pool.query(
+//     //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 || LOWER(tool_description) LIKE $1", [`%${searchInput.toLowerCase()}%`]
+//     // )
+//     console.log(req.query);
      
-    const tools = await pool.query(
-      `SELECT 
-      tool_id, 
-      tool_name,
-      tool_description, 
-      tool_category_id, 
-      tool_owner_id, 
-      tool_picture, 
-      tool_available, 
-      category_name, 
-      user_name
-      FROM tools 
-      JOIN categories 
-      ON categories.category_id = tool_category_id 
-      JOIN users 
-    ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2 ORDER BY tool_name`, [`%${searchInput.toLowerCase()}%`, searchCategory]);
+//     const tools = await pool.query(
+//       `SELECT 
+//       tool_id, 
+//       tool_name,
+//       tool_description, 
+//       tool_category_id, 
+//       tool_owner_id, 
+//       tool_picture, 
+//       tool_available, 
+//       category_name, 
+//       user_name
+//       FROM tools 
+//       JOIN categories 
+//       ON categories.category_id = tool_category_id 
+//       JOIN users 
+//     ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2 ORDER BY tool_name`, [`%${searchInput.toLowerCase()}%`, searchCategory]);
 
 
-    // const formattedInput = searchInput.replace(" ", "|");
-    // console.log(formattedInput)
-    // const tools = await pool.query(
-    //   "SELECT * from tools WHERE to_tsvector(tool_description) @@ to_tsquery($1) OR to_tsvector(tool_name) @@ to_tsquery($1)", [formattedInput]
-    // )
+//     // const formattedInput = searchInput.replace(" ", "|");
+//     // console.log(formattedInput)
+//     // const tools = await pool.query(
+//     //   "SELECT * from tools WHERE to_tsvector(tool_description) @@ to_tsquery($1) OR to_tsvector(tool_name) @@ to_tsquery($1)", [formattedInput]
+//     // )
 
-    res.json(tools.rows)
-  } catch (err) {
-    console.error(err.message)
-  }
-})
+//     res.json(tools.rows)
+//   } catch (err) {
+//     console.error(err.message)
+//   }
+// })
 
 
 //search for all categories
-app.get("/search_all", async (req, res) => {
-  try {
-    const { searchInput, searchCategory } = req.query;
-    const tools = await pool.query(
-      `SELECT 
-      tool_id, 
-      tool_name,
-      tool_description, 
-      tool_category_id, 
-      tool_owner_id, 
-      tool_picture, 
-      tool_available, 
-      category_name, 
-      user_name 
-      FROM tools 
-      JOIN categories 
-      ON categories.category_id = tool_category_id 
-      JOIN users 
-    ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 ORDER BY tool_name`, [`%${searchInput.toLowerCase()}%`]);
-    res.json(tools.rows)
-  } catch (err) {
-    console.error(err.message)
-  }
-})
+// app.get("/search_all", async (req, res) => {
+//   try {
+//     const { searchInput, searchCategory } = req.query;
+//     const tools = await pool.query(
+//       `SELECT 
+//       tool_id, 
+//       tool_name,
+//       tool_description, 
+//       tool_category_id, 
+//       tool_owner_id, 
+//       tool_picture, 
+//       tool_available, 
+//       category_name, 
+//       user_name 
+//       FROM tools 
+//       JOIN categories 
+//       ON categories.category_id = tool_category_id 
+//       JOIN users 
+//     ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 ORDER BY tool_name`, [`%${searchInput.toLowerCase()}%`]);
+//     res.json(tools.rows)
+//   } catch (err) {
+//     console.error(err.message)
+//   }
+// })
 
 
 
@@ -384,6 +384,54 @@ app.get("/groups/search", async (req, res) => {
       ORDER BY group_name`, [`%${searchInput.toLowerCase()}%`]);
 
     res.json(groups.rows)
+  } catch (err) {
+    console.error(err.message)
+  }
+})
+
+
+
+///refactor: search for a tool and cat. name and group in one route
+app.get("/searchh", async (req, res) => {
+  try {
+    const { searchInput, searchCategory, searchGroup } = req.query;
+    console.log("req", req)
+     const paramaters = [`%${searchInput.toLowerCase()}%`]
+     let searchCategoryWhereString = '';
+     let searchGroupWhereString = '';
+    if (searchCategory) {
+      paramaters.push(searchCategory)
+      searchCategoryWhereString = `AND tool_category_id = ${paramaters.length == 2 ? "$2" : ""}`;
+    }
+      
+    if (searchGroup) {
+      paramaters.push(searchGroup)
+      searchGroupWhereString = `AND tool_group_id = ${paramaters.length == 2 ? "$2" : "$3"}`;
+    }
+
+    
+    const tools = await pool.query(
+      `SELECT 
+      tool_id, 
+      tool_name,
+      tool_description, 
+      tool_category_id, 
+      tool_owner_id, 
+      tool_picture, 
+      tool_available, 
+      category_name, 
+      user_name,
+      group_id,
+      group_name
+      FROM tools 
+      JOIN categories 
+      ON categories.category_id = tool_category_id 
+      JOIN users 
+    ON users.user_id = tools.tool_owner_id
+    JOIN groups
+    ON tools.tool_group_id = groups.group_id
+    WHERE LOWER(tool_name) LIKE $1 ${searchCategory !== undefined ? searchCategoryWhereString : ""} ${searchGroup !== undefined ? searchGroupWhereString : ""}`, paramaters);
+    res.json(tools.rows)
   } catch (err) {
     console.error(err.message)
   }

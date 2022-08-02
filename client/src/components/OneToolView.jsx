@@ -34,7 +34,7 @@ export default function OneToolView({ tools, user, admin }) {
 
       <div className="one-item-container">
         <div className="one-item-picture-and-book-button">
-          <div className="one-item-picture"><img src={tools[position].tool_picture} /></div>
+          <div className="one-item-picture"><img class="one-tool" src={tools[position].tool_picture} /></div>
           <BookTool user={user} admin={admin} tools={tools} toolIdParam={toolIdParam} />
         </div>
 

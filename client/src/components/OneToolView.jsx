@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import AdminCRUDTools from "./AdminCRUDTools";
 import LogInAdminButtons from "./LogInAdminButtons";
 import BookTool from "./BookTool";
+import CalendarComponent from "./CalendarComponent"
 
 export default function OneToolView({ tools, user, admin }) {
 
@@ -10,6 +11,8 @@ export default function OneToolView({ tools, user, admin }) {
 
   const [position, setPosition] = useState(2)
   const [user_email, setUserEmail] = useState("")
+
+
 
 
   //Two key things happening here. A new method for me, .findIndex Returns the first index of the array that matches the testing function. And toolIdParam was a string example: "1", so I had to change it to number
@@ -65,6 +68,7 @@ export default function OneToolView({ tools, user, admin }) {
                 Log in to see owner email</td>
             </tr>
           </table>
+          <CalendarComponent/>
         </div>
       </div>
     )

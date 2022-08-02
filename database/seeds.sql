@@ -37,3 +37,8 @@ VALUES
 (2,'Drain Auger', 5, 6, 'Cable size: 1/4" x 20ft (0.6 cm x 7.6 m)', 'https://media-www.canadiantire.ca/product/fixing/plumbing/rough-plumbing/0630884/plumbshop-drum-auger-drill-drive-1-4-x-25--cdac1f6b-9b06-4d50-8393-cf6bf3249e33.png?imwidth=1024', true),
 (3,'Pipe cutter', 5, 4, 'Cutting capacity: 1-5/8" (41 mm)', 'https://media-www.canadiantire.ca/product/fixing/plumbing/rough-plumbing/0638784/mastercraft-pvc-pipe-cutter-1-5-8-max--c72c06f9-1c89-49b3-b4a1-07aaf9e4cd8a.png?imwidth=1024', true), 
 (3,'Multibit Screwdriver', 1, 4, 'Seven bits','https://myturn-prod-images-out.s3.amazonaws.com/9/129/item/17248/image/attribute_image6932539369190600751-1024x768.jpg', true);
+
+INSERT INTO reservations (reservation_start_date, reservation_tool_id, reservation_user_id)
+VALUES
+('2022-08-02', 1, 1)
+

@@ -436,3 +436,17 @@ app.get("/searchh", async (req, res) => {
     console.error(err.message)
   }
 })
+//get reservations for item (hardcoded item 1)
+
+app.get("/reservations", async (req, res) => {
+  try {
+    console.log(req);
+    const getReservations = await pool.query(
+      `SELECT * from reservations where tool_id = 1
+     `
+    );
+    res.json(getReservations.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});

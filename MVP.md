@@ -60,5 +60,13 @@ tool_picture
 tool_available BOOLEAN
 tool_group_id FK 
 
+# reservations
+reservation_id PRIMARY KEY NOT NULL
+reservation_start_date DATE NOT NULL
+reservation_end_date DATE NOT NULL
+reservation_tool_id FK (tools.tool_id)
+reservation_user_id FK (users.user_id)  --> This refers to the borrower.
+
+
 
 

@@ -101,7 +101,7 @@ Components inside <Routes></Routes>   render only in those routes.
 
             <Route path="/inventory/:toolIdParam" element={
               <>
-                <Searchbar setTools={setTools} categories={categories} />
+                <Searchbar setTools={setTools} categories={categories} groups={groups}/>
                 <OneToolView tools={tools} user={user} admin={admin} />
               </>
             } />

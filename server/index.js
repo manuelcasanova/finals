@@ -389,6 +389,25 @@ app.get("/groups/search", async (req, res) => {
   }
 })
 
+//get one reservations
+
+app.get("/reservations/:id", async (req, res) => {
+  try {
+
+    const { id } = req.params;
+
+    console.log("req", req.body);
+    const getReservation = await pool.query(
+      `SELECT * FROM reservations WHERE reservation_id = $1`, [id]
+    );
+    res.json(getReservation.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+
 
 
 ///refactor: search for a tool and cat. name and group in one route
@@ -438,14 +457,36 @@ app.get("/searchh", async (req, res) => {
 })
 //get reservations for item (hardcoded item 1)
 
-app.get("/reservations", async (req, res) => {
+// app.get("/reservations", async (req, res) => {
+//   try {
+//     console.log(req);
+//     const getReservations = await pool.query(
+//       `SELECT * from reservations where tool_id = 1
+//      `
+//     );
+//     res.json(getReservations.rows);
+//   } catch (err) {
+//     console.error(err.message);
+//   }
+// });
+
+
+//Add a reservation
+
+app.post("/reservations", async (req, res) => {
   try {
-    console.log(req);
-    const getReservations = await pool.query(
-      `SELECT * from reservations where tool_id = 1
-     `
+    const {
+      reservation_start_date,
+      reservation_end_date,
+      tool_id
+    } = req.body;
+    console.log("req body before query", req.body);
+    const newReservation = await pool.query(
+      "INSERT INTO reservations (reservation_start_date, reservation_end_date, reservation_tool_id, reservation_user_id) VALUES($1, $2, $3, $4) RETURNING *",
+      [reservation_start_date, reservation_end_date, tool_id, '1']
     );
-    res.json(getReservations.rows);
+    console.log("new reservation after query", newReservation.data);
+    res.json(newReservation.rows[0]);
   } catch (err) {
     console.error(err.message);
   }

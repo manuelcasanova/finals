@@ -1,35 +1,80 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CalendarComponent() {
-  
-  const [date, setDate] = useState(new Date())
-  
+export default function CalendarComponent({ toolIdParam }) {
 
-function getReservations() {
-  return axios.get(`http://localhost:8001/reservations`)
-  .then((response) => {
-    setDate([...response.data])
-  })
-}
+  const [date, setDate] = useState([])
+  const [reservations, setReservations] = useState([])
+
+  useEffect(() => {
+    axios.get(`http://localhost:8001/reservations/${toolIdParam}`)
+      .then(function (response) {
+        console.log("response axios get", response)
+        setReservations([...response.data])
+      });
+  }, []);
+
+  function onSubmitForm(date) {
+
+    const reservation_start_date = date[0].toLocaleDateString("en-ca")
+    const reservation_end_date = date[1].toLocaleDateString("en-ca")
+    const tool_id = toolIdParam
+
+    console.log("start date:", reservation_start_date)
+    console.log("end date:", reservation_end_date)
+    console.log("tool id", toolIdParam)
+
+    const reservation = {
+      reservation_start_date,
+      reservation_end_date,
+      tool_id
+    }
+    createReservation(reservation)
+  }
+
+
+  function createReservation(reservation) {
+    return axios.post(`http://localhost:8001/reservations`, reservation)
+      .then((response) => {
+        console.log("response", response)
+
+
+        setReservations([...reservations, reservation])
+
+
+      })
+  }
+
 
 
   const onChange = date => {
     setDate(date);
-    // getReservations();
+    onSubmitForm(date);
   }
 
   return (
     <div className="calendar">
 
-  <Calendar onChange={onChange} date={date} />
-          {console.log(date)}
-          {/* {date.toString()} */}
+      <Calendar
+        onChange={onChange}
+        date={date}
+        selectRange
+
+      />
+      {console.log(date)}
+      {/* {date.toString()} */}
 
 
-<div>{date.toString()}</div>
+      <div>{date.toString()}</div>
+
+      {reservations.map((reservation) => (
+        <div>{reservation.reservation_start_date}</div>
+      ))
+
+
+      }
 
     </div>
   );

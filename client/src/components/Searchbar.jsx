@@ -26,7 +26,7 @@ export default function Searchbar(props) {
   function resetForm() {
     setInput("");
     setToolCategory("All categories");
-    setToolCategory("All groups");
+    setGroup("All groups");
   }
 
   return (

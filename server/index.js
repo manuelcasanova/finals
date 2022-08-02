@@ -404,3 +404,23 @@ app.get("/reservations", async (req, res) => {
     console.error(err.message);
   }
 });
+
+
+//Add a reservation
+
+app.post("/reservations", async (req, res) => {
+  try {
+    const {
+      reservation_start_date,
+      reservation_end_date
+    } = req.body;
+    console.log("req body", req.body);
+    const newReservation = await pool.query(
+      "INSERT INTO reservations (reservation_start_date, reservation_end_date, reservation_tool_id, reservation_user_id) VALUES($1, $2, $3, $4) RETURNING *",
+      [reservation_start_date, reservation_end_date, '1', '1']
+    );
+    res.json(newReservation.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});

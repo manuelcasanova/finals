@@ -412,12 +412,13 @@ app.post("/reservations", async (req, res) => {
   try {
     const {
       reservation_start_date,
-      reservation_end_date
+      reservation_end_date,
+      tool_id
     } = req.body;
     console.log("req body before query", req.body);
     const newReservation = await pool.query(
       "INSERT INTO reservations (reservation_start_date, reservation_end_date, reservation_tool_id, reservation_user_id) VALUES($1, $2, $3, $4) RETURNING *",
-      [reservation_start_date, reservation_end_date, '1', '1']
+      [reservation_start_date, reservation_end_date, tool_id, '1']
     );
     console.log("new reservation after query", newReservation.data);
     res.json(newReservation.rows[0]);

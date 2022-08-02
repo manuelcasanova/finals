@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CalendarComponent() {
+export default function CalendarComponent({toolIdParam}) {
   
   const [date, setDate] = useState([])
   
@@ -15,13 +15,16 @@ function onSubmitForm(date) {
 
 const reservation_start_date = date[0].toLocaleDateString("en-ca")
 const reservation_end_date = date[1].toLocaleDateString("en-ca")
+const tool_id = toolIdParam
 
 console.log("start date:", reservation_start_date)
 console.log("end date:", reservation_end_date)
+console.log("tool id", toolIdParam)
   
   const reservation = {
     reservation_start_date,
-    reservation_end_date
+    reservation_end_date,
+    tool_id
   }
   createReservation(reservation)
 }

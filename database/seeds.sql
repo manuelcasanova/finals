@@ -37,3 +37,9 @@ VALUES
 ('BC Trucking Association', 'A group to share items for members of the BC Trucking Association', 'https://www.bctrucking.com/sites/all/themes/BCTA/img/bcta-logo.png'),
 ('NS Parents for Public Education', 'A group for parents of school children in Nova Scotia', 'https://parentspubliced.files.wordpress.com/2021/05/cropped-116894953_4317466868315248_6011508593121235507_o-1-1.jpg'),
 ('Ontario Home Builders'' Association', 'The voice of the residential construction industry in Ontario', 'https://ontarioconstructionnews.com/wp-content/uploads/2019/07/ohba-logo.png');
+
+
+INSERT INTO reservations (reservation_start_date, reservation_tool_id, reservation_user_id)
+VALUES
+('2022-08-02', 1, 1)
+

@@ -39,7 +39,7 @@ VALUES
 ('Ontario Home Builders'' Association', 'The voice of the residential construction industry in Ontario', 'https://ontarioconstructionnews.com/wp-content/uploads/2019/07/ohba-logo.png');
 
 
-INSERT INTO reservations (reservation_start_date, reservation_tool_id, reservation_user_id)
+INSERT INTO reservations (reservation_start_date, reservation_end_date, reservation_tool_id, reservation_user_id)
 VALUES
-('2022-08-02', 1, 1)
+('2022-08-02', '2022-08-04', 1, 1)
 

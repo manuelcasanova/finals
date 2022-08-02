@@ -6,16 +6,18 @@ import 'react-calendar/dist/Calendar.css';
 
 export default function CalendarComponent() {
   
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState([])
   
-const reservation_start_date = date[0]
-const reservation_end_date = date[1]
+
+
+
+function onSubmitForm(date) {
+
+const reservation_start_date = date[0].toLocaleDateString("en-ca")
+const reservation_end_date = date[1].toLocaleDateString("en-ca")
 
 console.log("start date:", reservation_start_date)
 console.log("end date:", reservation_end_date)
-
-
-function onSubmitForm(e) {
   
   const reservation = {
     reservation_start_date,
@@ -28,7 +30,7 @@ function onSubmitForm(e) {
 function createReservation(reservation) {
   return axios.post(`http://localhost:8001/reservations`, reservation)
   .then ((response) => {
-    console.log("response", response)
+    // console.log("response", response)
   })
 }
 
@@ -42,13 +44,18 @@ function createReservation(reservation) {
 
   const onChange = date => {
     setDate(date);
-    onSubmitForm();
+    onSubmitForm(date);
   }
 
   return (
     <div className="calendar">
 
-  <Calendar onChange={onChange} date={date} selectRange/>
+  <Calendar 
+  onChange={onChange} 
+  date={date} 
+  selectRange
+  
+  />
           {console.log(date)}
           {/* {date.toString()} */}
 

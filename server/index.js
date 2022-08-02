@@ -440,6 +440,7 @@ app.get("/searchh", async (req, res) => {
       tool_available, 
       category_name, 
       user_name,
+      user_email,
       group_id,
       group_name
       FROM tools 

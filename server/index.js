@@ -389,20 +389,24 @@ app.get("/groups/search", async (req, res) => {
   }
 })
 
-//get all reservations
+//get one reservations
 
-app.get("/reservations", async (req, res) => {
+app.get("/reservations/:id", async (req, res) => {
   try {
+
+    const { id } = req.params;
+
     console.log("req", req.body);
-    const getAllReservations = await pool.query(
-      `SELECT * FROM reservations
-     `
+    const getReservation = await pool.query(
+      `SELECT * FROM reservations WHERE reservation_id = $1`, [id]
     );
-    res.json(getAllReservations.rows);
+    res.json(getReservation.rows);
   } catch (err) {
     console.error(err.message);
   }
 });
+
+
 
 
 //get reservations for item (hardcoded item 1)

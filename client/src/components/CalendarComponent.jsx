@@ -9,7 +9,7 @@ export default function CalendarComponent({ toolIdParam }) {
   const [reservations, setReservations] = useState([])
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/reservations`)
+    axios.get(`http://localhost:8001/reservations/${toolIdParam}`)
       .then(function (response) {
         console.log("response axios get", response)
         setReservations([...response.data])

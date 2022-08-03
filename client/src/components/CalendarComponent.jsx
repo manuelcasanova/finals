@@ -36,18 +36,14 @@ export default function CalendarComponent({ toolIdParam }) {
     createReservation(reservation)
   }
 
-
   function createReservation(reservation) {
     return axios.post(`http://localhost:8001/reservations`, reservation)
       .then((response) => {
-        console.log("response", response)
-
-
-        setReservations([...reservations, reservation])
-
-
+        setReservations([...reservations, response.data])
       })
   }
+
+
 
 
 
@@ -57,11 +53,11 @@ export default function CalendarComponent({ toolIdParam }) {
   }
 
         
-  const foundReservations = reservations.filter((r) => {
+  const reservationsForOneItem = reservations.filter((r) => {
     return r.reservation_tool_id === Number(toolIdParam)
   })
 
-  console.log("found reservations", foundReservations)
+  console.log("found reservations", reservationsForOneItem)
 
   return (
     <div className="calendar">
@@ -80,7 +76,7 @@ export default function CalendarComponent({ toolIdParam }) {
     
       <div>{date.toString()}</div>
 
-      {foundReservations.map((reservation) => (
+      {reservationsForOneItem.map((reservation) => (
         <div>{reservation.reservation_start_date.toString()}</div>
       ))
 

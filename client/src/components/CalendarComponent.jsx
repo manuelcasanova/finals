@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-export default function CalendarComponent({ toolIdParam }) {
+export default function CalendarComponent({ toolIdParam, user, admin }) {
 
   const [date, setDate] = useState([])
   const [reservations, setReservations] = useState([])
@@ -96,10 +96,13 @@ export default function CalendarComponent({ toolIdParam }) {
 
 
 
-
   return (
-    <div className="calendar">
+<>
+<div className={user.loggedIn || admin.loggedIn ? "hide" : "book-title-above-calendar"}>Log in to see the item's availability</div>
 
+<div className={user.loggedIn || admin.loggedIn ? "book-title-above-calendar" : "hide"}>Book by clicking on the desired dates</div>
+
+    <div className={user.loggedIn || admin.loggedIn ? "calendar" : "hide"}>
       <Calendar
         onChange={onChange}
         date={date}
@@ -123,6 +126,9 @@ export default function CalendarComponent({ toolIdParam }) {
       }
 
     </div>
+</>
+
+
   );
 }
 

@@ -35,7 +35,8 @@ export default function OneToolView({ tools, user, admin }) {
       <div className="one-item-container">
         <div className="one-item-picture-and-book-button">
           <div className="one-item-picture"><img class="one-tool" src={tools[position].tool_picture} /></div>
-          <BookTool user={user} admin={admin} tools={tools} toolIdParam={toolIdParam} />
+          {/* <BookTool user={user} admin={admin} tools={tools} toolIdParam={toolIdParam} /> */}
+          <CalendarComponent toolIdParam={toolIdParam} user={user} admin={admin}/>
         </div>
 
         <div className="one-item-information-container">
@@ -69,7 +70,7 @@ export default function OneToolView({ tools, user, admin }) {
                 Log in to see owner email</td>
             </tr>
           </table>
-          <CalendarComponent toolIdParam={toolIdParam}/>
+          
         </div>
       </div>
     )

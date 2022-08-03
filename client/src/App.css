@@ -419,22 +419,25 @@ tr {
   align-items: center;
   justify-content: center;
 }
-
+/* 
 .one-item-book {
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+
+.book-title-above-calendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
 }
 
-.button-book {
-  justify-content: center;
-  align-self: center;
-  background-color: var(--color3);
-  font-size: xx-large;
-  border-radius: 10px;
-  height: 200px;
-  width: 250px;
-  margin-top: 20px;
+.calendar {
+    margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 a {

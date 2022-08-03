@@ -16,6 +16,8 @@ export default function CalendarComponent({ toolIdParam }) {
       });
   }, []);
 
+  console.log("reservations", reservations)
+
   function onSubmitForm(date) {
 
     const reservation_start_date = date[0].toLocaleDateString("en-ca")
@@ -54,6 +56,13 @@ export default function CalendarComponent({ toolIdParam }) {
     onSubmitForm(date);
   }
 
+        
+  const foundReservations = reservations.filter((r) => {
+    return r.reservation_tool_id === Number(toolIdParam)
+  })
+
+  console.log("found reservations", foundReservations)
+
   return (
     <div className="calendar">
 
@@ -67,9 +76,11 @@ export default function CalendarComponent({ toolIdParam }) {
       {/* {date.toString()} */}
 
 
+
+    
       <div>{date.toString()}</div>
 
-      {reservations.map((reservation) => (
+      {foundReservations.map((reservation) => (
         <div>{reservation.reservation_start_date.toString()}</div>
       ))
 

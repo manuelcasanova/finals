@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { differenceInCalendarDays } from 'date-fns'
 
 export default function CalendarComponent({ toolIdParam }) {
 
   const [date, setDate] = useState([])
   const [reservations, setReservations] = useState([])
-
-
+  const reservationsForOneItem = reservations.filter((r) => {
+    return r.reservation_tool_id === Number(toolIdParam)
+  })
 
 
   useEffect(() => {
@@ -46,27 +46,21 @@ export default function CalendarComponent({ toolIdParam }) {
   }
 
 
-
-
   const onChange = date => {
     setDate(date);
     onSubmitForm(date);
   }
 
-  function isSameDay(a, b) {
-    return differenceInCalendarDays(a, b) === 0;
-  }
 
   function tileDisabled({ date, view }) {
-    // console.log("date", date)
-    // console.log('view', view)
+
     if (view === 'month') {
 
       const isDateInReservationRange = [];
     
-      //For each reservation we push the value to the array
+      //For each reservation with tool_id = idParam we push the value to the array
 
-      for (const reservation of reservations) {
+      for (const reservation of reservationsForOneItem) {
         const resStartDate = new Date (reservation.reservation_start_date) 
         const resEndDate = new Date (reservation.reservation_end_date)
 
@@ -80,14 +74,7 @@ export default function CalendarComponent({ toolIdParam }) {
 
         console.log("is date <", date <= resEndDate)
         console.log("is date > and <", date >= resStartDate && date <= resEndDate )
-
-        // console.log("type of date", typeof date);
-        // console.log("type of reservation", typeof reservation.reservation_start_date);
-
       }
-      // return disabledDates.find(dDate => isSameDay(dDate, date))
-
-
 
       const isAnyTrue = isDateInReservationRange.some(element => element)
 
@@ -106,9 +93,7 @@ export default function CalendarComponent({ toolIdParam }) {
 // }
 
 
-  const reservationsForOneItem = reservations.filter((r) => {
-    return r.reservation_tool_id === Number(toolIdParam)
-  })
+
 
 
 

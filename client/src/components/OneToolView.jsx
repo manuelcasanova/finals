@@ -68,7 +68,7 @@ export default function OneToolView({ tools, user, admin }) {
                 Log in to see owner email</td>
             </tr>
           </table>
-          <CalendarComponent/>
+          <CalendarComponent toolIdParam={toolIdParam}/>
         </div>
       </div>
     )

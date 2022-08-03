@@ -42,7 +42,7 @@ CREATE TABLE tools (
 CREATE TABLE reservations (
 reservation_id SERIAL PRIMARY KEY NOT NULL,
 reservation_start_date DATE NOT NULL,
-reservation_end_date DATE,
+reservation_end_date DATE NOT NULL,
 reservation_tool_id INTEGER REFERENCES tools(tool_id) ON DELETE CASCADE,
 reservation_user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE
 )

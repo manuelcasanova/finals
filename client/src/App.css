@@ -250,6 +250,7 @@ a:active {
   padding: 1em;
   background-color: red;
   text-align: center;
+  
 }
 
 .td-image {
@@ -341,7 +342,7 @@ th,
 td,
 tr {
   padding: 1em;
-  background-color: var(--color1);
+  background-color: var(--color2);
   text-align: center;
 }
 
@@ -408,6 +409,7 @@ tr {
   flex-direction: column;
   width: 40%
 }
+
 
 
 .one-item-picture {
@@ -530,12 +532,15 @@ a {
   background-color: var(--color2);
 }
 
-
 .one-item-owner-email {
   font-size: 300%;
   background-color: var(--color2);
 }
 
 .hide {
+  display: none;
+}
+
+a:link {
   display: none;
 }

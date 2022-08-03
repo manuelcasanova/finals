@@ -127,10 +127,13 @@ export default function AddTool(props) {
 
               <div className="level_input">
                 <label className="add_tool_title" htmlFor="title">Availibilty</label>
-                <select className="form-control-add"
+                <select
+                  className="form-control-add"
                   value={tool_available}
-                  onChange={e => setTooAvailibilty(e.target.value)}
+                  onChange={(e) => setTooAvailibilty(e.target.value)}
                 >
+                  <option value={true}>Available</option>
+                  <option value={false}>Unavailable</option>
                 </select>
               </div>
 

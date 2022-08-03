@@ -9,7 +9,7 @@ export default function CalendarComponent({ toolIdParam }) {
   const [reservations, setReservations] = useState([])
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/reservations/${toolIdParam}`)
+    axios.get(`http://localhost:8001/reservations/`)
       .then(function (response) {
         console.log("response axios get", response)
         setReservations([...response.data])
@@ -70,7 +70,7 @@ export default function CalendarComponent({ toolIdParam }) {
       <div>{date.toString()}</div>
 
       {reservations.map((reservation) => (
-        <div>{reservation.reservation_start_date}</div>
+        <div>{reservation.reservation_start_date.toString()}</div>
       ))
 
 

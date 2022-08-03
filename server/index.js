@@ -407,7 +407,20 @@ app.get("/reservations/:id", async (req, res) => {
 });
 
 
+//get all reservations
 
+app.get("/reservations/", async (req, res) => {
+  try {
+
+    console.log("req", req.body);
+    const getAllReservations = await pool.query(
+      `SELECT * FROM reservations`
+    );
+    res.json(getAllReservations.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 
 ///refactor: search for a tool and cat. name and group in one route

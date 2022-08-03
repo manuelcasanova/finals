@@ -58,8 +58,7 @@ export default function OneToolView({ tools, user, admin }) {
               Log in to see owner name</td>
             <tr>
               <th className="one-item-owner-email">Contact</th>
-              <a 
-              className={user.loggedIn || admin.loggedIn ? "" : "hide"}
+              <a className={user.loggedIn || admin.loggedIn ? "" : "hide"}
               href={`mailto:${tools[position].user_email}`}>
                 <td className={user.loggedIn || admin.loggedIn ? "one-item-owner-email" : "hide"}>
                   {tools[position].user_email}

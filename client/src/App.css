@@ -441,6 +441,7 @@ a {
   color: black;
 }
 
+
 .button-book:hover {
   background-color: var(--color4);
 }
@@ -538,9 +539,5 @@ a {
 }
 
 .hide {
-  display: none;
-}
-
-a:link {
   display: none;
 }

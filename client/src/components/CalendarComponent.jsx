@@ -2,11 +2,15 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { differenceInCalendarDays } from 'date-fns'
 
 export default function CalendarComponent({ toolIdParam }) {
 
   const [date, setDate] = useState([])
   const [reservations, setReservations] = useState([])
+
+
+
 
   useEffect(() => {
     axios.get(`http://localhost:8001/reservations/`)
@@ -16,7 +20,7 @@ export default function CalendarComponent({ toolIdParam }) {
       });
   }, []);
 
- 
+
 
   function onSubmitForm(date) {
 
@@ -44,13 +48,64 @@ export default function CalendarComponent({ toolIdParam }) {
 
 
 
-
   const onChange = date => {
     setDate(date);
     onSubmitForm(date);
   }
 
-        
+  function isSameDay(a, b) {
+    return differenceInCalendarDays(a, b) === 0;
+  }
+
+  function tileDisabled({ date, view }) {
+    // console.log("date", date)
+    // console.log('view', view)
+    if (view === 'month') {
+
+
+      const isDateInReservationRange = [];
+    
+
+      //For each reservation we push the value to the array
+
+
+      for (const reservation of reservations) {
+        const resStartDate = new Date (reservation.reservation_start_date) 
+        const resEndDate = new Date (reservation.reservation_end_date)
+
+        isDateInReservationRange.push(date >= resStartDate && date <= resEndDate)
+
+        console.log("res date range", date, resStartDate, resEndDate)
+        console.log("is date >", date >= resStartDate)
+
+        console.log("is date <", date <= resEndDate)
+        console.log("is date > and <", date >= resStartDate && date <= resEndDate )
+
+        // console.log("type of date", typeof date);
+        // console.log("type of reservation", typeof reservation.reservation_start_date);
+
+      }
+      // return disabledDates.find(dDate => isSameDay(dDate, date))
+
+
+
+      const isAnyTrue = isDateInReservationRange.some(element => element)
+
+      console.log("array isDateInRes...", isDateInReservationRange)
+      console.log("is Any True", isAnyTrue)
+
+      return isAnyTrue;
+
+    }    
+  }
+
+const isDateInReservationRange = function (reservation, date) {
+  const resStartDate = new Date (reservation.reservation_start_date)
+  const resEndDate = new Date (reservation.reservation_end_date)
+  return resStartDate <= date && resEndDate >= date
+}
+
+
   const reservationsForOneItem = reservations.filter((r) => {
     return r.reservation_tool_id === Number(toolIdParam)
   })
@@ -64,14 +119,14 @@ export default function CalendarComponent({ toolIdParam }) {
         onChange={onChange}
         date={date}
         selectRange
-
+        tileDisabled={tileDisabled}
       />
-    
+
       {/* {date.toString()} */}
 
 
 
-    
+
       {/* <div>{date.toString()}</div> */}
 
 

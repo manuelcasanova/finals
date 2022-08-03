@@ -11,12 +11,12 @@ export default function CalendarComponent({ toolIdParam }) {
   useEffect(() => {
     axios.get(`http://localhost:8001/reservations/`)
       .then(function (response) {
-        console.log("response axios get", response)
+        // console.log("response axios get", response)
         setReservations([...response.data])
       });
   }, []);
 
-  console.log("reservations", reservations)
+ 
 
   function onSubmitForm(date) {
 
@@ -25,9 +25,6 @@ export default function CalendarComponent({ toolIdParam }) {
     const tool_id = toolIdParam
 
 
-    console.log("start date:", reservation_start_date)
-    console.log("end date:", reservation_end_date)
-    console.log("tool id", toolIdParam)
 
     const reservation = {
       reservation_start_date,
@@ -58,7 +55,7 @@ export default function CalendarComponent({ toolIdParam }) {
     return r.reservation_tool_id === Number(toolIdParam)
   })
 
-  console.log("found reservations", reservationsForOneItem)
+
 
   return (
     <div className="calendar">
@@ -69,7 +66,7 @@ export default function CalendarComponent({ toolIdParam }) {
         selectRange
 
       />
-      {console.log(date)}
+    
       {/* {date.toString()} */}
 
 
@@ -80,7 +77,7 @@ export default function CalendarComponent({ toolIdParam }) {
 
 
       {reservationsForOneItem.map((reservation) => (
-        <div>This item is booked from {reservation.reservation_start_date} to {reservation.reservation_end_date}</div>
+        <div className="this-item-is-booked">This item is booked from {reservation.reservation_start_date} to {reservation.reservation_end_date}</div>
       ))
 
       }

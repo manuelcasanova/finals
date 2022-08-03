@@ -538,6 +538,10 @@ a {
   background-color: var(--color2);
 }
 
+.this-item-is-booked {
+  font-size: x-large;
+}
+
 .hide {
   display: none;
 }

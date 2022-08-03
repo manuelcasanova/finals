@@ -119,11 +119,11 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 
 
 
-      {reservationsForOneItem.map((reservation) => (
+      {/* {reservationsForOneItem.map((reservation) => (
         <div className="this-item-is-booked">This item is booked from {reservation.reservation_start_date} to {reservation.reservation_end_date}</div>
       ))
 
-      }
+      } */}
 
     </div>
 </>

@@ -24,6 +24,7 @@ export default function CalendarComponent({ toolIdParam }) {
     const reservation_end_date = date[1].toLocaleDateString("en-ca")
     const tool_id = toolIdParam
 
+
     console.log("start date:", reservation_start_date)
     console.log("end date:", reservation_end_date)
     console.log("tool id", toolIdParam)
@@ -74,12 +75,13 @@ export default function CalendarComponent({ toolIdParam }) {
 
 
     
-      <div>{date.toString()}</div>
+      {/* <div>{date.toString()}</div> */}
+
+
 
       {reservationsForOneItem.map((reservation) => (
-        <div>{reservation.reservation_start_date.toString()}</div>
+        <div>This item is booked from {reservation.reservation_start_date} to {reservation.reservation_end_date}</div>
       ))
-
 
       }
 

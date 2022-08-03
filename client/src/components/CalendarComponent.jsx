@@ -62,18 +62,18 @@ export default function CalendarComponent({ toolIdParam }) {
     // console.log('view', view)
     if (view === 'month') {
 
-
       const isDateInReservationRange = [];
     
-
       //For each reservation we push the value to the array
-
 
       for (const reservation of reservations) {
         const resStartDate = new Date (reservation.reservation_start_date) 
         const resEndDate = new Date (reservation.reservation_end_date)
 
+
+        //If both are true, pushes TRUE. Otherwise, pushes false
         isDateInReservationRange.push(date >= resStartDate && date <= resEndDate)
+
 
         console.log("res date range", date, resStartDate, resEndDate)
         console.log("is date >", date >= resStartDate)
@@ -99,11 +99,11 @@ export default function CalendarComponent({ toolIdParam }) {
     }    
   }
 
-const isDateInReservationRange = function (reservation, date) {
-  const resStartDate = new Date (reservation.reservation_start_date)
-  const resEndDate = new Date (reservation.reservation_end_date)
-  return resStartDate <= date && resEndDate >= date
-}
+// const isDateInReservationRange = function (reservation, date) {
+//   const resStartDate = new Date (reservation.reservation_start_date)
+//   const resEndDate = new Date (reservation.reservation_end_date)
+//   return resStartDate <= date && resEndDate >= date
+// }
 
 
   const reservationsForOneItem = reservations.filter((r) => {

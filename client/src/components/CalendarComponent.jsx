@@ -16,11 +16,14 @@ export default function CalendarComponent({ toolIdParam }) {
       });
   }, []);
 
+  console.log("reservations", reservations)
+
   function onSubmitForm(date) {
 
     const reservation_start_date = date[0].toLocaleDateString("en-ca")
     const reservation_end_date = date[1].toLocaleDateString("en-ca")
     const tool_id = toolIdParam
+
 
     console.log("start date:", reservation_start_date)
     console.log("end date:", reservation_end_date)
@@ -34,18 +37,14 @@ export default function CalendarComponent({ toolIdParam }) {
     createReservation(reservation)
   }
 
-
   function createReservation(reservation) {
     return axios.post(`http://localhost:8001/reservations`, reservation)
       .then((response) => {
-        console.log("response", response)
-
-
-        setReservations([...reservations, reservation])
-
-
+        setReservations([...reservations, response.data])
       })
   }
+
+
 
 
 
@@ -53,6 +52,13 @@ export default function CalendarComponent({ toolIdParam }) {
     setDate(date);
     onSubmitForm(date);
   }
+
+        
+  const reservationsForOneItem = reservations.filter((r) => {
+    return r.reservation_tool_id === Number(toolIdParam)
+  })
+
+  console.log("found reservations", reservationsForOneItem)
 
   return (
     <div className="calendar">
@@ -67,12 +73,15 @@ export default function CalendarComponent({ toolIdParam }) {
       {/* {date.toString()} */}
 
 
-      <div>{date.toString()}</div>
 
-      {reservations.map((reservation) => (
-        <div>{reservation.reservation_start_date.toString()}</div>
+    
+      {/* <div>{date.toString()}</div> */}
+
+
+
+      {reservationsForOneItem.map((reservation) => (
+        <div>This item is booked from {reservation.reservation_start_date} to {reservation.reservation_end_date}</div>
       ))
-
 
       }
 

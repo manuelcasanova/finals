@@ -23,6 +23,7 @@ import AdminCRUDTools from './components/AdminCRUDTools';
 import UserItemsSearch from './components/UserItemsSearch';
 import SearchbarCategories from './components/SearchbarCategories';
 import SearchbarGroups from './components/SearchbarGroups';
+import ShowReservations from './components/ShowReservations';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -37,6 +38,7 @@ function App() {
   const [tools, setTools] = useState([]);
   const [categories, setCategories] = useState([]);
   const [groups, setGroups] = useState([]);
+  const [reservations, setReservations] = useState([])
 
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
@@ -95,6 +97,8 @@ Components inside <Routes></Routes>   render only in those routes.
 
                 } />
               <Route path="/profile" element={<Profile />} />
+              
+              <Route path="/user/reservations" element={<ShowReservations reservations={reservations} setReservations={setReservations}/>} />
 
             </Route>
 

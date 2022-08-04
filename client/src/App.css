@@ -281,9 +281,31 @@ img.one-tool:hover {
 .button-open-book-modal {
 height: 200px;
 font-size: 3em;
-
-
 }
+
+.log-in-to-book-item {
+  height: 200px;
+  font-size: 3em;
+  margin: 1px;
+  background-color: var(--color4);
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  padding: 5px 0;
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+ 
+
+
+
+
 
 /* For tools, categories... */
 .button-delete {

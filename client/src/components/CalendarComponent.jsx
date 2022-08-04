@@ -103,57 +103,33 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 <>
 
 {/* <!-- Button trigger modal --> */}
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar-modal">
-  Book Item
+<button type="button" class="button-open-book-modal" data-toggle="modal" data-target="#exampleModalCenter">
+  Book item
 </button>
 
 {/* <!-- Modal --> */}
-<div class="modal fade" id="calendar-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-calendar-dialog" role="document">
-    <div className="modal-calendar-content">
-      <div className="modal-calendar-header">
-        <h5 className="modal-calendar-title" id="exampleModalLabel"></h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-calendar-body">
-       
-      <div className={user.loggedIn || admin.loggedIn ? "hide" : "book-title-above-calendar"}>Log in to see the item's availability</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-calendar-body">
+        
 
-<div className={user.loggedIn || admin.loggedIn ? "book-title-above-calendar" : "hide"}>Book by clicking on the desired dates</div>
-
-    {/* <div className={user.loggedIn || admin.loggedIn ? "calendar" : "hide"}> */}
-    <div className="temporary"> 
-      <Calendar
-        onChange={onChange}
-        date={date}
-        selectRange
-        tileDisabled={tileDisabled}
-      />
-
-      {/* {date.toString()} */}
-
-
-
-
-      {/* <div>{date.toString()}</div> */}
-
-
-
-      {/* {reservationsForOneItem.map((reservation) => (
-        <div className="this-item-is-booked">This item is booked from {reservation.reservation_start_date} to {reservation.reservation_end_date}</div>
-      ))
-
-      } */}
-    </div>
-    {/* </div> */}
-
+      <div className="temporary"> 
+        <Calendar
+          onChange={onChange}
+          date={date}
+          selectRange
+          tileDisabled={tileDisabled}
+        />
+        </div>
 
       </div>
+
     </div>
   </div>
 </div>
+
 
 
 </>
@@ -162,3 +138,69 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
   );
 }
 
+
+
+
+
+
+// return (
+//   <>
+  
+//   {/* <!-- Button trigger modal --> */}
+//   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar-modal">
+//     Book Item
+//   </button>
+  
+//   {/* <!-- Modal --> */}
+//   <div class="modal fade" id="calendar-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//     <div className="modal-calendar-dialog" role="document">
+//       <div className="modal-calendar-content">
+//         <div className="modal-calendar-header">
+//           <h5 className="modal-calendar-title" id="exampleModalLabel">Calendar</h5>
+//           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+//             <span aria-hidden="true">&times;</span>
+//           </button>
+//         </div>
+//         <div className="modal-calendar-body">
+         
+//         <div className={user.loggedIn || admin.loggedIn ? "hide" : "book-title-above-calendar"}>Log in to see the item's availability</div>
+  
+//   <div className={user.loggedIn || admin.loggedIn ? "book-title-above-calendar" : "hide"}>Book by clicking on the desired dates</div>
+  
+//       {/* <div className={user.loggedIn || admin.loggedIn ? "calendar" : "hide"}> */}
+//       <div className="temporary"> 
+//         <Calendar
+//           onChange={onChange}
+//           date={date}
+//           selectRange
+//           tileDisabled={tileDisabled}
+//         />
+  
+//         {/* {date.toString()} */}
+  
+  
+  
+  
+//         {/* <div>{date.toString()}</div> */}
+  
+  
+  
+//         {/* {reservationsForOneItem.map((reservation) => (
+//           <div className="this-item-is-booked">This item is booked from {reservation.reservation_start_date} to {reservation.reservation_end_date}</div>
+//         ))
+  
+//         } */}
+//       </div>
+//       {/* </div> */}
+  
+  
+//         </div>
+//       </div>
+//     </div>
+//   </div>
+  
+  
+//   </>
+  
+  
+//     );

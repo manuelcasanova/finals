@@ -278,6 +278,13 @@ img.one-tool:hover {
   cursor: pointer;
 }
 
+.button-open-book-modal {
+height: 200px;
+font-size: 3em;
+
+
+}
+
 /* For tools, categories... */
 .button-delete {
   background-color: #ef5350;

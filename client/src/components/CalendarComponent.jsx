@@ -2,14 +2,14 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { differenceInCalendarDays } from 'date-fns'
 
-export default function CalendarComponent({ toolIdParam }) {
+export default function CalendarComponent({ toolIdParam, user, admin }) {
 
   const [date, setDate] = useState([])
   const [reservations, setReservations] = useState([])
-
-
+  const reservationsForOneItem = reservations.filter((r) => {
+    return r.reservation_tool_id === Number(toolIdParam)
+  })
 
 
   useEffect(() => {
@@ -46,27 +46,21 @@ export default function CalendarComponent({ toolIdParam }) {
   }
 
 
-
-
   const onChange = date => {
     setDate(date);
     onSubmitForm(date);
   }
 
-  function isSameDay(a, b) {
-    return differenceInCalendarDays(a, b) === 0;
-  }
 
   function tileDisabled({ date, view }) {
-    // console.log("date", date)
-    // console.log('view', view)
+
     if (view === 'month') {
 
       const isDateInReservationRange = [];
     
-      //For each reservation we push the value to the array
+      //For each reservation with tool_id = idParam we push the value to the array
 
-      for (const reservation of reservations) {
+      for (const reservation of reservationsForOneItem) {
         const resStartDate = new Date (reservation.reservation_start_date) 
         const resEndDate = new Date (reservation.reservation_end_date)
 
@@ -85,9 +79,6 @@ export default function CalendarComponent({ toolIdParam }) {
         // console.log("type of reservation", typeof reservation.reservation_start_date);
 
       }
-      // return disabledDates.find(dDate => isSameDay(dDate, date))
-
-
 
       const isAnyTrue = isDateInReservationRange.some(element => element)
 
@@ -106,15 +97,16 @@ export default function CalendarComponent({ toolIdParam }) {
 // }
 
 
-  const reservationsForOneItem = reservations.filter((r) => {
-    return r.reservation_tool_id === Number(toolIdParam)
-  })
 
 
 
   return (
-    <div className="calendar">
+<>
+<div className={user.loggedIn || admin.loggedIn ? "hide" : "book-title-above-calendar"}>Log in to see the item's availability</div>
 
+<div className={user.loggedIn || admin.loggedIn ? "book-title-above-calendar" : "hide"}>Book by clicking on the desired dates</div>
+
+    <div className={user.loggedIn || admin.loggedIn ? "calendar" : "hide"}>
       <Calendar
         onChange={onChange}
         date={date}
@@ -131,13 +123,16 @@ export default function CalendarComponent({ toolIdParam }) {
 
 
 
-      {reservationsForOneItem.map((reservation) => (
+      {/* {reservationsForOneItem.map((reservation) => (
         <div className="this-item-is-booked">This item is booked from {reservation.reservation_start_date} to {reservation.reservation_end_date}</div>
       ))
 
-      }
+      } */}
 
     </div>
+</>
+
+
   );
 }
 

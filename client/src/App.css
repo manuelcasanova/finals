@@ -414,28 +414,63 @@ tr {
 
 .one-item-picture {
   background-color: var(--color2);
-  height: 30vh;
+  height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
+/* 
 .one-item-book {
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+
+.book-title-above-calendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
 }
 
-.button-book {
-  justify-content: center;
-  align-self: center;
-  background-color: var(--color3);
-  font-size: xx-large;
-  border-radius: 10px;
-  height: 200px;
-  width: 250px;
-  margin-top: 20px;
+/* The following calendar related styling overrides default css */
+
+.calendar {
+    /* margin-top: 100px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color4);
+    height: 600px;
+    margin-right: 0px;
 }
+
+.react-calendar  {
+  width: 100%
+  
+}
+
+.react-calendar.react-calendar--selectRange {
+width: 95%;
+height: 95%;
+}
+
+.react-calendar__navigation {
+
+}
+
+.react-calendar__tile {
+
+}
+
+.react-calendar__month-view__days__day {
+  
+}
+
+
+
+
+
 
 a {
   color: black;

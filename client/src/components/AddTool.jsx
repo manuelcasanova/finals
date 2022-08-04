@@ -123,7 +123,7 @@ export default function AddTool(props) {
                 value={tool_name}
                 onChange={(e) => setToolName(e.target.value)}
               />
-              <p>{formErrors.tool_name}</p>
+              <p className="form-error">{formErrors.tool_name}</p>
              
 
               <label className="add_tool_title" htmlFor="title">
@@ -136,7 +136,7 @@ export default function AddTool(props) {
                 value={tool_description}
                 onChange={(e) => setToolDescription(e.target.value)}
               />
-              <p>{formErrors.tool_description}</p>
+              <p className="form-error">{formErrors.tool_description}</p>
 
               {/* <label className="add_tool_title" htmlFor="title">Owner</label>
               <input className="form-control-add"

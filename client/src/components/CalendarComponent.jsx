@@ -104,7 +104,8 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 
 <div className={user.loggedIn || admin.loggedIn ? "book-title-above-calendar" : "hide"}>Book by clicking on the desired dates</div>
 
-    <div className={user.loggedIn || admin.loggedIn ? "calendar" : "hide"}>
+    {/* <div className={user.loggedIn || admin.loggedIn ? "calendar" : "hide"}> */}
+    <div class="temporary"> 
       <Calendar
         onChange={onChange}
         date={date}
@@ -126,8 +127,8 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
       ))
 
       } */}
-
     </div>
+    {/* </div> */}
 </>
 
 

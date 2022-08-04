@@ -366,6 +366,10 @@ tr {
   text-align: center;
 }
 
+.form-error {
+  color: red;
+}
+
 /* Pagination */
 
 .pagination {

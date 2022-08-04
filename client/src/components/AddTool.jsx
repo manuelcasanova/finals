@@ -49,6 +49,9 @@ export default function AddTool(props) {
     if (!values.tool_name) {
       errors.tool_name = "Name is required";
     }
+    if (!values.tool_description) {
+      errors.tool_description = "Description is required";
+    }
     return errors;
   };
 
@@ -133,6 +136,7 @@ export default function AddTool(props) {
                 value={tool_description}
                 onChange={(e) => setToolDescription(e.target.value)}
               />
+              <p>{formErrors.tool_description}</p>
 
               {/* <label className="add_tool_title" htmlFor="title">Owner</label>
               <input className="form-control-add"

@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS categories CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS groups CASCADE;
 DROP TABLE IF EXISTS reservations CASCADE;
+DROP TABLE IF EXISTS users_groups CASCADE;
 
 CREATE TABLE categories (
 category_id SERIAL PRIMARY KEY NOT NULL,
@@ -46,4 +47,10 @@ reservation_end_date DATE NOT NULL,
 reservation_tool_id INTEGER REFERENCES tools(tool_id) ON DELETE CASCADE,
 reservation_user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE
 )
+
+-- CREATE TABLE users_groups (
+--   id  SERIAL PRIMARY KEY NOT NULL,
+--   user_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE,
+--   group_id INTEGER REFERENCES groups(group_id) ON DELETE CASCADE
+-- )
 

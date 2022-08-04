@@ -6,11 +6,11 @@ export default function ShowAllTools({ tools, setTools }) {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios.get(`http://localhost:8001/tools`).then(function (res) {
-      setTools([...res.data]);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8001/tools`).then(function (res) {
+  //     setTools([...res.data]);
+  //   });
+  // }, []);
 
 
   return (

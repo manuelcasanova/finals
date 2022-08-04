@@ -1,0 +1,146 @@
+:root {
+  --color1: #cfe0e8;
+  --color2: #b7d7e8;
+  --color3: #87bdd8;
+  --color4: #577d90;
+  --color0: #daebe8;
+  --color5: red;
+}
+
+/* The following calendar related styling overrides default css */
+
+/*
+.calendar {
+    margin-top: 100px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color4);
+    height: 600px;
+    margin-right: 0px;
+}
+
+.react-calendar  {
+  width: 100%
+  
+}
+
+.react-calendar.react-calendar--selectRange {
+width: 95%;
+height: 95%;
+}
+*/
+/* .react-calendar__navigation {
+
+}
+
+.react-calendar__viewContainer {
+  
+}
+
+.react-calendar__month-view {
+
+}
+
+.react-calendar__tile {
+
+}
+
+.react-calendar__month-view__days{
+
+} */
+
+  /* ~~~ container styles ~~~ */
+  .calendar {
+    max-width: 600px;
+    /* margin: auto; */
+    margin-top: 20px;
+    background-color: var(--color2);
+    padding: 10px;
+    border-radius: 3px;
+  }
+
+
+
+/* Have the navigation take the full width of the calendar, make the text in the center button bold, mathe the arrows larger */
+.react-calendar__navigation {
+  display: flex;
+}
+
+.react-calendar__navigation__label {
+  font-weight: bold;
+}
+
+.react-calendar__navigation__arrow {
+  flex-grow: 0.333;
+}
+
+/* Center the labels for the days of the week */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+}
+
+/* ~~~ button styles ~~~ */
+button {
+  margin: 3px;
+  background-color: var(--color4);
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  padding: 5px 0;
+}
+
+button:hover {
+  background-color: var(--color3);
+}
+
+button:active {
+  background-color: var(--color4);
+}
+
+button:disabled {
+  background-color: var(--color5);
+}
+
+/* ~~~ day grid styles ~~~ */
+.react-calendar__month-view__days {
+  display: grid !important;
+  grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
+}
+
+.react-calendar__tile {
+  max-width: initial !important;
+}
+
+/* ~~~ neighboring month & weekend styles ~~~ */
+.react-calendar__month-view__days__day--neighboringMonth {
+  opacity: 0.7;
+}
+
+.react-calendar__month-view__days__day--weekend {
+ 
+}
+
+  /* ~~~ active day styles ~~~ */
+  .react-calendar__tile--range {
+    box-shadow: 0 0 6px 2px black;
+}
+
+  /* ~~~ other view styles ~~~ */
+  .react-calendar__year-view__months, 
+  .react-calendar__decade-view__years, 
+  .react-calendar__century-view__decades {
+    display: grid !important;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+
+  }
+   
+  .react-calendar__year-view__months {
+    display: grid !important;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+      grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+
+    .react-calendar__tile {
+      max-width: initial !important;
+    }

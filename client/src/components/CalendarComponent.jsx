@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+
+import './styling/calendar.css'
+//import 'react-calendar/dist/Calendar.css';
 
 export default function CalendarComponent({ toolIdParam, user, admin }) {
 

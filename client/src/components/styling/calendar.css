@@ -52,12 +52,14 @@ height: 95%;
 
   /* ~~~ container styles ~~~ */
   .calendar {
-    max-width: 600px;
+    /* max-width: 600px; */
     /* margin: auto; */
-    margin-top: 20px;
+    min-width: 600px;
+    /* margin-top: 20px; */
     background-color: var(--color2);
-    padding: 10px;
+    /* padding: 10px; */
     border-radius: 3px;
+    justify-content: flex-end;
   }
 
 
@@ -65,6 +67,7 @@ height: 95%;
 /* Have the navigation take the full width of the calendar, make the text in the center button bold, mathe the arrows larger */
 .react-calendar__navigation {
   display: flex;
+  height: 60px;
 }
 
 .react-calendar__navigation__label {
@@ -78,16 +81,24 @@ height: 95%;
 /* Center the labels for the days of the week */
 .react-calendar__month-view__weekdays {
   text-align: center;
+  height: 50px;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  font-size: 25px;
+  
 }
 
 /* ~~~ button styles ~~~ */
 button {
-  margin: 3px;
+  margin: 1px;
   background-color: var(--color4);
   border: 0;
-  border-radius: 3px;
+  border-radius: 10px;
   color: white;
   padding: 5px 0;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 button:hover {
@@ -106,6 +117,7 @@ button:disabled {
 .react-calendar__month-view__days {
   display: grid !important;
   grid-template-columns: 14.2% 14.2% 14.2% 14.2% 14.2% 14.2% 14.2%;
+  grid-template-rows: 40% 40% 40% 40% 40% 40% 40%;
 }
 
 .react-calendar__tile {

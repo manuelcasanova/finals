@@ -244,15 +244,6 @@ a:active {
   border-radius: 30px;
 }
 
-.th,
-.td,
-.tr {
-  padding: 1em;
-  background-color: red;
-  text-align: center;
-
-}
-
 .td-image {
   width: 10%;
 }
@@ -342,7 +333,7 @@ th,
 td,
 tr {
   padding: 1em;
-  background-color: var(--color2);
+
   text-align: center;
 }
 
@@ -407,7 +398,7 @@ tr {
 .one-item-picture-and-book-button {
   display: flex;
   flex-direction: column;
-  /* width: 40% */
+  width: 40%
 }
 
 
@@ -419,7 +410,6 @@ tr {
   align-items: center;
   justify-content: center;
 }
-
 /* 
 .one-item-book {
   display: flex;
@@ -433,7 +423,45 @@ tr {
   justify-content: center;
   font-size: xx-large;
 }
+
+/* The following calendar related styling overrides default css */
+
+.calendar {
+    /* margin-top: 100px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color4);
+    height: 600px;
+    margin-right: 0px;
+}
+
+.react-calendar  {
+  width: 100%
   
+}
+
+.react-calendar.react-calendar--selectRange {
+width: 95%;
+height: 95%;
+}
+
+.react-calendar__navigation {
+
+}
+
+.react-calendar__tile {
+
+}
+
+.react-calendar__month-view__days__day {
+  
+}
+
+
+
+
+
 
 a {
   color: black;

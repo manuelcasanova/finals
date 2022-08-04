@@ -71,17 +71,21 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
         isDateInReservationRange.push(date >= resStartDate && date <= resEndDate)
 
 
-        console.log("res date range", date, resStartDate, resEndDate)
-        console.log("is date >", date >= resStartDate)
+        // console.log("res date range", date, resStartDate, resEndDate)
+        // console.log("is date >", date >= resStartDate)
 
-        console.log("is date <", date <= resEndDate)
-        console.log("is date > and <", date >= resStartDate && date <= resEndDate )
+        // console.log("is date <", date <= resEndDate)
+        // console.log("is date > and <", date >= resStartDate && date <= resEndDate )
+
+        // console.log("type of date", typeof date);
+        // console.log("type of reservation", typeof reservation.reservation_start_date);
+
       }
 
       const isAnyTrue = isDateInReservationRange.some(element => element)
 
-      console.log("array isDateInRes...", isDateInReservationRange)
-      console.log("is Any True", isAnyTrue)
+      // console.log("array isDateInRes...", isDateInReservationRange)
+      // console.log("is Any True", isAnyTrue)
 
       return isAnyTrue;
 

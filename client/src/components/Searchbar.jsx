@@ -1,5 +1,6 @@
 import { useState, Fragment } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"
 
 export default function Searchbar(props) {
   const { setTools, categories, groups } = props;
@@ -8,8 +9,11 @@ export default function Searchbar(props) {
   const [category, setToolCategory] = useState("All categories");
   const [group, setGroup] = useState("All groups");
 
+  const navigate = useNavigate();
+
   const onSearch = function (event) {
     event.preventDefault();
+   
     let url = `http://localhost:8001/searchh/?searchInput=${input}`;
     if (category !== "All categories") {
       url = url.concat(`&searchCategory=${category}`);
@@ -19,8 +23,10 @@ export default function Searchbar(props) {
     }
     axios.get(url).then(function (res) {
       setTools([...res.data]);
+      
     });
     resetForm();
+    navigate("/");
   };
 
   function resetForm() {

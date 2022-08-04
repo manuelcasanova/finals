@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 
 import './styling/calendar.css'
+import './styling/modal-calendar.css'
 //import 'react-calendar/dist/Calendar.css';
 
 export default function CalendarComponent({ toolIdParam, user, admin }) {
@@ -100,12 +101,30 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 
   return (
 <>
-<div className={user.loggedIn || admin.loggedIn ? "hide" : "book-title-above-calendar"}>Log in to see the item's availability</div>
+
+{/* <!-- Button trigger modal --> */}
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar-modal">
+  Book Item
+</button>
+
+{/* <!-- Modal --> */}
+<div class="modal fade" id="calendar-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-calendar-dialog" role="document">
+    <div className="modal-calendar-content">
+      <div className="modal-calendar-header">
+        <h5 className="modal-calendar-title" id="exampleModalLabel"></h5>
+        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div className="modal-calendar-body">
+       
+      <div className={user.loggedIn || admin.loggedIn ? "hide" : "book-title-above-calendar"}>Log in to see the item's availability</div>
 
 <div className={user.loggedIn || admin.loggedIn ? "book-title-above-calendar" : "hide"}>Book by clicking on the desired dates</div>
 
     {/* <div className={user.loggedIn || admin.loggedIn ? "calendar" : "hide"}> */}
-    <div class="temporary"> 
+    <div className="temporary"> 
       <Calendar
         onChange={onChange}
         date={date}
@@ -129,6 +148,14 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
       } */}
     </div>
     {/* </div> */}
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
 </>
 
 

@@ -1,0 +1,30 @@
+/* This css overrides bootstraps modal */
+
+
+:root {
+  --color1:#cfe0e8;
+  --color2:#b7d7e8;
+  --color3: #87bdd8;
+  --color0: #daebe8;
+  --color4: #577d90;
+}
+
+
+.modal-calendar-content {
+  border-radius: 30px 30px 30px 30px;
+
+}
+
+.modal-calendar-body {
+  background-color:var(--color2);
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px 30px 30px 30px;
+  height: 700px;
+  padding: 50px;
+}
+
+.temporary {
+  display: flex;
+  justify-content: center;
+}

@@ -5,17 +5,48 @@ export default function EditTool(props) {
   const { tool, tools, categories, setTools } = props;
 
   const [tool_name, setToolName] = useState(tool.tool_name);
-  const [tool_description, setToolDescription] = useState(
-    tool.tool_description
-  );
+  const [tool_description, setToolDescription] = useState(tool.tool_description);
   const [tool_picture, setToolPicture] = useState(tool.tool_picture);
   const [tool_category_id, setToolCategory] = useState(tool.tool_category_id);
   const [tool_owner_id, setToolOwnerId] = useState(1);
   const [tool_available, setTooAvailibilty] = useState(true);
+  const [formErros, setFormErrors] = useState({});
 
+  const toolFromTheForm = {
+    tool_name,
+    tool_description,
+    tool_picture,
+    tool_category_id,
+    tool_owner_id,
+    tool_available,
+  };
 
-  const editTool = async (e) => {
+  console.log("toolFromTheForm", toolFromTheForm)
+
+  const check = (formValues) => {
+    const errors = {};
+    if (!formValues.tool_name) {
+      errors.tool_name = "Name is required";
+    }
+    if (!formValues.tool_description) {
+      errors.tool_description = "desc is required";
+    }
+    return errors;
+  };
+
+  const errors = check(toolFromTheForm);
+  const validate = function (e) {
     e.preventDefault();
+    if (Object.keys(errors).length === 0) {
+      editTool();
+      document.getElementById("edittoolmodal1").click();
+    } else {
+      setFormErrors(errors);
+    }
+  };
+
+  const editTool = async () => {
+    // e.preventDefault();
     try {
       console.log(">>tool", tool);
       const body = {
@@ -40,6 +71,12 @@ export default function EditTool(props) {
       console.error(err.message);
     }
   };
+
+  function resetForm() {
+    setToolName(tool.tool_name);
+    setToolDescription(tool.tool_description);
+    setFormErrors({});
+  }
 
   return (
     <div className="add-tool-button-div">
@@ -70,6 +107,7 @@ export default function EditTool(props) {
                 className="close"
                 data-dismiss="modal"
                 aria-label="Close"
+                onClick={resetForm}
               >
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -89,6 +127,7 @@ export default function EditTool(props) {
                 value={tool_name}
                 onChange={(e) => setToolName(e.target.value)}
               />
+              <p className="form-error">{formErros.tool_name}</p>
 
               <label className="add_tool_title" htmlFor="title">
                 Description
@@ -100,6 +139,7 @@ export default function EditTool(props) {
                 value={tool_description}
                 onChange={(e) => setToolDescription(e.target.value)}
               />
+              <p className="form-error">{formErros.tool_description}</p>
 
               <label className="add_tool_title" htmlFor="title">
                 Picture
@@ -159,8 +199,8 @@ export default function EditTool(props) {
                 <button
                   className="button-submit"
                   type="Submit"
-                  data-dismiss="modal"
-                  onClick={(e) => editTool(e)}
+                  // data-dismiss="modal"
+                  onClick={(e) => validate(e)}
                 >
                   Edit
                 </button>

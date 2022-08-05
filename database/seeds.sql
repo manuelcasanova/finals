@@ -38,4 +38,10 @@ VALUES
 (3,'Pipe cutter', 5, 4, 'Cutting capacity: 1-5/8" (41 mm)', 'https://media-www.canadiantire.ca/product/fixing/plumbing/rough-plumbing/0638784/mastercraft-pvc-pipe-cutter-1-5-8-max--c72c06f9-1c89-49b3-b4a1-07aaf9e4cd8a.png?imwidth=1024', true), 
 (3,'Multibit Screwdriver', 1, 4, 'Seven bits','https://myturn-prod-images-out.s3.amazonaws.com/9/129/item/17248/image/attribute_image6932539369190600751-1024x768.jpg', true);
 
+-- INSERT INTO users_groups (user_id, group_id)
+-- VALUES
+-- (1, 1), (2, 1), (3, 1), (1, 2), (4, 2), (5, 2), (6, 2), (7, 3), (3, 3), (4, 3)
 
+INSERT INTO reservations (reservation_start_date, reservation_end_date, reservation_user_id,
+reservation_tool_id)
+VALUES('2022-08-09', '2022-08-12', 1, 5), ('2022-08-14', '2022-08-16', 2, 6), ('2022-08-13', '2022-08-15', 1, 2), ('2022-08-13', '2022-08-15', 1, 3), ('2022-08-23', '2022-08-27', 1, 5), ('2022-08-23', '2022-08-27', 4, 4), ('2022-08-23', '2022-08-27', 6, 10), ('2022-08-23', '2022-08-27', 7, 8), ('2022-08-23', '2022-08-27', 7, 9)

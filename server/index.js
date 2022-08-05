@@ -304,11 +304,11 @@ app.delete("/categories/delete/:id", async (req, res) => {
 app.get("/user_items", async (req, res) => {
   try {
     const toolsPerUser = await pool.query(
-      `select tool_name, tool_id, tool_available, tool_picture, category_name, user_id
-      from tools 
-      join categories on categories.category_id = tools.tool_category_id 
-      join users on users.user_id = tools.tool_owner_id 
-      where users.user_id = $1 ORDER BY tool_id;`, [1]);
+      `SELECT tool_name, tool_id, tool_available, tool_picture, category_name, user_id
+      FROM tools 
+      JOIN categories ON categories.category_id = tools.tool_category_id 
+      JOIN users ON users.user_id = tools.tool_owner_id 
+      WHERE users.user_id = $1 ORDER BY tool_id;`, [1]);
     res.json(toolsPerUser.rows)
   } catch (err) {
     console.error(err.message)
@@ -504,4 +504,19 @@ app.post("/reservations", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   }
+});
+
+// get all reservations for user
+
+app.get("/my_reservations", async (req, res) => {
+  try {
+    // const { id } = req.params;
+    const getMyReservations = await pool.query(
+      `SELECT user_name AS owner_name, user_email AS owner_email, tool_name, reservation_start_date, reservation_end_date FROM reservations JOIN tools ON reservations.reservation_tool_id = tools.tool_id JOIN users ON users.user_id = tools.tool_owner_id WHERE reservation_user_id = 1;`
+      );
+      console.log("my_reservations body: ", getMyReservations.rows)
+      res.json(getMyReservations.rows)
+  } catch (err) {
+    console.error(err.message);
+  };
 });

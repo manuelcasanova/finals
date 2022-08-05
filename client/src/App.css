@@ -368,6 +368,7 @@ tr {
 
 .form-error {
   color: red;
+  text-align: left;
 }
 
 /* Pagination */

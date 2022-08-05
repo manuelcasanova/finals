@@ -5,7 +5,9 @@ export default function EditTool(props) {
   const { tool, tools, categories, setTools } = props;
 
   const [tool_name, setToolName] = useState(tool.tool_name);
-  const [tool_description, setToolDescription] = useState(tool.tool_description);
+  const [tool_description, setToolDescription] = useState(
+    tool.tool_description
+  );
   const [tool_picture, setToolPicture] = useState(tool.tool_picture);
   const [tool_category_id, setToolCategory] = useState(tool.tool_category_id);
   const [tool_owner_id, setToolOwnerId] = useState(1);
@@ -21,15 +23,12 @@ export default function EditTool(props) {
     tool_available,
   };
 
-  console.log("toolFromTheForm", toolFromTheForm)
+  console.log("toolFromTheForm", toolFromTheForm);
 
   const check = (formValues) => {
     const errors = {};
     if (!formValues.tool_name) {
       errors.tool_name = "Name is required";
-    }
-    if (!formValues.tool_description) {
-      errors.tool_description = "desc is required";
     }
     return errors;
   };
@@ -74,7 +73,6 @@ export default function EditTool(props) {
 
   function resetForm() {
     setToolName(tool.tool_name);
-    setToolDescription(tool.tool_description);
     setFormErrors({});
   }
 
@@ -139,7 +137,6 @@ export default function EditTool(props) {
                 value={tool_description}
                 onChange={(e) => setToolDescription(e.target.value)}
               />
-              <p className="form-error">{formErros.tool_description}</p>
 
               <label className="add_tool_title" htmlFor="title">
                 Picture

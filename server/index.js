@@ -512,10 +512,25 @@ app.get("/my_reservations", async (req, res) => {
   try {
     // const { id } = req.params;
     const getMyReservations = await pool.query(
-      `SELECT user_name AS owner_name, user_email AS owner_email, tool_name, reservation_start_date, reservation_end_date FROM reservations JOIN tools ON reservations.reservation_tool_id = tools.tool_id JOIN users ON users.user_id = tools.tool_owner_id WHERE reservation_user_id = 1;`
+      `SELECT user_name AS owner_name, reservation_id, user_email AS owner_email, tool_name, reservation_start_date, reservation_end_date FROM reservations JOIN tools ON reservations.reservation_tool_id = tools.tool_id JOIN users ON users.user_id = tools.tool_owner_id WHERE reservation_user_id = 1;`
       );
       console.log("my_reservations body: ", getMyReservations.rows)
       res.json(getMyReservations.rows)
+  } catch (err) {
+    console.error(err.message);
+  };
+});
+
+// delete a reservation
+
+app.delete("/my_reservations/delete/:id", async (req, res) => {
+  try {
+    const id = parseInt(req.params.id)
+    console.log("deleted reservations id: ", id)
+    const deletedRes = await pool.query(
+      `DELETE FROM reservations WHERE reservation_id = $1 RETURNING *`, [id]
+    )
+    res.end();
   } catch (err) {
     console.error(err.message);
   };

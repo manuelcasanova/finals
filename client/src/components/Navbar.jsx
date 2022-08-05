@@ -42,6 +42,7 @@ export default function Navbar({user, admin, setTools}) {
           <div className="navbar-dropdown-content">
           <a onClick={handleMyItems}>My items</a>
           <a onClick={() => {navigate(`/profile`)}}>Profile</a>
+          <a onClick={() => {navigate(`/my_reservations`)}}>Reservations</a>
           </div>
         </div>
 

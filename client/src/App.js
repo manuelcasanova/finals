@@ -61,6 +61,13 @@ function App() {
       })
   }, [])
 
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8001/reservations`)
+  //   .then(function(res) {
+  //     setReservations([...res.data])
+  //   })
+  // }, [])
+
   return (
     <UserContext.Provider value={{ user, setUser, admin, setAdmin }}>
       <Router>
@@ -98,7 +105,7 @@ Components inside <Routes></Routes>   render only in those routes.
                 } />
               <Route path="/profile" element={<Profile />} />
               
-              <Route path="/user/reservations" element={<ShowReservations reservations={reservations} setReservations={setReservations}/>} />
+              <Route path="/my_reservations" element={<ShowReservations reservations={reservations} setReservations={setReservations}/>} />
 
             </Route>
 

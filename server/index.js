@@ -8,9 +8,62 @@ app.use(cors());
 app.use(express.json()); //req.body
 app.use(morgan("dev"));
 
-app.listen(port, () => {
-  console.log(`Tool swap app running on port ${port}.`);
-});
+
+const router = require("express").Router()
+const bcrypt = require("bcrypt")
+const jwtGenerator = require("./utils/jwtGenerator")
+const validInfo = require("./middleware/validInfo")
+const authorization = require("./middleware/authorization")
+
+//Register
+
+router.post("/register", validInfo, async (req, res) => {
+  try {
+
+    //1. Destructure the req.body (name, email, password)
+
+    const { name, email, password } = req.body
+
+    //2. Check if user exist (if exists, then throw error)
+
+    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+      email
+    ]);
+
+    if (user.rows.length !== 0) {
+      return res.status(401).send("Email already exists");
+    }
+
+    res.json(user.rows)
+
+    //3. Bcrypt the password
+
+    const saltRound = 10;
+    const salt = await bcrypt.genSalt(saltRound);
+
+    const bcryptPassword = bcrypt.hash(password, salt);
+
+    //4. Enter the user in the db
+
+    const newUsers = await pool.query(
+      "INSERT INTO users (user_name, user_email, user_password_hash) VALUES ($1, $2, $3)  RETURNING *"[name, email, bcryptPassword]
+    );
+
+    res.json(newUser)
+    //5. generate our jwt token
+
+    const token = jwtGenerator(newUser.rows[0].user_id);
+
+    res.json({ token })
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+})
+
+
+
 
 //list tools
 app.get("/tools", async (req, res) => {
@@ -216,90 +269,6 @@ app.delete("/categories/delete/:id", async (req, res) => {
   }
 });
 
-
-//edit the tool /tools/edit/:id
-//delete a tool /tools/delete/:id
-//add a tool /tools with post K done
-//list users /users K done
-
-//list categories /categories
-//add a category /coegries with post
-//delete a category /categories/delete/:id
-//edit a cat. /categories/edit/:id
-
-//query parameter route url/?name=henry = req.query
-// app.get("/search", async (req, res) => {
-//   try {
-//     const { searchInput, searchCategory } = req.query;
-//     console.log("req", req)
-//     // const tools = await pool.query(
-//     //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2", [`%${searchInput.toLowerCase()}%`, searchCategory ]
-//     // )
-  
-//     // const tools = await pool.query(
-//     //   "SELECT * from tools WHERE LOWER(tool_name) LIKE $1 || LOWER(tool_description) LIKE $1", [`%${searchInput.toLowerCase()}%`]
-//     // )
-//     console.log(req.query);
-     
-//     const tools = await pool.query(
-//       `SELECT 
-//       tool_id, 
-//       tool_name,
-//       tool_description, 
-//       tool_category_id, 
-//       tool_owner_id, 
-//       tool_picture, 
-//       tool_available, 
-//       category_name, 
-//       user_name
-//       FROM tools 
-//       JOIN categories 
-//       ON categories.category_id = tool_category_id 
-//       JOIN users 
-//     ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 AND tool_category_id = $2 ORDER BY tool_name`, [`%${searchInput.toLowerCase()}%`, searchCategory]);
-
-
-//     // const formattedInput = searchInput.replace(" ", "|");
-//     // console.log(formattedInput)
-//     // const tools = await pool.query(
-//     //   "SELECT * from tools WHERE to_tsvector(tool_description) @@ to_tsquery($1) OR to_tsvector(tool_name) @@ to_tsquery($1)", [formattedInput]
-//     // )
-
-//     res.json(tools.rows)
-//   } catch (err) {
-//     console.error(err.message)
-//   }
-// })
-
-
-//search for all categories
-// app.get("/search_all", async (req, res) => {
-//   try {
-//     const { searchInput, searchCategory } = req.query;
-//     const tools = await pool.query(
-//       `SELECT 
-//       tool_id, 
-//       tool_name,
-//       tool_description, 
-//       tool_category_id, 
-//       tool_owner_id, 
-//       tool_picture, 
-//       tool_available, 
-//       category_name, 
-//       user_name 
-//       FROM tools 
-//       JOIN categories 
-//       ON categories.category_id = tool_category_id 
-//       JOIN users 
-//     ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 ORDER BY tool_name`, [`%${searchInput.toLowerCase()}%`]);
-//     res.json(tools.rows)
-//   } catch (err) {
-//     console.error(err.message)
-//   }
-// })
-
-
-
 //items per user
 app.get("/user_items", async (req, res) => {
   try {
@@ -469,21 +438,6 @@ app.get("/searchh", async (req, res) => {
     console.error(err.message)
   }
 })
-//get reservations for item (hardcoded item 1)
-
-// app.get("/reservations", async (req, res) => {
-//   try {
-//     console.log(req);
-//     const getReservations = await pool.query(
-//       `SELECT * from reservations where tool_id = 1
-//      `
-//     );
-//     res.json(getReservations.rows);
-//   } catch (err) {
-//     console.error(err.message);
-//   }
-// });
-
 
 //Add a reservation
 
@@ -534,4 +488,12 @@ app.delete("/my_reservations/delete/:id", async (req, res) => {
   } catch (err) {
     console.error(err.message);
   };
+});
+
+
+
+
+
+app.listen(port, () => {
+  console.log(`Tool swap app running on port ${port}.`);
 });

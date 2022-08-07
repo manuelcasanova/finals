@@ -24,6 +24,7 @@ import UserItemsSearch from './components/UserItemsSearch';
 import SearchbarCategories from './components/SearchbarCategories';
 import SearchbarGroups from './components/SearchbarGroups';
 import ShowReservations from './components/ShowReservations';
+import Registration from './components/Registration';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -75,13 +76,18 @@ function App() {
           {/* All components outside <Routes></Routes> render in all routes.
 Components inside <Routes></Routes>   render only in those routes.
 */}
-
+          
           <Authentication />
           <Navbar user={user} admin={admin} setTools={setTools} />
           {/* <Searchbar setTools={setTools} categories={categories} /> */}
 
 
           <Routes>
+
+
+            <Route path="/register" element={
+              <Registration />
+            }></Route>
 
             <Route path="/" element={<>
               <Searchbar setTools={setTools} categories={categories} groups={groups} />

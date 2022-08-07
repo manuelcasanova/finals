@@ -75,7 +75,8 @@ a:active {
 }
 
 .button-login,
-.button-logout {
+.button-logout, 
+.button-register {
   background-color: var(--color3);
   border-style: none;
   font-size: x-large;
@@ -85,7 +86,8 @@ a:active {
 }
 
 .button-login:hover,
-.button-logout:hover {
+.button-logout:hover,
+.button-register:hover {
   background-color: var(--color4);
 }
 

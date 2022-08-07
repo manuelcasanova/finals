@@ -131,7 +131,7 @@ export default function Register() {
   }
 
   return (
-    <>
+    <div className="app-registration">
       {success ? (
         <section>
           <h1>Success!</h1>
@@ -244,7 +244,7 @@ export default function Register() {
             </p>
 
             {/* Disabled until all fields validate */}
-            <button disabled={!validName || !validEmail || !validPwd || !validMatch ? true : false}>Sign Up</button>
+            <button className="button-sign-up" disabled={!validName || !validEmail || !validPwd || !validMatch ? true : false}>Sign Up</button>
 
           </form>
 
@@ -257,7 +257,7 @@ export default function Register() {
           </p>
         </section>
       )}
-    </>
+    </div>
   )
 }
 

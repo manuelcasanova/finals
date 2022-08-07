@@ -174,14 +174,14 @@ export default function Register() {
 
 
 
-            <label htmlFor="username">
+            <label htmlFor="userEmail">
               Email:
-              <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"} />
-              <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"} />
+              <FontAwesomeIcon icon={faCheck} className={validEmail ? "valid" : "hide"} />
+              <FontAwesomeIcon icon={faTimes} className={validEmail || !userEmail ? "hide" : "invalid"} />
             </label>
             <input
               type="text"
-              id="username" //HERE?
+              id="userEmail" 
               ref={userRef}
               autoComplete="off"
               onChange={(e) => setUserEmail(e.target.value)}

@@ -26,7 +26,7 @@ export default function Searchbar(props) {
       
     });
     resetForm();
-    navigate("/");
+    // navigate("/");
   };
 
   function resetForm() {

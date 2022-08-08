@@ -91,8 +91,13 @@ export default function Register() {
     setErrMsg('');
   }, [user, pwd, matchPwd])
 
-  const handleSubmit = async (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
+    const userObject = {
+      user,
+      userEmail,
+      pwd
+    };
     // if button enabled with JS hack we check again and we avoid a user to be set in our database with invalid information
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
@@ -101,33 +106,50 @@ export default function Register() {
       setErrMsg("Invalid Entry");
       return;
     }
+    addUser(userObject);
+
+
     //If there is no connection to db, just for testing, comment in the next two lines
     // console.log(user, pwd, userEmail);
     // setSuccess(true);
 
-    try {
-      //Attention inside stringify with naming (relate to db). If name is different user: user_name  pwd:user_password.
-      const response = await axios.post(REGISTER_URL, JSON.stringify({ user, pwd, userEmail }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
-        }
-      );
-      console.log(response.data);
-      console.log(JSON.stringify(response))
-      setSuccess(true);
-      //clear the input fields
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg('No Server Response')
-      } else if (err.response?.status === 409) {
-        setErrMsg('Username Already Taken')
-      } else {
-        setErrMsg('Registration Failed')
-      }
-      errRef.current.focus();
-    }
 
+
+    // try {
+    //   //Attention inside stringify with naming (relate to db). If name is different user: user_name  pwd:user_password.
+    //   const response = await axios.post(REGISTER_URL, JSON.stringify({ user, pwd, userEmail }),
+    //     {
+    //       headers: { 'Content-Type': 'application/json' },
+    //       withCredentials: true
+    //     }
+    //   );
+    //   console.log(response.data);
+    //   console.log(JSON.stringify(response))
+    //   setSuccess(true);
+    //   //clear the input fields
+    // } catch (err) {
+    //   if (!err?.response) {
+    //     setErrMsg('No Server Response')
+    //   } else if (err.response?.status === 409) {
+    //     setErrMsg('Username Already Taken')
+    //   } else {
+    //     setErrMsg('Registration Failed')
+    //   }
+    //   errRef.current.focus();
+    // }
+
+  }
+
+  function addUser (userObject) {
+    console.log("userObject", userObject)
+    console.log("user", user)
+    console.log("user email", userEmail)
+    console.log("pwd", pwd)
+    
+    return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
+      const newUser = response.data;
+      console.log("new user", newUser)
+    })
   }
 
   return (
@@ -255,6 +277,7 @@ export default function Register() {
               <a href="#">Sign In</a>
             </span>
           </p>
+          <div>States: {user} {userEmail} {pwd} {matchPwd}</div>
         </section>
       )}
     </div>

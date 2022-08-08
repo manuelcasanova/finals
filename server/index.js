@@ -17,36 +17,54 @@ const authorization = require("./middleware/authorization")
 
 //Register
 
-router.post("/register", validInfo, async (req, res) => {
+app.post("/users", validInfo, async (req, res) => {
   try {
 
     //1. Destructure the req.body (name, email, password)
 
-    const { name, email, password } = req.body
+    const { user, userEmail, pwd } = req.body
+    console.log("index.js req body", req.body)
 
     //2. Check if user exist (if exists, then throw error)
 
-    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
-      email
+    const checkUser = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+      userEmail
     ]);
 
-    if (user.rows.length !== 0) {
-      return res.status(401).send("Email already exists");
-    }
+    console.log("user rows", checkUser.rows)
 
-    res.json(user.rows)
+
+    if (checkUser.rows.length !== 0) {
+      return res.status(401).send("Email already exists");
+    } 
+    
+    // else if (checkUser.rows.length === 0) {
+    //   return res.status(200).send('Emails does not exist in db')
+    // }
+
 
     //3. Bcrypt the password
 
-    const saltRound = 10;
-    const salt = await bcrypt.genSalt(saltRound);
+    const saltRounds = 10;
+    console.log("saltRounds", saltRounds)
+    const salt = await bcrypt.genSalt(saltRounds);
+    console.log("salt", salt)
 
-    const bcryptPassword = bcrypt.hash(password, salt);
+    const bcryptPassword = await bcrypt.hash(pwd, salt);
+    console.log("bcryptPassword", bcryptPassword)
+
+    // bcrypt.genSalt(saltRounds, function (err, salt) {
+    //   bcrypt.hash(pwd, salt, function (err, hash) {
+    //     bcryptPassword = hash
+    //   });
+    // });
+
+
 
     //4. Enter the user in the db
 
-    const newUsers = await pool.query(
-      "INSERT INTO users (user_name, user_email, user_password_hash) VALUES ($1, $2, $3)  RETURNING *"[name, email, bcryptPassword]
+    const newUser = await pool.query(
+      "INSERT INTO users (user_name, user_email, user_password_hash) VALUES ($1, $2, $3)  RETURNING *"[user, userEmail, bcryptPassword]
     );
 
     res.json(newUser)
@@ -55,6 +73,10 @@ router.post("/register", validInfo, async (req, res) => {
     const token = jwtGenerator(newUser.rows[0].user_id);
 
     res.json({ token })
+
+
+
+
 
   } catch (err) {
     console.error(err.message);
@@ -220,9 +242,9 @@ app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
 
 
 app.put('/categories/edit/:id', async (req, res) => {
-  try{
+  try {
     // console.log("Put in Server")
-    const {id} = req.params
+    const { id } = req.params
     // console.log("Content of ID: ", id)
     const {
       category_name
@@ -246,8 +268,8 @@ app.post("/categories", async (req, res) => {
       category_name
     } = req.body;
     console.log("Category Name: ", category_name)
-    const newCategory = await pool.query("INSERT INTO categories (category_name) VALUES ($1) RETURNING *", 
-    [category_name]);
+    const newCategory = await pool.query("INSERT INTO categories (category_name) VALUES ($1) RETURNING *",
+      [category_name]);
     res.json(newCategory.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -312,7 +334,7 @@ app.get("/search_user_items", async (req, res) => {
       ON categories.category_id = tool_category_id 
       JOIN users 
       ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 ${searchCategory !== undefined ? "AND tool_category_id = $3" : ""} AND users.user_id = $2 ORDER BY tool_name`, paramaters);
-      res.json(tools.rows)
+    res.json(tools.rows)
   } catch (err) {
     console.error(err.message)
   }
@@ -324,7 +346,7 @@ app.get("/admin/categories/search", async (req, res) => {
     const { searchInput } = req.query;
 
     console.log("req.query", req.query);
-     
+
     const categories = await pool.query(
       `SELECT category_name 
       FROM categories 
@@ -344,7 +366,7 @@ app.get("/groups/search", async (req, res) => {
     const { searchInput } = req.query;
 
     console.log("req.query", req.query);
-     
+
     const groups = await pool.query(
       `SELECT group_name, group_description, group_icon 
       FROM groups 
@@ -397,20 +419,20 @@ app.get("/searchh", async (req, res) => {
   try {
     const { searchInput, searchCategory, searchGroup } = req.query;
     console.log("req", req)
-     const paramaters = [`%${searchInput.toLowerCase()}%`]
-     let searchCategoryWhereString = '';
-     let searchGroupWhereString = '';
+    const paramaters = [`%${searchInput.toLowerCase()}%`]
+    let searchCategoryWhereString = '';
+    let searchGroupWhereString = '';
     if (searchCategory) {
       paramaters.push(searchCategory)
       searchCategoryWhereString = `AND tool_category_id = ${paramaters.length == 2 ? "$2" : ""}`;
     }
-      
+
     if (searchGroup) {
       paramaters.push(searchGroup)
       searchGroupWhereString = `AND tool_group_id = ${paramaters.length == 2 ? "$2" : "$3"}`;
     }
 
-    
+
     const tools = await pool.query(
       `SELECT 
       tool_id, 
@@ -467,9 +489,9 @@ app.get("/my_reservations", async (req, res) => {
     // const { id } = req.params;
     const getMyReservations = await pool.query(
       `SELECT user_name AS owner_name, reservation_id, user_email AS owner_email, tool_name, reservation_start_date, reservation_end_date FROM reservations JOIN tools ON reservations.reservation_tool_id = tools.tool_id JOIN users ON users.user_id = tools.tool_owner_id WHERE reservation_user_id = 1;`
-      );
-      console.log("my_reservations body: ", getMyReservations.rows)
-      res.json(getMyReservations.rows)
+    );
+    console.log("my_reservations body: ", getMyReservations.rows)
+    res.json(getMyReservations.rows)
   } catch (err) {
     console.error(err.message);
   };

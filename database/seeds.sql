@@ -16,9 +16,9 @@ VALUES
 
 INSERT INTO groups (group_name, group_description, group_icon)
 VALUES
-('BC Trucking Association', 'A group to share items for members of the BC Trucking Association', 'https://www.bctrucking.com/sites/all/themes/BCTA/img/bcta-logo.png'),
+('Commercial Drive Tool Share', 'An East Van community sharing group', 'https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,q_65,w_845/v1/clients/vancouverbc/Commercial_Drive_Neighbourhood_Mural_f47786f6-9743-45e5-8f11-68f34757a27f.jpg'),
 ('Berry Hills Subdivion, Middle Sackville (NS)', 'A neighbourhood group for all the residents living in Berry Hills', 'https://www.atnhomes.ca/images/unitegallery/berryhills/106hamilton/berryhills1.jpg'),
-('Ontario Home Builders'' Association', 'The voice of the residential construction industry in Ontario', 'https://ontarioconstructionnews.com/wp-content/uploads/2019/07/ohba-logo.png'),
+('Bloorcourt Village Tool Exchange', 'Making our community stronger with shared resources', 'https://sherkinlangerandcastle.files.wordpress.com/2012/03/bloorcourtmural.jpg?w=600&h=450'),
 ('Rockingham South, Halifax (NS)', 'A friendly place where neighbours can connect and share their tools', 'https://images.squarespace-cdn.com/content/v1/53c685e5e4b050d23b2235ba/1405704437478-F8K6FTUH8NRLMG1A91WT/rockingham3.jpg?format=2500w');
 
 INSERT INTO tools (tool_group_id, tool_name, tool_category_id, tool_owner_id, tool_description, tool_picture, tool_available)

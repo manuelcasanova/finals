@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 
 export default function OneToolForGrid({ tools }) {
 
+
+  console.log(tools)
   const navigate = useNavigate()
 
   return (
@@ -30,6 +32,11 @@ export default function OneToolForGrid({ tools }) {
           </div>
           <div className="one-tool-for-grid-availability">
             {tool.tool_available}
+{/* 
+            if ({tool.tool_available} === true) {
+              <>Available</>
+            } */}
+
           </div>
 
           </div>

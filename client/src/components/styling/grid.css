@@ -19,7 +19,7 @@
   display: grid;
   grid-template-columns: repeat(5, 19.5%);
   gap: 0.5%;
-  padding: 1%;
+  padding: 3%;
   font-size: xx-large;
 }
 
@@ -63,6 +63,7 @@
 .one-tool-for-grid-name {
 font-size: xx-large;
 padding: 10%;
+
 }
 
 .one-tool-for-grid-group {

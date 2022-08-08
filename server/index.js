@@ -49,11 +49,6 @@ app.post("/users", validInfo, async (req, res) => {
       return res.status(401).send("Username already exists");
     }
 
-    // else if (checkUser.rows.length === 0) {
-    //   return res.status(200).send('Emails does not exist in db')
-    // }
-
-
     //3. Bcrypt the password
 
     const saltRounds = 10;
@@ -64,14 +59,6 @@ app.post("/users", validInfo, async (req, res) => {
     const bcryptPassword = await bcrypt.hash(pwd, salt);
     // console.log("bcryptPassword", bcryptPassword)
 
-    // bcrypt.genSalt(saltRounds, function (err, salt) {
-    //   bcrypt.hash(pwd, salt, function (err, hash) {
-    //     bcryptPassword = hash
-    //   });
-    // });
-
-
-
     //4. Enter the user in the db
 
     const newUser = await pool.query(
@@ -81,20 +68,72 @@ app.post("/users", validInfo, async (req, res) => {
     // console.log("newuser", newUser.rows[0])
 
     //5. generate our jwt token
-
     const token = jwtGenerator(newUser.rows[0].user_id);
 
     //  res.json({ token })
-
-
-
-
 
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
   }
 })
+
+
+
+
+//login route
+
+router.post("/login", validInfo, async (req, res) => {
+  try {
+
+    //1. Destructure the req.body
+
+    const { email, password } = req.body
+
+    //2. Check if user does not exist (if not, throw error)
+
+    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+      email
+    ]);
+
+    if (user.rows.length === 0) {
+      return res.status(401).json("Wrong email or password");
+    }
+
+    //3. If it exists. Check if incoming password is like db password
+
+    const validPassword = await bcrypt.compare(
+      password,
+      user.rows[0].user_password
+    );
+
+    if (!validPassword) {
+      return res.status(401).json("Wrong email or password")
+    }
+
+    //4. Give them jwt token
+
+    const token = jwtGenerator(user.rows[0].user_id);
+
+    res.json({ token })
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+})
+
+// Verify consitently the jw token
+
+router.get("/verify", authorization, async (req, res) => {
+  try {
+    res.json(true);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error")
+  }
+})
+
 
 
 

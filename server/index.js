@@ -49,11 +49,6 @@ app.post("/users", validInfo, async (req, res) => {
       return res.status(401).send("Username already exists");
     }
 
-    // else if (checkUser.rows.length === 0) {
-    //   return res.status(200).send('Emails does not exist in db')
-    // }
-
-
     //3. Bcrypt the password
 
     const saltRounds = 10;
@@ -64,14 +59,6 @@ app.post("/users", validInfo, async (req, res) => {
     const bcryptPassword = await bcrypt.hash(pwd, salt);
     // console.log("bcryptPassword", bcryptPassword)
 
-    // bcrypt.genSalt(saltRounds, function (err, salt) {
-    //   bcrypt.hash(pwd, salt, function (err, hash) {
-    //     bcryptPassword = hash
-    //   });
-    // });
-
-
-
     //4. Enter the user in the db
 
     const newUser = await pool.query(
@@ -81,20 +68,72 @@ app.post("/users", validInfo, async (req, res) => {
     // console.log("newuser", newUser.rows[0])
 
     //5. generate our jwt token
-
     const token = jwtGenerator(newUser.rows[0].user_id);
 
     //  res.json({ token })
-
-
-
-
 
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
   }
 })
+
+
+
+
+//login route
+
+router.post("/login", validInfo, async (req, res) => {
+  try {
+
+    //1. Destructure the req.body
+
+    const { email, password } = req.body
+
+    //2. Check if user does not exist (if not, throw error)
+
+    const user = await pool.query("SELECT * FROM users WHERE user_email = $1", [
+      email
+    ]);
+
+    if (user.rows.length === 0) {
+      return res.status(401).json("Wrong email or password");
+    }
+
+    //3. If it exists. Check if incoming password is like db password
+
+    const validPassword = await bcrypt.compare(
+      password,
+      user.rows[0].user_password
+    );
+
+    if (!validPassword) {
+      return res.status(401).json("Wrong email or password")
+    }
+
+    //4. Give them jwt token
+
+    const token = jwtGenerator(user.rows[0].user_id);
+
+    res.json({ token })
+
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+})
+
+// Verify consitently the jw token
+
+router.get("/verify", authorization, async (req, res) => {
+  try {
+    res.json(true);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error")
+  }
+})
+
 
 
 
@@ -117,12 +156,16 @@ app.get("/tools", async (req, res) => {
       tool_available, 
       category_name, 
       user_name,
-      user_email 
+      user_email,
+      group_name 
       FROM tools 
       JOIN categories 
       ON categories.category_id = tools.tool_category_id 
       JOIN users 
-      ON users.user_id = tools.tool_owner_id ORDER BY tool_name`
+      ON users.user_id = tools.tool_owner_id 
+      join groups
+      ON groups.group_id = tools.tool_group_id
+      ORDER BY tool_name`
     );
     res.json(getAllTools.rows);
   } catch (err) {
@@ -187,13 +230,14 @@ app.post("/tools", async (req, res) => {
       tool_name,
       tool_picture,
       tool_category_id,
+      tool_group_id,
       tool_owner_id,
       tool_available,
     } = req.body;
     console.log("req body", req.body);
     const newTool = await pool.query(
-      "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5) RETURNING *",
-      [tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available]
+      "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
+      [tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available]
     );
     res.json(newTool.rows[0]);
   } catch (err) {
@@ -231,15 +275,17 @@ app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
       tool_name,
       tool_picture,
       tool_category_id,
+      tool_group_id,
       tool_available,
     } = req.body;
     const editTool = await pool.query(
-      `UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_available = $4 
-      WHERE tool_id = $5 AND tool_owner_id= $6`,
+      `UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_group_id = $4, tool_available = $5 
+      WHERE tool_id = $6 AND tool_owner_id= $7`,
       [
         tool_name,
         tool_picture,
         tool_category_id,
+        tool_group_id,
         tool_available,
         id,
         tool_owner_id

@@ -107,8 +107,9 @@ Components inside <Routes></Routes>   render only in those routes.
               <Route path="/user/items" element=
                 {
                   <>
-                    <UserItemsSearch setTools={setTools} categories={categories} />
-                    <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
+                    <UserItemsSearch setTools={setTools} categories={categories} 
+                    groups={groups}/>
+                    <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} groups={groups}/>
                     <Pagination />
                   </>
 

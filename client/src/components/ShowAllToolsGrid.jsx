@@ -4,7 +4,7 @@ import axios from "axios";
 import './styling/grid.css'
 import OneToolForGrid from "./OneToolForGrid";
 
-export default function ShowAllToolsGrid({  }) {
+export default function ShowAllToolsGrid({tools}) {
 
   const navigate = useNavigate();
 
@@ -17,43 +17,9 @@ export default function ShowAllToolsGrid({  }) {
 
   return (
     <div className="show-tools-grid">
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
-      <OneToolForGrid />
+      <OneToolForGrid tools={tools}/>
+ 
+      
     </div>
   )
 }

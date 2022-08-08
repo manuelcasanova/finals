@@ -12,7 +12,7 @@ const navigate = useNavigate()
     
     {navigate(`/grid`)}
   
-  }>Change view</a>
+  }>View grid</a>
     </div>
 
     

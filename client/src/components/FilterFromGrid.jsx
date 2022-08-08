@@ -12,7 +12,7 @@ const navigate = useNavigate()
     
     {navigate(`/`)}
   
-  }>Change view</a>
+  }>View List</a>
     </div>
 
     

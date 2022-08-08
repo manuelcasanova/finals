@@ -20,6 +20,7 @@
   grid-template-columns: repeat(5, 19.5%);
   gap: 0.5%;
   padding: 1%;
+  font-size: xx-large;
 }
 
 
@@ -29,14 +30,15 @@
   background-color: var(--color3);
   border-radius: 30px;
   margin: 0.2%;
-  /* max-width: 19.6%; */
+  min-width: 19.6%;
   padding: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-
+  cursor: pointer;
 }
+
 
 .one-tool-for-grid-picture{
   position: relative;
@@ -52,4 +54,24 @@
   right: -9999px;
   bottom: -9999px;
   margin: auto;
+}
+
+.img-one-tool-for-grid:hover {
+  transform: none;
+}
+
+.one-tool-for-grid-name {
+font-size: xx-large;
+padding: 10%;
+}
+
+.one-tool-for-grid-group {
+  font-size: x-large;
+  padding: 5%;
+}
+
+.one-tool-for-grid-availability {
+
+
+
 }

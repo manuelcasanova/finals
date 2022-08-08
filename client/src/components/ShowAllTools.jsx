@@ -11,6 +11,7 @@ export default function ShowAllTools({ tools, setTools }) {
   //     setTools([...res.data]);
   //   });
   // }, []);
+  console.log("TOOLS", tools)
 
 
   return (

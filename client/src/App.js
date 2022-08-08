@@ -45,10 +45,18 @@ function App() {
   const [groups, setGroups] = useState([]);
   const [reservations, setReservations] = useState([])
 
+  const [loading, setLoading] = useState(false);
+  const [searchTrigger, setSearchTrigger] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [toolsPerPage, setToolsPerPage] = useState(15);
+
+  console.log("tools>>", tools);
+
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
       .then(function (res) {
-        setTools([...res.data])
+        setTools([...res.data]);
+        setLoading(false)
       })
   }, [])
 
@@ -66,6 +74,16 @@ function App() {
       })
   }, [])
 
+  const indexOflastTool = currentPage * toolsPerPage;
+  const indexOfFirstTool = indexOflastTool - toolsPerPage;
+  const currentTools = searchTrigger? tools : tools.slice(indexOfFirstTool, indexOflastTool);
+
+
+  console.log("currentTools", currentTools)
+  console.log("indexOfFirstTool", indexOfFirstTool)
+  console.log("indexOflastTool", indexOflastTool)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   // useEffect(() => {
   //   axios.get(`http://localhost:8001/reservations`)
   //   .then(function(res) {
@@ -82,7 +100,7 @@ Components inside <Routes></Routes>   render only in those routes.
 */}
 
           <Authentication />
-          <Navbar user={user} admin={admin} setTools={setTools} />
+          <Navbar user={user} admin={admin} setTools={setTools} setCurrentPage={setCurrentPage}/>
           {/* <Searchbar setTools={setTools} categories={categories} /> */}
 
 
@@ -98,10 +116,10 @@ Components inside <Routes></Routes>   render only in those routes.
             }></Route>
 
             <Route path="/list" element={<>
-              <Searchbar setTools={setTools} categories={categories} groups={groups} />
+              <Searchbar setTools={setTools} categories={categories} groups={groups} setSearchTrigger={setSearchTrigger}/>
               <Filter />
-              <ShowAllTools tools={tools} setTools={setTools} />
-              <Pagination />
+              <ShowAllTools tools={currentTools} setTools={setTools} loading={loading}/>
+              <Pagination toolsPerPage={toolsPerPage} totalTools={tools.length} paginate={paginate}/>
             </>
             } />
 
@@ -136,7 +154,7 @@ Components inside <Routes></Routes>   render only in those routes.
 
             <Route path="/inventory/:toolIdParam" element={
               <>
-                <Searchbar setTools={setTools} categories={categories} groups={groups} />
+                <Searchbar setTools={setTools} categories={categories} groups={groups} setSearchTrigger={setSearchTrigger}/>
                 <OneToolView tools={tools} user={user} admin={admin} />
               </>
             } />

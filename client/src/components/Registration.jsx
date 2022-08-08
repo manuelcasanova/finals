@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
@@ -16,6 +17,8 @@ const USEREMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-
 const REGISTER_URL = '/register'
 
 export default function Register() {
+
+  const navigate = useNavigate();
 
   //useRef references. Set the focus on the user input when the component loads.
   //If error we set the focus on it so it can be readed by a screen reader fo accesibility
@@ -115,6 +118,7 @@ function resetForm() {
     }
     addUser(userObject);
     resetForm();
+    navigate('/');
 
 
     //If there is no connection to db, just for testing, comment in the next two lines

@@ -156,12 +156,16 @@ app.get("/tools", async (req, res) => {
       tool_available, 
       category_name, 
       user_name,
-      user_email 
+      user_email,
+      group_name 
       FROM tools 
       JOIN categories 
       ON categories.category_id = tools.tool_category_id 
       JOIN users 
-      ON users.user_id = tools.tool_owner_id ORDER BY tool_name`
+      ON users.user_id = tools.tool_owner_id 
+      join groups
+      ON groups.group_id = tools.tool_group_id
+      ORDER BY tool_name`
     );
     res.json(getAllTools.rows);
   } catch (err) {
@@ -226,13 +230,14 @@ app.post("/tools", async (req, res) => {
       tool_name,
       tool_picture,
       tool_category_id,
+      tool_group_id,
       tool_owner_id,
       tool_available,
     } = req.body;
     console.log("req body", req.body);
     const newTool = await pool.query(
-      "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5) RETURNING *",
-      [tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available]
+      "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
+      [tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available]
     );
     res.json(newTool.rows[0]);
   } catch (err) {

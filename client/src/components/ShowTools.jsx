@@ -4,7 +4,7 @@ import EditTool from "./EditTool";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function ShowTools({ tools, setTools, categories }) {
+export default function ShowTools({ tools, setTools, categories, groups }) {
   console.log("tools", tools);
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ export default function ShowTools({ tools, setTools, categories }) {
   return (
     <div className="show-tools">
       <div className="show-title">My items</div>
-      <AddTool tools={tools} categories={categories} setTools={setTools} />
+      <AddTool tools={tools} categories={categories} setTools={setTools} groups={groups} />
       <table className="tools-table">
         <thead>
           <tr>

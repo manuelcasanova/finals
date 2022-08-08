@@ -108,7 +108,7 @@ Components inside <Routes></Routes>   render only in those routes.
                 {
                   <>
                     <UserItemsSearch setTools={setTools} categories={categories} />
-                    <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} />
+                    <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} groups={groups}/>
                     <Pagination />
                   </>
 

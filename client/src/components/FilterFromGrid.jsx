@@ -10,7 +10,7 @@ const navigate = useNavigate()
     <div className="filter-view">
     <a onClick={() => 
     
-    {navigate(`/`)}
+    {navigate(`/list`)}
   
   }>View List</a>
     </div>

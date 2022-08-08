@@ -97,7 +97,7 @@ Components inside <Routes></Routes>   render only in those routes.
               <Login />
             }></Route>
 
-            <Route path="/" element={<>
+            <Route path="/list" element={<>
               <Searchbar setTools={setTools} categories={categories} groups={groups} />
               <Filter />
               <ShowAllTools tools={tools} setTools={setTools} />
@@ -105,7 +105,7 @@ Components inside <Routes></Routes>   render only in those routes.
             </>
             } />
 
-            <Route path="/grid" element={<>
+            <Route path="/" element={<>
               <Searchbar setTools={setTools} categories={categories} groups={groups} />
               <FilterFromGrid />
               <ShowAllToolsGrid tools={tools} setTools={setTools} />

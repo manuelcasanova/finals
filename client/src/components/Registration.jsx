@@ -60,8 +60,8 @@ export default function Register() {
 
   useEffect(() => {
     const result = USER_REGEX.test(user);
-    console.log(result);
-    console.log(user);
+    // console.log(result);
+    // console.log(user);
     setValidName(result)
   }, [user])
 
@@ -69,8 +69,8 @@ export default function Register() {
 
     useEffect(() => {
       const result = USEREMAIL_REGEX.test(userEmail);
-      console.log(result);
-      console.log(userEmail);
+      // console.log(result);
+      // console.log(userEmail);
       setValidEmail(result)
     }, [userEmail])
 
@@ -78,8 +78,8 @@ export default function Register() {
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
-    console.log(result);
-    console.log(pwd);
+    // console.log(result);
+    // console.log(pwd);
     setValidPwd(result);
     const match = pwd === matchPwd
     setValidMatch(match);
@@ -90,6 +90,13 @@ export default function Register() {
   useEffect(() => {
     setErrMsg('');
   }, [user, pwd, matchPwd])
+
+function resetForm() {
+  setUser('');
+  setUserEmail('');
+  setPwd('');
+  setMatchPwd('');
+}
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -107,6 +114,7 @@ export default function Register() {
       return;
     }
     addUser(userObject);
+    resetForm();
 
 
     //If there is no connection to db, just for testing, comment in the next two lines
@@ -141,14 +149,15 @@ export default function Register() {
   }
 
   function addUser (userObject) {
-    console.log("userObject", userObject)
-    console.log("user", user)
-    console.log("user email", userEmail)
-    console.log("pwd", pwd)
+    // console.log("userObject", userObject)
+    // console.log("user", user)
+    // console.log("user email", userEmail)
+    // console.log("pwd", pwd)
     
     return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
       const newUser = response.data;
-      console.log("new user", newUser)
+      // console.log("new user", newUser)
+      
     })
   }
 

@@ -33,7 +33,7 @@ app.post("/users", validInfo, async (req, res) => {
       userEmail
     ]);
 
-    console.log("user rows", checkUser.rows)
+    // console.log("user rows", checkUser.rows)
 
 
     if (checkUser.rows.length !== 0) {
@@ -74,7 +74,7 @@ app.post("/users", validInfo, async (req, res) => {
 
     const token = jwtGenerator(newUser.rows[0].user_id);
 
-    res.json({ token })
+    // res.json({ token })
 
 
 
@@ -92,7 +92,7 @@ app.post("/users", validInfo, async (req, res) => {
 //list tools
 app.get("/tools", async (req, res) => {
   try {
-    console.log(req);
+    // console.log(req);
     const getAllTools = await pool.query(
       // `SELECT movie_id, movie_title, movie_year, movie_genre_id, movie_imdb, genre_title
       // FROM movies JOIN genres ON genres.genre_id = movies.movie_genre_id
@@ -123,7 +123,7 @@ app.get("/tools", async (req, res) => {
 //list users
 app.get("/users", async (req, res) => {
   try {
-    console.log(req);
+    // console.log(req);
     const getAllusers = await pool.query(`SELECT * FROM users`);
     res.json(getAllusers.rows);
   } catch (err) {
@@ -134,7 +134,7 @@ app.get("/users", async (req, res) => {
 //list categories
 app.get("/categories", async (req, res) => {
   try {
-    console.log(req);
+    // console.log(req);
     const getAllCategories = await pool.query(`SELECT * FROM categories ORDER BY category_id`);
     res.json(getAllCategories.rows);
   } catch (err) {
@@ -145,7 +145,7 @@ app.get("/categories", async (req, res) => {
 //list groups
 app.get("/groups", async (req, res) => {
   try {
-    console.log(req);
+    // console.log(req);
     const getAllGroups = await pool.query(`SELECT * FROM groups`);
     res.json(getAllGroups.rows);
   } catch (err) {
@@ -492,7 +492,7 @@ app.get("/my_reservations", async (req, res) => {
     const getMyReservations = await pool.query(
       `SELECT user_name AS owner_name, reservation_id, user_email AS owner_email, tool_name, reservation_start_date, reservation_end_date FROM reservations JOIN tools ON reservations.reservation_tool_id = tools.tool_id JOIN users ON users.user_id = tools.tool_owner_id WHERE reservation_user_id = 1;`
     );
-    console.log("my_reservations body: ", getMyReservations.rows)
+    // console.log("my_reservations body: ", getMyReservations.rows)
     res.json(getMyReservations.rows)
   } catch (err) {
     console.error(err.message);

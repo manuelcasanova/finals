@@ -44,7 +44,7 @@ function App() {
 
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [toolsPerPage, setToolsPerPage] = useState(10);
+  const [toolsPerPage, setToolsPerPage] = useState(15);
 
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
@@ -70,6 +70,8 @@ function App() {
   const indexOflastTool = currentPage * toolsPerPage;
   const indexOfFirstTool = indexOflastTool - toolsPerPage;
   const currentTools = tools.slice(indexOfFirstTool, indexOflastTool);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // useEffect(() => {
   //   axios.get(`http://localhost:8001/reservations`)
@@ -105,8 +107,8 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route path="/" element={<>
               <Searchbar setTools={setTools} categories={categories} groups={groups} />
               <Filter />
-              <ShowAllTools tools={currentTools} setTools={setTools} />
-              <Pagination />
+              <ShowAllTools tools={currentTools} setTools={setTools} loading={loading}/>
+              <Pagination toolsPerPage={toolsPerPage} totalTools={tools.length} paginate={paginate}/>
             </>
             } />
 

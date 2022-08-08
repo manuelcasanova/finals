@@ -78,7 +78,7 @@ export default function Login() {
   }
 
   return (
-    <>
+    <div className="app-registration">
       {success ? (
         <section>
           <h1>You are logged in!</h1>
@@ -124,7 +124,7 @@ export default function Login() {
           </p>
         </section>
       )}
-    </>
+    </div>
 
   )
 }

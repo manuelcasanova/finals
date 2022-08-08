@@ -32,7 +32,8 @@ export default function ShowAllTools({ tools, setTools }) {
                 onClick={() => {
                   navigate(`/inventory/${tool.tool_id}`)
                 }}
-              ><img src={tool.tool_picture}/></td>
+              >
+                <img src={tool.tool_picture}/></td>
               <td
                 onClick={() => {
                   navigate(`/inventory/${tool.tool_id}`)

@@ -23,23 +23,32 @@ app.post("/users", validInfo, async (req, res) => {
     //1. Destructure the req.body (name, email, password)
 
     const { user, userEmail, pwd } = req.body
-    
+
     //This prints the users's password. Comment out!
     // console.log("index.js req body", req.body)
 
-    //2. Check if user exist (if exists, then throw error)
+    //2. Check if email exist (if exists, then throw error)
 
     const checkUser = await pool.query("SELECT * FROM users WHERE user_email = $1", [
       userEmail
     ]);
-
     // console.log("user rows", checkUser.rows)
-
 
     if (checkUser.rows.length !== 0) {
       return res.status(401).send("Email already exists");
-    } 
-    
+    }
+
+    //2. Check if username exist (if exists, then throw error)
+
+    const checkUserName = await pool.query("SELECT * FROM users WHERE user_name = $1", [
+      user
+    ]);
+    // console.log("user rows", checkUserName.rows)
+
+    if (checkUserName.rows.length !== 0) {
+      return res.status(401).send("Username already exists");
+    }
+
     // else if (checkUser.rows.length === 0) {
     //   return res.status(200).send('Emails does not exist in db')
     // }

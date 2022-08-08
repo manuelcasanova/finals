@@ -42,6 +42,10 @@ function App() {
   const [groups, setGroups] = useState([]);
   const [reservations, setReservations] = useState([])
 
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [toolsPerPage, setToolsPerPage] = useState(10);
+
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
       .then(function (res) {
@@ -62,6 +66,10 @@ function App() {
         setGroups([...res.data])
       })
   }, [])
+
+  const indexOflastTool = currentPage * toolsPerPage;
+  const indexOfFirstTool = indexOflastTool - toolsPerPage;
+  const currentTools = tools.slice(indexOfFirstTool, indexOflastTool);
 
   // useEffect(() => {
   //   axios.get(`http://localhost:8001/reservations`)
@@ -97,7 +105,7 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route path="/" element={<>
               <Searchbar setTools={setTools} categories={categories} groups={groups} />
               <Filter />
-              <ShowAllTools tools={tools} setTools={setTools} />
+              <ShowAllTools tools={currentTools} setTools={setTools} />
               <Pagination />
             </>
             } />

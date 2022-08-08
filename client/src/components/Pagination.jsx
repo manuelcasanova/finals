@@ -1,23 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 
 export default function Pagination () {
-  const [tools, setTools] = useState();
 
-
+  const [tools, setTools] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [toolsPerPage, setToolsPerPage] = useState(5);
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/tools`)
-    .then(res => {
-      console.log(res.data)
-      setTools(res.data)
-    })
+    const fetchTools = async () => {
+      const res = await axios.get(`http://localhost:8001/tools`);
+      setTools(res.data);
+      setLoading(false)
+    };
+    fetchTools();
   }, [])
 
-  
+  console.log("res>>", tools)
+  const indexOflastTool = currentPage * toolsPerPage;
+  const indexOfFirstTool = indexOflastTool - toolsPerPage;
+  const currentTools = tools.slice(indexOfFirstTool, indexOflastTool);
 
   return (
+
     <div class="pagination">
   <a href="#">&laquo;</a>
   <a href="#" class="active">1</a>

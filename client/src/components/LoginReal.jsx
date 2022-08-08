@@ -3,9 +3,11 @@ import { useRef, useState, useEffect, useContext } from 'react'
 // import AuthContext from './context/AuthProvider';
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 const LOGIN_URL = 'localhost:8001/auth';
 
 export default function Login() {
+  const navigate = useNavigate();
   //We created a global state for useContext for our App and here we pull in what we need for our login component.
   // const { setAuth } = useContext(AuthContext)
   //Now, if we successfully authenticate when we log in we will set our new Auth state and store it in the global context.
@@ -118,8 +120,7 @@ export default function Login() {
           <p>
             Need an Account?<br />
             <span className="line">
-              {/*put router link here*/}
-              <a href="#">Sign Up</a>
+              <a href="/register">Sign Up</a>
             </span>
           </p>
         </section>

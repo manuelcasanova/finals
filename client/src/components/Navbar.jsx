@@ -2,7 +2,7 @@ import './styling/navbar.css'
 import { useNavigate } from "react-router-dom"
 import axios from 'axios';
 
-export default function Navbar({user, admin, setTools}) {
+export default function Navbar({user, admin, setTools, setCurrentPage}) {
 
   const navigate = useNavigate();
 
@@ -17,6 +17,7 @@ export default function Navbar({user, admin, setTools}) {
     axios.get(`http://localhost:8001/tools`).then(function (res) {
         setTools([...res.data]);
       });
+      setCurrentPage(1)
       navigate(`/`)
   }
 

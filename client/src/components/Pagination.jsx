@@ -1,8 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"
 
 export default function Pagination(props) {
   const { toolsPerPage, totalTools, paginate } = props;
+
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8001/tools`)
+  //     .then(function (res) {
+  //       setTools([...res.data])
+  //     })
+  // }, [])
 
   // const [tools, setTools] = useState([]);
   // const [loading, setLoading] = useState(false);
@@ -34,7 +44,7 @@ export default function Pagination(props) {
         <ul className="pagination">
           {pageNumbers.map((number) => (
             <li className="page-item" key={number}>
-              <a onClick={() => paginate(number)} classname="page-link">{number}</a>
+              <a onClick={() => paginate(number)} classname="page-link">{number} </a>
             </li>
           ))}
         </ul>

@@ -17,8 +17,9 @@ VALUES
 INSERT INTO groups (group_name, group_description, group_icon)
 VALUES
 ('BC Trucking Association', 'A group to share items for members of the BC Trucking Association', 'https://www.bctrucking.com/sites/all/themes/BCTA/img/bcta-logo.png'),
-('NS Parents for Public Education', 'A group for parents of school children in Nova Scotia', 'https://parentspubliced.files.wordpress.com/2021/05/cropped-116894953_4317466868315248_6011508593121235507_o-1-1.jpg'),
-('Ontario Home Builders'' Association', 'The voice of the residential construction industry in Ontario', 'https://ontarioconstructionnews.com/wp-content/uploads/2019/07/ohba-logo.png');
+('Berry Hills Subdivion, Middle Sackville (NS)', 'A neighbourhood group for all the residents living in Berry Hills', 'https://www.atnhomes.ca/images/unitegallery/berryhills/106hamilton/berryhills1.jpg'),
+('Ontario Home Builders'' Association', 'The voice of the residential construction industry in Ontario', 'https://ontarioconstructionnews.com/wp-content/uploads/2019/07/ohba-logo.png'),
+('Rockingham South, Halifax (NS)', 'A friendly place where neighbours can connect and share their tools', 'https://images.squarespace-cdn.com/content/v1/53c685e5e4b050d23b2235ba/1405704437478-F8K6FTUH8NRLMG1A91WT/rockingham3.jpg?format=2500w');
 
 INSERT INTO tools (tool_group_id, tool_name, tool_category_id, tool_owner_id, tool_description, tool_picture, tool_available)
 VALUES

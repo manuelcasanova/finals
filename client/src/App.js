@@ -8,6 +8,7 @@ import Authentication from './components/Authentication';
 import Navbar from './components/Navbar';
 import Searchbar from './components/Searchbar';
 import Filter from './components/Filter';
+import FilterFromGrid from './components/FilterFromGrid';
 import ShowTools from './components/ShowTools';
 import Pagination from './components/Pagination';
 import Footer from './components/Footer';
@@ -26,6 +27,8 @@ import SearchbarGroups from './components/SearchbarGroups';
 import ShowReservations from './components/ShowReservations';
 import Registration from './components/Registration';
 import Login from './components/LoginReal';
+import ShowAllToolsGrid from './components/ShowAllToolsGrid';
+
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -102,14 +105,23 @@ Components inside <Routes></Routes>   render only in those routes.
             </>
             } />
 
+            <Route path="/grid" element={<>
+              <Searchbar setTools={setTools} categories={categories} groups={groups} />
+              <FilterFromGrid />
+              <ShowAllToolsGrid tools={tools} setTools={setTools} />
+              <Pagination />
+            </>
+            } />
+
+
             <Route element={<ProtectedRoutes />}>
 
               <Route path="/user/items" element=
                 {
                   <>
-                    <UserItemsSearch setTools={setTools} categories={categories} 
-                    groups={groups}/>
-                    <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} groups={groups}/>
+                    <UserItemsSearch setTools={setTools} categories={categories}
+                      groups={groups} />
+                    <ShowTools tools={tools} setTools={setTools} categories={categories} setCategories={setCategories} groups={groups} />
                     <Pagination />
                   </>
 

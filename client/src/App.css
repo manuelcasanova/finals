@@ -185,6 +185,7 @@ a:active {
   /* background-color:var(--color3); */
   padding-left: 10px;
   padding-right: 10px;
+  
 
 }
 
@@ -192,6 +193,7 @@ a:active {
   /* background-color:var(--color3); */
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .filter-sort-by {

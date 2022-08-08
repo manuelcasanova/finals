@@ -29,6 +29,7 @@ import ShowReservations from './components/ShowReservations';
 import Registration from './components/Registration';
 import Login from './components/LoginReal';
 import ShowAllToolsGrid from './components/ShowAllToolsGrid';
+import UserGroups from './components/UserGroups';
 
 
 import ProtectedRoutes from './ProtectedRoutes';
@@ -149,6 +150,8 @@ Components inside <Routes></Routes>   render only in those routes.
               <Route path="/profile" element={<Profile />} />
 
               <Route path="/my_reservations" element={<ShowReservations reservations={reservations} setReservations={setReservations} />} />
+
+              <Route path="/my_groups" element={<UserGroups />} />
 
             </Route>
 

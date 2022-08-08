@@ -41,9 +41,11 @@ export default function Navbar({user, admin, setTools, setCurrentPage}) {
           <a className={!user.loggedIn ? "dropbtn-user-hide" : "dropbtn-user"}>
             My account</a>
           <div className="navbar-dropdown-content">
-          <a onClick={handleMyItems}>My items</a>
-          <a onClick={() => {navigate(`/profile`)}}>Profile</a>
+          <a onClick={handleMyItems}>Items</a>
           <a onClick={() => {navigate(`/my_reservations`)}}>Reservations</a>
+          <a onClick={() => {navigate(`/my_groups`)}}>Groups</a>
+          <a onClick={() => {navigate(`/profile`)}}>Profile</a>
+          
           </div>
         </div>
 
@@ -53,10 +55,10 @@ export default function Navbar({user, admin, setTools, setCurrentPage}) {
             Administrator</a>
           <div className="navbar-dropdown-content">
             {/* <a href="/admin/categories">Manage categories</a> */}
-            <a onClick={() => {navigate(`/admin/categories`)}}>Manage categories</a>
-            <a onClick={() => {navigate(`/admin/users`)}}>Manage users</a>
-            <a onClick={() => {navigate(`/admin/tools`)}}>Manage tools</a>
-            <a onClick={() => {navigate(`/admin/groups`)}}>Manage groups</a>
+            <a onClick={() => {navigate(`/admin/tools`)}}>Items</a>
+            <a onClick={() => {navigate(`/admin/categories`)}}>Categories</a>
+            <a onClick={() => {navigate(`/admin/groups`)}}>Groups</a>
+            <a onClick={() => {navigate(`/admin/users`)}}>Users</a>
           </div>
         </div>
       </div>

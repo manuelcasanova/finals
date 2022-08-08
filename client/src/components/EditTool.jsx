@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function EditTool(props) {
-  const { tool, tools, categories, setTools } = props;
+  const { tool, tools, categories, setTools, groups } = props;
 
   const [tool_name, setToolName] = useState(tool.tool_name);
   const [tool_description, setToolDescription] = useState(
@@ -10,6 +10,7 @@ export default function EditTool(props) {
   );
   const [tool_picture, setToolPicture] = useState(tool.tool_picture);
   const [tool_category_id, setToolCategory] = useState(tool.tool_category_id);
+  const [tool_group_id, setToolGroup] = useState(tool.tool_group_id);
   const [tool_owner_id, setToolOwnerId] = useState(1);
   const [tool_available, setTooAvailibilty] = useState(true);
   const [formErros, setFormErrors] = useState({});
@@ -19,6 +20,7 @@ export default function EditTool(props) {
     tool_description,
     tool_picture,
     tool_category_id,
+    tool_group_id,
     tool_owner_id,
     tool_available,
   };
@@ -53,6 +55,7 @@ export default function EditTool(props) {
         tool_description,
         tool_picture,
         tool_category_id,
+        tool_group_id,
         tool_available,
       };
       const response = await fetch(
@@ -172,6 +175,26 @@ export default function EditTool(props) {
                       value={category.category_id}
                     >
                       {category.category_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="level_input">
+                <label className="add_tool_title" htmlFor="title">
+                  Group
+                </label>
+                <select
+                  className="form-control-add"
+                  value={tool_group_id}
+                  onChange={(e) => setToolGroup(e.target.value)}
+                >
+                  {groups.map((group) => (
+                    <option
+                      key={group.group_id}
+                      value={group.group_id}
+                    >
+                      {group.group_name}
                     </option>
                   ))}
                 </select>

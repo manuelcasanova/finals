@@ -76,6 +76,7 @@ export default function ShowTools({ tools, setTools, categories, groups }) {
                     tools={tools}
                     categories={categories}
                     setTools={setTools}
+                    groups={groups}
                   />
                 </td>
                 <td>

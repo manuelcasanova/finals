@@ -275,15 +275,17 @@ app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
       tool_name,
       tool_picture,
       tool_category_id,
+      tool_group_id,
       tool_available,
     } = req.body;
     const editTool = await pool.query(
-      `UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_available = $4 
-      WHERE tool_id = $5 AND tool_owner_id= $6`,
+      `UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_group_id = $4, tool_available = $5 
+      WHERE tool_id = $6 AND tool_owner_id= $7`,
       [
         tool_name,
         tool_picture,
         tool_category_id,
+        tool_group_id,
         tool_available,
         id,
         tool_owner_id

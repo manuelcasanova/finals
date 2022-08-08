@@ -36,7 +36,10 @@ VALUES
 (2,'Pipe Wrench', 5, 3, '14" length - 1-1/2" max pipe diameter and 42MM jaw capacity', 'https://media-www.canadiantire.ca/product/fixing/tools/sockets-wrenches/0588362/mastercraft-8-heavy-duty-pipe-wrench-cf2831c8-e60d-4658-85fb-bc19a5138ab4.png?imwidth=1024', true),
 (2,'Drain Auger', 5, 6, 'Cable size: 1/4" x 20ft (0.6 cm x 7.6 m)', 'https://media-www.canadiantire.ca/product/fixing/plumbing/rough-plumbing/0630884/plumbshop-drum-auger-drill-drive-1-4-x-25--cdac1f6b-9b06-4d50-8393-cf6bf3249e33.png?imwidth=1024', true),
 (3,'Pipe cutter', 5, 4, 'Cutting capacity: 1-5/8" (41 mm)', 'https://media-www.canadiantire.ca/product/fixing/plumbing/rough-plumbing/0638784/mastercraft-pvc-pipe-cutter-1-5-8-max--c72c06f9-1c89-49b3-b4a1-07aaf9e4cd8a.png?imwidth=1024', true), 
-(3,'Multibit Screwdriver', 1, 4, 'Seven bits','https://myturn-prod-images-out.s3.amazonaws.com/9/129/item/17248/image/attribute_image6932539369190600751-1024x768.jpg', true);
+(3,'Multibit Screwdriver', 1, 4, 'Seven bits','https://myturn-prod-images-out.s3.amazonaws.com/9/129/item/17248/image/attribute_image6932539369190600751-1024x768.jpg', true),
+(3,'Fiskars Lopper', 2, 1, 'Lopper has steel handle construction with non-slip grips, and a shock-absorbing bumper reduces strain on hands and arms','https://glb-oned-cdn.azureedge.net/-/media/products/2019/07/24/11/29/resource_fiskarsemea_1001556.ashx?rev=5e2b273800e7409d9d293136a7eaeac9&q=100&iw=1288&ih=1288&crop=1', true),
+(3,'Mastercraft socket set', 1, 4, '11 pieces set, 1/4-in drive','https://media-www.canadiantire.ca/product/fixing/tools/sockets-wrenches/0582025/mastercraft-11pc-1-4-drive-socket-set-ae54013c-f9d2-4ec9-a117-812ebb57d94d.png?imwidth=1024', true),
+(3,'Ryobi cordless drill', 1, 4, 'The drill/driver has a keyless chuck with a 24-position clutch and 2- speed gear box that adjusts the torque output.','https://m.media-amazon.com/images/I/61dvT-P+KxL._AC_SX679_.jpg', true);
 
 -- INSERT INTO users_groups (user_id, group_id)
 -- VALUES

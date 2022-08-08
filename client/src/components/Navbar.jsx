@@ -56,6 +56,7 @@ export default function Navbar({user, admin, setTools, setCurrentPage}) {
             <a onClick={() => {navigate(`/admin/categories`)}}>Manage categories</a>
             <a onClick={() => {navigate(`/admin/users`)}}>Manage users</a>
             <a onClick={() => {navigate(`/admin/tools`)}}>Manage tools</a>
+            <a onClick={() => {navigate(`/admin/groups`)}}>Manage groups</a>
           </div>
         </div>
       </div>

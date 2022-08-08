@@ -21,6 +21,7 @@ import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
 import AdminCRUDTools from './components/AdminCRUDTools';
+import AdminCRUDGroups from './components/AdminCRUDGroups';
 import UserItemsSearch from './components/UserItemsSearch';
 import SearchbarCategories from './components/SearchbarCategories';
 import SearchbarGroups from './components/SearchbarGroups';
@@ -76,7 +77,7 @@ function App() {
 
   const indexOflastTool = currentPage * toolsPerPage;
   const indexOfFirstTool = indexOflastTool - toolsPerPage;
-  const currentTools = searchTrigger? tools : tools.slice(indexOfFirstTool, indexOflastTool);
+  const currentTools = searchTrigger ? tools : tools.slice(indexOfFirstTool, indexOflastTool);
 
 
   console.log("currentTools", currentTools)
@@ -100,7 +101,7 @@ Components inside <Routes></Routes>   render only in those routes.
 */}
 
           <Authentication />
-          <Navbar user={user} admin={admin} setTools={setTools} setCurrentPage={setCurrentPage}/>
+          <Navbar user={user} admin={admin} setTools={setTools} setCurrentPage={setCurrentPage} />
           {/* <Searchbar setTools={setTools} categories={categories} /> */}
 
 
@@ -116,10 +117,10 @@ Components inside <Routes></Routes>   render only in those routes.
             }></Route>
 
             <Route path="/list" element={<>
-              <Searchbar setTools={setTools} categories={categories} groups={groups} setSearchTrigger={setSearchTrigger}/>
+              <Searchbar setTools={setTools} categories={categories} groups={groups} setSearchTrigger={setSearchTrigger} />
               <Filter />
-              <ShowAllTools tools={currentTools} setTools={setTools} loading={loading}/>
-              <Pagination toolsPerPage={toolsPerPage} totalTools={tools.length} paginate={paginate}/>
+              <ShowAllTools tools={currentTools} setTools={setTools} loading={loading} />
+              <Pagination toolsPerPage={toolsPerPage} totalTools={tools.length} paginate={paginate} />
             </>
             } />
 
@@ -154,7 +155,7 @@ Components inside <Routes></Routes>   render only in those routes.
 
             <Route path="/inventory/:toolIdParam" element={
               <>
-                <Searchbar setTools={setTools} categories={categories} groups={groups} setSearchTrigger={setSearchTrigger}/>
+                <Searchbar setTools={setTools} categories={categories} groups={groups} setSearchTrigger={setSearchTrigger} />
                 <OneToolView tools={tools} user={user} admin={admin} />
               </>
             } />
@@ -198,6 +199,12 @@ Components inside <Routes></Routes>   render only in those routes.
               <Route path="/admin/tools" element={
                 <>
                   <AdminCRUDTools />
+                  <Pagination />
+                </>
+              } />
+              <Route path="/admin/groups" element={
+                <>
+                  <AdminCRUDGroups />
                   <Pagination />
                 </>
               } />

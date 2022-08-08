@@ -25,6 +25,7 @@ import SearchbarCategories from './components/SearchbarCategories';
 import SearchbarGroups from './components/SearchbarGroups';
 import ShowReservations from './components/ShowReservations';
 import Registration from './components/Registration';
+import Login from './components/LoginReal';
 
 import ProtectedRoutes from './ProtectedRoutes';
 import ProtectedRoutesAdmin from './ProtectedRoutesAdmin';
@@ -76,7 +77,7 @@ function App() {
           {/* All components outside <Routes></Routes> render in all routes.
 Components inside <Routes></Routes>   render only in those routes.
 */}
-          
+
           <Authentication />
           <Navbar user={user} admin={admin} setTools={setTools} />
           {/* <Searchbar setTools={setTools} categories={categories} /> */}
@@ -87,6 +88,10 @@ Components inside <Routes></Routes>   render only in those routes.
 
             <Route path="/register" element={
               <Registration />
+            }></Route>
+
+            <Route path="/login" element={
+              <Login />
             }></Route>
 
             <Route path="/" element={<>
@@ -110,15 +115,15 @@ Components inside <Routes></Routes>   render only in those routes.
 
                 } />
               <Route path="/profile" element={<Profile />} />
-              
-              <Route path="/my_reservations" element={<ShowReservations reservations={reservations} setReservations={setReservations}/>} />
+
+              <Route path="/my_reservations" element={<ShowReservations reservations={reservations} setReservations={setReservations} />} />
 
             </Route>
 
 
             <Route path="/inventory/:toolIdParam" element={
               <>
-                <Searchbar setTools={setTools} categories={categories} groups={groups}/>
+                <Searchbar setTools={setTools} categories={categories} groups={groups} />
                 <OneToolView tools={tools} user={user} admin={admin} />
               </>
             } />

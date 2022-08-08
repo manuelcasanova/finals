@@ -1,13 +1,13 @@
 import { useRef, useState, useEffect, useContext } from 'react'
 //Attention: This is not the same as importing the AuthProvider that we put in the Index.js
-import AuthContext from './context/AuthProvider';
+// import AuthContext from './context/AuthProvider';
 
 import axios from 'axios';
 const LOGIN_URL = 'localhost:8001/auth';
 
 export default function Login() {
   //We created a global state for useContext for our App and here we pull in what we need for our login component.
-  const { setAuth } = useContext(AuthContext)
+  // const { setAuth } = useContext(AuthContext)
   //Now, if we successfully authenticate when we log in we will set our new Auth state and store it in the global context.
 
 
@@ -58,7 +58,7 @@ export default function Login() {
       //console.log(JSON.stringify(response));
       // const accessToken = response?.data?.accessToken;
       // const roles = response?.data?.roles;
-      setAuth({ user, pwd/*, roles, accessToken*/ });
+      // setAuth({ user, pwd/*, roles, accessToken*/ });
       setUser('');
       setPwd('');
       setSuccess(true);

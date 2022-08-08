@@ -52,9 +52,9 @@ export default function OneToolView({ tools, user, admin }) {
               <th className="one-item-status">Status</th>
               <td className="one-item-status">
 
-              <td>{ tools[position].tool_available ?
+              { tools[position].tool_available ?
                   <label>Available</label> : <label>Unavailable</label>
-                  }</td>
+                  }
               </td>
 
             </tr>

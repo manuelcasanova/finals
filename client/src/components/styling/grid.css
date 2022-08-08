@@ -37,6 +37,7 @@
   align-items: center;
   flex-wrap: wrap;
   cursor: pointer;
+  justify-content: space-around;
 }
 
 
@@ -62,17 +63,20 @@
 
 .one-tool-for-grid-name {
 font-size: xx-large;
-padding: 10%;
 
 }
 
 .one-tool-for-grid-group {
   font-size: x-large;
   padding: 5%;
+  text-align: center;
 }
 
 .one-tool-for-grid-availability {
-
-
+background-color: green;
+border-radius: 30px;
+padding: 0px 10px 0px 10px;
+font-size: x-large;
+color: white;
 
 }

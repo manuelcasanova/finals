@@ -11,9 +11,6 @@ export default function OneToolForGrid({ tools }) {
     <>
 
 
-
-
-
       {tools.length > 0 && tools.map(tool =>
         <>
 
@@ -32,7 +29,7 @@ export default function OneToolForGrid({ tools }) {
           </div>
           <div className="one-tool-for-grid-availability">
             {tool.tool_available ? 
-            <label>Available</label> : <label>Unavailable</label>
+            <>Available</> : <>Unavailable</>
           }
 
           </div>

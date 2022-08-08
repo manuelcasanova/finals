@@ -68,14 +68,14 @@ export default function Register() {
     setValidName(result)
   }, [user])
 
-    //Validate the user email. Anytime it changes, it will check the validation.
+  //Validate the user email. Anytime it changes, it will check the validation.
 
-    useEffect(() => {
-      const result = USEREMAIL_REGEX.test(userEmail);
-      // console.log(result);
-      // console.log(userEmail);
-      setValidEmail(result)
-    }, [userEmail])
+  useEffect(() => {
+    const result = USEREMAIL_REGEX.test(userEmail);
+    // console.log(result);
+    // console.log(userEmail);
+    setValidEmail(result)
+  }, [userEmail])
 
   //Validate the password. The confirmation is defined by match. We set wether we have a valid match or not. It's on sync with the password field at all times.
 
@@ -92,14 +92,14 @@ export default function Register() {
 
   useEffect(() => {
     setErrMsg('');
-  }, [user, pwd, matchPwd])
+  }, [user, userEmail, pwd, matchPwd])
 
-function resetForm() {
-  setUser('');
-  setUserEmail('');
-  setPwd('');
-  setMatchPwd('');
-}
+  function resetForm() {
+    setUser('');
+    setUserEmail('');
+    setPwd('');
+    setMatchPwd('');
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -117,53 +117,87 @@ function resetForm() {
       return;
     }
     addUser(userObject);
-    resetForm();
-    navigate('/');
+    console.log(userObject)
+    // resetForm();
+    // navigate('/');
 
 
     //If there is no connection to db, just for testing, comment in the next two lines
     // console.log(user, pwd, userEmail);
     // setSuccess(true);
-
-
-
-    // try {
-    //   //Attention inside stringify with naming (relate to db). If name is different user: user_name  pwd:user_password.
-    //   const response = await axios.post(REGISTER_URL, JSON.stringify({ user, pwd, userEmail }),
-    //     {
-    //       headers: { 'Content-Type': 'application/json' },
-    //       withCredentials: true
-    //     }
-    //   );
-    //   console.log(response.data);
-    //   console.log(JSON.stringify(response))
-    //   setSuccess(true);
-    //   //clear the input fields
-    // } catch (err) {
-    //   if (!err?.response) {
-    //     setErrMsg('No Server Response')
-    //   } else if (err.response?.status === 409) {
-    //     setErrMsg('Username Already Taken')
-    //   } else {
-    //     setErrMsg('Registration Failed')
-    //   }
-    //   errRef.current.focus();
-    // }
-
   }
 
-  function addUser (userObject) {
-    // console.log("userObject", userObject)
-    // console.log("user", user)
-    // console.log("user email", userEmail)
-    // console.log("pwd", pwd)
-    
-    return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
-      const newUser = response.data;
-      // console.log("new user", newUser)
-      
+  function addUser(userObject) {
+    return axios.get(`http://localhost:8001/users`).then((response) => {
+      const getUsers = response.data;
+      console.log("all users", getUsers)
+
+      const foundUser = getUsers.find((oneUser) => {
+        return oneUser.user_name === user
+      });
+      if (foundUser) {
+        setErrMsg('Username Already Taken')
+      }
+
+      const foundEmail = getUsers.find((user) => {
+        return user.user_email === userEmail
+      });
+      if (foundEmail) {
+        setErrMsg('Email Already Taken')
+      }
     })
+
+    // return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
+    //   const newUser = response.data;
+    //   console.log("new user", newUser)
+    // })
+
   }
+
+  // function addUser(userObject) {
+  //   try {
+  //   return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
+  //     const newUser = response.data;
+  //     console.log("new user", newUser)
+  //   })
+  //   } catch (err) {
+  //     if (!err?.response) {
+  //       setErrMsg('No Server Response')
+  //     } else if (err.response?.status === 409) {
+  //       setErrMsg('Username or Email Already Taken')
+  //     } else {
+  //       setErrMsg('Registration Failed')
+  //     }
+  //     errRef.current.focus();
+  //   }
+  // }
+
+  //Just to show how the error looks
+  // function addUser(userObject) {
+  //   setErrMsg('This is a fake forced error')
+  // }
+
+
+
+
+  // function addUser(userObject) {
+  //   // console.log("userObject", userObject)
+  //   // console.log("user", user)
+  //   // console.log("user email", userEmail)
+  //   // console.log("pwd", pwd)
+
+  //   return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
+  //     const newUser = response.data;
+  //     console.log("new user", newUser)
+  //   })
+  // }
+
+
+
+
+
+
+
 
   return (
     <div className="app-registration">
@@ -216,7 +250,7 @@ function resetForm() {
             </label>
             <input
               type="text"
-              id="userEmail" 
+              id="userEmail"
               ref={userRef}
               autoComplete="off"
               onChange={(e) => setUserEmail(e.target.value)}

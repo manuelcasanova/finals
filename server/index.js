@@ -77,13 +77,14 @@ app.post("/users", validInfo, async (req, res) => {
     const newUser = await pool.query(
       "INSERT INTO users (user_name, user_email, user_password_hash) VALUES ($1, $2, $3)  RETURNING *", [user, userEmail, bcryptPassword]
     );
+    res.json(newUser.rows[0])
     // console.log("newuser", newUser.rows[0])
 
     //5. generate our jwt token
 
     const token = jwtGenerator(newUser.rows[0].user_id);
 
-    // res.json({ token })
+    //  res.json({ token })
 
 
 

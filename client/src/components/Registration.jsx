@@ -128,7 +128,7 @@ export default function Register() {
   }
 
 
-//There's a couple of addUser functions below. This is the one I made work the intended way.
+  //There's a couple of addUser functions below. This is the one I made work the intended way.
 
   function addUser(userObject) {
 
@@ -144,8 +144,6 @@ export default function Register() {
       if (foundUser) {
         setErrMsg('Username Already Taken')
       }
-
-
       //Check if any user in the db has the same email as the userObject we are trying to post.
       const foundEmail = getUsers.find((user) => {
         return user.user_email === userEmail
@@ -156,14 +154,16 @@ export default function Register() {
       //Post the new user to the db if the checks pass
     }).then((response) => {
 
-      //I am not sure whi this is not working as intended. It does the POST REQUEST, but it does not receive a response. Network tab shows "pending" Lines 162 and 163 do not work.
-      return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
-        const newUser = response.data;
-        console.log("new user", newUser)
-        setErrMsg("User has been registered. Log in")
-      })
+      //I am not sure why this is not working as intended. It does the POST REQUEST, but it does not receive a response. Network tab shows "pending" Lines 162 and 163 do not work.
+      return axios.post(`http://localhost:8001/users`, userObject)
+        .then((response) => {
+          const newUser = response.data;
+          console.log("new user", newUser)
+          navigate('/')
+        })
     })
   }
+
 
   // function addUser(userObject) {
   //   try {

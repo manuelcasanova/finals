@@ -1,7 +1,8 @@
-import Confirm from "./Confirm";
+import Confirm from "./DeleteReservation";
 
 import axios from "axios";
 import { useState, useEffect } from "react";
+import DeleteReservation from "./DeleteReservation";
 
 export default function ShowReservations() {
   // const [ reservations, setReservations ]  = useEffect([]);
@@ -82,7 +83,10 @@ export default function ShowReservations() {
                   <td>{reservation.owner_name}</td>
                 </a>
                 <td>
-                    < Confirm reservation={reservation} deleteReservation={deleteReservation}/>
+                  <DeleteReservation
+                    reservation={reservation}
+                    deleteReservation={deleteReservation}
+                  />
                 </td>
               </tr>
             ))}

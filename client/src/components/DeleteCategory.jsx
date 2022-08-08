@@ -1,6 +1,5 @@
-export default function (props) {
-  const { reservation, reservations, setReservations, deleteReservation } =
-    props;
+export default function DeleteCategory(props) {
+  const { category, deleteCategory } = props;
 
   return (
     <div className="add-tool-button-div">
@@ -9,15 +8,15 @@ export default function (props) {
         type="button"
         className="button-delete"
         data-toggle="modal"
-        data-target={`#newtoolmodal${reservation.reservation_id}`}
+        data-target={`#deletecategorymodal${category.category_id}`}
       >
-        Cancel
+        Delete
       </button>
 
       {/* <!-- Modal --> */}
       <div
         className="modal fade"
-        id={`newtoolmodal${reservation.reservation_id}`}
+        id={`deletecategorymodal${category.category_id}`}
         tabIndex="-1"
         role="dialog"
         aria-labelledby="exampleModalLabel"
@@ -26,7 +25,7 @@ export default function (props) {
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <h6 className="modal-title">
-              Are you sure you want to cancel the reservation?
+              Are you sure you want to delete this category?
             </h6>
             <div className="modal-body">
               {/* <button type="button" className="button-close" data-dismiss="modal">Close</button> */}
@@ -34,9 +33,9 @@ export default function (props) {
                 className="button-submit"
                 type="submit"
                 data-dismiss="modal"
-                onClick={() => deleteReservation(reservation.reservation_id)}
+                onClick={() => deleteCategory(category.category_id)}
               >
-                Confirm
+                Delete
               </button>
 
               <button

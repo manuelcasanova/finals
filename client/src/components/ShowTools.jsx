@@ -3,6 +3,7 @@ import AddTool from "./AddTool";
 import EditTool from "./EditTool";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import DeleteTool from "./DeleteTool";
 
 export default function ShowTools({ tools, setTools, categories }) {
   console.log("tools", tools);
@@ -66,9 +67,11 @@ export default function ShowTools({ tools, setTools, categories }) {
 
                 {/* <td>{tool.tool_description}</td> */}
                 <td>
-                  { tool.tool_available ?
-                  <label>Available</label> : <label>Unavailable</label>
-                  }
+                  {tool.tool_available ? (
+                    <label>Available</label>
+                  ) : (
+                    <label>Unavailable</label>
+                  )}
                 </td>
                 <td>
                   <EditTool
@@ -79,12 +82,7 @@ export default function ShowTools({ tools, setTools, categories }) {
                   />
                 </td>
                 <td>
-                  <button
-                    className="button-delete"
-                    onClick={() => deleteTool(tool.tool_id)}
-                  >
-                    Delete
-                  </button>
+                 <DeleteTool tool={tool} deleteTool={deleteTool}/>
                 </td>
               </tr>
             ))}

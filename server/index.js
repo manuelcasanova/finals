@@ -23,7 +23,9 @@ app.post("/users", validInfo, async (req, res) => {
     //1. Destructure the req.body (name, email, password)
 
     const { user, userEmail, pwd } = req.body
-    console.log("index.js req body", req.body)
+    
+    //This prints the users's password. Comment out!
+    // console.log("index.js req body", req.body)
 
     //2. Check if user exist (if exists, then throw error)
 
@@ -46,12 +48,12 @@ app.post("/users", validInfo, async (req, res) => {
     //3. Bcrypt the password
 
     const saltRounds = 10;
-    console.log("saltRounds", saltRounds)
+    // console.log("saltRounds", saltRounds)
     const salt = await bcrypt.genSalt(saltRounds);
-    console.log("salt", salt)
+    // console.log("salt", salt)
 
     const bcryptPassword = await bcrypt.hash(pwd, salt);
-    console.log("bcryptPassword", bcryptPassword)
+    // console.log("bcryptPassword", bcryptPassword)
 
     // bcrypt.genSalt(saltRounds, function (err, salt) {
     //   bcrypt.hash(pwd, salt, function (err, hash) {
@@ -64,10 +66,10 @@ app.post("/users", validInfo, async (req, res) => {
     //4. Enter the user in the db
 
     const newUser = await pool.query(
-      "INSERT INTO users (user_name, user_email, user_password_hash) VALUES ($1, $2, $3)  RETURNING *"[user, userEmail, bcryptPassword]
+      "INSERT INTO users (user_name, user_email, user_password_hash) VALUES ($1, $2, $3)  RETURNING *", [user, userEmail, bcryptPassword]
     );
+    // console.log("newuser", newUser.rows[0])
 
-    res.json(newUser)
     //5. generate our jwt token
 
     const token = jwtGenerator(newUser.rows[0].user_id);

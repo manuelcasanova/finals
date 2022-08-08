@@ -22,7 +22,7 @@ CREATE TABLE users (
   user_id SERIAL PRIMARY KEY NOT NULL,
   user_name VARCHAR(255) NOT NULL,
   user_email VARCHAR(255),
-  user_password_hash TEXT,
+  user_password_hash VARCHAR(255),
   user_postal_code VARCHAR(255),
   user_address VARCHAR(255),
   user_city VARCHAR(255),

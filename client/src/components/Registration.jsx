@@ -277,7 +277,7 @@ export default function Register() {
               <a href="#">Sign In</a>
             </span>
           </p>
-          <div>States: {user} {userEmail} {pwd} {matchPwd}</div>
+          {/* <div>States: {user} {userEmail} {pwd} {matchPwd}</div> */}
         </section>
       )}
     </div>

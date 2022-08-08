@@ -1,0 +1,30 @@
+:root {
+  --color1: #cfe0e8;
+  --color2: #b7d7e8;
+  --color3: #87bdd8;
+  --color4: #577d90;
+  --color0: #daebe8;
+}
+
+
+/* ShowAllToolsGrid */
+
+.show-tools-grid {
+  background-color: var(--color2);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 1%;
+}
+
+
+/* OneToolForGrid */
+
+.one-tool-for-grid {
+  background-color: var(--color3);
+  border-radius: 30px;
+  margin: 0.5%;
+  width: 24%;
+}

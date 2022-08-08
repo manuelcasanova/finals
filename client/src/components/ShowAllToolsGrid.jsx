@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 import axios from "axios";
+import './styling/grid.css'
+import OneToolForGrid from "./OneToolForGrid";
 
-export default function ShowAllToolsGrid({ tools }) {
+export default function ShowAllToolsGrid({  }) {
 
   const navigate = useNavigate();
 
@@ -15,7 +17,43 @@ export default function ShowAllToolsGrid({ tools }) {
 
   return (
     <div className="show-tools-grid">
-      Show tools grid
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
+      <OneToolForGrid />
     </div>
   )
 }

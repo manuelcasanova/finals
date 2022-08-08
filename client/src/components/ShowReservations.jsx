@@ -1,5 +1,8 @@
+import Confirm from "./DeleteReservation";
+
 import axios from "axios";
 import { useState, useEffect } from "react";
+import DeleteReservation from "./DeleteReservation";
 
 export default function ShowReservations() {
   // const [ reservations, setReservations ]  = useEffect([]);
@@ -16,11 +19,16 @@ export default function ShowReservations() {
   }, []);
 
   function deleteReservation(id) {
-    axios.delete(`http://localhost:8001/my_reservations/delete/${id}`)
-      .then(res => {
-        setReservations(reservations.filter(reservation => reservation.reservation_id !== id))
-        console.log("reservations after delete: ",reservations)
-      })
+    axios
+      .delete(`http://localhost:8001/my_reservations/delete/${id}`)
+      .then((res) => {
+        setReservations(
+          reservations.filter(
+            (reservation) => reservation.reservation_id !== id
+          )
+        );
+        console.log("reservations after delete: ", reservations);
+      });
   }
 
   function humanizeDate(date = new Date()) {
@@ -74,9 +82,11 @@ export default function ShowReservations() {
                 <a href={`mailto:${reservation.owner_email}`}>
                   <td>{reservation.owner_name}</td>
                 </a>
-
                 <td>
-                  <button className="button-delete" onClick={() => deleteReservation(reservation.reservation_id)}>Cancel</button>
+                  <DeleteReservation
+                    reservation={reservation}
+                    deleteReservation={deleteReservation}
+                  />
                 </td>
               </tr>
             ))}

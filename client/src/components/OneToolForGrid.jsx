@@ -1,8 +1,9 @@
 import './styling/grid.css'
+import { useNavigate } from 'react-router-dom'
 
 export default function OneToolForGrid({ tools }) {
 
-  console.log("tools", tools)
+  const navigate = useNavigate()
 
   return (
     <>
@@ -14,7 +15,9 @@ export default function OneToolForGrid({ tools }) {
       {tools.length > 0 && tools.map(tool =>
         <>
 
-          <div className="one-tool-for-grid">
+          <div className="one-tool-for-grid" onClick={() => {
+                  navigate(`/inventory/${tool.tool_id}`)
+                }}>
 
           <div className="one-tool-for-grid-picture">
             <img src={tool.tool_picture} className="img-one-tool-for-grid"/>

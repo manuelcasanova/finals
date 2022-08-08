@@ -50,7 +50,13 @@ export default function OneToolView({ tools, user, admin }) {
             </tr>
             <tr>
               <th className="one-item-status">Status</th>
-              <td className="one-item-status">Status</td>
+              <td className="one-item-status">
+
+              <td>{ tools[position].tool_available ?
+                  <label>Available</label> : <label>Unavailable</label>
+                  }</td>
+              </td>
+
             </tr>
             <th className="one-item-owner-name">Owner</th>
             <td className={user.loggedIn || admin.loggedIn ? "one-item-owner-name" : "hide"}>

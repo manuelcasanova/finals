@@ -31,11 +31,9 @@ export default function OneToolForGrid({ tools }) {
             {tool.group_name}
           </div>
           <div className="one-tool-for-grid-availability">
-            {tool.tool_available}
-{/* 
-            if ({tool.tool_available} === true) {
-              <>Available</>
-            } */}
+            {tool.tool_available ? 
+            <label>Available</label> : <label>Unavailable</label>
+          }
 
           </div>
 

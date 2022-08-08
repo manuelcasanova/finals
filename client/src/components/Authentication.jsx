@@ -37,12 +37,20 @@ export default function Authentication() {
         {/* <div className="login-as-user"><LogInButtons buttonText={"Log in as user"} userId={1}/></div>
       <div className="login-as-admin"><LogInButtons buttonText={"Log in as admin"} userId={2}/></div> */}
         <div className="login-as-user">
-          <div>
-            <button
-              className={user.loggedIn || admin.loggedIn ? "hide" : "button-register"}
-              onClick={() => { navigate(`/register`) }}
-            >Register</button>
-          </div>
+
+          <button
+            className={user.loggedIn || admin.loggedIn ? "hide" : "button-register"}
+            onClick={() => { navigate(`/register`) }}
+          >Register</button>
+
+        </div>
+
+        <div className="login-as-user">
+
+          <button
+            className={user.loggedIn || admin.loggedIn ? "hide" : "button-register"}
+            onClick={() => { navigate(`/login`) }}
+          >Log in</button>
 
         </div>
 

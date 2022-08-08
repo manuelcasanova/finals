@@ -330,8 +330,8 @@ export default function Register() {
           <p>
             Already registered?<br />
             <span className="line">
-              {/*put react router link here*/}
-              <a href="#">Sign In</a>
+            
+              <a href="/login">Sign In</a>
             </span>
           </p>
           {/* <div>States: {user} {userEmail} {pwd} {matchPwd}</div> */}

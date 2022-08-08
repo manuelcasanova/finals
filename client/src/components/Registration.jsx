@@ -117,8 +117,8 @@ export default function Register() {
       return;
     }
     addUser(userObject);
-    console.log(userObject)
-    // resetForm();
+    // console.log(userObject)
+    resetForm();
     // navigate('/');
 
 
@@ -127,11 +127,17 @@ export default function Register() {
     // setSuccess(true);
   }
 
+
+//There's a couple of addUser functions below. This is the one I made work the intended way.
+
   function addUser(userObject) {
+
+    //Get all the users from the db
     return axios.get(`http://localhost:8001/users`).then((response) => {
       const getUsers = response.data;
-      console.log("all users", getUsers)
+      // console.log("all users", getUsers)
 
+      //Check if any user in the db has the same name as the userObject we are trying to post.
       const foundUser = getUsers.find((oneUser) => {
         return oneUser.user_name === user
       });
@@ -139,19 +145,24 @@ export default function Register() {
         setErrMsg('Username Already Taken')
       }
 
+
+      //Check if any user in the db has the same email as the userObject we are trying to post.
       const foundEmail = getUsers.find((user) => {
         return user.user_email === userEmail
       });
       if (foundEmail) {
         setErrMsg('Email Already Taken')
       }
+      //Post the new user to the db if the checks pass
+    }).then((response) => {
+
+      //I am not sure whi this is not working as intended. It does the POST REQUEST, but it does not receive a response. Network tab shows "pending" Lines 162 and 163 do not work.
+      return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
+        const newUser = response.data;
+        console.log("new user", newUser)
+        setErrMsg("User has been registered. Log in")
+      })
     })
-
-    // return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
-    //   const newUser = response.data;
-    //   console.log("new user", newUser)
-    // })
-
   }
 
   // function addUser(userObject) {
@@ -176,7 +187,6 @@ export default function Register() {
   // function addUser(userObject) {
   //   setErrMsg('This is a fake forced error')
   // }
-
 
 
 
@@ -330,6 +340,3 @@ export default function Register() {
     </div>
   )
 }
-
-
-

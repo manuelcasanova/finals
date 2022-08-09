@@ -38,7 +38,7 @@ CREATE TABLE tools (
   tool_group_id INTEGER REFERENCES groups(group_id) ON DELETE CASCADE,
   tool_picture VARCHAR(255),
   tool_available BOOLEAN,
-  tool_map
+  tool_map VARCHAR(255)
 );
 
 CREATE TABLE reservations (

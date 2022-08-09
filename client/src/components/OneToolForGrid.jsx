@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 export default function OneToolForGrid({ tools }) {
 
 
-  console.log(tools)
+  // console.log(tools)
   const navigate = useNavigate()
 
   return (

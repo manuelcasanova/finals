@@ -52,7 +52,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [toolsPerPage, setToolsPerPage] = useState(15);
 
-  console.log("tools>>", tools);
+  // console.log("tools>>", tools);
 
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`)
@@ -81,9 +81,9 @@ function App() {
   const currentTools = searchTrigger ? tools : tools.slice(indexOfFirstTool, indexOflastTool);
 
 
-  console.log("currentTools", currentTools)
-  console.log("indexOfFirstTool", indexOfFirstTool)
-  console.log("indexOflastTool", indexOflastTool)
+  // console.log("currentTools", currentTools)
+  // console.log("indexOfFirstTool", indexOfFirstTool)
+  // console.log("indexOflastTool", indexOflastTool)
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // useEffect(() => {

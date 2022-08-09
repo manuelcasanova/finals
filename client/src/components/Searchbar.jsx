@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"
 
 export default function Searchbar(props) {
-  const { setTools, categories, groups, setSearchTrigger, setCurrentPage, setCurrentTools } = props;
+  const { setTools, categories, groups, setSearchTrigger, setCurrentPage, setCurrentTools, tools } = props;
 
   const [input, setInput] = useState("");
   const [category, setToolCategory] = useState("All categories");
@@ -25,7 +25,7 @@ export default function Searchbar(props) {
       url = url.concat(`&searchGroup=${group}`);
     }
     axios.get(url).then(function (res) {
-      // setCurrentTools([...res.data]);
+      setCurrentTools(res.data.slice(0, 15))
       setTools([...res.data]);
       setSearchTrigger(true)
     });

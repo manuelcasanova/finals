@@ -66,12 +66,12 @@ function App() {
       setGroups([...all[2].data]);
       setLoading(false);
     })
-  }, [refreshState])
+  }, [])
 
  
 
   useEffect(() => {
-    setCurrentTools(searchTrigger ? tools : tools.slice((currentPage - 1) * pageQuantity, (pageQuantity * currentPage )))
+    setCurrentTools(tools.slice((currentPage - 1) * pageQuantity, (pageQuantity * currentPage )))
   }, [searchTrigger, tools, currentPage]);
 
 
@@ -112,7 +112,7 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route     path="/" element={<>
               <Searchbar setTools={setTools} categories={categories} groups={groups} setSearchTrigger={setSearchTrigger} setCurrentPage={setCurrentPage} setCurrentTools={setCurrentTools}/>
               <Filter />
-              <ShowAllTools  setRefreshState={setRefreshState} currentTools={currentTools} setTools={setTools} loading={loading} />
+              <ShowAllTools  currentTools={currentTools} />
               <Pagination pageQuantity={pageQuantity} totalTools={tools.length} paginate={paginate} />
             </>
             } />

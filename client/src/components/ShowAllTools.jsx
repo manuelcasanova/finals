@@ -2,14 +2,14 @@ import { useNavigate, useLocation } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function ShowAllTools({ currentTools, setRefreshState }) {
+export default function ShowAllTools({ currentTools }) {
   
   
-  console.log("length", currentTools.length)
+  console.log("length of currentTools", currentTools.length)
 
   const navigate = useNavigate();
   
-  // console.log("TOOLS", tools)
+  console.log("TOOLS from showAllTools", currentTools)
 
   return (
     <div className="show-tools">

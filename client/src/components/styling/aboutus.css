@@ -1,7 +1,35 @@
+:root {
+  --color1:#cfe0e8;
+  --color2:#b7d7e8;
+  --color3: #87bdd8;
+  --color0: #daebe8;
+  --color4: #577d90;
+}
+
+.header {
+ margin: 20px;
+}
+
+.intro {
+  margin: 20px;
+}
+
+
 .aboutus-component {
-  background-color: lightsalmon;
-  height: 100vh;
+  background-color:var(--color2);
+  height: auto;
   font-size: xx-large;
+  color:black;
+  border-radius: 20px;
+  margin-bottom: 2px;;
+}
+
+.team-component {
+  background-color:var(--color1);
+  height: auto;
+  font-size: xx-large;
+  color:black;
+  border-radius: 20px;
 }
 
 .team {
@@ -9,8 +37,18 @@
 	justify-content:space-around;
 	padding:25px 0 ;
 	/* max-width:1280px; */
-	margin:auto;
+	margin:20px;
   height: 20vh;
-  border: 1px black solid;
+  border: 1px #f9f9f9 solid;
 
+}
+.team-picture {
+  width: 400px;
+  margin-left: 20px;
+  max-width: 110%;
+  max-height: 110%;
+}
+
+.team-bio {
+  margin: 25px 30px 25px 40px;
 }

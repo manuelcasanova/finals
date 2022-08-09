@@ -13,8 +13,6 @@ export default function OneToolView({ tools, user, admin }) {
   const [user_email, setUserEmail] = useState("")
 
 
-
-
   //Two key things happening here. A new method for me, .findIndex Returns the first index of the array that matches the testing function. And toolIdParam was a string example: "1", so I had to change it to number
 
   useEffect(() => {
@@ -37,7 +35,7 @@ export default function OneToolView({ tools, user, admin }) {
           <div className="one-item-picture"><img class="one-tool" src={tools[position].tool_picture} /></div>
           {/* <BookTool user={user} admin={admin} tools={tools} toolIdParam={toolIdParam} /> */}
           <CalendarComponent toolIdParam={toolIdParam} user={user} admin={admin}/>
-          <div className="map-container">Map here</div>
+          <div className="map-container"><img class="img-class-map" src={tools[position].tool_map}/></div>
         </div>
 
         <div className="one-item-information-container">

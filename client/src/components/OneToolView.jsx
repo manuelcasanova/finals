@@ -35,7 +35,7 @@ export default function OneToolView({ tools, user, admin }) {
           <div className="one-item-picture"><img class="one-tool" src={tools[position].tool_picture} /></div>
           {/* <BookTool user={user} admin={admin} tools={tools} toolIdParam={toolIdParam} /> */}
           <CalendarComponent toolIdParam={toolIdParam} user={user} admin={admin}/>
-          <div className="map-container"><img class="img-class-map" src='https://media.istockphoto.com/photos/halifax-on-the-map-picture-id187598223' alt="Map"/></div>
+          <div className="map-container"><img class="img-class-map" src='https://canadaarchitectureutoronto.files.wordpress.com/2021/07/map.jpg?w=1024' alt="Map"/></div>
         </div>
 
         <div className="one-item-information-container">

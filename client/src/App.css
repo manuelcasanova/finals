@@ -480,16 +480,16 @@ tr {
 /* Map container in one tool view */
 .map-container {
   background-color: var(--color3);
-  /* display: flex;
-  flex-direction: row;
-  align-items: center; */
-  text-align: center;
-  justify-content: space-evenly;
-  margin-top: 0.5%;
+  /* justify-content: space-evenly; */
+  margin-top: 10%;
   margin-bottom: 0.5%;
   padding: 2%;
-  width: 100%;
+  width: 40%;
   border-radius: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .img-class-map {

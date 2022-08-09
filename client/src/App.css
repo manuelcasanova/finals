@@ -291,8 +291,14 @@ img.one-tool:hover {
 }
 
 .button-open-book-modal {
-height: 200px;
-font-size: 3em;
+height: 100px;
+width: 10vw;
+
+}
+
+.button-book-container {
+  display: flex;
+  justify-content: center;
 }
 
 .log-in-to-book-item {
@@ -469,6 +475,20 @@ tr {
   align-items: center;
   justify-content: center;
   font-size: xx-large;
+}
+
+/* Map container in one tool view */
+.map-container {
+  background-color: var(--color2);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 0.5%;
+  margin-bottom: 0.5%;
+  padding: 2%;
+  width: 100%;
+  border-radius: 30px;
 }
 
 /* The following calendar related styling overrides default css */

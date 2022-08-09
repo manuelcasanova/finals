@@ -31,12 +31,13 @@ export default function OneToolView({ tools, user, admin }) {
     return (
 
 
-
+<>
       <div className="one-item-container">
         <div className="one-item-picture-and-book-button">
           <div className="one-item-picture"><img class="one-tool" src={tools[position].tool_picture} /></div>
           {/* <BookTool user={user} admin={admin} tools={tools} toolIdParam={toolIdParam} /> */}
           <CalendarComponent toolIdParam={toolIdParam} user={user} admin={admin}/>
+          <div className="map-container">Map here</div>
         </div>
 
         <div className="one-item-information-container">
@@ -79,6 +80,8 @@ export default function OneToolView({ tools, user, admin }) {
           
         </div>
       </div>
+      
+      </>
     )
 
   } else {

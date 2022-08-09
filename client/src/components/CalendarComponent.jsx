@@ -109,15 +109,16 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 {/* <!-- Button trigger modal --> */}
 
 
-{/* TO SHOW BOOK ITEM / CALENDAR ALWAYS, COMMENT OUT LINES 110-116 and COMMENT IN LINES 118-120 */}
-
 <div className={user.loggedIn || admin.loggedIn ? "hide" : "log-in-to-book-item"}  >
   Log in to book item
 </div>
 
+<div className='button-book-container'>
 <button type="button" className={user.loggedIn || admin.loggedIn ? "button-open-book-modal" : "hide"} data-toggle="modal" data-target="#exampleModalCenter">
   Book item
 </button>
+</div>
+
 
 {/* <button type="button" className={"button-open-book-modal"} data-toggle="modal" data-target="#exampleModalCenter">
   Book item

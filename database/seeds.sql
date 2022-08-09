@@ -21,9 +21,9 @@ VALUES
 ('Bloorcourt Village Tool Exchange, Toronto (ON)', 'Making our community stronger with shared resources', 'https://sherkinlangerandcastle.files.wordpress.com/2012/03/bloorcourtmural.jpg?w=600&h=450'),
 ('Rockingham South, Halifax (NS)', 'A friendly place where neighbours can connect and share their tools', 'https://images.squarespace-cdn.com/content/v1/53c685e5e4b050d23b2235ba/1405704437478-F8K6FTUH8NRLMG1A91WT/rockingham3.jpg?format=2500w');
 
-INSERT INTO tools (tool_group_id, tool_name, tool_category_id, tool_owner_id, tool_description, tool_picture, tool_available)
+INSERT INTO tools (tool_group_id, tool_name, tool_category_id, tool_owner_id, tool_description, tool_picture, tool_available, tool_map)
 VALUES
-(1,'Hammer', 1, 1, 'Claw Hammer with Nylon Vinyl Cushion Grip Handle', 'https://media-www.canadiantire.ca/product/fixing/tools/manual-fastening/0574141/ripping-hammer-20-oz-estwing-9fd13528-5f68-47e5-8172-44345afd09e9.png?imwidth=1024', true),
+(1,'Hammer', 1, 1, 'Claw Hammer with Nylon Vinyl Cushion Grip Handle', 'https://media-www.canadiantire.ca/product/fixing/tools/manual-fastening/0574141/ripping-hammer-20-oz-estwing-9fd13528-5f68-47e5-8172-44345afd09e9.png?imwidth=1024', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Vancouver-map.png'),
 (1,'Dewalt Power Drill', 1, 5,'20 volt Max Cordless, drill and screw bits', 'https://crdms.images.consumerreports.org/prod/products/cr/models/400290-general-use-typically-12-volts-dewalt-dcd701f2-10009762.png', true),
 (1,'Ratchet Set', 1, 4, 'Includes Sockets: 1/4 -inch, 5/16 -inch, 3/8 -inch, 7/16 -inch, 1/2 -inch, 9/16 -inch, 5/8 -inch, 11/16 -inch, 3/4 -inch, 13/16 -inch, 7/8 -inch, 15/16 -inch, 1 -inch accessories: 3 -inch extension, 6 -inch extension, universal swivel 90-tooth ratchet','https://pimdatacdn.bahco.com/media/sub255/177902b96c7cdf3f.png', true),
 (1,'Electric Lawn Mower', 2, 2, 'With grass bag and user manual', 'https://media-www.canadiantire.ca/product/seasonal-gardening/outdoor-tools/lawn-mowers-tractors/0601919/certified-12a-2-in-1-mower-17--289d67f4-f9de-49f5-8795-3182b9ab2780.png?imwidth=1024', true),

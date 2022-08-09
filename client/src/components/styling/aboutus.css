@@ -1,5 +1,16 @@
 .aboutus-component {
   background-color: lightsalmon;
-  height: 10vh;
+  height: 100vh;
   font-size: xx-large;
+}
+
+.team {
+	display: flex;
+	justify-content:space-around;
+	padding:25px 0 ;
+	/* max-width:1280px; */
+	margin:auto;
+  height: 20vh;
+  border: 1px black solid;
+
 }

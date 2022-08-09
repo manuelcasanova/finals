@@ -479,12 +479,12 @@ tr {
 
 /* Map container in one tool view */
 .map-container {
-  background-color: var(--color3);
+  background-color: var(--color2);
   /* justify-content: space-evenly; */
   margin-top: 10%;
   margin-bottom: 0.5%;
   padding: 2%;
-  width: 40%;
+  /* width: 40%; */
   border-radius: 30px;
 
   display: flex;

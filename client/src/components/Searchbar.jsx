@@ -1,21 +1,27 @@
 import { useState, Fragment } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export default function Searchbar(props) {
-  const { setTools, categories, groups, setSearchTrigger, setCurrentPage, setCurrentTools, tools } = props;
+  const {
+    setTools,
+    categories,
+    groups,
+    setSearchTrigger,
+    setCurrentPage,
+    setCurrentTools,
+    tools,
+  } = props;
 
   const [input, setInput] = useState("");
   const [category, setToolCategory] = useState("All categories");
   const [group, setGroup] = useState("All groups");
 
-
-
   const navigate = useNavigate();
 
   const onSearch = function (event) {
     event.preventDefault();
-   
+
     let url = `http://localhost:8001/searchh/?searchInput=${input}`;
     if (category !== "All categories") {
       url = url.concat(`&searchCategory=${category}`);
@@ -24,13 +30,13 @@ export default function Searchbar(props) {
       url = url.concat(`&searchGroup=${group}`);
     }
     axios.get(url).then(function (res) {
-      setCurrentTools(res.data.slice(0, 15))
+      setCurrentTools(res.data.slice(0, 15));
       setTools([...res.data]);
+      // setCurrentPage(1);
+      resetForm();
+      navigate("/");
       // setSearchTrigger(true)
     });
-    setCurrentPage(1);
-    resetForm();
-    // navigate("/");
   };
 
   function resetForm() {

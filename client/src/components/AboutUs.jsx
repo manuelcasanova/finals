@@ -7,10 +7,11 @@ export default function AboutUs() {
       <div className="aboutus-component">
         <h1 className="header"> About ToolSwap 🧰</h1>
         <p className="intro">
-          Why let your tools waste in your garage if your neighbour could use
-          them? Why clutter your shed with tools that get used only occasionally
-          if you could borrow them for that one job you need to get done. There
-          is no need to spend money on individual ownership if your needs could
+          🔨Why let your tools waste in your garage if your neighbour could use
+          them? <br></br>
+          ⚒️ Why clutter your shed with tools that get used only occasionally
+          if you could borrow them for that one job you need to get done. <br></br>
+          😁There is no need to spend money on individual ownership if your needs could
           be met through sharing the resources we have as a community.
         </p>
         <p className="intro">

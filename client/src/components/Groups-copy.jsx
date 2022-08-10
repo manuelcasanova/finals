@@ -7,7 +7,7 @@ import EditGroups from "./EditGroups";
 import DeleteGroups from "./DeleteGroups";
 
 
-export default function GroupsCopy ({groups, setGroups}) {
+export default function GroupsCopy ({groups, setGroups, user, admin}) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -58,9 +58,15 @@ export default function GroupsCopy ({groups, setGroups}) {
                     group={group}
                     groups={groups}
                     setGroups={setGroups}
+                    user={user}
+                    admin={admin}
                   />
               </td>
-              <td><DeleteGroups group={group} deleteGroup={deleteGroup}/></td>
+              <td><DeleteGroups 
+              group={group}
+              user={user}
+              admin={admin}
+              deleteGroup={deleteGroup}/></td>
               
 
             </tr>)}

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function EditGroups(props) {
-  const { group, groups, setGroups } = props;
+  const { group, groups, setGroups, user, admin } = props;
 
   const [group_name, setGroupName] = useState(group.group_name);
   const [group_description, setGroupDescription] = useState(
@@ -74,12 +74,14 @@ export default function EditGroups(props) {
       {/* <!-- Button trigger modal --> */}
       <button
         type="button"
-        className="button-edit"
+        className={user.loggedIn ? "button-edit" : "hide"}
         data-toggle="modal"
         data-target={`#editgroupmodal${group.group_id}`}
       >
         Edit
       </button>
+
+      
 
       {/* <!-- Modal --> */}
       <div

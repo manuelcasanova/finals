@@ -19,7 +19,7 @@ const LogInButtons = ({buttonText, userId, user, setUser, admin, setAdmin}) => {
   const logInSetCookie = function() {
     setUser({ loggedIn: true });
     // updateCookie(userId, 1)
-    navigate(`/`)
+    // navigate(`/`)
   }
 
   const logoutRemoveCookie = function () {

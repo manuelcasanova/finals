@@ -228,7 +228,7 @@ Components inside <Routes></Routes>   render only in those routes.
               element={
                 <>
                   <SearchbarGroups setGroups={setGroups} />
-                  <GroupsCopy groups={groups} setGroups={setGroups} />
+                  <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin}/>
                   <Pagination />
                 </>
               }

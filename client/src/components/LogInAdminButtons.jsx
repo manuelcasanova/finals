@@ -15,7 +15,7 @@ const LogInAdminButtons = ({user, setUser, admin, setAdmin}) => {
           onClick={() => {
             if (admin.loggedIn) return;
             setAdmin({ loggedIn: true });
-            navigate(`/`)
+            // navigate(`/`)
 
 
             //If commented in, if we try to go to a protected page when logged out, and then we log in, it goes automatically there.

@@ -1,0 +1,75 @@
+import './styling/groups.css'
+import { useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+import EditGroups from "./EditGroups";
+import DeleteGroups from "./DeleteGroups";
+
+
+export default function GroupsCopy ({groups, setGroups}) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios.get(`http://localhost:8001/groups`).then(function (res) {
+      setGroups([...res.data]);
+    });
+  }, []);
+
+  function deleteGroup(id) {
+    return axios
+      .delete(`http://localhost:8001/groups/delete/${id}`)
+      .then((res) => {
+        setGroups(groups.filter((group) => group.group_id !== id));
+      });
+  }
+
+  return (
+    <div className="show-tools">
+      <table className="tools-table">
+        <thead>
+          <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+            
+
+          </tr>
+        </thead>
+        <tbody>
+          { groups.length > 0 && groups.map(group =>
+            <tr key={group.group_id}>
+              <td
+                onClick={() => {
+                  navigate(`/groups/${group.group_id}`)
+                }}
+              ><img src={group.group_icon}/></td>
+              <td
+                onClick={() => {
+                  navigate(`/groups/${group.group_id}`)
+                }}
+              >{group.group_name}</td>
+              <td>{group.group_description}</td>
+              <td>
+           
+              <EditGroups
+                    group={group}
+                    groups={groups}
+                    setGroups={setGroups}
+                  />
+              </td>
+              <td><DeleteGroups group={group} deleteGroup={deleteGroup}/></td>
+              
+
+            </tr>)}
+            {groups.length == 0 && (<div>No groups found</div>)}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+
+

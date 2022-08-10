@@ -17,6 +17,7 @@ import OneToolView from './components/OneToolView';
 import OneGroupView from './components/OneGroupView';
 import ShowAllTools from './components/ShowAllTools';
 import Groups from './components/Groups';
+import GroupsCopy from './components/Groups-copy';
 import AboutUs from './components/AboutUs';
 import Profile from './components/Profile';
 import ShowUsers from './components/ShowUsers';
@@ -176,7 +177,7 @@ Components inside <Routes></Routes>   render only in those routes.
             <Route path="/groups" element={
               <>
                 <SearchbarGroups setGroups={setGroups} />
-                <Groups groups={groups} setGroups={setGroups} />
+                <GroupsCopy groups={groups} setGroups={setGroups} />
                 <Pagination />
               </>
 

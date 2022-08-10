@@ -9,8 +9,7 @@ export default function Searchbar(props) {
   const [category, setToolCategory] = useState("All categories");
   const [group, setGroup] = useState("All groups");
 
-  //move search to teh app comp.
-  //pass onSearch to the searchbar
+
 
   const navigate = useNavigate();
 
@@ -27,32 +26,21 @@ export default function Searchbar(props) {
     axios.get(url).then(function (res) {
       setCurrentTools(res.data.slice(0, 15))
       setTools([...res.data]);
-      setSearchTrigger(true)
+      // setSearchTrigger(true)
     });
     setCurrentPage(1);
     resetForm();
-    // navigate("/");
+    navigate("/");
   };
 
   function resetForm() {
     setInput("");
     setToolCategory("All categories");
     setGroup("All groups");
-    setSearchTrigger(false);
+    // setSearchTrigger(false);
   }
 
   return (
-    // <div className="searchbar">
-    //   {/* <form>
-    //     <input type="text" value={input} onChange={ e => setInput(e.target.value)}/>
-    //     <button type="button" onClick={onClick}>Search</button> */}
-
-    //     <div className="searchbar-text">What are you looking for?</div>
-    //     <div className="searchbar-cateogries-dropdown">Categories dropdown</div>
-    //     <div className="searchbar-groups-dropdown">Groups dropdown</div>
-    //     <div className="searchbar-search-button">Search</div>
-    //   {/* </form> */}
-    // </div>
     <div className="searchbar">
       <input
         className="searchbar-text"

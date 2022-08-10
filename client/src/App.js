@@ -46,7 +46,7 @@ function App() {
   const [reservations, setReservations] = useState([]);
 
   const [loading, setLoading] = useState(false);
-  const [searchTrigger, setSearchTrigger] = useState(false);
+  // const [searchTrigger, setSearchTrigger] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentTools, setCurrentTools] = useState([]);
   const [pageQuantity, setPageQuantity] = useState(15);
@@ -79,7 +79,7 @@ function App() {
     setCurrentTools(
       tools.slice((currentPage - 1) * pageQuantity, pageQuantity * currentPage)
     );
-  }, [searchTrigger, tools, currentPage]);
+  }, [tools, currentPage]);
 
   // console.log("currentTools", currentTools)
   // console.log("indexOfFirstTool", indexOfFirstTool)
@@ -120,7 +120,7 @@ Components inside <Routes></Routes>   render only in those routes.
                     setTools={setTools}
                     categories={categories}
                     groups={groups}
-                    setSearchTrigger={setSearchTrigger}
+                    // setSearchTrigger={setSearchTrigger}
                     setCurrentPage={setCurrentPage}
                     setCurrentTools={setCurrentTools}
                   />
@@ -143,10 +143,16 @@ Components inside <Routes></Routes>   render only in those routes.
                     setTools={setTools}
                     categories={categories}
                     groups={groups}
+                    setCurrentTools={setCurrentTools}
+                    setCurrentPage={setCurrentPage}
                   />
                   <FilterFromGrid />
-                  <ShowAllToolsGrid tools={tools} setTools={setTools} />
-                  <Pagination />
+                  <ShowAllToolsGrid currentTools={currentTools} />
+                  <Pagination
+                    pageQuantity={pageQuantity}
+                    totalTools={tools.length}
+                    paginate={paginate}
+                  />
                 </>
               }
             />
@@ -195,7 +201,9 @@ Components inside <Routes></Routes>   render only in those routes.
                     setTools={setTools}
                     categories={categories}
                     groups={groups}
-                    setSearchTrigger={setSearchTrigger}
+                    // setSearchTrigger={setSearchTrigger}
+                    setCurrentTools={setCurrentTools}
+                    setCurrentPage={setCurrentPage}
                   />
                   <OneToolView tools={tools} user={user} admin={admin} />
                 </>

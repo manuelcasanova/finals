@@ -192,7 +192,8 @@ Components inside <Routes></Routes>   render only in those routes.
               />
 
               <Route path="/my_groups" element={
-               <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin} />
+              //  <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin} />
+              <UserGroups groups={groups} setGroups={setGroups} user={user} admin={admin} />
               
               } />
               
@@ -232,7 +233,7 @@ Components inside <Routes></Routes>   render only in those routes.
               element={
                 <>
                   <SearchbarGroups setGroups={setGroups} />
-                  <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin} />
+                  <Groups groups={groups} setGroups={setGroups} />
                   <Pagination />
                 </>
               }

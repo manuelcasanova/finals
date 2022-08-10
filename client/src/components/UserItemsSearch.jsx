@@ -32,7 +32,7 @@ export default function UserItemsSearch(props) {
 
     });
     resetForm();
-    navigate("/");
+    // navigate("/");
   };
 
   function resetForm() {

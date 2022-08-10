@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function ShowAllTools({ currentTools }) {
-  console.log("length of currentTools", currentTools.length);
+  // console.log("length of currentTools", currentTools.length);
 
   const navigate = useNavigate();
 
-  console.log("TOOLS from showAllTools", currentTools);
+  // console.log("TOOLS from showAllTools", currentTools);
 
   return (
     <div className="show-tools">

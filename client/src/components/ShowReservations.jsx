@@ -8,13 +8,13 @@ export default function ShowReservations() {
   // const [ reservations, setReservations ]  = useEffect([]);
   const [reservations, setReservations] = useState([]);
 
-  console.log("reservations in component: ", reservations);
+  // console.log("reservations in component: ", reservations);
 
   useEffect(() => {
     axios.get(`http://localhost:8001/my_reservations`).then(function (res) {
       const myReservations = res.data;
       setReservations([...myReservations]);
-      console.log("my reservations after SET: ", myReservations);
+      // console.log("my reservations after SET: ", myReservations);
     });
   }, []);
 
@@ -27,7 +27,7 @@ export default function ShowReservations() {
             (reservation) => reservation.reservation_id !== id
           )
         );
-        console.log("reservations after delete: ", reservations);
+        // console.log("reservations after delete: ", reservations);
       });
   }
 

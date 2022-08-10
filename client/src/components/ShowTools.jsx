@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import DeleteTool from "./DeleteTool";
 
 export default function ShowTools({ tools, setTools, categories, groups }) {
-  console.log("tools", tools);
+  // console.log("tools", tools);
   const navigate = useNavigate();
 
   useEffect(() => {

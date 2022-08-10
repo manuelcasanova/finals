@@ -235,7 +235,7 @@ app.post("/tools", async (req, res) => {
       tool_owner_id,
       tool_available,
     } = req.body;
-    console.log("req body", req.body);
+    // console.log("req body", req.body);
     const newTool = await pool.query(
       "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
       [tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available]
@@ -255,7 +255,7 @@ app.post("/tools", async (req, res) => {
       tool_owner_id,
       tool_available,
     } = req.body;
-    console.log("req body line 92", req.body);
+    // console.log("req body", req.body);
     const newTool = await pool.query(
       "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5) RETURNING *",
       [tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available]
@@ -326,7 +326,7 @@ app.post("/categories", async (req, res) => {
     const {
       category_name
     } = req.body;
-    console.log("Category Name: ", category_name)
+    // console.log("Category Name: ", category_name)
     const newCategory = await pool.query("INSERT INTO categories (category_name) VALUES ($1) RETURNING *",
       [category_name]);
     res.json(newCategory.rows[0]);
@@ -370,9 +370,9 @@ app.get("/user_items", async (req, res) => {
 app.get("/search_user_items", async (req, res) => {
   try {
     const { searchInput, searchCategory } = req.query;
-    console.log("req", req)
-    console.log(req.query);
-    console.log(searchCategory)
+    // console.log("req", req)
+    // console.log(req.query);
+    // console.log(searchCategory)
     const paramaters = [`%${searchInput.toLowerCase()}%`, 1];
     if (searchCategory)
       paramaters.push(searchCategory)
@@ -404,7 +404,7 @@ app.get("/admin/categories/search", async (req, res) => {
   try {
     const { searchInput } = req.query;
 
-    console.log("req.query", req.query);
+    // console.log("req.query", req.query);
 
     const categories = await pool.query(
       `SELECT category_name 
@@ -424,7 +424,7 @@ app.get("/groups/search", async (req, res) => {
   try {
     const { searchInput } = req.query;
 
-    console.log("req.query", req.query);
+    // console.log("req.query", req.query);
 
     const groups = await pool.query(
       `SELECT group_name, group_description, group_icon 
@@ -446,7 +446,7 @@ app.get("/reservations/:id", async (req, res) => {
 
     const { id } = req.params;
 
-    console.log("req", req.body);
+    // console.log("req", req.body);
     const getReservation = await pool.query(
       `SELECT * FROM reservations WHERE reservation_id = $1`, [id]
     );
@@ -462,7 +462,7 @@ app.get("/reservations/:id", async (req, res) => {
 app.get("/reservations/", async (req, res) => {
   try {
 
-    console.log("req", req.body);
+    // console.log("req", req.body);
     const getAllReservations = await pool.query(
       `SELECT * FROM reservations`
     );
@@ -477,7 +477,7 @@ app.get("/reservations/", async (req, res) => {
 app.get("/searchh", async (req, res) => {
   try {
     const { searchInput, searchCategory, searchGroup } = req.query;
-    console.log("req", req)
+    // console.log("req", req)
     const paramaters = [`%${searchInput.toLowerCase()}%`]
     let searchCategoryWhereString = '';
     let searchGroupWhereString = '';
@@ -529,12 +529,12 @@ app.post("/reservations", async (req, res) => {
       reservation_end_date,
       tool_id
     } = req.body;
-    console.log("req body before query", req.body);
+    // console.log("req body before query", req.body);
     const newReservation = await pool.query(
       "INSERT INTO reservations (reservation_start_date, reservation_end_date, reservation_tool_id, reservation_user_id) VALUES($1, $2, $3, $4) RETURNING *",
       [reservation_start_date, reservation_end_date, tool_id, '1']
     );
-    console.log("new reservation after query", newReservation.data);
+    // console.log("new reservation after query", newReservation.data);
     res.json(newReservation.rows[0]);
   } catch (err) {
     console.error(err.message);
@@ -605,7 +605,7 @@ app.put("/groups/edit/:id/:tool_owner_id", async (req, res) => {
     console.log("req.body", req.body)
     const editGroup = await pool.query(
       `UPDATE groups SET group_name = $1, group_description = $2, group_icon = $3
-      WHERE group_id = $5 AND group_owner_id= $6`,
+      WHERE group_id = $4 AND group_owner_id= $5`,
       [
         group_name,
         group_description,

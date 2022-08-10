@@ -49,7 +49,7 @@ export default function EditTool(props) {
   const editTool = async () => {
     // e.preventDefault();
     try {
-      console.log(">>tool", tool);
+      // console.log(">>tool", tool);
       const body = {
         tool_name,
         tool_description,

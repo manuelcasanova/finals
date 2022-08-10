@@ -37,9 +37,9 @@ export default function Pagination(props) {
   for (let i = 1; i <= Math.ceil(totalTools / pageQuantity); i++) {
     pageNumbers.push(i);
   }
-  console.log("paginate", pageNumbers)
-  console.log("totalTools", totalTools)
-  console.log("pageQuantity", pageQuantity)
+  // console.log("paginate", pageNumbers)
+  // console.log("totalTools", totalTools)
+  // console.log("pageQuantity", pageQuantity)
 
   return (
     <div >

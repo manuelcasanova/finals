@@ -7,7 +7,7 @@ export default function OneGroupView({ groups, user, admin }) {
 
   const [position, setPosition] = useState(2)
 
-  console.log(groups)
+  // console.log(groups)
   //Two key things happening here. A new method for me, .findIndex Returns the first index of the array that matches the testing function. And groupIdParam was a string example: "1", so I had to change it to number
 
   useEffect(() => {

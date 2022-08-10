@@ -20,7 +20,7 @@ export default function EditCategory(props) {
 
       const categoriesAfterEditResponse = await axios.get(API_URL_CATEGORIES)
       setCategories([...categoriesAfterEditResponse.data]);
-      console.log("categories after response: ", categoriesAfterEditResponse)
+      // console.log("categories after response: ", categoriesAfterEditResponse)
     } catch (err) {
       console.error(err.message);
     }

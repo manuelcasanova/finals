@@ -158,7 +158,7 @@ export default function Register() {
       return axios.post(`http://localhost:8001/users`, userObject)
         .then((response) => {
           const newUser = response.data;
-          console.log("new user", newUser)
+          // console.log("new user", newUser)
           navigate('/')
         })
     })

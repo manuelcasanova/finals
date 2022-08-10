@@ -1,5 +1,62 @@
-.aboutus-component {
-  background-color: lightsalmon;
-  height: 10vh;
-  font-size: xx-large;
+:root {
+  --color1:#cfe0e8;
+  --color2:#b7d7e8;
+  --color3: #87bdd8;
+  --color0: #daebe8;
+  --color4: #577d90;
 }
+
+.header {
+ margin: 25px;
+}
+
+.intro {
+  margin: 60px;
+  font-weight: light;
+  
+}
+
+.aboutus-component {
+  background-color:var(--color2);
+  height: auto;
+  font-size: xx-large;
+  color:black;
+  border-radius: 20px;
+  /* margin-bottom: 2px 30px 2px 30px; */
+  margin-bottom: 2px;
+}
+
+.team-component {
+  background-color:var(--color1);
+  height: auto;
+  font-size: xx-large;
+  color:black;
+  border-radius: 20px;
+}
+
+.team {
+	display: flex;
+	justify-content:space-around;
+	padding:25px 0 ;
+	/* max-width:1280px; */
+	margin: 50px;
+  height: 30vh;
+  border: 9px #f9f9f9 solid;
+}
+
+.team-names {
+  font-weight: bold;
+}
+.team-picture {
+  width: 500px;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 10px;
+}
+
+.team-bio {
+  margin-top: 30px;
+  margin-right: 50px;
+  margin-left: 50px;;
+}
+

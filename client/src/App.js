@@ -206,6 +206,7 @@ Components inside <Routes></Routes>   render only in those routes.
                     setCurrentPage={setCurrentPage}
                   />
                   <OneToolView tools={tools} user={user} admin={admin} />
+                  <ShowAllToolsGrid currentTools={currentTools} />
                 </>
               }
             />

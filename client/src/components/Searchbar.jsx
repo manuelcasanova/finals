@@ -1,9 +1,17 @@
 import { useState, Fragment } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 export default function Searchbar(props) {
-  const { setTools, categories, groups, setSearchTrigger } = props;
+  const {
+    setTools,
+    categories,
+    groups,
+    setSearchTrigger,
+    setCurrentPage,
+    setCurrentTools,
+    tools,
+  } = props;
 
   const [input, setInput] = useState("");
   const [category, setToolCategory] = useState("All categories");
@@ -13,7 +21,7 @@ export default function Searchbar(props) {
 
   const onSearch = function (event) {
     event.preventDefault();
-   
+
     let url = `http://localhost:8001/searchh/?searchInput=${input}`;
     if (category !== "All categories") {
       url = url.concat(`&searchCategory=${category}`);
@@ -22,32 +30,23 @@ export default function Searchbar(props) {
       url = url.concat(`&searchGroup=${group}`);
     }
     axios.get(url).then(function (res) {
+      setCurrentTools(res.data.slice(0, 15));
       setTools([...res.data]);
-      setSearchTrigger(true)
+      // setCurrentPage(1);
+      resetForm();
+      navigate("/");
+      // setSearchTrigger(true)
     });
-    resetForm();
-    // navigate("/");
   };
 
   function resetForm() {
     setInput("");
     setToolCategory("All categories");
     setGroup("All groups");
-    setSearchTrigger(false);
+    // setSearchTrigger(false);
   }
 
   return (
-    // <div className="searchbar">
-    //   {/* <form>
-    //     <input type="text" value={input} onChange={ e => setInput(e.target.value)}/>
-    //     <button type="button" onClick={onClick}>Search</button> */}
-
-    //     <div className="searchbar-text">What are you looking for?</div>
-    //     <div className="searchbar-cateogries-dropdown">Categories dropdown</div>
-    //     <div className="searchbar-groups-dropdown">Groups dropdown</div>
-    //     <div className="searchbar-search-button">Search</div>
-    //   {/* </form> */}
-    // </div>
     <div className="searchbar">
       <input
         className="searchbar-text"

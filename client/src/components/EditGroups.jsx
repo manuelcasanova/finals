@@ -41,7 +41,7 @@ export default function EditGroups(props) {
   const editGroup = async () => {
     // e.preventDefault();
     try {
-      console.log(">>group", group);
+      // console.log(">>group", group);
       const body = {
         group_name,
         group_description,
@@ -49,7 +49,7 @@ export default function EditGroups(props) {
         group_owner_id
       };
       const response = await fetch(
-        `http://localhost:8001/groups/edit/${group.group_id}/1`, //HERE
+        `http://localhost:8001/groups/edit/${group.group_id}`, //HERE
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

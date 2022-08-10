@@ -200,7 +200,7 @@ app.get("/categories", async (req, res) => {
 app.get("/groups", async (req, res) => {
   try {
     // console.log(req);
-    const getAllGroups = await pool.query(`SELECT * FROM groups`);
+    const getAllGroups = await pool.query(`SELECT * FROM groups ORDER BY group_id`);
     res.json(getAllGroups.rows);
   } catch (err) {
     console.error(err.message);
@@ -591,27 +591,27 @@ app.delete("/groups/delete/:id", async (req, res) => {
 
 
 //Edit a group
-app.put("/groups/edit/:id/:tool_owner_id", async (req, res) => {
+app.put("/groups/edit/:id", async (req, res) => {
   try {
     const { id, tool_owner_id } = req.params;
-    console.log("owner", tool_owner_id)
-    console.log("id", id)
+    // console.log("owner", tool_owner_id)
+    // console.log("id", id)
     const {
       group_name,
       group_description,
       group_icon,
       group_owner_id
     } = req.body;
-    console.log("req.body", req.body)
+    // console.log("req.body", req.body)
     const editGroup = await pool.query(
       `UPDATE groups SET group_name = $1, group_description = $2, group_icon = $3
-      WHERE group_id = $4 AND group_owner_id= $5`,
+      WHERE group_id = $4`,
       [
         group_name,
         group_description,
         group_icon,
-        id,
-        group_owner_id
+        id
+      
 
       ]
     );

@@ -191,7 +191,11 @@ Components inside <Routes></Routes>   render only in those routes.
                 }
               />
 
-              <Route path="/my_groups" element={<UserGroups />} />
+              <Route path="/my_groups" element={
+               <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin} />
+              
+              } />
+              
             </Route>
 
             <Route
@@ -208,7 +212,7 @@ Components inside <Routes></Routes>   render only in those routes.
                   />
                   <OneToolView tools={tools} user={user} admin={admin} />
                   {/* <ShowAllTools currentTools={currentTools} />*/}
-                 {/* <ShowAllToolsGrid currentTools={currentTools} />  */}
+                  {/* <ShowAllToolsGrid currentTools={currentTools} />  */}
                 </>
               }
             />
@@ -228,7 +232,7 @@ Components inside <Routes></Routes>   render only in those routes.
               element={
                 <>
                   <SearchbarGroups setGroups={setGroups} />
-                  <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin}/>
+                  <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin} />
                   <Pagination />
                 </>
               }

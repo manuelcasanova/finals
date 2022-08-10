@@ -74,7 +74,7 @@ export default function EditGroups(props) {
       {/* <!-- Button trigger modal --> */}
       <button
         type="button"
-        className={user.loggedIn ? "button-edit" : "hide"}
+        className={user.loggedIn || admin.loggedIn ? "button-edit" : "hide"}
         data-toggle="modal"
         data-target={`#editgroupmodal${group.group_id}`}
       >

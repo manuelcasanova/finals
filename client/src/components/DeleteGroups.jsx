@@ -6,7 +6,7 @@ export default function DeleteGroups(props) {
     {/* <!-- Button trigger modal --> */}
     <button
       type="button"
-      className={user.loggedIn ? "button-delete" : "hide"}
+      className={user.loggedIn || admin.loggedIn ? "button-delete" : "hide"}
       data-toggle="modal"
       data-target={`#deletegroupmodal${group.group_id}`}
     >

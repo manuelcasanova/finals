@@ -13,8 +13,6 @@ export default function OneToolView({ tools, user, admin }) {
   const [user_email, setUserEmail] = useState("")
 
 
-
-
   //Two key things happening here. A new method for me, .findIndex Returns the first index of the array that matches the testing function. And toolIdParam was a string example: "1", so I had to change it to number
 
   useEffect(() => {
@@ -31,12 +29,13 @@ export default function OneToolView({ tools, user, admin }) {
     return (
 
 
-
+<>
       <div className="one-item-container">
         <div className="one-item-picture-and-book-button">
           <div className="one-item-picture"><img class="one-tool" src={tools[position].tool_picture} /></div>
           {/* <BookTool user={user} admin={admin} tools={tools} toolIdParam={toolIdParam} /> */}
           <CalendarComponent toolIdParam={toolIdParam} user={user} admin={admin}/>
+          <div className="map-container"><img class="img-class-map" src='https://canadaarchitectureutoronto.files.wordpress.com/2021/07/map.jpg?w=1024' alt="Map"/></div>
         </div>
 
         <div className="one-item-information-container">
@@ -50,7 +49,13 @@ export default function OneToolView({ tools, user, admin }) {
             </tr>
             <tr>
               <th className="one-item-status">Status</th>
-              <td className="one-item-status">Status</td>
+              <td className="one-item-status">
+
+              { tools[position].tool_available ?
+                  <label>Available</label> : <label>Unavailable</label>
+                  }
+              </td>
+
             </tr>
             <th className="one-item-owner-name">Owner</th>
             <td className={user.loggedIn || admin.loggedIn ? "one-item-owner-name" : "hide"}>
@@ -73,6 +78,8 @@ export default function OneToolView({ tools, user, admin }) {
           
         </div>
       </div>
+      
+      </>
     )
 
   } else {

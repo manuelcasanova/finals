@@ -1,0 +1,82 @@
+:root {
+  --color1: #cfe0e8;
+  --color2: #b7d7e8;
+  --color3: #87bdd8;
+  --color4: #577d90;
+  --color0: #daebe8;
+}
+
+
+/* ShowAllToolsGrid */
+
+.show-tools-grid {
+  background-color: var(--color2);
+  border-radius: 30px;
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start; */
+  display: grid;
+  grid-template-columns: repeat(5, 19.5%);
+  gap: 0.5%;
+  padding: 3%;
+  font-size: xx-large;
+}
+
+
+/* OneToolForGrid */
+
+.one-tool-for-grid {
+  background-color: var(--color3);
+  border-radius: 30px;
+  margin: 0.2%;
+  min-width: 19.6%;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+  justify-content: space-around;
+}
+
+
+.one-tool-for-grid-picture{
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.img-one-tool-for-grid{
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  margin: auto;
+}
+
+.img-one-tool-for-grid:hover {
+  transform: none;
+}
+
+.one-tool-for-grid-name {
+font-size: xx-large;
+
+}
+
+.one-tool-for-grid-group {
+  font-size: x-large;
+  padding: 5%;
+  text-align: center;
+}
+
+.one-tool-for-grid-availability {
+background-color: green;
+border-radius: 30px;
+padding: 0px 10px 0px 10px;
+font-size: x-large;
+color: white;
+
+}

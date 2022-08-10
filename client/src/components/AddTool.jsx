@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import "./styling/modal.css";
 
 export default function AddTool(props) {
-  const { tools, categories, setTools } = props;
+  const { tools, categories, setTools, groups } = props;
 
   const [tool_name, setToolName] = useState("");
   const [tool_description, setToolDescription] = useState("");
   const [tool_picture, setToolPicture] = useState("");
   const [tool_category_id, setToolCategory] = useState("");
+  const [tool_group_id, setToolGroup] = useState("");
   const [tool_owner_id, setToolOwnerId] = useState("1");
   const [tool_available, setTooAvailibilty] = useState(true);
   const [formErrors, setFormErrors] = useState({});
@@ -22,6 +23,15 @@ export default function AddTool(props) {
     }
   }, [categories, tool_owner_id]);
 
+    useEffect(() => {
+    const foundGroup = groups.find((group) => {
+      return group.group_id === tool_group_id;
+    });
+    if (!foundGroup && groups.length) {
+      setToolGroup(groups[0].group_id);
+    }
+  }, [groups, tool_owner_id]);
+
   function onSubmitForm(e) {
     e.preventDefault();
     const tool = {
@@ -29,6 +39,7 @@ export default function AddTool(props) {
       tool_description,
       tool_picture,
       tool_category_id,
+      tool_group_id,
       tool_owner_id,
       tool_available,
     };
@@ -173,6 +184,26 @@ export default function AddTool(props) {
                       value={category.category_id}
                     >
                       {category.category_name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="level_input">
+                <label className="add_tool_title" htmlFor="title">
+                  Group
+                </label>
+                <select
+                  className="form-control-add"
+                  value={tool_group_id}
+                  onChange={(e) => setToolGroup(e.target.value)}
+                >
+                  {groups.map((group) => (
+                    <option
+                      key={group.group_id}
+                      value={group.group_id}
+                    >
+                      {group.group_name}
                     </option>
                   ))}
                 </select>

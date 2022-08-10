@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-export default function Filter () {
+export default function FilterFromGrid () {
 
 const navigate = useNavigate()
 
@@ -10,9 +10,9 @@ const navigate = useNavigate()
     <div className="filter-view">
     <a onClick={() => 
     
-    {navigate(`/`)}
+    {navigate(`/list`)}
   
-  }>View grid</a>
+  }>View List</a>
     </div>
 
     

@@ -31,7 +31,7 @@ export default function Searchbar(props) {
     });
     setCurrentPage(1);
     resetForm();
-    navigate("/");
+    // navigate("/");
   };
 
   function resetForm() {

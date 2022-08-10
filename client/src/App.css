@@ -185,6 +185,7 @@ a:active {
   /* background-color:var(--color3); */
   padding-left: 10px;
   padding-right: 10px;
+  
 
 }
 
@@ -192,6 +193,7 @@ a:active {
   /* background-color:var(--color3); */
   padding-left: 10px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .filter-sort-by {
@@ -260,6 +262,13 @@ img {
   max-width: 100%;
   max-height: 100%;
   transition: transform .2s;
+  /* position: absolute;
+  top: -9999px;
+  left: -9999px;
+  right: -9999px;
+  bottom: -9999px;
+  margin: auto; */
+  border-radius: 30px;
 }
 
 img.one-tool {
@@ -268,6 +277,7 @@ img.one-tool {
   max-width: 100%;
   max-height: 100%;
   transition: transform .2s;
+
 }
 
 img:hover {
@@ -281,18 +291,24 @@ img.one-tool:hover {
 }
 
 .button-open-book-modal {
-height: 200px;
-font-size: 3em;
+height: 100px;
+width: 10vw;
+
+}
+
+.button-book-container {
+  display: flex;
+  justify-content: center;
 }
 
 .log-in-to-book-item {
   height: 200px;
-  font-size: 3em;
+ 
   margin: 1px;
-  background-color: var(--color4);
+  /* background-color: var(--color4); */
   border: 0;
   border-radius: 10px;
-  color: white;
+  color: var(--color4);
   padding: 5px 0;
   font-size: 50px;
   font-weight: bold;
@@ -427,8 +443,9 @@ tr {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  padding: 5%;
+  padding: 1%;
   width: 100%;
+  border-radius: 30px;
 }
 
 .one-item-picture-and-book-button {
@@ -458,6 +475,25 @@ tr {
   align-items: center;
   justify-content: center;
   font-size: xx-large;
+}
+
+/* Map container in one tool view */
+.map-container {
+  background-color: var(--color2);
+  /* justify-content: space-evenly; */
+  margin-top: 10%;
+  margin-bottom: 0.5%;
+  padding: 2%;
+  /* width: 40%; */
+  border-radius: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-class-map {
+
 }
 
 /* The following calendar related styling overrides default css */
@@ -514,7 +550,7 @@ a {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 2%;
+  padding: 1%;
   width: 60%
 }
 
@@ -581,22 +617,22 @@ a {
 }
 
 .one-item-description {
-  font-size: 300%;
+  font-size: 200%;
   background-color: var(--color2);
 }
 
 .one-item-status {
-  font-size: 300%;
+  font-size: 200%;
   background-color: var(--color2);
 }
 
 .one-item-owner-name {
-  font-size: 300%;
+  font-size: 200%;
   background-color: var(--color2);
 }
 
 .one-item-owner-email {
-  font-size: 300%;
+  font-size: 200%;
   background-color: var(--color2);
 }
 

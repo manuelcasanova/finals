@@ -571,6 +571,27 @@ app.delete("/my_reservations/delete/:id", async (req, res) => {
   };
 });
 
+//Add a group
+
+//Delete a group
+//delete a tool
+app.delete("/groups/delete/:id", async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    console.log("deleted group id:", id);
+    const deleteGroup = await pool.query(
+      "DELETE FROM groups WHERE group_id = $1 RETURNING *",
+      [id]
+    );
+    res.json("The group has been deleted");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+
+//Edit a group
+
 
 
 

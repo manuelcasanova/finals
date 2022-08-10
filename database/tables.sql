@@ -10,14 +10,6 @@ category_id SERIAL PRIMARY KEY NOT NULL,
 category_name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE groups (
-  group_id SERIAL PRIMARY KEY NOT NULL,
-  group_name VARCHAR(255),
-  group_description TEXT,
-  group_icon VARCHAR(255)
-);
-
-
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY NOT NULL,
   user_name VARCHAR(255) NOT NULL,
@@ -27,6 +19,14 @@ CREATE TABLE users (
   user_address VARCHAR(255),
   user_city VARCHAR(255),
   user_picture VARCHAR(255)
+);
+
+CREATE TABLE groups (
+  group_id SERIAL PRIMARY KEY NOT NULL,
+  group_name VARCHAR(255),
+  group_description TEXT,
+  group_icon VARCHAR(255),
+  group_owner_id INTEGER REFERENCES users(user_id) ON DELETE CASCADE
 );
 
 CREATE TABLE tools (

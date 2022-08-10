@@ -9,12 +9,14 @@ export default function EditGroups(props) {
     group.group_description
   );
   const [group_icon, setGroupIcon] = useState(group.group_icon);
+  const [group_owner_id, setGroupOwnerId] = useState("1")
   const [formErros, setFormErrors] = useState({});
 
   const groupFromTheForm = {
     group_name,
     group_description,
-    group_icon
+    group_icon,
+    group_owner_id
   }
 
   const check = (formValues) => {
@@ -43,7 +45,8 @@ export default function EditGroups(props) {
       const body = {
         group_name,
         group_description,
-        group_icon
+        group_icon,
+        group_owner_id
       };
       const response = await fetch(
         `http://localhost:8001/groups/edit/${group.group_id}/1`, //HERE

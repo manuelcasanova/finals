@@ -75,7 +75,7 @@ export default function AboutUs() {
             <a href="#">
               {" "}
               <img
-                src="https://github.com/manuelcasanova/finals/blob/kr/about_us/server/images/IMG-20201031-WA0036_edited.jpg?raw=true"
+                src="https://raw.githubusercontent.com/manuelcasanova/finals/fbb30bf99d7e0b30ee5e2922ef695b638675a750/server/images/IMG-20201031-WA0036_edited.jpg"
                 alt="team image"
                 width="100%"
               />{" "}

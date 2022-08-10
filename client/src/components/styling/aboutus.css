@@ -7,13 +7,12 @@
 }
 
 .header {
- margin: 20px;
+ margin: 25px;
 }
 
 .intro {
   margin: 60px;
 }
-
 
 .aboutus-component {
   background-color:var(--color2);
@@ -40,7 +39,7 @@
 	/* max-width:1280px; */
 	margin: 50px;
   height: 30vh;
-  border: 1px #f9f9f9 solid;
+  border: 9px #f9f9f9 solid;
 }
 
 .team-names {
@@ -48,13 +47,14 @@
 }
 .team-picture {
   width: 500px;
-  margin: 20px;
   max-width: 100%;
   max-height: 100%;
+  margin: 10px;
 }
 
 .team-bio {
-  /* margin: 25px 30px 25px 40px; */
-  margin-top: 80px;
+  margin-top: 30px;
   margin-right: 50px;
+  margin-left: 50px;;
 }
+

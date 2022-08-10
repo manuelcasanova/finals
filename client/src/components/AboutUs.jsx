@@ -6,20 +6,20 @@ export default function AboutUs() {
     <Fragment>
       <div className="aboutus-component">
         <h1 className="header"> About ToolSwap 🧰</h1>
-        <h2 className="intro">
+        <p className="intro">
           Why let your tools waste in your garage if your neighbour could use
           them? Why clutter your shed with tools that get used only occasionally
           if you could borrow them for that one job you need to get done. There
           is no need to spend money on individual ownership if your needs could
           be met through sharing the resources we have as a community.
-        </h2>
-        <h2 className="intro">
+        </p>
+        <p className="intro">
           Whether you are an apartment dweller or a two-story residence owner
           Tool Swap is for you! We offer a web-based inventory tracking system
           allowing you to view, add, track and book tools from the comfort of
           your own home. Our goal is to strengthen local neighbourhood groups
           and limit barriers to tool access.
-        </h2>
+        </p>
       </div>
 
       <div className="team-component">

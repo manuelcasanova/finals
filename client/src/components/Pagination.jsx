@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"
 
 export default function Pagination(props) {
-  const { toolsPerPage, totalTools, paginate } = props;
+  const { toolsPerPage, totalTools, paginate, pageQuantity } = props;
 
   const navigate = useNavigate();
 
@@ -34,9 +34,12 @@ export default function Pagination(props) {
   // const currentTools = tools.slice(indexOfFirstTool, indexOflastTool);
 
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalTools / toolsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalTools / pageQuantity); i++) {
     pageNumbers.push(i);
   }
+  console.log("paginate", pageNumbers)
+  console.log("totalTools", totalTools)
+  console.log("pageQuantity", pageQuantity)
 
   return (
     <div >

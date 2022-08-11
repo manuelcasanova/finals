@@ -83,8 +83,8 @@ export default function Searchbar(props) {
       </select>
 
       <button className="searchbar-search-button" onClick={onSearch}>
-      🔎
-      {/* <i class="fa-solid fa-magnifying-glass"></i> */}
+  
+      <i class="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
   );

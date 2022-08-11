@@ -85,6 +85,13 @@ export default function AddTool(props) {
     setFormErrors({});
   }
 
+  const handleKeypress = event => {
+    //it triggers by pressing the enter key
+  if (event.key === 'Enter') {
+    onSubmitForm(event);
+  }
+};
+
   return (
     <div className="add-tool-button-div">
       {/* <!-- Button trigger modal --> */}
@@ -133,6 +140,7 @@ export default function AddTool(props) {
                 name="title"
                 value={tool_name}
                 onChange={(e) => setToolName(e.target.value)}
+                onKeyPress={handleKeypress}
               />
               <p className="form-error">{formErrors.tool_name}</p>
              

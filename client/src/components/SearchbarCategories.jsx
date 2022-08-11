@@ -8,35 +8,42 @@ export default function SearchbarCategories(props) {
 
   const onSearch = function (event) {
     event.preventDefault();
-   
-      axios
+
+    axios
       .get(
         `http://localhost:8001/admin/categories/search/?searchInput=${input}`
       )
       .then(function (res) {
         setCategories([...res.data]);
       });
-      resetForm()
+    resetForm();
+  };
+
+  const handleKeypress = (event) => {
+    //it triggers by pressing the enter key
+    if (event.key === "Enter") {
+      onSearch(event);
+    }
   };
 
   function resetForm() {
     setInput("");
-  };
+  }
 
   return (
-
     <div className="searchbar">
-        <input className="searchbar-text"
-          type="text"
-          value={input}
-          placeholder="Looking for a category?"
-          onChange={e => setInput(e.target.value)}
-        ></input>
-       
-      
-        <button className="searchbar-search-button" onClick={onSearch}>
-          Search
-        </button>
+      <input
+        className="searchbar-text"
+        type="text"
+        value={input}
+        placeholder="Looking for a category?"
+        onChange={(e) => setInput(e.target.value)}
+        onKeyPress={handleKeypress}
+      ></input>
+
+      <button className="searchbar-search-button" onClick={onSearch}>
+        Search
+      </button>
     </div>
   );
 }

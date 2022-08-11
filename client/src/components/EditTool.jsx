@@ -25,13 +25,17 @@ export default function EditTool(props) {
     tool_available,
   };
 
-  // console.log("toolFromTheForm", toolFromTheForm);
+  console.log("toolFromTheForm", toolFromTheForm);
 
   const check = (formValues) => {
     const errors = {};
     if (!formValues.tool_name) {
       errors.tool_name = "Name is required";
     }
+    // if (!formValues.tool_description) {
+    //   errors.tool_description = "Description is required";
+    // }
+
     return errors;
   };
 
@@ -40,7 +44,8 @@ export default function EditTool(props) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       editTool();
-      document.getElementById("edittoolmodal1").click();
+      // document.getElementById("edittoolmodal1").click();
+      // document.getElementsByClassName("close").click();
     } else {
       setFormErrors(errors);
     }
@@ -110,7 +115,7 @@ export default function EditTool(props) {
                 aria-label="Close"
                 onClick={resetForm}
               >
-                <span aria-hidden="true">&times;</span>
+                <span className="test" aria-hidden="true">&times;</span>
               </button>
               <h5 className="modal-title" id="exampleModalLabel">
                 Edit item
@@ -140,6 +145,7 @@ export default function EditTool(props) {
                 value={tool_description}
                 onChange={(e) => setToolDescription(e.target.value)}
               />
+              {/* <p className="form-error">{formErros.tool_description}</p> */}
 
               <label className="add_tool_title" htmlFor="title">
                 Picture
@@ -190,10 +196,7 @@ export default function EditTool(props) {
                   onChange={(e) => setToolGroup(e.target.value)}
                 >
                   {groups.map((group) => (
-                    <option
-                      key={group.group_id}
-                      value={group.group_id}
-                    >
+                    <option key={group.group_id} value={group.group_id}>
                       {group.group_name}
                     </option>
                   ))}
@@ -232,3 +235,5 @@ export default function EditTool(props) {
     </div>
   );
 }
+
+

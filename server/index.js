@@ -146,20 +146,7 @@ app.get("/tools", async (req, res) => {
       // `SELECT movie_id, movie_title, movie_year, movie_genre_id, movie_imdb, genre_title
       // FROM movies JOIN genres ON genres.genre_id = movies.movie_genre_id
       // ORDER BY movie_id DESC`
-      `SELECT 
-      tool_id, 
-      tool_name, 
-      tool_description,
-      tool_category_id, 
-      tool_owner_id, 
-      tool_picture, 
-      tool_available,
-      tool_map, 
-      category_name, 
-      user_name,
-      user_email,
-      group_name 
-      FROM tools 
+      `SELECT * FROM tools 
       JOIN categories 
       ON categories.category_id = tools.tool_category_id 
       JOIN users 
@@ -168,6 +155,7 @@ app.get("/tools", async (req, res) => {
       ON groups.group_id = tools.tool_group_id
       ORDER BY tool_name`
     );
+    console.log("getAllTools.rows", getAllTools.rows)
     res.json(getAllTools.rows);
   } catch (err) {
     console.error(err.message);
@@ -266,24 +254,27 @@ app.post("/tools", async (req, res) => {
   }
 });
 
-//edit a tool
+//edit a tool #
 app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
   try {
     const { id, tool_owner_id } = req.params;
+    console.log("body", req.body)
     console.log("owner", tool_owner_id)
     console.log("id", id)
     const {
       tool_name,
+      tool_description,
       tool_picture,
       tool_category_id,
       tool_group_id,
       tool_available,
     } = req.body;
     const editTool = await pool.query(
-      `UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_group_id = $4, tool_available = $5 
-      WHERE tool_id = $6 AND tool_owner_id= $7`,
+      `UPDATE tools SET tool_name = $1, tool_description= $2, tool_picture = $3, tool_category_id = $4, tool_group_id = $5, tool_available = $6 
+      WHERE tool_id = $7 AND tool_owner_id= $8`,
       [
         tool_name,
+        tool_description,
         tool_picture,
         tool_category_id,
         tool_group_id,

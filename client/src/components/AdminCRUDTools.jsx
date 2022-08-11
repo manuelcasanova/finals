@@ -1,8 +1,10 @@
 import './styling/admincrudtools.css'
 import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
 import Filter from "./Filter";
 import DeleteTool from './DeleteTool';
 import AddTool from './AddTool';
+import EditToolAdmin from './EditToolAdmin';
 
 import axios from 'axios';
 
@@ -10,6 +12,13 @@ export default function AdminCRUDTools ({ currentTools, tools, setTools, categor
 
   const navigate = useNavigate();
   console.log("current tools", currentTools)
+
+  useEffect(() => {
+    axios.get(`http://localhost:8001/tools`).then(function (res) {
+      setTools([...res.data]);
+    });
+  }, []);
+
 
   function deleteTool(id) {
     return axios
@@ -61,7 +70,7 @@ export default function AdminCRUDTools ({ currentTools, tools, setTools, categor
                   <td>{tool.category_name}</td>
                   <td>{tool.group_name}</td>
                   <td>{tool.user_name}</td>
-                  <td>Edit</td>
+                  <td><EditToolAdmin tool={tool} tools={tools} categories={categories} setTools={setTools} groups={groups}/></td>
                   <td><DeleteTool tool={tool} deleteTool={deleteTool}/></td>
                 </tr>
               ))}

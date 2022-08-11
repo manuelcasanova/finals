@@ -34,18 +34,20 @@ export default function DeleteReservation(props) {
                 className="button-submit"
                 type="submit"
                 data-dismiss="modal"
-                onClick={() => deleteReservation(reservation.reservation_id)}
               >
-                Confirm
+                No
               </button>
 
               <button
                 className="button-submit"
                 type="submit"
                 data-dismiss="modal"
+                onClick={() => deleteReservation(reservation.reservation_id)}
               >
-                Cancel
+                Yes
               </button>
+
+
             </div>
           </div>
         </div>

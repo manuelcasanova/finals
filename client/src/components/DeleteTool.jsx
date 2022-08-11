@@ -25,7 +25,7 @@ export default function DeleteTool(props) {
     <div className="modal-dialog" role="document">
       <div className="modal-content">
         <h6 className="modal-title">
-          Are you sure you want to remove this tool?
+          Are you sure you want to remove this item?
         </h6>
         <div className="modal-body">
           {/* <button type="button" className="button-close" data-dismiss="modal">Close</button> */}
@@ -33,18 +33,20 @@ export default function DeleteTool(props) {
             className="button-submit"
             type="submit"
             data-dismiss="modal"
-            onClick={() => deleteTool(tool.tool_id)}
           >
-            Delete
+            No
           </button>
 
           <button
             className="button-submit"
             type="submit"
             data-dismiss="modal"
+            onClick={() => deleteTool(tool.tool_id)}
           >
-            Cancel
+            Yes
           </button>
+
+
         </div>
       </div>
     </div>

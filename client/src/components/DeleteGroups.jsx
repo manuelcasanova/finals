@@ -33,18 +33,20 @@ export default function DeleteGroups(props) {
               className="button-submit"
               type="submit"
               data-dismiss="modal"
-              onClick={() => deleteGroup(group.group_id)}
             >
-              Delete
+              No
             </button>
-  
+
             <button
               className="button-submit"
               type="submit"
               data-dismiss="modal"
+              onClick={() => deleteGroup(group.group_id)}
             >
-              Cancel
+              Yes
             </button>
+  
+
           </div>
         </div>
       </div>

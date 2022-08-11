@@ -29,22 +29,25 @@ export default function DeleteCategory(props) {
             </h6>
             <div className="modal-body">
               {/* <button type="button" className="button-close" data-dismiss="modal">Close</button> */}
-              <button
-                className="button-submit"
-                type="submit"
-                data-dismiss="modal"
-                onClick={() => deleteCategory(category.category_id)}
-              >
-                Delete
-              </button>
 
               <button
                 className="button-submit"
                 type="submit"
                 data-dismiss="modal"
               >
-                Cancel
+                No
               </button>
+
+              <button
+                className="button-submit"
+                type="submit"
+                data-dismiss="modal"
+                onClick={() => deleteCategory(category.category_id)}
+              >
+                Yes
+              </button>
+
+ 
             </div>
           </div>
         </div>

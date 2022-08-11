@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Filter from "./Filter";
 import DeleteTool from './DeleteTool';
 import AddTool from './AddTool';
+import EditToolAdmin from './EditToolAdmin';
 
 import axios from 'axios';
 
@@ -61,7 +62,7 @@ export default function AdminCRUDTools ({ currentTools, tools, setTools, categor
                   <td>{tool.category_name}</td>
                   <td>{tool.group_name}</td>
                   <td>{tool.user_name}</td>
-                  <td>Edit</td>
+                  <td><EditToolAdmin tool={tool} tools={tools} categories={categories} setTools={setTools} groups={groups}/></td>
                   <td><DeleteTool tool={tool} deleteTool={deleteTool}/></td>
                 </tr>
               ))}

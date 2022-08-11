@@ -72,10 +72,11 @@
  }
 
 .profile-tab label{
-  font-weight: 900;
+  font-size: 26px;
+  font-weight: bold;
   margin-top: 0;
 }
 .profile-tab p{
-  font-weight: 900;
+  font-size: 26px;
   color:dark grey;
 }

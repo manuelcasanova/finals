@@ -85,7 +85,7 @@ export default function Profile() {
                     <label>Phone:</label>
                   </div>
                   <div class="col-md-6">
-                    <p>+1 9020784544</p>
+                    <p>+1 902-0784-544</p>
                   </div>
                 </div>
               </div>

@@ -32,10 +32,10 @@ export default function Searchbar(props) {
     axios.get(url).then(function (res) {
       setCurrentTools(res.data.slice(0, 15));
       setTools([...res.data]);
-      // setCurrentPage(1);
+
       resetForm();
       navigate("/");
-      // setSearchTrigger(true)
+ 
     });
   };
 
@@ -43,7 +43,7 @@ export default function Searchbar(props) {
     setInput("");
     setToolCategory("All categories");
     setGroup("All groups");
-    // setSearchTrigger(false);
+
   }
 
   return (
@@ -84,7 +84,7 @@ export default function Searchbar(props) {
 
       <button className="searchbar-search-button" onClick={onSearch}>
   
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i className="fa-solid fa-magnifying-glass"></i>
       </button>
     </div>
   );

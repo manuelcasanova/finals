@@ -1,14 +1,24 @@
 import './styling/admincrudtools.css'
 import { useNavigate } from "react-router-dom";
 import Filter from "./Filter";
+import DeleteTool from './DeleteTool';
 
-export default function AdminCRUDTools ({ currentTools }) {
+import axios from 'axios';
+
+export default function AdminCRUDTools ({ currentTools, tools, setTools }) {
 
   const navigate = useNavigate();
   console.log("current tools", currentTools)
 
-  return (
+  function deleteTool(id) {
+    return axios
+      .delete(`http://localhost:8001/tools/delete/${id}`)
+      .then((res) => {
+        setTools(tools.filter((tool) => tool.tool_id !== id));
+      });
+  }
 
+  return (
 
     <div className="show-tools-component">
       <div className="show-tools-list-filter">
@@ -50,7 +60,7 @@ export default function AdminCRUDTools ({ currentTools }) {
                   <td>{tool.group_name}</td>
                   <td>{tool.user_name}</td>
                   <td>Edit</td>
-                  <td>Delete</td>
+                  <td><DeleteTool tool={tool} deleteTool={deleteTool}/></td>
                 </tr>
               ))}
             {currentTools.length === 0 && (<div>No tools found</div>)}

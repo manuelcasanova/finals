@@ -267,7 +267,7 @@ Components inside <Routes></Routes>   render only in those routes.
                 path="/admin/tools"
                 element={
                   <>
-                    <AdminCRUDTools currentTools={currentTools} />
+                    <AdminCRUDTools currentTools={currentTools} tools={tools} setTools={setTools} />
                     <Pagination />
                   </>
                 }

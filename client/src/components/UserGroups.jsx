@@ -5,6 +5,7 @@ import axios from "axios";
 
 import EditGroups from "./EditGroups";
 import DeleteGroups from "./DeleteGroups";
+import AddGroup from './AddGroup';
 
 //PENDING MAKE ONLY EDIT AND DELETE ACCESSIBLE TO GROUP OWNER
 
@@ -27,6 +28,8 @@ export default function UserGroups({groups, setGroups, user, admin}) {
 
   return (
  <div className="show-tools">
+              <div className="show-title">Groups</div>
+      <AddGroup groups={groups} setGroups={setGroups} />
       <table className="tools-table">
         <thead>
           <tr>

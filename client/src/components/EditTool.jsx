@@ -12,7 +12,7 @@ export default function EditTool(props) {
   const [tool_category_id, setToolCategory] = useState(tool.tool_category_id);
   const [tool_group_id, setToolGroup] = useState(tool.tool_group_id);
   const [tool_owner_id, setToolOwnerId] = useState(1);
-  const [tool_available, setTooAvailibilty] = useState(true);
+  const [tool_available, setToolAvailibilty] = useState(true);
   const [formErros, setFormErrors] = useState({});
 
   const toolFromTheForm = {
@@ -32,9 +32,6 @@ export default function EditTool(props) {
     if (!formValues.tool_name) {
       errors.tool_name = "Name is required";
     }
-    // if (!formValues.tool_description) {
-    //   errors.tool_description = "Description is required";
-    // }
 
     return errors;
   };
@@ -44,17 +41,16 @@ export default function EditTool(props) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       editTool();
-      // document.getElementById("edittoolmodal1").click();
-      // document.getElementsByClassName("close").click();
+      document.getElementById("edittoolmodal1").click();
     } else {
       setFormErrors(errors);
     }
   };
 
   const editTool = async () => {
-    // e.preventDefault();
+  
     try {
-      // console.log(">>tool", tool);
+
       const body = {
         tool_name,
         tool_description,
@@ -63,6 +59,7 @@ export default function EditTool(props) {
         tool_group_id,
         tool_available,
       };
+      console.log("body", body);
       const response = await fetch(
         `http://localhost:8001/tools/edit/${tool.tool_id}/1`,
         {
@@ -115,7 +112,9 @@ export default function EditTool(props) {
                 aria-label="Close"
                 onClick={resetForm}
               >
-                <span className="test" aria-hidden="true">&times;</span>
+                <span className="test" aria-hidden="true">
+                  &times;
+                </span>
               </button>
               <h5 className="modal-title" id="exampleModalLabel">
                 Edit item
@@ -145,7 +144,6 @@ export default function EditTool(props) {
                 value={tool_description}
                 onChange={(e) => setToolDescription(e.target.value)}
               />
-              {/* <p className="form-error">{formErros.tool_description}</p> */}
 
               <label className="add_tool_title" htmlFor="title">
                 Picture
@@ -210,7 +208,7 @@ export default function EditTool(props) {
                 <select
                   className="form-control-add"
                   value={tool_available}
-                  onChange={(e) => setTooAvailibilty(e.target.value)}
+                  onChange={(e) => setToolAvailibilty(e.target.value)}
                 >
                   <option value={true}>Available</option>
                   <option value={false}>Unavailable</option>
@@ -235,5 +233,3 @@ export default function EditTool(props) {
     </div>
   );
 }
-
-

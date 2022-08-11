@@ -149,6 +149,7 @@ a:active {
   align-items: center;
   margin: 5px;
   padding-left: 10px;
+  border-radius: 10px;
 }
 
 .searchbar-groups-dropdown {

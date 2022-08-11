@@ -573,8 +573,26 @@ app.delete("/my_reservations/delete/:id", async (req, res) => {
 
 //Add a group
 
+app.post("/groups", async (req, res) => {
+  try {
+    const {
+      group_name,
+      group_description,
+      group_icon, 
+      group_owner_id
+    } = req.body;
+    // console.log("req body", req.body);
+    const newGroup = await pool.query(
+      "INSERT INTO groups (group_name, group_description, group_icon, group_owner_id) VALUES($1, $2, $3, $4) RETURNING *",
+      [group_name, group_description, group_icon, group_owner_id]
+    );
+    res.json(newGroup.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 //Delete a group
-//delete a tool
 app.delete("/groups/delete/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);

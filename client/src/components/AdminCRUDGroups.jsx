@@ -5,6 +5,7 @@ import axios from "axios";
 
 import EditGroups from "./EditGroups";
 import DeleteGroups from "./DeleteGroups";
+import AddGroup from "./AddGroup";
 
 //THIS COMPONENT IS LIKE THE USERGROUPS, BUT THE ADMINISTRATOR HAS ACCESS TO DELETE ALL OWNERS'S GROUPS.
 
@@ -27,6 +28,8 @@ export default function AdminCRUDGroups({groups, setGroups, user, admin}) {
 
   return (
  <div className="show-tools">
+        <div className="show-title">Groups</div>
+      <AddGroup groups={groups} setGroups={setGroups} />
       <table className="tools-table">
         <thead>
           <tr>

@@ -52,7 +52,7 @@ export default function Searchbar(props) {
         className="searchbar-text"
         type="text"
         value={input}
-        placeholder="What are you looking for?"
+        placeholder="Search"
         onChange={(e) => setInput(e.target.value)}
       ></input>
 
@@ -83,7 +83,7 @@ export default function Searchbar(props) {
       </select>
 
       <button className="searchbar-search-button" onClick={onSearch}>
-        Search
+      🔎
       </button>
     </div>
   );

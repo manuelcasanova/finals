@@ -276,7 +276,7 @@ Components inside <Routes></Routes>   render only in those routes.
                 path="/admin/groups"
                 element={
                   <>
-                    <AdminCRUDGroups groups={groups} user={user} admin={admin}/>
+                    <AdminCRUDGroups groups={groups} setGroups={setGroups} user={user} admin={admin}/>
                     <Pagination />
                   </>
                 }

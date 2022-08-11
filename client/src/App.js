@@ -34,6 +34,7 @@ import UserGroups from "./components/UserGroups";
 
 import ProtectedRoutes from "./ProtectedRoutes";
 import ProtectedRoutesAdmin from "./ProtectedRoutesAdmin";
+import AddTool from "./components/AddTool";
 
 export const UserContext = createContext();
 
@@ -267,7 +268,7 @@ Components inside <Routes></Routes>   render only in those routes.
                 path="/admin/tools"
                 element={
                   <>
-                    <AdminCRUDTools currentTools={currentTools} tools={tools} setTools={setTools} />
+                    <AdminCRUDTools currentTools={currentTools} tools={tools} setTools={setTools} categories={categories} groups={groups}/>
                     <Pagination />
                   </>
                 }

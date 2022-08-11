@@ -2,10 +2,11 @@ import './styling/admincrudtools.css'
 import { useNavigate } from "react-router-dom";
 import Filter from "./Filter";
 import DeleteTool from './DeleteTool';
+import AddTool from './AddTool';
 
 import axios from 'axios';
 
-export default function AdminCRUDTools ({ currentTools, tools, setTools }) {
+export default function AdminCRUDTools ({ currentTools, tools, setTools, categories, groups }) {
 
   const navigate = useNavigate();
   console.log("current tools", currentTools)
@@ -26,6 +27,7 @@ export default function AdminCRUDTools ({ currentTools, tools, setTools }) {
       </div>
 
       <div className="show-tools">
+      <AddTool tools={tools} categories={categories} setTools={setTools} groups={groups} />
         <table className="tools-table">
           <thead>
             <tr>

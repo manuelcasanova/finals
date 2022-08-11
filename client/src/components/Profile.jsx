@@ -2,10 +2,7 @@ import "./styling/profile.css";
 
 export default function Profile() {
   return (
-    // <div className='profile-component'>
-    //   Profile component HERE!
-    // </div>
-    <div class="container emp-profile">
+     <div class="container emp-profile">
       <form method="post">
         <div class="row">
           <div class="col-md-4">
@@ -22,8 +19,8 @@ export default function Profile() {
           </div>
           <div class="col-md-6">
             <div class="profile-head">
-              <h5>Kshiti Ghelani</h5>
-                       
+              <p>Kshiti Ghelani</p>
+
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                   <a
@@ -38,13 +35,11 @@ export default function Profile() {
                     About
                   </a>
                 </li>
-
               </ul>
             </div>
           </div>
           <div class="col-md-2">
             <input
-              type="submit"
               class="profile-edit-btn"
               name="btnAddMore"
               value="Edit Profile"
@@ -52,9 +47,7 @@ export default function Profile() {
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
-
-          </div>
+          <div class="col-md-4"></div>
           <div class="col-md-8">
             <div class="tab-content profile-tab" id="myTabContent">
               <div
@@ -65,7 +58,7 @@ export default function Profile() {
               >
                 <div class="row">
                   <div class="col-md-6">
-                    <label>User Id</label>
+                    <label>Username:</label>
                   </div>
                   <div class="col-md-6">
                     <p>Kshiti123</p>
@@ -73,7 +66,7 @@ export default function Profile() {
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <label>Name</label>
+                    <label>Name:</label>
                   </div>
                   <div class="col-md-6">
                     <p>Kshiti Ghelani</p>
@@ -81,7 +74,7 @@ export default function Profile() {
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <label>Email</label>
+                    <label>Email:</label>
                   </div>
                   <div class="col-md-6">
                     <p>kshitighelani@gmail.com</p>
@@ -89,7 +82,7 @@ export default function Profile() {
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <label>Phone</label>
+                    <label>Phone:</label>
                   </div>
                   <div class="col-md-6">
                     <p>+1 9020784544</p>

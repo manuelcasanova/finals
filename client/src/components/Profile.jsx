@@ -39,11 +39,7 @@ export default function Profile() {
             </div>
           </div>
           <div class="col-md-2">
-            <input
-              class="profile-edit-btn"
-              name="btnAddMore"
-              value="Edit Profile"
-            />
+           
           </div>
         </div>
         <div class="row">

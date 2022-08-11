@@ -268,6 +268,11 @@ Components inside <Routes></Routes>   render only in those routes.
                 path="/admin/tools"
                 element={
                   <>
+                                    <Searchbar
+                    setTools={setTools}
+                    categories={categories}
+                    groups={groups} 
+                    setCurrentTools={setCurrentTools}/>
                     <AdminCRUDTools currentTools={currentTools} tools={tools} setTools={setTools} categories={categories} groups={groups}/>
                     <Pagination />
                   </>
@@ -277,6 +282,7 @@ Components inside <Routes></Routes>   render only in those routes.
                 path="/admin/groups"
                 element={
                   <>
+                    <SearchbarGroups setGroups={setGroups} />
                     <AdminCRUDGroups groups={groups} setGroups={setGroups} user={user} admin={admin}/>
                     <Pagination />
                   </>

@@ -9,9 +9,13 @@
 
 /* ShowAllToolsGrid */
 
-.show-tools-grid {
+.show-tools-grid-component {
   background-color: var(--color2);
   border-radius: 30px;
+}
+
+.show-tools-grid {
+  
   /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -25,6 +29,11 @@
 
 
 /* OneToolForGrid */
+
+.show-tools-component {
+  background-color: var(--color1);
+  border-radius: 30px;
+}
 
 .one-tool-for-grid {
   background-color: var(--color3);

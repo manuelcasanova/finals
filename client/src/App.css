@@ -190,10 +190,11 @@ a:active {
 }
 
 .filter-view {
-  /* background-color:var(--color3); */
+  padding-top: 20px;
   padding-left: 10px;
-  padding-right: 10px;
+  padding-right: 70px;
   cursor: pointer;
+  font-size: 50px;
 }
 
 .filter-sort-by {

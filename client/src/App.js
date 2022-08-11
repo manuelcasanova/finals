@@ -125,7 +125,7 @@ Components inside <Routes></Routes>   render only in those routes.
                     setCurrentPage={setCurrentPage}
                     setCurrentTools={setCurrentTools}
                   />
-                  <Filter />
+                  {/* <Filter /> */}
                   <ShowAllTools currentTools={currentTools} />
                   <Pagination
                     pageQuantity={pageQuantity}
@@ -147,7 +147,7 @@ Components inside <Routes></Routes>   render only in those routes.
                     setCurrentTools={setCurrentTools}
                     setCurrentPage={setCurrentPage}
                   />
-                  <FilterFromGrid />
+                  {/* <FilterFromGrid /> */}
                   <ShowAllToolsGrid currentTools={currentTools} />
                   <Pagination
                     pageQuantity={pageQuantity}

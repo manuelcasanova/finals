@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import axios from "axios";
 import './styling/grid.css'
 import OneToolForGrid from "./OneToolForGrid";
+import FilterFromGrid from "./FilterFromGrid";
 
-export default function ShowAllToolsGrid({tools, currentTools}) {
+export default function ShowAllToolsGrid({ tools, currentTools }) {
 
   const navigate = useNavigate();
 
@@ -16,8 +17,16 @@ export default function ShowAllToolsGrid({tools, currentTools}) {
 
 
   return (
-    <div className="show-tools-grid">
-      <OneToolForGrid tools={currentTools}/>
+    <div className="show-tools-grid-component">
+      <div className="show-tools-grid-filter">
+        <FilterFromGrid />
+      </div>
+      <div className="show-tools-grid">
+        <OneToolForGrid tools={currentTools} />
+      </div>
+
+
     </div>
+
   )
 }

@@ -6,18 +6,19 @@ const navigate = useNavigate()
 
   return (
     <div className="filter">
-    <div className="filter-per-page">Per page</div>
+    {/* <div className="filter-per-page">Per page</div> */}
     <div className="filter-view">
+    
     <a onClick={() => 
     
     {navigate(`/`)}
   
-  }>View grid</a>
+  }><i class="fa-solid fa-grip" /></a>
     </div>
 
     
 
-    <div className="filter-sort-by">Sort by</div>
+    {/* <div className="filter-sort-by">Sort by</div> */}
   </div>
   )
 }

@@ -474,7 +474,7 @@ app.get("/reservations/", async (req, res) => {
 
 
 ///refactor: search for a tool and cat. name and group in one route
-app.get("/searchh", async (req, res) => {
+app.get("/search", async (req, res) => {
   try {
     const { searchInput, searchCategory, searchGroup } = req.query;
     // console.log("req", req)

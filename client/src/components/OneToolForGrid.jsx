@@ -11,6 +11,7 @@ export default function OneToolForGrid({ tools }) {
         tools.map((tool) => (
           <>
             <div
+              key={tool.tool_id}
               className="one-tool-for-grid"
               onClick={() => {
                 navigate(`/inventory/${tool.tool_id}`);

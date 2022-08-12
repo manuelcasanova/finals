@@ -26,7 +26,7 @@ export default function AboutUs() {
       <div className="team-component">
         <h1 className="header"> Our team 🫶 </h1>
         <div className="team">
-          <div class="team-picture">
+          <div className="team-picture">
             <a href="#">
               {" "}
               <img
@@ -48,7 +48,7 @@ export default function AboutUs() {
         </div>
 
         <div className="team">
-          <div class="team-picture">
+          <div className="team-picture">
             <a href="#">
               {" "}
               <img
@@ -71,7 +71,7 @@ export default function AboutUs() {
         </div>
 
         <div className="team">
-          <div class="team-picture">
+          <div className="team-picture">
             <a href="#">
               {" "}
               <img

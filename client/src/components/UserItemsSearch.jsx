@@ -35,6 +35,13 @@ export default function UserItemsSearch(props) {
     // navigate("/");
   };
 
+  const handleKeypress = (event) => {
+    //it triggers by pressing the enter key
+    if (event.key === "Enter") {
+      onSearch(event);
+    }
+  };
+
   function resetForm() {
     setInput("");
     setToolCategory("All categories");
@@ -60,12 +67,14 @@ export default function UserItemsSearch(props) {
         value={input}
         placeholder="Search your tools"
         onChange={e => setInput(e.target.value)}
+        onKeyPress={handleKeypress}
       ></input>
 
       <select
         className="searchbar-categories-dropdown"
         value={category}
         onChange={(e) => setToolCategory(e.target.value)}
+        onKeyPress={handleKeypress}
       >
         <option>All categories</option>
         {categories.map((category) => (
@@ -79,6 +88,7 @@ export default function UserItemsSearch(props) {
         className="searchbar-categories-dropdown"
         value={group}
         onChange={(e) => setGroup(e.target.value)}
+        onKeyPress={handleKeypress}
       >
         <option>All groups</option>
         {groups.map((group) => (

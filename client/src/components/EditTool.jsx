@@ -13,7 +13,7 @@ export default function EditTool(props) {
   const [tool_group_id, setToolGroup] = useState(tool.tool_group_id);
   const [tool_owner_id, setToolOwnerId] = useState(1);
   const [tool_available, setTooAvailibilty] = useState(true);
-  const [formErros, setFormErrors] = useState({});
+  const [formErrors, setFormErrors] = useState({});
 
   const toolFromTheForm = {
     tool_name,
@@ -32,6 +32,9 @@ export default function EditTool(props) {
     if (!formValues.tool_name) {
       errors.tool_name = "Name is required";
     }
+    if (!formValues.tool_description) {
+      errors.tool_description = "Please enter a description";
+    }
     return errors;
   };
 
@@ -40,7 +43,8 @@ export default function EditTool(props) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       editTool();
-      document.getElementById("edittoolmodal1").click();
+      document.getElementById('close-modal').click();
+
     } else {
       setFormErrors(errors);
     }
@@ -67,6 +71,7 @@ export default function EditTool(props) {
         }
       );
       axios.get(`http://localhost:8001/user_items`).then(function (res) {
+        console.log("updated tool names", res.data)
         setTools([...res.data]);
       });
     } catch (err) {
@@ -78,6 +83,13 @@ export default function EditTool(props) {
     setToolName(tool.tool_name);
     setFormErrors({});
   }
+
+  const handleKeypress = (event) => {
+    //it triggers by pressing the enter key
+    if (event.key === "Enter") {
+      validate(event);
+    }
+  };
 
   return (
     <div className="add-tool-button-div">
@@ -105,6 +117,7 @@ export default function EditTool(props) {
             <div className="modal-header">
               <button
                 type="button"
+                id="close-modal"
                 className="close"
                 data-dismiss="modal"
                 aria-label="Close"
@@ -127,8 +140,9 @@ export default function EditTool(props) {
                 name="title"
                 value={tool_name}
                 onChange={(e) => setToolName(e.target.value)}
+                onKeyPress={handleKeypress}
               />
-              <p className="form-error">{formErros.tool_name}</p>
+              <p className="form-error">{formErrors.tool_name}</p>
 
               <label className="add_tool_title" htmlFor="title">
                 Description
@@ -139,8 +153,9 @@ export default function EditTool(props) {
                 name="title"
                 value={tool_description}
                 onChange={(e) => setToolDescription(e.target.value)}
+                onKeyPress={handleKeypress}
               />
-
+              <p className="form-error">{formErrors.tool_description}</p>
               <label className="add_tool_title" htmlFor="title">
                 Picture
               </label>
@@ -150,6 +165,7 @@ export default function EditTool(props) {
                 name="title"
                 value={tool_picture}
                 onChange={(e) => setToolPicture(e.target.value)}
+                onKeyPress={handleKeypress}
               />
 
               {/* <div className="level_input">
@@ -168,6 +184,7 @@ export default function EditTool(props) {
                   className="form-control-add"
                   value={tool_category_id}
                   onChange={(e) => setToolCategory(e.target.value)}
+                  onKeyPress={handleKeypress}
                 >
                   {categories.map((category) => (
                     <option
@@ -188,6 +205,7 @@ export default function EditTool(props) {
                   className="form-control-add"
                   value={tool_group_id}
                   onChange={(e) => setToolGroup(e.target.value)}
+                  onKeyPress={handleKeypress}
                 >
                   {groups.map((group) => (
                     <option
@@ -208,6 +226,7 @@ export default function EditTool(props) {
                   className="form-control-add"
                   value={tool_available}
                   onChange={(e) => setTooAvailibilty(e.target.value)}
+                  onKeyPress={handleKeypress}
                 >
                   <option value={true}>Available</option>
                   <option value={false}>Unavailable</option>
@@ -219,7 +238,7 @@ export default function EditTool(props) {
                 <button
                   className="button-submit"
                   type="Submit"
-                  // data-dismiss="modal"
+       
                   onClick={(e) => validate(e)}
                 >
                   Edit

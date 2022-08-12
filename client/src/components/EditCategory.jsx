@@ -4,9 +4,10 @@ import { useState } from "react";
 export default function EditCategory(props) {
   const { category, categories, setCategories } = props;
   const [category_name, setCategoryName] = useState(category.category_name);
+  const [formErrors, setFormErrors] = useState({});
 
   const editCategory = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     try {
       //constant holding the main api URLs
       const API_URL_CATEGORIES = "http://localhost:8001/categories";
@@ -17,7 +18,7 @@ export default function EditCategory(props) {
         body
       )
       // request to get all categories again and set them, after editing current category
-
+      document.getElementById('close-modal').click();
       const categoriesAfterEditResponse = await axios.get(API_URL_CATEGORIES)
       setCategories([...categoriesAfterEditResponse.data]);
       // console.log("categories after response: ", categoriesAfterEditResponse)
@@ -25,6 +26,34 @@ export default function EditCategory(props) {
       console.error(err.message);
     }
   };
+
+  const check = (formValues) => {
+    const errors = {};
+    if (!formValues.category_name) {
+      errors.category_name = "Name is required";
+    }
+    return errors;
+  };
+
+  const errors = check(category_name);
+  const validate = function (e) {
+    e.preventDefault();
+    if (Object.keys(errors).length === 0) {
+      editCategory();
+      document.getElementById('close-modal').click();
+
+    } else {
+      setFormErrors(errors);
+    }
+  };
+
+  const handleKeypress = event => {
+    //it triggers by pressing the enter key
+  if (event.key === 'Enter') {
+    editCategory(event);
+    
+  }
+};
 
   return (
     <div>
@@ -52,6 +81,7 @@ export default function EditCategory(props) {
             <div className="modal-header">
               <button
                 type="button"
+                id="close-modal"
                 className="close"
                 data-dismiss="modal"
                 aria-label="Close"
@@ -74,8 +104,9 @@ export default function EditCategory(props) {
                 name="title"
                 value={category_name}
                 onChange={(e) => setCategoryName(e.target.value)}
+                onKeyPress={handleKeypress}
               />
-              <p></p>
+              <p className="form-error">{formErrors.category_name}</p>
             </div>
 
             <div className="modal-footer">
@@ -89,8 +120,8 @@ export default function EditCategory(props) {
               <button
                 className="button-submit"
                 type="Submit"
-                data-dismiss="modal"
-                onClick={(e) => editCategory(e)}
+                // data-dismiss="modal"
+                onClick={(e) => validate(e)}
               >
                 Submit
               </button>

@@ -79,9 +79,11 @@ export default function ShowReservations() {
                 <td>
                   {humanizeDate(new Date(reservation.reservation_end_date))}
                 </td>
+                <td>
                 <a href={`mailto:${reservation.owner_email}`}>
-                  <td>{reservation.owner_name}</td>
+                  {reservation.owner_name}
                 </a>
+                </td>
                 <td>
                   <DeleteReservation
                     reservation={reservation}

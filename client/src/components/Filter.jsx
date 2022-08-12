@@ -13,7 +13,7 @@ const navigate = useNavigate()
     
     {navigate(`/`)}
   
-  }><i class="fa-solid fa-grip" /></a>
+  }><i className="fa-solid fa-grip" /></a>
     </div>
 
     

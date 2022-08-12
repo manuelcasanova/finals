@@ -127,11 +127,11 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 
 
 {/* <!-- Modal --> */}
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+<div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div className="modal-dialog modal-dialog-centered" role="document">
+    <div className="modal-content">
       
-      <div class="modal-calendar-body">
+      <div className="modal-calendar-body">
         
 
       <div className="temporary"> 
@@ -166,17 +166,17 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 //   <>
   
 //   {/* <!-- Button trigger modal --> */}
-//   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calendar-modal">
+//   <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#calendar-modal">
 //     Book Item
 //   </button>
   
 //   {/* <!-- Modal --> */}
-//   <div class="modal fade" id="calendar-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//   <div className="modal fade" id="calendar-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 //     <div className="modal-calendar-dialog" role="document">
 //       <div className="modal-calendar-content">
 //         <div className="modal-calendar-header">
 //           <h5 className="modal-calendar-title" id="exampleModalLabel">Calendar</h5>
-//           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+//           <button type="button" className="close" data-dismiss="modal" aria-label="Close">
 //             <span aria-hidden="true">&times;</span>
 //           </button>
 //         </div>

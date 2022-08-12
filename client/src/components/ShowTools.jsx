@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import DeleteTool from "./DeleteTool";
 
 export default function ShowTools({ tools, setTools, categories, groups }) {
-  // console.log("tools", tools);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,9 +33,9 @@ export default function ShowTools({ tools, setTools, categories, groups }) {
             <th>Picture</th>
             <th>Name</th>
             <th>Category</th>
-            {/* <th>Owner</th> */}
+      
 
-            {/* <th>Description</th> */}
+        
             <th>Status</th>
             <th></th>
             <th></th>

@@ -25,8 +25,6 @@ export default function EditTool(props) {
     tool_available,
   };
 
-  console.log("toolFromTheForm", toolFromTheForm);
-
   const check = (formValues) => {
     const errors = {};
     if (!formValues.tool_name) {
@@ -48,9 +46,7 @@ export default function EditTool(props) {
   };
 
   const editTool = async () => {
-  
     try {
-
       const body = {
         tool_name,
         tool_description,
@@ -59,7 +55,7 @@ export default function EditTool(props) {
         tool_group_id,
         tool_available,
       };
-      console.log("body", body);
+
       const response = await fetch(
         `http://localhost:8001/tools/edit/${tool.tool_id}/1`,
         {
@@ -216,11 +212,9 @@ export default function EditTool(props) {
               </div>
 
               <div className="modal-footer">
-                {/* <button type="button" className="button_close" data-dismiss="modal">Close</button> */}
                 <button
                   className="button-submit"
                   type="Submit"
-                  // data-dismiss="modal"
                   onClick={(e) => validate(e)}
                 >
                   Edit

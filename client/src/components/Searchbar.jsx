@@ -7,7 +7,6 @@ export default function Searchbar(props) {
     setTools,
     categories,
     groups,
-    setSearchTrigger,
     setCurrentPage,
     setCurrentTools,
     tools,

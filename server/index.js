@@ -141,7 +141,7 @@ router.get("/verify", authorization, async (req, res) => {
 //list tools
 app.get("/tools", async (req, res) => {
   try {
-    // console.log(req);
+   
     const getAllTools = await pool.query(
       // `SELECT movie_id, movie_title, movie_year, movie_genre_id, movie_imdb, genre_title
       // FROM movies JOIN genres ON genres.genre_id = movies.movie_genre_id
@@ -165,7 +165,7 @@ app.get("/tools", async (req, res) => {
 //list users
 app.get("/users", async (req, res) => {
   try {
-    // console.log(req);
+
     const getAllusers = await pool.query(`SELECT * FROM users`);
     res.json(getAllusers.rows);
   } catch (err) {
@@ -176,7 +176,7 @@ app.get("/users", async (req, res) => {
 //list categories
 app.get("/categories", async (req, res) => {
   try {
-    // console.log(req);
+
     const getAllCategories = await pool.query(`SELECT * FROM categories ORDER BY category_id`);
     res.json(getAllCategories.rows);
   } catch (err) {
@@ -223,7 +223,7 @@ app.post("/tools", async (req, res) => {
       tool_owner_id,
       tool_available,
     } = req.body;
-    // console.log("req body", req.body);
+   
     const newTool = await pool.query(
       "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
       [tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available]
@@ -393,9 +393,7 @@ app.get("/user_items", async (req, res) => {
 app.get("/search_user_items", async (req, res) => {
   try {
     const { searchInput, searchCategory } = req.query;
-    // console.log("req", req)
-    // console.log(req.query);
-    // console.log(searchCategory)
+
     const paramaters = [`%${searchInput.toLowerCase()}%`, 1];
     if (searchCategory)
       paramaters.push(searchCategory)

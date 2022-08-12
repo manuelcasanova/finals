@@ -12,7 +12,7 @@ export default function EditTool(props) {
   const [tool_category_id, setToolCategory] = useState(tool.tool_category_id);
   const [tool_group_id, setToolGroup] = useState(tool.tool_group_id);
   const [tool_owner_id, setToolOwnerId] = useState(1);
-  const [tool_available, setTooAvailibilty] = useState(true);
+  const [tool_available, setToolAvailibilty] = useState(true);
   const [formErros, setFormErrors] = useState({});
 
   const toolFromTheForm = {
@@ -25,13 +25,12 @@ export default function EditTool(props) {
     tool_available,
   };
 
-  // console.log("toolFromTheForm", toolFromTheForm);
-
   const check = (formValues) => {
     const errors = {};
     if (!formValues.tool_name) {
       errors.tool_name = "Name is required";
     }
+
     return errors;
   };
 
@@ -47,9 +46,7 @@ export default function EditTool(props) {
   };
 
   const editTool = async () => {
-    // e.preventDefault();
     try {
-      // console.log(">>tool", tool);
       const body = {
         tool_name,
         tool_description,
@@ -58,6 +55,7 @@ export default function EditTool(props) {
         tool_group_id,
         tool_available,
       };
+
       const response = await fetch(
         `http://localhost:8001/tools/edit/${tool.tool_id}/1`,
         {
@@ -110,7 +108,9 @@ export default function EditTool(props) {
                 aria-label="Close"
                 onClick={resetForm}
               >
-                <span aria-hidden="true">&times;</span>
+                <span className="test" aria-hidden="true">
+                  &times;
+                </span>
               </button>
               <h5 className="modal-title" id="exampleModalLabel">
                 Edit item
@@ -190,10 +190,7 @@ export default function EditTool(props) {
                   onChange={(e) => setToolGroup(e.target.value)}
                 >
                   {groups.map((group) => (
-                    <option
-                      key={group.group_id}
-                      value={group.group_id}
-                    >
+                    <option key={group.group_id} value={group.group_id}>
                       {group.group_name}
                     </option>
                   ))}
@@ -207,7 +204,7 @@ export default function EditTool(props) {
                 <select
                   className="form-control-add"
                   value={tool_available}
-                  onChange={(e) => setTooAvailibilty(e.target.value)}
+                  onChange={(e) => setToolAvailibilty(e.target.value)}
                 >
                   <option value={true}>Available</option>
                   <option value={false}>Unavailable</option>
@@ -215,11 +212,9 @@ export default function EditTool(props) {
               </div>
 
               <div className="modal-footer">
-                {/* <button type="button" className="button_close" data-dismiss="modal">Close</button> */}
                 <button
                   className="button-submit"
                   type="Submit"
-                  // data-dismiss="modal"
                   onClick={(e) => validate(e)}
                 >
                   Edit

@@ -141,25 +141,12 @@ router.get("/verify", authorization, async (req, res) => {
 //list tools
 app.get("/tools", async (req, res) => {
   try {
-    // console.log(req);
+   
     const getAllTools = await pool.query(
       // `SELECT movie_id, movie_title, movie_year, movie_genre_id, movie_imdb, genre_title
       // FROM movies JOIN genres ON genres.genre_id = movies.movie_genre_id
       // ORDER BY movie_id DESC`
-      `SELECT 
-      tool_id, 
-      tool_name, 
-      tool_description,
-      tool_category_id, 
-      tool_owner_id, 
-      tool_picture, 
-      tool_available,
-      tool_map, 
-      category_name, 
-      user_name,
-      user_email,
-      group_name 
-      FROM tools 
+      `SELECT * FROM tools 
       JOIN categories 
       ON categories.category_id = tools.tool_category_id 
       JOIN users 
@@ -168,6 +155,7 @@ app.get("/tools", async (req, res) => {
       ON groups.group_id = tools.tool_group_id
       ORDER BY tool_name`
     );
+    console.log("getAllTools.rows", getAllTools.rows)
     res.json(getAllTools.rows);
   } catch (err) {
     console.error(err.message);
@@ -177,7 +165,7 @@ app.get("/tools", async (req, res) => {
 //list users
 app.get("/users", async (req, res) => {
   try {
-    // console.log(req);
+
     const getAllusers = await pool.query(`SELECT * FROM users`);
     res.json(getAllusers.rows);
   } catch (err) {
@@ -188,7 +176,7 @@ app.get("/users", async (req, res) => {
 //list categories
 app.get("/categories", async (req, res) => {
   try {
-    // console.log(req);
+
     const getAllCategories = await pool.query(`SELECT * FROM categories ORDER BY category_id`);
     res.json(getAllCategories.rows);
   } catch (err) {
@@ -235,7 +223,7 @@ app.post("/tools", async (req, res) => {
       tool_owner_id,
       tool_available,
     } = req.body;
-    // console.log("req body", req.body);
+   
     const newTool = await pool.query(
       "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
       [tool_name, tool_picture, tool_category_id, tool_group_id, tool_owner_id, tool_available]
@@ -266,24 +254,27 @@ app.post("/tools", async (req, res) => {
   }
 });
 
-//edit a tool
+//edit a tool #
 app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
   try {
     const { id, tool_owner_id } = req.params;
+    console.log("body", req.body)
     console.log("owner", tool_owner_id)
     console.log("id", id)
     const {
       tool_name,
+      tool_description,
       tool_picture,
       tool_category_id,
       tool_group_id,
       tool_available,
     } = req.body;
     const editTool = await pool.query(
-      `UPDATE tools SET tool_name = $1, tool_picture = $2, tool_category_id = $3, tool_group_id = $4, tool_available = $5 
-      WHERE tool_id = $6 AND tool_owner_id= $7`,
+      `UPDATE tools SET tool_name = $1, tool_description= $2, tool_picture = $3, tool_category_id = $4, tool_group_id = $5, tool_available = $6 
+      WHERE tool_id = $7 AND tool_owner_id= $8`,
       [
         tool_name,
+        tool_description,
         tool_picture,
         tool_category_id,
         tool_group_id,
@@ -298,7 +289,39 @@ app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
   }
 });
 
-
+//edit a tool as administrator
+app.put("/tools/edit/:id", async (req, res) => {
+  try {
+    const { id, tool_owner_id } = req.params;
+    console.log("body", req.body)
+    console.log("owner", tool_owner_id)
+    console.log("id", id)
+    const {
+      tool_name,
+      tool_description,
+      tool_picture,
+      tool_category_id,
+      tool_group_id,
+      tool_available,
+    } = req.body;
+    const editTool = await pool.query(
+      `UPDATE tools SET tool_name = $1, tool_description= $2, tool_picture = $3, tool_category_id = $4, tool_group_id = $5, tool_available = $6 
+      WHERE tool_id = $7`,
+      [
+        tool_name,
+        tool_description,
+        tool_picture,
+        tool_category_id,
+        tool_group_id,
+        tool_available,
+        id
+      ]
+    );
+    res.json("Tool has been updated"); // res.send is more accurate or res.end
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 app.put('/categories/edit/:id', async (req, res) => {
   try {
@@ -366,33 +389,36 @@ app.get("/user_items", async (req, res) => {
 })
 
 
-//search for items belonging to a user in a specifc category and in all categories
+//search for items belonging to a user in a specifc category and in all categories TEST
 app.get("/search_user_items", async (req, res) => {
   try {
-    const { searchInput, searchCategory } = req.query;
-    // console.log("req", req)
-    // console.log(req.query);
-    // console.log(searchCategory)
+    const { searchInput, searchCategory, searchGroup } = req.query;
+
     const paramaters = [`%${searchInput.toLowerCase()}%`, 1];
-    if (searchCategory)
+    let searchGroupString = '';
+    let searchCategoryString = '';
+    if (searchCategory) {
       paramaters.push(searchCategory)
-    const tools = await pool.query(
-      `SELECT 
-      tool_id, 
-      tool_name,
-      tool_description, 
-      tool_category_id, 
-      tool_owner_id, 
-      tool_picture, 
-      tool_available, 
-      category_name, 
-      user_name,
-      users.user_id 
-      FROM tools 
-      JOIN categories 
-      ON categories.category_id = tool_category_id 
-      JOIN users 
-      ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 ${searchCategory !== undefined ? "AND tool_category_id = $3" : ""} AND users.user_id = $2 ORDER BY tool_name`, paramaters);
+      searchCategoryString =  ` AND tool_category_id = $${paramaters.length}`
+    }
+      
+    if (searchGroup) {
+      paramaters.push(searchGroup)
+      searchGroupString = ` AND tool_group_id = $${paramaters.length}`;
+    }
+
+    const query = `SELECT *
+    FROM tools 
+    JOIN categories 
+    ON categories.category_id = tool_category_id 
+    JOIN users 
+    ON users.user_id = tools.tool_owner_id
+    JOIN groups
+    ON groups.group_id = tools.tool_group_id
+    WHERE LOWER(tool_name) LIKE $1 AND users.user_id = $2 ${searchCategoryString} ${searchGroupString} ORDER BY tool_name`;
+
+    console.log(query);
+    const tools = await pool.query(query, paramaters);
     res.json(tools.rows)
   } catch (err) {
     console.error(err.message)

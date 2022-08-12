@@ -9,15 +9,15 @@ export default function EditGroups(props) {
     group.group_description
   );
   const [group_icon, setGroupIcon] = useState(group.group_icon);
-  const [group_owner_id, setGroupOwnerId] = useState("1")
+  const [group_owner_id, setGroupOwnerId] = useState("1");
   const [formErros, setFormErrors] = useState({});
 
   const groupFromTheForm = {
     group_name,
     group_description,
     group_icon,
-    group_owner_id
-  }
+    group_owner_id,
+  };
 
   const check = (formValues) => {
     const errors = {};
@@ -39,14 +39,12 @@ export default function EditGroups(props) {
   };
 
   const editGroup = async () => {
-    // e.preventDefault();
     try {
-      // console.log(">>group", group);
       const body = {
         group_name,
         group_description,
         group_icon,
-        group_owner_id
+        group_owner_id,
       };
       const response = await fetch(
         `http://localhost:8001/groups/edit/${group.group_id}`, //HERE
@@ -70,8 +68,7 @@ export default function EditGroups(props) {
   }
 
   return (
-<div className="add-tool-button-div">
-      {/* <!-- Button trigger modal --> */}
+    <div className="add-tool-button-div">
       <button
         type="button"
         className={user.loggedIn || admin.loggedIn ? "button-edit" : "hide"}
@@ -81,9 +78,6 @@ export default function EditGroups(props) {
         Edit
       </button>
 
-      
-
-      {/* <!-- Modal --> */}
       <div
         className="modal fade"
         id={`editgroupmodal${group.group_id}`}
@@ -145,11 +139,9 @@ export default function EditGroups(props) {
               />
 
               <div className="modal-footer">
-                {/* <button type="button" className="button_close" data-dismiss="modal">Close</button> */}
                 <button
                   className="button-submit"
                   type="Submit"
-                  // data-dismiss="modal"
                   onClick={(e) => validate(e)}
                 >
                   Edit

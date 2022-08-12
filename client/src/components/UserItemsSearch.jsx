@@ -1,24 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
 
 export default function UserItemsSearch(props) {
   const { setTools, categories, groups } = props;
   const [input, setInput] = useState("");
   const [category, setToolCategory] = useState("All categories");
   const [group, setGroup] = useState("All groups");
-  const navigate = useNavigate()
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:8001/user_items`).then(function (res) {
-  //     setTools([...res.data]);
-  //   });
-  // }, []);
 
   const onSearch = function (event) {
     event.preventDefault();
-   
 
     let url = `http://localhost:8001/search_user_items/?searchInput=${input}`;
     if (category !== "All categories") {
@@ -29,10 +19,8 @@ export default function UserItemsSearch(props) {
     }
     axios.get(url).then(function (res) {
       setTools([...res.data]);
-
     });
     resetForm();
-    // navigate("/");
   };
 
   function resetForm() {
@@ -41,25 +29,14 @@ export default function UserItemsSearch(props) {
     setGroup("All groups");
   }
 
-
   return (
-    // <div className="searchbar">
-    //   {/* <form>
-    //     <input type="text" value={input} onChange={ e => setInput(e.target.value)}/>
-    //     <button type="button" onClick={onClick}>Search</button> */}
-
-    //     <div className="searchbar-text">What are you looking for?</div>
-    //     <div className="searchbar-cateogries-dropdown">Categories dropdown</div>
-    //     <div className="searchbar-groups-dropdown">Groups dropdown</div>
-    //     <div className="searchbar-search-button">Search</div>
-    //   {/* </form> */}
-    // </div>
     <div className="searchbar">
-      <input className="searchbar-text"
+      <input
+        className="searchbar-text"
         type="text"
         value={input}
         placeholder="Search your tools"
-        onChange={e => setInput(e.target.value)}
+        onChange={(e) => setInput(e.target.value)}
       ></input>
 
       <select
@@ -88,12 +65,9 @@ export default function UserItemsSearch(props) {
         ))}
       </select>
 
-
-
       <button className="searchbar-search-button" onClick={onSearch}>
         Search
       </button>
     </div>
   );
-
 }

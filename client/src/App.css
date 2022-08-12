@@ -30,18 +30,17 @@
 .authentication-left {
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
   width: 60vw;
-
-
+  margin-left: 50px;
+  margin-top: 10px;
 }
 
 .logo {
-
-  color: var(--color3);
-  font-weight: 800;
-
+  font-weight: 900;
+  font-size: 50px;
+  color: white;
 }
 
 a:link {
@@ -387,7 +386,7 @@ width: 10vw;
 }
 
 .categories-table {
-  background-color: var(--color3);
+  background-color: var(--color1);
   margin: 0 auto;
   max-width: 1000px;
   margin-top: 30px;

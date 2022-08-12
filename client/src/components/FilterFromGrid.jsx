@@ -12,7 +12,7 @@ const navigate = useNavigate()
     
     {navigate(`/list`)}
   
-  }><i class="fa-solid fa-list" /></a>
+  }><i className="fa-solid fa-list" /></a>
     </div>
 
     

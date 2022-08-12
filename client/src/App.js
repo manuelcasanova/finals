@@ -34,6 +34,7 @@ import UserGroups from "./components/UserGroups";
 
 import ProtectedRoutes from "./ProtectedRoutes";
 import ProtectedRoutesAdmin from "./ProtectedRoutesAdmin";
+import AddTool from "./components/AddTool";
 
 export const UserContext = createContext();
 
@@ -47,7 +48,7 @@ function App() {
   const [reservations, setReservations] = useState([]);
 
   const [loading, setLoading] = useState(false);
-  // const [searchTrigger, setSearchTrigger] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [currentTools, setCurrentTools] = useState([]);
   const [pageQuantity, setPageQuantity] = useState(15);
@@ -60,7 +61,7 @@ function App() {
 
   const [refreshState, setRefreshState] = useState(0);
 
-  // console.log("tools>>", tools);
+
 
   useEffect(() => {
     setLoading(true);
@@ -82,9 +83,7 @@ function App() {
     );
   }, [tools, currentPage]);
 
-  // console.log("currentTools", currentTools)
-  // console.log("indexOfFirstTool", indexOfFirstTool)
-  // console.log("indexOflastTool", indexOflastTool)
+
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     setindexOflastTool(currentPage * pageQuantity);
@@ -121,7 +120,6 @@ Components inside <Routes></Routes>   render only in those routes.
                     setTools={setTools}
                     categories={categories}
                     groups={groups}
-                    // setSearchTrigger={setSearchTrigger}
                     setCurrentPage={setCurrentPage}
                     setCurrentTools={setCurrentTools}
                   />
@@ -192,11 +190,11 @@ Components inside <Routes></Routes>   render only in those routes.
               />
 
               <Route path="/my_groups" element={
-              //  <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin} />
-              <UserGroups groups={groups} setGroups={setGroups} user={user} admin={admin} />
-              
+                //  <GroupsCopy groups={groups} setGroups={setGroups} user={user} admin={admin} />
+                <UserGroups groups={groups} setGroups={setGroups} user={user} admin={admin} />
+
               } />
-              
+
             </Route>
 
             <Route
@@ -207,13 +205,11 @@ Components inside <Routes></Routes>   render only in those routes.
                     setTools={setTools}
                     categories={categories}
                     groups={groups}
-                    // setSearchTrigger={setSearchTrigger}
+
                     setCurrentTools={setCurrentTools}
                     setCurrentPage={setCurrentPage}
                   />
                   <OneToolView tools={tools} user={user} admin={admin} />
-                  {/* <ShowAllTools currentTools={currentTools} />*/}
-                  {/* <ShowAllToolsGrid currentTools={currentTools} />  */}
                 </>
               }
             />
@@ -267,7 +263,12 @@ Components inside <Routes></Routes>   render only in those routes.
                 path="/admin/tools"
                 element={
                   <>
-                    <AdminCRUDTools />
+                    <Searchbar
+                      setTools={setTools}
+                      categories={categories}
+                      groups={groups}
+                      setCurrentTools={setCurrentTools} />
+                    <AdminCRUDTools currentTools={currentTools} tools={tools} setTools={setTools} categories={categories} groups={groups} />
                     <Pagination />
                   </>
                 }
@@ -276,7 +277,8 @@ Components inside <Routes></Routes>   render only in those routes.
                 path="/admin/groups"
                 element={
                   <>
-                    <AdminCRUDGroups groups={groups} setGroups={setGroups} user={user} admin={admin}/>
+                    <SearchbarGroups setGroups={setGroups} />
+                    <AdminCRUDGroups groups={groups} setGroups={setGroups} user={user} admin={admin} />
                     <Pagination />
                   </>
                 }

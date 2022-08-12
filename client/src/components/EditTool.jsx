@@ -25,7 +25,7 @@ export default function EditTool(props) {
     tool_available,
   };
 
-  console.log("toolFromTheForm", toolFromTheForm)
+  // console.log("toolFromTheForm", toolFromTheForm)
 
   const check = (formValues) => {
     const errors = {};
@@ -67,12 +67,12 @@ export default function EditTool(props) {
         }
       );
       axios.get(`http://localhost:8001/user_items`).then(function (res) {
-        console.log("1 >>tools", tools)
+        // console.log("1 >>tools", tools)
         setTools([...res.data]);
-        console.log("2 >> tools after st", tools)
-        console.log("3 res data", res.data)
+        // console.log("2 >> tools after st", tools)
+        // console.log("3 res data", res.data)
       });
-      console.log("4 outside axios >> tools after st", tools)
+      // console.log("4 outside axios >> tools after st", tools)
     } catch (err) {
       console.error(err.message);
     }

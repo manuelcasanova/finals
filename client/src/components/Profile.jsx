@@ -22,7 +22,7 @@ export default function Profile() {
               <p>Kshiti Ghelani</p>
 
               <ul className="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
+                <li className="nav-item">
                   <a
                     className="nav-link active"
                     id="home-tab"
@@ -61,7 +61,7 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className="row">
-                  <div class="col-md-6">
+                  <div className="col-md-6">
                     <label>Name:</label>
                   </div>
                   <div className="col-md-6">

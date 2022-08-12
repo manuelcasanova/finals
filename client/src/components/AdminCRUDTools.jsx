@@ -11,7 +11,7 @@ import axios from 'axios';
 export default function AdminCRUDTools ({ currentTools, tools, setTools, categories, groups }) {
 
   const navigate = useNavigate();
-  console.log("current tools", currentTools)
+  // console.log("current tools", currentTools)
 
   useEffect(() => {
     axios.get(`http://localhost:8001/tools`).then(function (res) {

@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 8001;
+const port = process.env.PORT || 8001;
 const morgan = require("morgan");
 const cors = require("cors");
 const pool = require("./db");

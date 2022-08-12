@@ -389,31 +389,36 @@ app.get("/user_items", async (req, res) => {
 })
 
 
-//search for items belonging to a user in a specifc category and in all categories
+//search for items belonging to a user in a specifc category and in all categories TEST
 app.get("/search_user_items", async (req, res) => {
   try {
-    const { searchInput, searchCategory } = req.query;
+    const { searchInput, searchCategory, searchGroup } = req.query;
 
     const paramaters = [`%${searchInput.toLowerCase()}%`, 1];
-    if (searchCategory)
+    let searchGroupString = '';
+    let searchCategoryString = '';
+    if (searchCategory) {
       paramaters.push(searchCategory)
-    const tools = await pool.query(
-      `SELECT 
-      tool_id, 
-      tool_name,
-      tool_description, 
-      tool_category_id, 
-      tool_owner_id, 
-      tool_picture, 
-      tool_available, 
-      category_name, 
-      user_name,
-      users.user_id 
-      FROM tools 
-      JOIN categories 
-      ON categories.category_id = tool_category_id 
-      JOIN users 
-      ON users.user_id = tools.tool_owner_id WHERE LOWER(tool_name) LIKE $1 ${searchCategory !== undefined ? "AND tool_category_id = $3" : ""} AND users.user_id = $2 ORDER BY tool_name`, paramaters);
+      searchCategoryString =  ` AND tool_category_id = $${paramaters.length}`
+    }
+      
+    if (searchGroup) {
+      paramaters.push(searchGroup)
+      searchGroupString = ` AND tool_group_id = $${paramaters.length}`;
+    }
+
+    const query = `SELECT *
+    FROM tools 
+    JOIN categories 
+    ON categories.category_id = tool_category_id 
+    JOIN users 
+    ON users.user_id = tools.tool_owner_id
+    JOIN groups
+    ON groups.group_id = tools.tool_group_id
+    WHERE LOWER(tool_name) LIKE $1 AND users.user_id = $2 ${searchCategoryString} ${searchGroupString} ORDER BY tool_name`;
+
+    console.log(query);
+    const tools = await pool.query(query, paramaters);
     res.json(tools.rows)
   } catch (err) {
     console.error(err.message)

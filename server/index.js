@@ -155,7 +155,7 @@ app.get("/tools", async (req, res) => {
       ON groups.group_id = tools.tool_group_id
       ORDER BY tool_name`
     );
-    console.log("getAllTools.rows", getAllTools.rows)
+    // console.log("getAllTools.rows", getAllTools.rows)
     res.json(getAllTools.rows);
   } catch (err) {
     console.error(err.message);
@@ -200,7 +200,7 @@ app.get("/groups", async (req, res) => {
 app.delete("/tools/delete/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-    console.log("deleted tool id:", id);
+    // console.log("deleted tool id:", id);
     const deleteStep = await pool.query(
       "DELETE FROM tools WHERE tool_id = $1 RETURNING *",
       [id]
@@ -258,9 +258,9 @@ app.post("/tools", async (req, res) => {
 app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
   try {
     const { id, tool_owner_id } = req.params;
-    console.log("body", req.body)
-    console.log("owner", tool_owner_id)
-    console.log("id", id)
+    // console.log("body", req.body)
+    // console.log("owner", tool_owner_id)
+    // console.log("id", id)
     const {
       tool_name,
       tool_description,
@@ -293,9 +293,9 @@ app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
 app.put("/tools/edit/:id", async (req, res) => {
   try {
     const { id, tool_owner_id } = req.params;
-    console.log("body", req.body)
-    console.log("owner", tool_owner_id)
-    console.log("id", id)
+    // console.log("body", req.body)
+    // console.log("owner", tool_owner_id)
+    // console.log("id", id)
     const {
       tool_name,
       tool_description,
@@ -362,7 +362,7 @@ app.post("/categories", async (req, res) => {
 app.delete("/categories/delete/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-    console.log("deleted category id:", id);
+    // console.log("deleted category id:", id);
     const deleteCategory = await pool.query(
       "DELETE FROM categories WHERE category_id = $1 RETURNING *",
       [id]
@@ -417,7 +417,7 @@ app.get("/search_user_items", async (req, res) => {
     ON groups.group_id = tools.tool_group_id
     WHERE LOWER(tool_name) LIKE $1 AND users.user_id = $2 ${searchCategoryString} ${searchGroupString} ORDER BY tool_name`;
 
-    console.log(query);
+    // console.log(query);
     const tools = await pool.query(query, paramaters);
     res.json(tools.rows)
   } catch (err) {
@@ -587,7 +587,7 @@ app.get("/my_reservations", async (req, res) => {
 app.delete("/my_reservations/delete/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id)
-    console.log("deleted reservations id: ", id)
+    // console.log("deleted reservations id: ", id)
     const deletedRes = await pool.query(
       `DELETE FROM reservations WHERE reservation_id = $1 RETURNING *`, [id]
     )
@@ -622,7 +622,7 @@ app.post("/groups", async (req, res) => {
 app.delete("/groups/delete/:id", async (req, res) => {
   try {
     const id = parseInt(req.params.id);
-    console.log("deleted group id:", id);
+    // console.log("deleted group id:", id);
     const deleteGroup = await pool.query(
       "DELETE FROM groups WHERE group_id = $1 RETURNING *",
       [id]

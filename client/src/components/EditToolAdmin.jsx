@@ -59,7 +59,7 @@ export default function EditToolAdmin(props) {
         tool_group_id,
         tool_available,
       };
-      console.log("body", body);
+      // console.log("body", body);
       const response = await fetch(
         `http://localhost:8001/tools/edit/${tool.tool_id}`,
         {

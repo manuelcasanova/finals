@@ -22,10 +22,10 @@ export default function AddGroup(props) {
     resetForm();
   }
 
-  const handleKeypress = (event) => {
+  const handleKeypress = (e) => {
     //it triggers by pressing the enter key
-    if (event.key === "Enter") {
-      onSubmitForm(event);
+    if (e.key === "Enter") {
+      onSubmitForm(e);
     }
   };
 

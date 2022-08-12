@@ -68,6 +68,7 @@ export default function Searchbar(props) {
         className="searchbar-categories-dropdown"
         value={category}
         onChange={(e) => setToolCategory(e.target.value)}
+        onKeyPress={handleKeypress}
       >
         <option>All categories</option>
         {categories.map((category) => (
@@ -81,6 +82,7 @@ export default function Searchbar(props) {
         className="searchbar-categories-dropdown"
         value={group}
         onChange={(e) => setGroup(e.target.value)}
+        onKeyPress={handleKeypress}
       >
         <option>All groups</option>
         {groups.map((group) => (

@@ -377,7 +377,7 @@ app.delete("/categories/delete/:id", async (req, res) => {
 app.get("/user_items", async (req, res) => {
   try {
     const toolsPerUser = await pool.query(
-      `SELECT tool_name, tool_id, tool_available, tool_picture, category_name, user_id
+      `SELECT *
       FROM tools 
       JOIN categories ON categories.category_id = tools.tool_category_id 
       JOIN users ON users.user_id = tools.tool_owner_id 

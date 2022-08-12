@@ -127,7 +127,7 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 
 
 {/* <!-- Modal --> */}
-<div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered" role="document">
     <div className="modal-content">
       
@@ -171,7 +171,7 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 //   </button>
   
 //   {/* <!-- Modal --> */}
-//   <div className="modal fade" id="calendar-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+//   <div className="modal fade" id="calendar-modal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 //     <div className="modal-calendar-dialog" role="document">
 //       <div className="modal-calendar-content">
 //         <div className="modal-calendar-header">

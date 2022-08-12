@@ -25,7 +25,7 @@ export default function EditToolAdmin(props) {
     tool_available,
   };
 
-  console.log("toolFromTheForm", toolFromTheForm);
+  // console.log("toolFromTheForm", toolFromTheForm);
 
   const check = (formValues) => {
     const errors = {};

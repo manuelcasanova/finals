@@ -50,49 +50,47 @@ export default function OneToolView({ tools, user, admin }) {
           <div className="one-item-information-container">
             <div className="one-item-name">{tools[position].tool_name}</div>
 
-            <table className="one-item-table">
-              <tr>
-                <th className="one-item-description">Description</th>
-                <td className="one-item-description">
-                  {" "}
-                  {tools[position].tool_description}
-                </td>
-              </tr>
-              <tr>
-                <th className="one-item-status">Status</th>
-                <td className="one-item-status">
-                  {tools[position].tool_available ? (
-                    <label>Available</label>
-                  ) : (
-                    <label>Unavailable</label>
-                  )}
-                </td>
-              </tr>
-              <th className="one-item-owner-name">Owner</th>
-              <td
-                className={
-                  user.loggedIn || admin.loggedIn
-                    ? "one-item-owner-name"
-                    : "hide"
-                }
-              >
-                {tools[position].user_name}
-              </td>
-              <td
-                className={
-                  !user.loggedIn && !admin.loggedIn
-                    ? "one-item-owner-email"
-                    : "hide"
-                }
-              >
-                Log in to see owner name
-              </td>
-              <tr>
-                <th className="one-item-owner-email">Contact</th>
-                <a
-                  className={user.loggedIn || admin.loggedIn ? "" : "hide"}
-                  href={`mailto:${tools[position].user_email}`}
-                >
+            <table className="one-item-table d-flex">
+              <thead >
+                <tr className="d-flex flex-column">
+                  <th className="one-item-description">Description</th>
+                  <th className="one-item-status">Status</th>
+                  <th className="one-item-owner-name">Owner</th>
+                  <th className="one-item-owner-email">Contact</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr className="d-flex flex-column">
+                  <td className="one-item-description">
+                    {" "}
+                    {tools[position].tool_description}
+                  </td>
+                  <td className="one-item-status">
+                    {tools[position].tool_available ? (
+                      <label>Available</label>
+                    ) : (
+                      <label>Unavailable</label>
+                    )}
+                  </td>
+                  <td
+                    className={
+                      user.loggedIn || admin.loggedIn
+                        ? "one-item-owner-name"
+                        : "hide"
+                    }
+                  >
+                    {tools[position].user_name}
+                  </td>
+                  <td
+                    className={
+                      !user.loggedIn && !admin.loggedIn
+                        ? "one-item-owner-email"
+                        : "hide"
+                    }
+                  >
+                    Log in to see owner name
+                  </td>
                   <td
                     className={
                       user.loggedIn || admin.loggedIn
@@ -100,20 +98,29 @@ export default function OneToolView({ tools, user, admin }) {
                         : "hide"
                     }
                   >
-                    {tools[position].user_email}
-                  </td>
-                </a>
+                    <a
+                      className={user.loggedIn || admin.loggedIn ? "" : "hide"}
+                      href={`mailto:${tools[position].user_email}`}
+                    >  {tools[position].user_email}</a>
 
-                <td
-                  className={
-                    !user.loggedIn && !admin.loggedIn
-                      ? "one-item-owner-email"
-                      : "hide"
-                  }
-                >
-                  Log in to see owner email
-                </td>
-              </tr>
+                  </td>
+
+
+                  <td
+                    className={
+                      !user.loggedIn && !admin.loggedIn
+                        ? "one-item-owner-email"
+                        : "hide"
+                    }
+                  >
+                    Log in to see owner email
+                  </td>
+                </tr>
+
+              </tbody>
+
+
+
             </table>
           </div>
         </div>

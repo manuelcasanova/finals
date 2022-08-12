@@ -9,7 +9,7 @@ export default function OneToolForGrid({ tools }) {
     <>
       {tools.length > 0 &&
         tools.map((tool) => (
-          <>
+          
             <div
               key={tool.tool_id}
               className="one-tool-for-grid"
@@ -29,7 +29,7 @@ export default function OneToolForGrid({ tools }) {
                 {tool.tool_available ? <>Available</> : <>Unavailable</>}
               </div>
             </div>
-          </>
+          
         ))}
 
       {tools.length === 0 && <div>No tools found</div>}

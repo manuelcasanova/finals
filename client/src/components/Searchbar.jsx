@@ -38,6 +38,13 @@ export default function Searchbar(props) {
     });
   };
 
+  const handleKeypress = (event) => {
+    //it triggers by pressing the enter key
+    if (event.key === "Enter") {
+      onSearch(event);
+    }
+  };
+
   function resetForm() {
     setInput("");
     setToolCategory("All categories");
@@ -53,12 +60,14 @@ export default function Searchbar(props) {
         value={input}
         placeholder="Search"
         onChange={(e) => setInput(e.target.value)}
+        onKeyPress={handleKeypress}
       ></input>
 
       <select
         className="searchbar-categories-dropdown"
         value={category}
         onChange={(e) => setToolCategory(e.target.value)}
+        onKeyPress={handleKeypress}
       >
         <option>All categories</option>
         {categories.map((category) => (
@@ -72,6 +81,7 @@ export default function Searchbar(props) {
         className="searchbar-categories-dropdown"
         value={group}
         onChange={(e) => setGroup(e.target.value)}
+        onKeyPress={handleKeypress}
       >
         <option>All groups</option>
         {groups.map((group) => (
@@ -82,8 +92,9 @@ export default function Searchbar(props) {
       </select>
 
       <button className="searchbar-search-button" onClick={onSearch}>
-  
+ 
       <i className="fa-solid fa-magnifying-glass"></i>
+
       </button>
     </div>
   );

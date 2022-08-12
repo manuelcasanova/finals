@@ -31,7 +31,7 @@ export default function EditCategory(props) {
       {/* <!-- Button trigger modal --> */}
       <button
         type="button"
-        className="button-edit"
+        className="button-edit-category"
         data-toggle="modal"
         data-target={`#editcategorymodal${category.category_id}`}
       >

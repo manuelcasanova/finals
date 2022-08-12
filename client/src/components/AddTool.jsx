@@ -85,6 +85,13 @@ export default function AddTool(props) {
     setFormErrors({});
   }
 
+  const handleKeypress = event => {
+    //it triggers by pressing the enter key
+  if (event.key === 'Enter') {
+    onSubmitForm(event);
+  }
+};
+
   return (
     <div className="add-tool-button-div">
       {/* <!-- Button trigger modal --> */}
@@ -133,6 +140,7 @@ export default function AddTool(props) {
                 name="title"
                 value={tool_name}
                 onChange={(e) => setToolName(e.target.value)}
+                onKeyPress={handleKeypress}
               />
               <p className="form-error">{formErrors.tool_name}</p>
              
@@ -146,6 +154,7 @@ export default function AddTool(props) {
                 name="title"
                 value={tool_description}
                 onChange={(e) => setToolDescription(e.target.value)}
+                onKeyPress={handleKeypress}
               />
               <p className="form-error">{formErrors.tool_description}</p>
 
@@ -167,6 +176,7 @@ export default function AddTool(props) {
                 name="title"
                 value={tool_picture}
                 onChange={(e) => setToolPicture(e.target.value)}
+                onKeyPress={handleKeypress}
               />
 
               <div className="level_input">
@@ -177,6 +187,7 @@ export default function AddTool(props) {
                   className="form-control-add"
                   value={tool_category_id}
                   onChange={(e) => setToolCategory(e.target.value)}
+                  onKeyPress={handleKeypress}
                 >
                   {categories.map((category) => (
                     <option
@@ -197,6 +208,7 @@ export default function AddTool(props) {
                   className="form-control-add"
                   value={tool_group_id}
                   onChange={(e) => setToolGroup(e.target.value)}
+                  onKeyPress={handleKeypress}
                 >
                   {groups.map((group) => (
                     <option
@@ -206,6 +218,7 @@ export default function AddTool(props) {
                       {group.group_name}
                     </option>
                   ))}
+                  
                 </select>
               </div>
 
@@ -217,6 +230,7 @@ export default function AddTool(props) {
                   className="form-control-add"
                   value={tool_available}
                   onChange={(e) => setTooAvailibilty(e.target.value)}
+                  onKeyPress={handleKeypress}
                 >
                   <option value={true}>Available</option>
                   <option value={false}>Unavailable</option>
@@ -228,10 +242,10 @@ export default function AddTool(props) {
                 <button
                   className="button-submit"
                   type="submit"
-                  // data-dismiss="modal"
+                  data-dismiss="modal"
                   onClick={onSubmitForm}
                 >
-                  Add item
+                  Add Item
                 </button>
               </div>
             </div>

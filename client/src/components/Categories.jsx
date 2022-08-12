@@ -30,8 +30,8 @@ export default function Categories({ categories, setCategories }) {
           <tr>
             {/* <th>ID</th> */}
             <th>Name</th>
-            <th></th>
-            <th></th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>

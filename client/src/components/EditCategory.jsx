@@ -9,7 +9,7 @@ export default function EditCategory(props) {
     e.preventDefault();
     try {
       //constant holding the main api URLs
-      const API_URL_CATEGORIES = "http://localhost:8001/categories";
+      const API_URL_CATEGORIES = "/categories";
       // request to edit the current category passing the body
       const body = { category_name };
       await axios.put(

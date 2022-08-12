@@ -10,14 +10,14 @@ export default function ShowTools({ tools, setTools, categories, groups }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/user_items`).then(function (res) {
+    axios.get(`/user_items`).then(function (res) {
       setTools([...res.data]);
     });
   }, []);
 
   function deleteTool(id) {
     return axios
-      .delete(`http://localhost:8001/tools/delete/${id}`)
+      .delete(`/tools/delete/${id}`)
       .then((res) => {
         setTools(tools.filter((tool) => tool.tool_id !== id));
       });

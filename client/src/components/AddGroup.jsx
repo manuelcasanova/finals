@@ -31,7 +31,7 @@ export default function AddGroup(props) {
 
   function addGroup(group) {
     return axios
-      .post(`http://localhost:8001/groups`, group)
+      .post(`/groups`, group)
       .then((response) => {
         const newGroup = response.data;
         setGroups([newGroup, ...groups]);

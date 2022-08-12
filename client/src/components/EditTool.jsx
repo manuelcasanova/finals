@@ -59,14 +59,14 @@ export default function EditTool(props) {
       };
 
       const response = await fetch(
-        `http://localhost:8001/tools/edit/${tool.tool_id}/1`,
+        `/tools/edit/${tool.tool_id}/1`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
         }
       );
-      axios.get(`http://localhost:8001/user_items`).then(function (res) {
+      axios.get(`/user_items`).then(function (res) {
         // console.log("1 >>tools", tools)
         setTools([...res.data]);
         // console.log("2 >> tools after st", tools)

@@ -6,7 +6,7 @@ import EditCategory from "./EditCategory";
 export default function Categories({ categories, setCategories }) {
   function deleteCategory(id) {
     return axios
-      .delete(`http://localhost:8001/categories/delete/${id}`)
+      .delete(`/categories/delete/${id}`)
       .then((res) => {
         setCategories(
           categories.filter((category) => category.category_id !== id)
@@ -15,7 +15,7 @@ export default function Categories({ categories, setCategories }) {
   }
 
   // function updateCategory(id) {
-  //   return axios.put(`http://localhost:8001/categories/edit/${id}`)
+  //   return axios.put(`/categories/edit/${id}`)
   //   .then(res => {
   //     setCategories
   //   })

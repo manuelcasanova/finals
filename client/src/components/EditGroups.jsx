@@ -47,14 +47,14 @@ export default function EditGroups(props) {
         group_owner_id,
       };
       const response = await fetch(
-        `http://localhost:8001/groups/edit/${group.group_id}`, //HERE
+        `/groups/edit/${group.group_id}`, //HERE
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
         }
       );
-      axios.get(`http://localhost:8001/groups`).then(function (res) {
+      axios.get(`/groups`).then(function (res) {
         setGroups([...res.data]);
       });
     } catch (err) {

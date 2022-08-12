@@ -21,7 +21,7 @@ export default function Searchbar(props) {
   const onSearch = function (event) {
     event.preventDefault();
 
-    let url = `http://localhost:8001/search/?searchInput=${input}`;
+    let url = `/search/?searchInput=${input}`;
     if (category !== "All categories") {
       url = url.concat(`&searchCategory=${category}`);
     }

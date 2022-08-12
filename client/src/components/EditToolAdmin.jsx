@@ -61,14 +61,14 @@ export default function EditToolAdmin(props) {
       };
       // console.log("body", body);
       const response = await fetch(
-        `http://localhost:8001/tools/edit/${tool.tool_id}`,
+        `/tools/edit/${tool.tool_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
         }
       );
-      axios.get(`http://localhost:8001/tools`).then(function (res) {
+      axios.get(`/tools`).then(function (res) {
         setTools([...res.data]);
       });
     } catch (err) {

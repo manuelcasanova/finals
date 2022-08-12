@@ -7,14 +7,14 @@ export default function Navbar({user, admin, setTools, setCurrentPage}) {
   const navigate = useNavigate();
 
   function handleMyItems() {
-      axios.get(`http://localhost:8001/user_items`).then(function (res) {
+      axios.get(`/user_items`).then(function (res) {
         setTools([...res.data]);
       });
       navigate(`/user/items`)
   }
 
   function allItems() {
-    axios.get(`http://localhost:8001/tools`).then(function (res) {
+    axios.get(`/tools`).then(function (res) {
         setTools([...res.data]);
       });
       setCurrentPage(1)

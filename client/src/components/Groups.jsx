@@ -7,7 +7,7 @@ export default function Groups ({groups, setGroups}) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/groups`).then(function (res) {
+    axios.get(`/groups`).then(function (res) {
       setGroups([...res.data]);
     });
   }, []);

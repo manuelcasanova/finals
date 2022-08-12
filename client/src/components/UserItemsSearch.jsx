@@ -10,7 +10,7 @@ export default function UserItemsSearch(props) {
   const onSearch = function (event) {
     event.preventDefault();
 
-    let url = `http://localhost:8001/search_user_items/?searchInput=${input}`;
+    let url = `/search_user_items/?searchInput=${input}`;
     if (category !== "All categories") {
       url = url.concat(`&searchCategory=${category}`);
     }

@@ -16,7 +16,7 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/reservations/`)
+    axios.get(`/reservations/`)
       .then(function (response) {
         // console.log("response axios get", response)
         setReservations([...response.data])
@@ -42,7 +42,7 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
   }
 
   function createReservation(reservation) {
-    return axios.post(`http://localhost:8001/reservations`, reservation)
+    return axios.post(`/reservations`, reservation)
       .then((response) => {
         setReservations([...reservations, response.data])
       })

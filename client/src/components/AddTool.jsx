@@ -68,7 +68,7 @@ export default function AddTool(props) {
 
   function addTool(tool) {
   
-    return axios.post(`http://localhost:8001/tools`, tool).then((response) => {
+    return axios.post(`/tools`, tool).then((response) => {
       const newTool = response.data;
       const toolCategory = categories.find((category) => {
         return category.category_id === newTool.tool_category_id;

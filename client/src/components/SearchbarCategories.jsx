@@ -11,7 +11,7 @@ export default function SearchbarCategories(props) {
 
     axios
       .get(
-        `http://localhost:8001/admin/categories/search/?searchInput=${input}`
+        `/admin/categories/search/?searchInput=${input}`
       )
       .then(function (res) {
         setCategories([...res.data]);

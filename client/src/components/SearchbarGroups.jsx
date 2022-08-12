@@ -10,7 +10,7 @@ export default function SearchbarGroups(props) {
     event.preventDefault();
 
     axios
-      .get(`http://localhost:8001/groups/search/?searchInput=${input}`)
+      .get(`/groups/search/?searchInput=${input}`)
       .then(function (res) {
         setGroups([...res.data]);
       });

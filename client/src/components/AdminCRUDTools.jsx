@@ -14,7 +14,7 @@ export default function AdminCRUDTools ({ currentTools, tools, setTools, categor
   // console.log("current tools", currentTools)
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/tools`).then(function (res) {
+    axios.get(`/tools`).then(function (res) {
       setTools([...res.data]);
     });
   }, []);
@@ -22,7 +22,7 @@ export default function AdminCRUDTools ({ currentTools, tools, setTools, categor
 
   function deleteTool(id) {
     return axios
-      .delete(`http://localhost:8001/tools/delete/${id}`)
+      .delete(`/tools/delete/${id}`)
       .then((res) => {
         setTools(tools.filter((tool) => tool.tool_id !== id));
       });

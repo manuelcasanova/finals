@@ -133,7 +133,7 @@ export default function Register() {
   function addUser(userObject) {
 
     //Get all the users from the db
-    return axios.get(`http://localhost:8001/users`).then((response) => {
+    return axios.get(`/users`).then((response) => {
       const getUsers = response.data;
       // console.log("all users", getUsers)
 
@@ -155,7 +155,7 @@ export default function Register() {
     }).then((response) => {
 
       //I am not sure why this is not working as intended. It does the POST REQUEST, but it does not receive a response. Network tab shows "pending" Lines 162 and 163 do not work.
-      return axios.post(`http://localhost:8001/users`, userObject)
+      return axios.post(`/users`, userObject)
         .then((response) => {
           const newUser = response.data;
           // console.log("new user", newUser)
@@ -167,7 +167,7 @@ export default function Register() {
 
   // function addUser(userObject) {
   //   try {
-  //   return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
+  //   return axios.post(`/users`, userObject).then((response) => {
   //     const newUser = response.data;
   //     console.log("new user", newUser)
   //   })
@@ -196,7 +196,7 @@ export default function Register() {
   //   // console.log("user email", userEmail)
   //   // console.log("pwd", pwd)
 
-  //   return axios.post(`http://localhost:8001/users`, userObject).then((response) => {
+  //   return axios.post(`/users`, userObject).then((response) => {
   //     const newUser = response.data;
   //     console.log("new user", newUser)
   //   })

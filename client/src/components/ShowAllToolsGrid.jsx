@@ -10,7 +10,7 @@ export default function ShowAllToolsGrid({ tools, currentTools }) {
   const navigate = useNavigate();
 
   // useEffect(() => {
-  //   axios.get(`http://localhost:8001/tools`).then(function (res) {
+  //   axios.get(`/tools`).then(function (res) {
   //     setTools([...res.data]);
   //   });
   // }, []);

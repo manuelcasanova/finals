@@ -11,7 +11,7 @@ export default function ShowReservations() {
   // console.log("reservations in component: ", reservations);
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/my_reservations`).then(function (res) {
+    axios.get(`/my_reservations`).then(function (res) {
       const myReservations = res.data;
       setReservations([...myReservations]);
       // console.log("my reservations after SET: ", myReservations);
@@ -20,7 +20,7 @@ export default function ShowReservations() {
 
   function deleteReservation(id) {
     axios
-      .delete(`http://localhost:8001/my_reservations/delete/${id}`)
+      .delete(`/my_reservations/delete/${id}`)
       .then((res) => {
         setReservations(
           reservations.filter(

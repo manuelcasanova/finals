@@ -13,14 +13,14 @@ export default function AdminCRUDGroups({groups, setGroups, user, admin}) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:8001/groups`).then(function (res) {
+    axios.get(`/groups`).then(function (res) {
       setGroups([...res.data]);
     });
   }, []);
 
   function deleteGroup(id) {
     return axios
-      .delete(`http://localhost:8001/groups/delete/${id}`)
+      .delete(`/groups/delete/${id}`)
       .then((res) => {
         setGroups(groups.filter((group) => group.group_id !== id));
       });

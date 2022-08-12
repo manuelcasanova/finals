@@ -7,8 +7,8 @@ import "./App.css";
 import Authentication from "./components/Authentication";
 import Navbar from "./components/Navbar";
 import Searchbar from "./components/Searchbar";
-import Filter from "./components/Filter";
-import FilterFromGrid from "./components/FilterFromGrid";
+// import Filter from "./components/Filter";
+// import FilterFromGrid from "./components/FilterFromGrid";
 import ShowTools from "./components/ShowTools";
 import Pagination from "./components/Pagination";
 import Footer from "./components/Footer";
@@ -17,7 +17,7 @@ import OneToolView from "./components/OneToolView";
 import OneGroupView from "./components/OneGroupView";
 import ShowAllTools from "./components/ShowAllTools";
 import Groups from "./components/Groups";
-import GroupsCopy from "./components/Groups-copy";
+// import GroupsCopy from "./components/Groups-copy";
 import AboutUs from "./components/AboutUs";
 import Profile from "./components/Profile";
 import ShowUsers from "./components/ShowUsers";
@@ -34,7 +34,7 @@ import UserGroups from "./components/UserGroups";
 
 import ProtectedRoutes from "./ProtectedRoutes";
 import ProtectedRoutesAdmin from "./ProtectedRoutesAdmin";
-import AddTool from "./components/AddTool";
+// import AddTool from "./components/AddTool";
 
 export const UserContext = createContext();
 
@@ -66,9 +66,9 @@ function App() {
   useEffect(() => {
     setLoading(true);
     Promise.all([
-      axios.get(`http://localhost:8001/tools`),
-      axios.get(`http://localhost:8001/categories`),
-      axios.get(`http://localhost:8001/groups`),
+      axios.get(`/tools`),
+      axios.get(`/categories`),
+      axios.get(`/groups`),
     ]).then((all) => {
       setTools([...all[0].data]);
       setCategories([...all[1].data]);
@@ -90,7 +90,7 @@ function App() {
     setindexOfFirstTool(indexOflastTool - pageQuantity);
   };
 
-  return (
+  return !loading && (
     <UserContext.Provider value={{ user, setUser, admin, setAdmin }}>
       <Router>
         <div className="app">

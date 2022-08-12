@@ -40,7 +40,7 @@ export default function AddCategory({ categories, setCategories }) {
 
   function addCategory(category) {
     return axios
-      .post(`http://localhost:8001/categories`, category)
+      .post(`/categories`, category)
       .then((response) => {
         const newCategory = response.data;
         setCategories([newCategory, ...categories]);

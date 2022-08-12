@@ -15,6 +15,8 @@ const jwtGenerator = require("./utils/jwtGenerator")
 const validInfo = require("./middleware/validInfo")
 const authorization = require("./middleware/authorization")
 
+app.get("/", (req, res) => res.send("Hello from Tool Swap's API"))
+
 //Register
 
 app.post("/users", validInfo, async (req, res) => {

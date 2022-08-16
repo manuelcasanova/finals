@@ -236,94 +236,79 @@ app.post("/tools", async (req, res) => {
   }
 });
 
-app.post("/tools", async (req, res) => {
-  try {
-    const {
-      tool_name,
-      tool_picture,
-      tool_category_id,
-      tool_owner_id,
-      tool_available,
-    } = req.body;
-    // console.log("req body", req.body);
-    const newTool = await pool.query(
-      "INSERT INTO tools (tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available) VALUES($1, $2, $3, $4, $5) RETURNING *",
-      [tool_name, tool_picture, tool_category_id, tool_owner_id, tool_available]
-    );
-    res.json(newTool.rows[0]);
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+// EDIT A TOOL 
 
-//edit a tool #
-app.put("/tools/edit/:id", async (req, res) => {
-  try {
-    const { id, tool_owner_id } = req.params;
-    // console.log("body", req.body)
-    // console.log("owner", tool_owner_id)
-    // console.log("id", id)
-    const {
-      tool_name,
-      tool_description,
-      tool_picture,
-      tool_category_id,
-      tool_group_id,
-      tool_available,
-    } = req.body;
-    const editTool = await pool.query(
-      `UPDATE tools SET tool_name = $1, tool_description= $2, tool_picture = $3, tool_category_id = $4, tool_group_id = $5, tool_available = $6 
-      WHERE tool_id = $7 AND tool_owner_id= $8`,
-      [
-        tool_name,
-        tool_description,
-        tool_picture,
-        tool_category_id,
-        tool_group_id,
-        tool_available,
-        id,
-        tool_owner_id
-      ]
-    );
-    res.json("Tool has been updated"); // res.send is more accurate or res.end
-  } catch (err) {
-    console.error(err.message);
-  }
-});
 
-//edit a tool as administrator
-app.put("/tools/edit/:id", async (req, res) => {
-  try {
-    const { id, tool_owner_id } = req.params;
-    // console.log("body", req.body)
-    // console.log("owner", tool_owner_id)
-    // console.log("id", id)
-    const {
-      tool_name,
-      tool_description,
-      tool_picture,
-      tool_category_id,
-      tool_group_id,
-      tool_available,
-    } = req.body;
-    const editTool = await pool.query(
-      `UPDATE tools SET tool_name = $1, tool_description= $2, tool_picture = $3, tool_category_id = $4, tool_group_id = $5, tool_available = $6 
-      WHERE tool_id = $7`,
-      [
-        tool_name,
-        tool_description,
-        tool_picture,
-        tool_category_id,
-        tool_group_id,
-        tool_available,
-        id
-      ]
-    );
-    res.json("Tool has been updated"); // res.send is more accurate or res.end
-  } catch (err) {
-    console.error(err.message);
-  }
-});
+
+
+//edit a tool 
+// app.put("/tools/edit/:id", async (req, res) => {
+//   try {
+//     const { id, tool_owner_id } = req.params;
+//     // console.log("body", req.body)
+//     // console.log("owner", tool_owner_id)
+//     // console.log("id", id)
+//     const {
+//       tool_name,
+//       tool_description,
+//       tool_picture,
+//       tool_category_id,
+//       tool_group_id,
+//       tool_available,
+//     } = req.body;
+//     const editTool = await pool.query(
+//       `UPDATE tools SET tool_name = $1, tool_description= $2, tool_picture = $3, tool_category_id = $4, tool_group_id = $5, tool_available = $6 
+//       WHERE tool_id = $7 AND tool_owner_id= $8`,
+//       [
+//         tool_name,
+//         tool_description,
+//         tool_picture,
+//         tool_category_id,
+//         tool_group_id,
+//         tool_available,
+//         id,
+//         tool_owner_id
+//       ]
+//     );
+//     res.json("Tool has been updated"); // res.send is more accurate or res.end
+//   } catch (err) {
+//     console.error(err.message);
+//   }
+// });
+
+// //edit a tool as administrator
+// app.put("/tools/edit/:id", async (req, res) => {
+//   try {
+//     const { id, tool_owner_id } = req.params;
+//     // console.log("body", req.body)
+//     // console.log("owner", tool_owner_id)
+//     // console.log("id", id)
+//     const {
+//       tool_name,
+//       tool_description,
+//       tool_picture,
+//       tool_category_id,
+//       tool_group_id,
+//       tool_available,
+//     } = req.body;
+//     const editTool = await pool.query(
+//       `UPDATE tools SET tool_name = $1, tool_description= $2, tool_picture = $3, tool_category_id = $4, tool_group_id = $5, tool_available = $6 
+//       WHERE tool_id = $7`,
+//       [
+//         tool_name,
+//         tool_description,
+//         tool_picture,
+//         tool_category_id,
+//         tool_group_id,
+//         tool_available,
+//         id
+//       ]
+//     );
+//     res.json("Tool has been updated"); // res.send is more accurate or res.end
+//   } catch (err) {
+//     console.error(err.message);
+//   }
+// });
 
 app.put('/categories/edit/:id', async (req, res) => {
   try {

@@ -1,9 +1,17 @@
-:root {
+/* :root {
   --color1:#cfe0e8;
   --color2:#b7d7e8;
   --color3: #87bdd8;
   --color0: #daebe8;
   --color4: #577d90;
+} */
+
+:root {
+  --color1: #c2e5c8;
+  --color2: #b7e8b9;
+  --color3: #8dd887;
+  --color4: #5c9057;
+  --color0: #e1ebda;
 }
 
 .navbar {

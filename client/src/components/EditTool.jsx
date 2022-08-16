@@ -27,25 +27,25 @@ export default function EditTool(props) {
 
   // console.log("toolFromTheForm", toolFromTheForm)
 
-  const check = (formValues) => {
-    const errors = {};
-    if (!formValues.tool_name) {
-      errors.tool_name = "Name is required";
-    }
+  // const check = (formValues) => {
+  //   const errors = {};
+  //   if (!formValues.tool_name) {
+  //     errors.tool_name = "Name is required";
+  //   }
 
-    return errors;
-  };
+  //   return errors;
+  // };
 
-  const errors = check(toolFromTheForm);
-  const validate = function (e) {
-    e.preventDefault();
-    if (Object.keys(errors).length === 0) {
-      editTool();
-      document.getElementById("edittoolmodal1").click();
-    } else {
-      setFormErrors(errors);
-    }
-  };
+  // const errors = check(toolFromTheForm);
+  // const validate = function (e) {
+  //   e.preventDefault();
+  //   if (Object.keys(errors).length === 0) {
+  //     editTool();
+  //     document.getElementById("edittoolmodal1").click();
+  //   } else {
+  //     setFormErrors(errors);
+  //   }
+  // };
 
   const editTool = async () => {
     try {
@@ -221,7 +221,8 @@ export default function EditTool(props) {
                 <button
                   className="button-submit"
                   type="Submit"
-                  onClick={(e) => validate(e)}
+                  data-dismiss="modal"
+                  onClick={(e) => editTool()}
                 >
                   Edit
                 </button>

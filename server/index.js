@@ -239,7 +239,17 @@ app.post("/tools", async (req, res) => {
 // EDIT A TOOL 
 
 
-
+app.put("/tools/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {
+      tool_name, tool_description, tool_picture, tool_category_id, tool_group_id, tool_available } = req.body
+      const editTool = await pool.query('UPDATE tools SET tool_name = $1, tool_description = $2, tool_picture = $3, tool_category_id = $4, tool_group_id = $5, tool_available = $6 WHERE tool_id = $6', [tool_name, tool_description, tool_picture, tool_category_id, tool_group_id, tool_available, id])
+      res.json("Tool was updated")
+    } catch (err) {
+      console.error(err.message)
+    }
+})
 
 //edit a tool 
 // app.put("/tools/edit/:id", async (req, res) => {

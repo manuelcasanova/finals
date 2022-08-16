@@ -45,10 +45,21 @@
   margin-top: 10px;
 }
 
+@font-face {
+  font-family: 'minotaurphatte';
+  src: url('minotaur-webfont.woff') format('woff'),
+       url('minotaur-webfont.ttf') format('truetype');
+
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 .logo {
+  font-family: 'minotaurphatte';
   font-weight: 900;
-  font-size: 50px;
-  color: white;
+  font-size: 200px;
+  color: #0b1c00b0;
 }
 
 a:link {

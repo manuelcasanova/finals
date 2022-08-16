@@ -292,7 +292,7 @@ app.put("/tools/edit/:id/:tool_owner_id", async (req, res) => {
 });
 
 //edit a tool as administrator
-app.put("/tools/edit/:id", async (req, res) => {
+app.put("/tools/editall/:id", async (req, res) => {
   try {
     const { id, tool_owner_id } = req.params;
     // console.log("body", req.body)

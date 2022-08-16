@@ -61,7 +61,7 @@ export default function EditToolAdmin(props) {
       };
       // console.log("body", body);
       const response = await fetch(
-        `/tools/edit/${tool.tool_id}`,
+        `/tools/editall/${tool.tool_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

@@ -58,14 +58,15 @@ export default function EditTool(props) {
         tool_available,
       };
 
-      const response = await fetch(
+
+ 
+
+
+
+      const response = await axios.put(
         `/tools/edit/${tool.tool_id}/1`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
+        body
+      )
       axios.get(`/user_items`).then(function (res) {
         // console.log("1 >>tools", tools)
         setTools([...res.data]);

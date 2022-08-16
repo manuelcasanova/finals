@@ -41,7 +41,7 @@ export default function EditTool(props) {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       editTool();
-      document.getElementById("edittoolmodal1").click();
+      document.getElementById(`edittoolmodal${tool.tool_id}`).click();
     } else {
       setFormErrors(errors);
     }
@@ -59,7 +59,7 @@ export default function EditTool(props) {
       };
 
       const response = await fetch(
-        `/tools/edit/${tool.tool_id}/1`,
+        `/tools/edit/${tool.tool_id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

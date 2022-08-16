@@ -5,13 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://tool-swap-api.herokuapp.com';
-
-
-if (process.env.REACT_APP_API_BASE_URL) {
-  axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL;
-}
-
+axios.defaults.baseURL = 'https://tool-swap-api.herokuapp.com';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

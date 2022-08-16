@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 export default function EditTool(props) {
   const { tool, tools, categories, setTools, groups } = props;
 
+console.log("tool", tool)
+console.log("tools", tools)
+
   const [tool_name, setToolName] = useState(tool.tool_name);
   const [tool_description, setToolDescription] = useState(
     tool.tool_description

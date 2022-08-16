@@ -1,9 +1,9 @@
 :root {
-  --color1: #cfe0e8;
-  --color2: #b7d7e8;
-  --color3: #87bdd8;
-  --color4: #577d90;
-  --color0: #daebe8;
+  --color1: #c2e5c8;
+  --color2: #b7e8b9;
+  --color3: #8dd887;
+  --color4: #5c9057;
+  --color0: #e1ebda;
 }
 
 /* Main App Container */
@@ -37,10 +37,21 @@
   margin-top: 10px;
 }
 
+@font-face {
+  font-family: 'minotaurphatte';
+  src: url('minotaur-webfont.woff') format('woff'),
+       url('minotaur-webfont.ttf') format('truetype');
+
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 .logo {
+  font-family: 'minotaurphatte';
   font-weight: 900;
-  font-size: 50px;
-  color: white;
+  font-size: 200px;
+  color: #0b1c00b0;
 }
 
 a:link {
@@ -99,13 +110,13 @@ a:active {
 
   padding: 20px;
   display: flex;
-  align-items: center;
+  align-items: end;
 }
 
 .login-as-admin {
 
   display: flex;
-  align-items: center;
+  align-items: end;
   padding: 20px;
 
 }
@@ -213,6 +224,7 @@ a:active {
   text-align: center;
   margin: 30px;
   font-size: 300%;
+  font-weight: 600;
 }
 
 .add-tool-button-div {

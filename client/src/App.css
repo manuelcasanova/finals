@@ -433,15 +433,17 @@ tr {
 
 
 .pagination a {
+  background-color: var(--color1);
   color: black;
   float: left;
   padding: 8px 16px;
   text-decoration: none;
+  outline: var(--color1);
 }
 
 .pagination a.active {
   background-color: var(--color4);
-  color: white;
+  color: var(--color3);
   border-radius: 5px;
 }
 

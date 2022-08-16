@@ -156,7 +156,7 @@ app.get("/tools", async (req, res) => {
       // join groups
       // ON groups.group_id = tools.tool_group_id
       // ORDER BY tool_name`
-      `SELECT tool_name, tool_description, tool_picture, tool_category_id, tool_group_id, tool_available, category_name, group_name, user_email, user_name, tool_owner_id, tool_id from tools JOIN categories ON categories.category_id - tools.tool_category_id JOIN users ON users.user_id = tools.tool_owner_id JOIN groups ON groups.group_id = tools.tool_group_id ORDER BY tool_name`
+      `SELECT tool_name, tool_description, tool_picture, tool_category_id, tool_group_id, tool_available, category_name, group_name, user_email, user_name, tool_owner_id, tool_id from tools JOIN categories ON categories.category_id = tools.tool_category_id JOIN users ON users.user_id = tools.tool_owner_id JOIN groups ON groups.group_id = tools.tool_group_id ORDER BY tool_name`
     );
     // console.log("getAllTools.rows", getAllTools.rows)
     res.json(getAllTools.rows);

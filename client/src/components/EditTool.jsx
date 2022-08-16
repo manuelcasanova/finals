@@ -5,6 +5,7 @@ export default function EditTool(props) {
   const { tool, tools, categories, setTools, groups } = props;
 
 console.log("tool", tool)
+console.log("tools", tools)
 
   const [tool_name, setToolName] = useState(tool.tool_name);
   const [tool_description, setToolDescription] = useState(tool.tool_description);
@@ -21,6 +22,10 @@ console.log("tool", tool)
         method: "PUT",
        headers: {"Content-Type": "application/json"},
        body: JSON.stringify(body)
+     })
+     axios.get(`http://localhost:8001/tools`)
+     .then(function (res) {
+      setTools([...res.data])
      })
     } catch (err) {
      console.error(err.message)

@@ -95,19 +95,21 @@ a:active {
 .button-login,
 .button-logout, 
 .button-register {
-  background-color: var(--color3);
+  background-color: var(--color4);
+  font-weight: 900;
   border-style: none;
   font-size: x-large;
   border-radius: 20px;
   cursor: pointer;
   padding: 10px;
   height: 100px;
+  width: 300px;
 }
 
 .button-login:hover,
 .button-logout:hover,
 .button-register:hover {
-  background-color: var(--color4);
+  background-color: var(--color3);
 }
 
 .button-login-hide,

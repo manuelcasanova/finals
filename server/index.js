@@ -7,6 +7,8 @@ const pool = require("./db");
 app.use(cors());
 app.use(express.json()); //req.body
 app.use(morgan("dev"));
+const http = require("http");
+const { Server } = require("socket.io");
 
 
 const router = require("express").Router()
@@ -14,6 +16,35 @@ const bcrypt = require("bcrypt")
 const jwtGenerator = require("./utils/jwtGenerator")
 const validInfo = require("./middleware/validInfo")
 const authorization = require("./middleware/authorization")
+
+
+// Chat
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:8001",
+    methods: ["GET", "POST"],
+  },
+});
+
+io.on("connection", (socket) => {
+  console.log(`User Connected ${socket.id}`);
+
+  socket.on("join_chat", (data) => {
+    socket.join(data);
+    console.log(`User with ID: ${socket.id} joined the room: ${data}`);
+  });
+
+  socket.on("send_message", (data) => {
+    console.log("Data from Message: ", data);
+    socket.to(data.room).emit("receive_message", data);
+  });
+  socket.on("disconnect", () => {
+    console.log("User Disconnected: ", socket.id);
+  });
+});
 
 //Register
 

@@ -10,7 +10,8 @@ VALUES
 ('Don Quixote', 'dq@lamancha.com'),
 ('Essun Oh', 'essun@orogenes.org'),
 ('Sam Bell', 'sam@moonmining.com'),
-('Selina Kyle', 'catwoman@superheroes.org');
+('Selina Kyle', 'catwoman@superheroes.org'),
+('Liam Smith', 'liam.s.smith@gmail.com');
 
 
 
@@ -37,7 +38,7 @@ VALUES
 (2,'Pipe Wrench', 5, 3, '14" length - 1-1/2" max pipe diameter and 42MM jaw capacity', 'https://cdn.shopify.com/s/files/1/0203/6660/products/GSP8_2048x2048.png?v=1482504471', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Halifax-map.png?raw=true'),
 (2,'Drain Auger', 5, 6, 'Cable size: 1/4" x 20ft (0.6 cm x 7.6 m)', 'https://agdhpmnben.cloudimg.io/fit/800x800/none/https://giantwholesale.ca/images/default/thumbnails/products/4429e14776e9836c9ee5ed1102125e93.png', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Halifax-map.png?raw=true'),
 (3,'Pipe cutter', 5, 4, 'Cutting capacity: 1-5/8" (41 mm)', 'https://bramec.com/wp-content/uploads/2016/12/19718.png', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Toronto-map.png?raw=true'), 
-(3,'Multibit Screwdriver', 1, 4, 'Seven bits','https://www.kleintools.com/sites/all/product_assets/png/klein/32305.png', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Toronto-map.png?raw=true'),
+(3,'Multibit Screwdriver', 1, 8, 'Seven bits','https://www.kleintools.com/sites/all/product_assets/png/klein/32305.png', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Toronto-map.png?raw=true'),
 (3,'Fiskars Lopper', 2, 1, 'Lopper has steel handle construction with non-slip grips, and a shock-absorbing bumper reduces strain on hands and arms','https://pimdatacdn.bahco.com/media/sub593/16a0d719bfef7d3f.png', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Toronto-map.png?raw=true'),
 (3,'Mastercraft socket set', 1, 4, '11 pieces set, 1/4-in drive','https://media-www.canadiantire.ca/product/fixing/tools/sockets-wrenches/0589238/maximum-universal-socket-set-fe7d8182-5b33-44c0-94cc-f9d80af83695.png', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Toronto-map.png?raw=true'),
 (3,'Ryobi cordless drill', 1, 4, 'The drill/driver has a keyless chuck with a 24-position clutch and 2- speed gear box that adjusts the torque output.','https://81d489708d4495942781-1b0f6c3bfa89ded59cf9ffb629f4919e.ssl.cf1.rackcdn.com/categories/homepage_photo/1/07ee18c5-327f-48f1-a932-9086e81778ab.png', true, 'https://github.com/manuelcasanova/finals/blob/mc/49/fake-map/server/images/Toronto-map.png?raw=true');

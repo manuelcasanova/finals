@@ -4,6 +4,7 @@ import AdminCRUDTools from "./AdminCRUDTools";
 import LogInAdminButtons from "./LogInAdminButtons";
 import BookTool from "./BookTool";
 import CalendarComponent from "./CalendarComponent";
+import ChatMount from "./ChatMount"
 
 export default function OneToolView({ tools, user, admin }) {
   let { toolIdParam } = useParams();
@@ -98,10 +99,7 @@ export default function OneToolView({ tools, user, admin }) {
                         : "hide"
                     }
                   >
-                    <a
-                      className={user.loggedIn || admin.loggedIn ? "" : "hide"}
-                      href={`mailto:${tools[position].user_email}`}
-                    >  {tools[position].user_email}</a>
+                    <ChatMount ownerName={tools[position].user_name}/>
 
                   </td>
 

@@ -6,7 +6,7 @@ import './styling/calendar.css'
 import './styling/modal-calendar.css'
 //import 'react-calendar/dist/Calendar.css';
 
-export default function CalendarComponent({ toolIdParam, user, admin }) {
+export default function CalendarComponent({ toolIdParam, user, admin, userEmail, userName }) {
 
   const [date, setDate] = useState([])
   const [reservations, setReservations] = useState([])
@@ -23,6 +23,9 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
       });
   }, []);
 
+function notifyOwner(email){
+  console.log(`Tool has been booked by ${userName}`, email)
+}
 
 
   function onSubmitForm(date) {
@@ -52,6 +55,7 @@ export default function CalendarComponent({ toolIdParam, user, admin }) {
   const onChange = date => {
     setDate(date);
     onSubmitForm(date);
+    notifyOwner(userEmail)
   }
 
 

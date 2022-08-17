@@ -19,24 +19,24 @@ export default function EditGroups(props) {
     group_owner_id,
   };
 
-  const check = (formValues) => {
-    const errors = {};
-    if (!formValues.group_name) {
-      errors.group_name = "Name is required";
-    }
-    return errors;
-  };
+  // const check = (formValues) => {
+  //   const errors = {};
+  //   if (!formValues.group_name) {
+  //     errors.group_name = "Name is required";
+  //   }
+  //   return errors;
+  // };
 
-  const errors = check(groupFromTheForm);
-  const validate = function (e) {
-    e.preventDefault();
-    if (Object.keys(errors).length === 0) {
-      editGroup();
-      document.getElementById("editgroupmodal1").click(); //HERE
-    } else {
-      setFormErrors(errors);
-    }
-  };
+  // const errors = check(groupFromTheForm);
+  // const validate = function (e) {
+  //   e.preventDefault();
+  //   if (Object.keys(errors).length === 0) {
+  //     editGroup();
+  //     document.getElementById("editgroupmodal1").click(); //HERE
+  //   } else {
+  //     setFormErrors(errors);
+  //   }
+  // };
 
   const editGroup = async () => {
     try {
@@ -46,14 +46,10 @@ export default function EditGroups(props) {
         group_icon,
         group_owner_id,
       };
-      const response = await fetch(
-        `/groups/edit/${group.group_id}`, //HERE
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
+      const response = await axios.put(
+        `/groups/edit/${group.group_id}`,
+        body
+      )
       axios.get(`/groups`).then(function (res) {
         setGroups([...res.data]);
       });
@@ -142,7 +138,8 @@ export default function EditGroups(props) {
                 <button
                   className="button-submit"
                   type="Submit"
-                  onClick={(e) => validate(e)}
+                  data-dismiss="modal"
+                  onClick={(e) => editGroup()}
                 >
                   Edit
                 </button>

@@ -59,15 +59,14 @@ export default function EditToolAdmin(props) {
         tool_group_id,
         tool_available,
       };
-      // console.log("body", body);
-      const response = await fetch(
+
+
+      const response = await axios.put(
         `/tools/editall/${tool.tool_id}`,
-        {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body),
-        }
-      );
+        body
+      )
+
+
       axios.get(`/tools`).then(function (res) {
         setTools([...res.data]);
       });

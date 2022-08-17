@@ -31,7 +31,7 @@
   display: grid;
   grid-template-columns: repeat(5, 19.5%);
   gap: 0.5%;
-  padding: 3%;
+  padding: 1%;
   font-size: xx-large;
 }
 

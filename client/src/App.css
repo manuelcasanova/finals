@@ -258,11 +258,12 @@ a:active {
 .button-add {
   justify-content: center;
   align-self: center;
-  background-color: var(--color3);
+  background-color: var(--color4);
   border-radius: 10px;
   height: 100px;
-  width: 250px;
+  width: 280px;
   margin-top: 20px;
+  font-size: 40px;
 }
 
 .button-add:hover {
@@ -365,10 +366,10 @@ width: 10vw;
 }
 
 .button-edit {
-  background-color: var(--color3);
+  background-color: var(--color4);
   border-radius: 10px;
   padding: 5px;
-  width: 100px;
+  width: 110px;
 }
 
 .button-edit-category {

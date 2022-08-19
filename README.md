@@ -1,17 +1,15 @@
 # Tool Swap
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-# Final product
+## Final product
 
 https://toolswap.netlify.app/
 
 Main page
 
-![Main page](https://github.com/manuelcasanova/finals/toolswap.png?raw=true)
+![Main page](https://github.com/manuelcasanova/finals/blob/main/toolswap.png)
 
 
-# Dependencies
+## Dependencies
 
 * axios
 * bcrypt
